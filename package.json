@@ -12,6 +12,7 @@
   "author": "Lyza Danger Gardner",
   "license": "MIT",
   "devDependencies": {
-    "gulp": "^3.8.11"
+    "gulp": "^3.8.11",
+    "require-dir": "^0.1.0"
   }
 }
