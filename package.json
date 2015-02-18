@@ -1,0 +1,17 @@
+{
+  "name": "lyza-dot-com",
+  "version": "1.0.0",
+  "description": "gulp-driven static site FTW",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "Lyza Danger Gardner",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.8.11"
+  }
+}
