@@ -121,3 +121,9 @@ $ npm install --save-dev handlebars
 
 * Plugin is a no-op for now with commenting
 * Editing `proto-html.js` task to pipe to new `template` plugin
+
+### Basic logic for template plugin
+
+* See `gulp/plugins/template.js` at this commit
+* Updates to `config.js`
+* Added `src/templates/index.hbs`
