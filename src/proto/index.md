@@ -1,43 +1,110 @@
-# Cut and Assemble the Base
 
-Cut pieces of the following dimensions from foam core. These can be cut from a single piece of 7 1/2” x 11 1/2” foam core (slightly smaller than letter or A4 paper):
+## Set up Environment
 
-* Base: 7 1/2” x 5”
-* Mounting board: 4” x 6 1/2”
-* 4 Mounting board supports: 3 1/2” x 1”
-* 4 stability supports: 3 2” x 1/2” and 1 2 1/2” x 1/2”
-* 2 2” x 1” pieces
+### Repo
 
-(See photo).
+```shell
+$ npm init
+$ echo 'node_modules' >> .gitignore
+$ git init
+$ git add package.json .gitignore
+$ git commit -m "Initial commit"
 
-## Assemble the mounting board
+```
 
-Find the center of the (4” x 6-1/2”) mounting board. Mark this spot.
+### Gulp fundamentals
 
-Align your standard-sized servo such that the (need to look up this word: shaft? axis?) is at the center of the board and the long side of the servo is aligned with the short side of the board.
+```shell
+$ npm install --save-dev gulp require-dir
+$ echo "'use strict';" >> gulpfile.js
+$ mkdir gulp/tasks
+$ git add gulpfile.js
+$ git commit -m "Gulp fundamentals"
+```
 
-Trace lightly around the servo with a pencil to mark the location.
+### Environment
 
-Take one of the 2” x 1” pieces cut earlier and place the servo on it. Trace carefully around the bottom of the servo, creating an outline on the foam core.
+* Added .jshintrc, .jscs, .editorconfig
 
-Cut this shape out from the center of the piece, creating a sort of “servo cozy” that should fit around your servo snugly. You may need to cut a notch for the servo’s wires, depending on the exact shape of your particular servo.
+```shell
+$ git add .jshintrc .jscs .editorconfig
+$ git commit -m "OCD amount of .config"
+```
 
-Position the servo cozy on the board to match the traced outline and glue in place. The servo should fit snugly and not wiggle.
+### Creating an area for prototyping
 
-### Position Arduino and breadboard
+```shell
+$ mkdir source/proto
+$ touch source/proto/index.md
+```
 
-Remove adhesive backing from breadboard and adhere it to one side of the servo… (to the left if servo wires are facing you).
+* Add some basic markdown content to `index.md`
 
-Arduino…connections toward short outside side. Attach w/hardware…
+```shell
+$ git add source/proto/index.md
+$ git commit -m "Proto directory and simple index markdown file"
+```
 
-## Build the Lower Base
+### First Task(s) bones
 
-Mark an inner square 3/4” in from all sides…
+* Establishing `gulpfile.js`: (inspired by [https://github.com/greypants/gulp-starter](https://github.com/greypants/gulp-starter) )
 
-Glue outside pieces along short edge, centered, add support pieces, glue.
+```shell
+$ touch gulp/config.js
+$ echo "'use strict';" >> gulp/tasks/pages-html.js
+```
 
-Position battery holder. Mark next to it and glue the shorter (2” x 1”) support there. Add support piece.
+* Edit `config.js` to have a skeletal structure
 
-Cut the 2-1/2” x 1/2” piece in half lengthwise and glue to the edges of the underside of the mounting board.
 
-The mounting board should now sit on the base with the two small pieces on the outside of the outermost supports.
+```shell
+$ git add gulp/config.js gulp/tasks/pages-html.js
+$ git commit -m "Basic structure for first markdown/html task and gulp config"
+```
+
+### On second thought...
+
+```shell
+$ git mv gulp/tasks/pages-html.js gulp/tasks/proto-html.js
+$ git commit -am "Rename pages-html -> proto-html because it makes more sense"
+```
+
+### On third thought...
+
+* add `build` to `.gitignore`
+
+```shell
+$ git commit -am "Adding output build for now to .gitignore"
+```
+
+### Setting up prototype pages
+
+```shell
+$ npm install --save-dev gulp-markdown gulp-rename
+```
+
+* Edit `proto-html.js` task (marked, rename)
+* Add required config to `gulp/config.js`
+
+```shell
+$ git commit -am "proto-html task to convert markdown, rename"
+```
+
+### Our first template/plugin
+
+* `$  mkdir src/templates`
+* `$ npm install --save-dev gulp-util through2`
+* [gist base for first plugin](https://gist.github.com/lyzadanger/ef133432adfd30b7c9eb)
+
+### git history rewrite
+
+```shell
+$ git stash
+```
+
+* Make edits to `index.md`
+
+```shell
+$ git add src/proto/index.md
+$ git commit --amend
+```
