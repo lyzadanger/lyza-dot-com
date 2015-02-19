@@ -10,6 +10,7 @@ var config   = require('../config').protoHTML;
 
 var markdown = require('gulp-markdown');
 var rename   = require('gulp-rename');
+var template = require('../plugins/template');
 
 gulp.task('proto-html', function() {
   return gulp.src(config.src)
@@ -17,6 +18,7 @@ gulp.task('proto-html', function() {
       gfm: true,
       smartypants: true
     }))
+    .pipe(template())
     .pipe(rename({
       extname: '.html'
     }))

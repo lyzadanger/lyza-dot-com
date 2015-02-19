@@ -96,6 +96,8 @@ $ git commit -am "proto-html task to convert markdown, rename"
 * `$ npm install --save-dev gulp-util through2`
 * [gist base for first plugin](https://gist.github.com/lyzadanger/ef133432adfd30b7c9eb)
 
+(Not committed)
+
 ### git history rewrite
 
 ```shell
@@ -108,3 +110,14 @@ $ git stash
 $ git add src/proto/index.md
 $ git commit --amend
 ```
+
+### Back to our first template/plugin
+
+```shell
+$ git checkout -b feature-proto-templates
+$ git stash pop
+$ npm install --save-dev handlebars
+```
+
+* Plugin is a no-op for now with commenting
+* Editing `proto-html.js` task to pipe to new `template` plugin
