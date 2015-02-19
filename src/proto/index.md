@@ -137,3 +137,13 @@ Our templates plugin isn't done by any means, but it does what we need to procee
 * Edits to `index.hbs` to make it a real web page.
 
 I think I don't need to be so descriptive about my commits; people can find them in history themselves! From here on assume that every subhead kind of breaks up commits.
+
+### Default task and webserver
+
+```shell
+$ npm install --save-dev browser-sync
+```
+
+* Edit `config.js` to add basic config for `browserSync`.
+* Create `watch.js` task
+* Create `default.js` task
