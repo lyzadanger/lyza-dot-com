@@ -127,3 +127,13 @@ $ npm install --save-dev handlebars
 * See `gulp/plugins/template.js` at this commit
 * Updates to `config.js`
 * Added `src/templates/index.hbs`
+
+### Merge back into master
+
+Our templates plugin isn't done by any means, but it does what we need to proceed.
+
+### Expanding template
+
+* Edits to `index.hbs` to make it a real web page.
+
+I think I don't need to be so descriptive about my commits; people can find them in history themselves! From here on assume that every subhead kind of breaks up commits.
