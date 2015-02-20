@@ -176,3 +176,9 @@ I like to use front matter.
 (This is where I realize my `proto-html` task hasn't been working as expected for a step or two...debug! aha! Poorly-formed filename for template in `template.js`. Also understanding front-matter's data structure (`data.attributes`)).
 
 Now we have the ability to add and retrieve data to our source content. Onward.
+
+### Semantic post markup
+
+Time to refine the markup in `index.hbs`, which will ultimately become our `post` page template.
+
+TIL: With Chrome user-agent stylesheet, `h1` is rendered larger than an `h1` that is a descendent of `article`, `section`, `nav`, or `aside`.

@@ -1,14 +1,33 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-US" dir="ltr">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{title}}</title>
 </head>
 <body>
-  {{{content}}}
-  {{!TODO remove me later}}
-  <script type='text/javascript' id="__bs_script__">//<![CDATA[
-    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.2.0.js'><\/script>".replace("HOST", location.hostname));
-//]]></script>
+  <main role="main" class="content">
+    <header>
+      <hgroup>
+        <h1>Lyza Danger Gardner</h1>
+        <h2>I like figuring out how to make things</h2>
+      </hgroup>
+    </header>
+    <article class="post">
+      <header>
+        <h1>{{title}}</h1>
+        <time datetime="2015-02-20">Feb 20, 2015</time>
+      </header>
+      <div class="post-content">
+        {{{content}}}
+      </div>
+    </article>
+  </main>
+    {{!TODO remove me later}}
+    <script type='text/javascript' id="__bs_script__">//<![CDATA[
+      document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.2.0.js'><\/script>".replace("HOST", location.hostname));
+  //]]>
+    </script>
+
 </body>
 </html>
