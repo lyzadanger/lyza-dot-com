@@ -1,3 +1,6 @@
+---
+title: Building my Site from Nothing
+---
 
 ## Set up Environment
 
@@ -145,5 +148,31 @@ $ npm install --save-dev browser-sync
 ```
 
 * Edit `config.js` to add basic config for `browserSync`.
+* [gulp + browserSync](http://www.browsersync.io/docs/gulp/)
 * Create `watch.js` task
 * Create `default.js` task
+
+### Prototyping as a content page; metadata
+
+Let's start to morph the prototype index page into a page that represents some content. In certain kinds of parlance, a _post_. To do this, let's think about what represents a _post_. Content elements and chunks of a typical _post_ on the web include:
+
+* Content (We've already got some of that)
+* Title
+* Date and time of posting
+* Author
+* Other metadata and metaclassification data like categories or tags
+
+This is my own site, so I am going to assume myself as author. I'm not immediately concerned with metadata beyond date/time and title. So let's start small.
+
+I like to use front matter.
+
+`$ npm install --save-dev front-matter gulp-data`
+
+* Edit `proto-html` task to pipe to `data` to grab front matter and remove it from markdown contents
+* `lodash` for laziness: `npm install --save-dev lodash` (`lodash` for being cool and optimized; `underscore` for documentation)
+* Reworking `template.js` gulp plugin to account for available `file.data`.
+* Add `{{title}}` to `index.hbs`
+
+(This is where I realize my `proto-html` task hasn't been working as expected for a step or two...debug! aha! Poorly-formed filename for template in `template.js`. Also understanding front-matter's data structure (`data.attributes`)).
+
+Now we have the ability to add and retrieve data to our source content. Onward.

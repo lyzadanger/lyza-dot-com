@@ -3,11 +3,15 @@
 var config    = require('../config').template;
 
 var fs         = require('fs');
+var _          = require('lodash');
 var through    = require('through2');
 var gutil      = require('gulp-util');
 var Handlebars = require('handlebars');
 
-var count = 0;
+var defaults = {
+  template: 'index'
+};
+
 module.exports = function wrapWithHandlebars() {
 
   return through.obj(function(file, enc, cb) {
@@ -22,19 +26,13 @@ module.exports = function wrapWithHandlebars() {
     }
 
     if (file.isBuffer()) {
-
-      // Determine what, if any, template we should wrap with
-      // For now, just one template
-      var templateName = 'index.hbs';
-      //  Compile that template if needed
-      // For now, super basic, let's just compile here
-      // Note there is no error handling here
-      var template = Handlebars.compile(fs.readFileSync(config.templateDir + '/index.hbs', 'utf8'));
-      //  Stringify file contents
-      var content = file.contents.toString();
-      // Create context for template (with file contents)
-      var data    = { content: content };
+      var data = _.extend({
+        template : 'index'
+      }, file.data || {});
+      // @TODO Note there is no error handling here
+      var template = Handlebars.compile(fs.readFileSync(config.templateDir + '/' + data.template + '.hbs', 'utf8'));
       // Execute template function
+      data.content = file.contents.toString();
       var wrapped = template(data);
       // Replace file.contents with result of template call
       file.contents = new Buffer(wrapped);
