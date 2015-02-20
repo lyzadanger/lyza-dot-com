@@ -8,6 +8,11 @@ module.exports = {
       baseDir: dest
     }
   },
+  css: {
+    importDir: src + '/styles',
+    src: src + '/styles/styles.css',
+    dest: dest + '/css'
+  },
   protoHTML: {
     src: src + '/proto/**/*.md',
     dest: dest

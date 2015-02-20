@@ -182,3 +182,29 @@ Now we have the ability to add and retrieve data to our source content. Onward.
 Time to refine the markup in `index.hbs`, which will ultimately become our `post` page template.
 
 TIL: With Chrome user-agent stylesheet, `h1` is rendered larger than an `h1` that is a descendent of `article`, `section`, `nav`, or `aside`.
+
+### Time to think about CSS
+
+A few things to sort out:
+
+* Vendor CSS asset management
+* CSS pre-processor?
+* CSS post-processing?
+* At some point, concat and minify
+
+I prefer to `npm install` and `require` all the things, so I'd like to go the `npm` route if possible for managing my CSS dependencies.
+
+After thinking about this:
+
+### Proposed CSS build approach, at least for now
+
+* Use `gulp-postcss` as a workflow tool to run CSS through post-processors
+* Use `cssnext` as a postcss-supported CSS postprocessor to do some transformations on my CSS, including the ability to `@import` from `node_modules`. Now we can install CSS utilities as node modules and import them.
+
+* `npm install --save-dev gulp-postcss cssnext suitcss-base`
+* Create `src/styles/styles.css` and add a simple test rule (making H1s red)
+* Create `gulp/tasks/styles.js` and add config for the task.
+* Add `css` task to `default` task.
+* Add `css` to `watch` task.
+* `@import suitcss-base`
+* Add `link` tag to stylesheet in `index.hbs`
