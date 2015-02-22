@@ -251,3 +251,7 @@ These basic elements I'll take care of now. If there are additional elements tha
 #### Post component
 
 I'm creating a very, very basic CSS file for the `Post` component so that I can get the text off the left wall for narrow screens. That's all I'm doing, and then using `@import` to get it in place.
+
+#### Colors
+
+Adding a few colors for: main text color, contrasting printer's red (which I'll use in moderation ultimately), a link color which I may end up adjusting. Also killing link styling for now; will re-address later.

@@ -7,6 +7,10 @@
   --Base-fontSize: 1.25rem;
   --Medium-lineHeight: 1.875rem;
   --Medium-fontSize: 1.25rem;
+  --Base-colorMain: #3b3f43;
+  --Base-textLinks: #214870;
+  --Base-printersRed: #d83f21;
+  --Base-colorInverse: #fcfcfa;
 }
 @import "components/Post";
 
@@ -16,10 +20,12 @@ html {
 }
 
 body {
-  font-size   : var(--Base-fontSize);
-  line-height : var(--Base-lineHeight);
-  max-width   : 40em;
-  margin      : auto;
+  background-color : var(--Base-colorInverse);
+  font-size        : var(--Base-fontSize);
+  line-height      : var(--Base-lineHeight);
+  color            : var(--Base-colorMain);
+  max-width        : 40em;
+  margin           : auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -34,6 +40,7 @@ h1 {
 h2 {
   font-size: calc(var(--Base-lineHeight));
   margin: calc(var(--Base-lineHeight) / 2) 0;
+  color: var(--Base-printersRed);
 }
 
 h3 {
@@ -56,6 +63,11 @@ p, li {
 
 blockquote {
   margin: var(--Base-lineHeight);
+}
+
+a, a:hover, a:focus, a:active, a:visited {
+  text-decoration: none;
+  color: var(--Base-textLinks);
 }
 
 ul {
