@@ -3,6 +3,7 @@
 }
 
 .Post-title, .Post h1 {
+  font-size: calc(var(--Base-lineHeight) / 0.875);
   font-weight: 500;
 }
 
@@ -13,8 +14,18 @@
   font-style: italic;
 }
 
+.Post h3 {
+  font-size: calc(var(--Base-lineHeight) / 0.925);
+}
+
 @media (--medium-viewport) {
   .Post {
     padding: 0 calc(var(--Medium-lineHeight) / 2);
+  }
+  .Post-title, .Post h1 {
+    font-size: calc(var(--Medium-lineHeight) / 0.875);
+  }
+  .Post h3 {
+    font-size: calc(var(--Medium-lineHeight) / 0.925);
   }
 }
