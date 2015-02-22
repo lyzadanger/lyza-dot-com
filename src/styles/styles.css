@@ -46,11 +46,23 @@ h4, time {
 }
 
 ol, ul, dl {
-  margin: var(--Base-lineHeight) 1rem 0 1rem;
+  margin: var(--Base-lineHeight) 1rem 0 2rem;
 }
 
 p, li {
   margin-top: var(--Base-lineHeight);
+}
+
+blockquote {
+  margin: var(--Base-lineHeight);
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
 }
 
 @media (--medium-viewport) {
@@ -75,10 +87,14 @@ p, li {
   }
 
   ol, ul, dl {
-    margin: var(--Medium-lineHeight) 1rem 0 1rem;
+    margin: var(--Medium-lineHeight) 1rem 0 2rem;
   }
 
   p, li {
     margin-top: var(--Medium-lineHeight);
+  }
+
+  blockquote {
+    margin: var(--Medium-lineHeight);
   }
 }

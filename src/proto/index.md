@@ -235,3 +235,15 @@ Adding in a breakpoint and handling the calculations.
 We'll use a custom media query (`--medium-viewport`) and adjust our vertical rhythm. Why no `--wide-viewport` or equivalent? Because I don't think I'm going to let text columns get much wider than `40em` anyway.
 
 As an aside, I know I am going to want to re-tool _where_ on elements margins are. Right now most of them are `margin-top` but a few split the margin between top and bottom.
+
+#### Other layout elements
+
+> Block quo­ta­tions are some­times un­avoid­able. Some­times, ac­cu­racy de­mands ex­ten­sive quoting.
+
+> But pay at­ten­tion to length. Writ­ers some­times put vo­lu­mi­nous ma­te­r­ial into a block quo­ta­tion in­tend­ing to sig­nal “Hey, I quoted a lot of this source be­cause it’s re­ally im­por­tant!” The ac­tual sig­nal a reader of­ten gets is “Hey, I didn’t write any of this, I just cribbed it from some­where else!” The reader’s next thought is usu­ally “Great, I can skip this,” or “How is this relevant?
+
+1. I want to get a few other kinds of elements in place
+2. Including ordered lists and block quotes
+3. And make sure <small>small text</small> looks OK
+
+These basic elements I'll take care of now. If there are additional elements that need styling, I'll style them as they come up.
