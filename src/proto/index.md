@@ -277,3 +277,16 @@ I'm leaving my Museo Sans package with more weights than I may use for now. Once
 I'm also doing some Post-component-specific overrides because I want to treat `h1` and `h2` elements differently inside of posts.
 
 This is not the last of the work I'll do on fonts. I'll come back for performance and other reasons.
+
+#### A few more tweaks before progressing
+
+* Centering some headings
+* Making some Post-component-specific adjustments to heading styles
+* Putting some basic `pre` and `code` styles in place for the nonce
+
+This isn't a complete layout by a sight, but I want to move on and work on some other areas now.
+
+### Quickies as we move along
+
+* Update watch task to watch for template changes as well as content changes.
+* No need to have `<script>` tags in my template; browserSync will auto-inject.
