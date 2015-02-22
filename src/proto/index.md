@@ -196,11 +196,10 @@ I prefer to `npm install` and `require` all the things, so I'd like to go the `n
 
 After thinking about this:
 
-### Proposed CSS build approach, at least for now
+#### Proposed CSS build approach, at least for now
 
 * Use `gulp-postcss` as a workflow tool to run CSS through post-processors
 * Use `cssnext` as a postcss-supported CSS postprocessor to do some transformations on my CSS, including the ability to `@import` from `node_modules`. Now we can install CSS utilities as node modules and import them.
-
 * `npm install --save-dev gulp-postcss cssnext suitcss-base`
 * Create `src/styles/styles.css` and add a simple test rule (making H1s red)
 * Create `gulp/tasks/styles.js` and add config for the task.
@@ -208,3 +207,22 @@ After thinking about this:
 * Add `css` to `watch` task.
 * `@import suitcss-base`
 * Add `link` tag to stylesheet in `index.hbs`
+
+### Basic CSS Sculpting and Typography
+
+Let's do a bit of what they call "Responsive Design", shall we? This is always a challenging part for me. Suddenly our world is very vast.
+
+First I'll add some more semantic class names to the index.hbs template. I'm following the naming conventions of suit.css. These are new to me; the capitalized component naming scheme is going to take some getting used to. But at least the element/modifier naming is less underscore-happy than some.
+
+I'm going to start, roughly, at a narrow screen and feel my way out. To do this, I set `max-width` on the `body` to `24em`, which is about 384px.
+
+#### CSS 4 Stuff
+
+* CSS variables
+* CSS calc
+
+(CSS Next transpilers).
+
+#### Vertical Rhythm
+
+Managed by setting some variables and using calculations on them. Basic, strict vertical rhythm carried through heading elements (`h1` through `h4`).
