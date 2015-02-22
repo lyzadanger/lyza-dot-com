@@ -1,8 +1,12 @@
 @import "suitcss-base";
 
+@custom-media --medium-viewport all and (min-width: 40em);
+
 :root {
   --Base-lineHeight: 1.75rem;
-  --Base-fontSize: calc(1.75rem / 1.4);
+  --Base-fontSize: 1.25rem;
+  --Medium-lineHeight: 1.875rem;
+  --Medium-fontSize: 1.25rem;
 }
 
 html {
@@ -13,7 +17,7 @@ html {
 body {
   font-size   : var(--Base-fontSize);
   line-height : var(--Base-lineHeight);
-  max-width   : 24em;
+  max-width   : 40em;
   margin      : auto;
 }
 
@@ -23,7 +27,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: calc(var(--Base-lineHeight) / 0.825);
-  margin-top: 1.75rem;
+  margin-top: var(--Base-lineHeight);
 }
 
 h2 {
@@ -33,18 +37,48 @@ h2 {
 
 h3 {
   font-size: calc(var(--Base-lineHeight) / 1.25);
-  margin-top: 1.75rem;
+  margin-top: var(--Base-lineHeight);
 }
 
 h4, time {
   font-size: calc(var(--Base-lineHeight) / 1.4);
-  margin-top: 1.75rem;
+  margin-top: var(--Base-lineHeight);
 }
 
 ol, ul, dl {
-  margin: 1.75rem 1rem 0 1rem;
+  margin: var(--Base-lineHeight) 1rem 0 1rem;
 }
 
 p, li {
-  margin-top: 1.75rem;
+  margin-top: var(--Base-lineHeight);
+}
+
+@media (--medium-viewport) {
+  h1 {
+    font-size: calc(var(--Medium-lineHeight) / 0.825);
+    margin-top: var(--Medium-lineHeight);
+  }
+
+  h2 {
+    font-size: calc(var(--Base-lineHeight));
+    margin: calc(var(--Medium-lineHeight) / 2) 0;
+  }
+
+  h3 {
+    font-size: calc(var(--Base-lineHeight) / 1.25);
+    margin-top: var(--Medium-lineHeight);
+  }
+
+  h4, time {
+    font-size: calc(var(--Base-lineHeight) / 1.4);
+    margin-top: var(--Medium-lineHeight);
+  }
+
+  ol, ul, dl {
+    margin: var(--Medium-lineHeight) 1rem 0 1rem;
+  }
+
+  p, li {
+    margin-top: var(--Medium-lineHeight);
+  }
 }

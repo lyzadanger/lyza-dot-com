@@ -226,3 +226,12 @@ I'm going to start, roughly, at a narrow screen and feel my way out. To do this,
 #### Vertical Rhythm
 
 Managed by setting some variables and using calculations on them. Basic, strict vertical rhythm carried through heading elements (`h1` through `h4`).
+
+#### Vertical Rhythm for Medium-width screens
+
+As we get wider, ultimately we'll want to introduce a bit more line-height. Narrow screens have a 1.4 line height rhythm, but medium screens will have 1.5.
+Adding in a breakpoint and handling the calculations.
+
+We'll use a custom media query (`--medium-viewport`) and adjust our vertical rhythm. Why no `--wide-viewport` or equivalent? Because I don't think I'm going to let text columns get much wider than `40em` anyway.
+
+As an aside, I know I am going to want to re-tool _where_ on elements margins are. Right now most of them are `margin-top` but a few split the margin between top and bottom.
