@@ -2,6 +2,17 @@
   padding: 0 calc(var(--Base-lineHeight) / 2);
 }
 
+.Post-title, .Post h1 {
+  font-weight: 500;
+}
+
+.Post-subtitle, .Post h2 {
+  text-transform: none;
+  font-variant: normal;
+  font-weight: 100;
+  font-style: italic;
+}
+
 @media (--medium-viewport) {
   .Post {
     padding: 0 calc(var(--Medium-lineHeight) / 2);

@@ -255,3 +255,25 @@ I'm creating a very, very basic CSS file for the `Post` component so that I can 
 #### Colors
 
 Adding a few colors for: main text color, contrasting printer's red (which I'll use in moderation ultimately), a link color which I may end up adjusting. Also killing link styling for now; will re-address later.
+
+
+#### Fonts
+
+Starting to build up the font stack. Looking at Times New Roman, then Georgia...
+
+Wow, that already looks so much better.
+
+Now for the big leap. I want to use web fonts. Because typography style is so core to what I'm trying to exude (it is a high priority for me), I'm going to use some of my performance budget on nice fonts. I have a TypeKit account, and have selected for my fonts.
+
+> When in doubt, use Caslon. (Old Printers' Adage)
+
+* Body main font: Adobe's Caslon Pro. I use Caslon a lot both digitally and tangibly. I have several Caslon fonts as real metal type in my letterpress collection. Also, I passionately love Caslon's italic ampersand.
+* Heading font: I have a liking for Museo Sans, and will use a condensed variant to make my headings more narrow.
+
+The unfortunate reality is that Adobe Caslon Pro is *enormous*. I'm not going to use the bold italic, but just getting regular, italic and bold weights weighs in at over 600k. I may need to revisit this in the future, and try to do some progressive performance enhancement.
+
+I'm leaving my Museo Sans package with more weights than I may use for now. Once I determine the weights I'm using in my styles, I'll remove any unused weights.
+
+I'm also doing some Post-component-specific overrides because I want to treat `h1` and `h2` elements differently inside of posts.
+
+This is not the last of the work I'll do on fonts. I'll come back for performance and other reasons.

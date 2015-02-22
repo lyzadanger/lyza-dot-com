@@ -5,22 +5,22 @@
 :root {
   --Base-lineHeight: 1.75rem;
   --Base-fontSize: 1.25rem;
-  --Medium-lineHeight: 1.875rem;
-  --Medium-fontSize: 1.25rem;
+  --Base-fontMain: "adobe-caslon-pro", "Georgia", "Times New Roman", serif;
   --Base-colorMain: #3b3f43;
   --Base-textLinks: #214870;
   --Base-printersRed: #d83f21;
-  --Base-colorInverse: #fcfcfa;
+  --Base-colorInverse: #ffffff;
+  --Medium-lineHeight: 1.875rem;
+  --Medium-fontSize: 1.25rem;
 }
 @import "components/Post";
 
 html {
   font-size   : 100%;
-  font-family : serif;
 }
 
 body {
-  background-color : var(--Base-colorInverse);
+  font-family      : var(--Base-fontMain);
   font-size        : var(--Base-fontSize);
   line-height      : var(--Base-lineHeight);
   color            : var(--Base-colorMain);
@@ -29,28 +29,37 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: sans-serif;
+  font-family: "museo-sans-condensed", sans-serif;
 }
 
 h1 {
-  font-size: calc(var(--Base-lineHeight) / 0.825);
+  font-size: calc(var(--Base-lineHeight) / 0.75);
+  font-weight: 100;
   margin-top: var(--Base-lineHeight);
 }
 
 h2 {
-  font-size: calc(var(--Base-lineHeight));
+  font-size: calc(var(--Base-lineHeight) / 0.875);
   margin: calc(var(--Base-lineHeight) / 2) 0;
-  color: var(--Base-printersRed);
 }
 
 h3 {
-  font-size: calc(var(--Base-lineHeight) / 1.25);
+  font-size: calc(var(--Base-lineHeight));
   margin-top: var(--Base-lineHeight);
+  font-weight: 500;
+  text-align: center;
 }
 
 h4, time {
   font-size: calc(var(--Base-lineHeight) / 1.4);
   margin-top: var(--Base-lineHeight);
+  font-weight: 500;
+  font-style: italic;
+}
+
+h2, h3 {
+  text-transform: lowercase;
+  font-variant: small-caps;
 }
 
 ol, ul, dl {
@@ -80,17 +89,17 @@ ol {
 
 @media (--medium-viewport) {
   h1 {
-    font-size: calc(var(--Medium-lineHeight) / 0.825);
+    font-size: calc(var(--Medium-lineHeight) / 0.75);
     margin-top: var(--Medium-lineHeight);
   }
 
   h2 {
-    font-size: calc(var(--Base-lineHeight));
+    font-size: calc(var(--Base-lineHeight) / 0.875);
     margin: calc(var(--Medium-lineHeight) / 2) 0;
   }
 
   h3 {
-    font-size: calc(var(--Base-lineHeight) / 1.25);
+    font-size: calc(var(--Base-lineHeight));
     margin-top: var(--Medium-lineHeight);
   }
 
