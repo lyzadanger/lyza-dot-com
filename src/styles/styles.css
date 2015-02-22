@@ -8,6 +8,7 @@
   --Medium-lineHeight: 1.875rem;
   --Medium-fontSize: 1.25rem;
 }
+@import "components/Post";
 
 html {
   font-size   : 100%;

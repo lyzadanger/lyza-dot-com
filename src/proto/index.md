@@ -247,3 +247,7 @@ As an aside, I know I am going to want to re-tool _where_ on elements margins ar
 3. And make sure <small>small text</small> looks OK
 
 These basic elements I'll take care of now. If there are additional elements that need styling, I'll style them as they come up.
+
+#### Post component
+
+I'm creating a very, very basic CSS file for the `Post` component so that I can get the text off the left wall for narrow screens. That's all I'm doing, and then using `@import` to get it in place.

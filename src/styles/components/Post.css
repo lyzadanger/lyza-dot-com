@@ -1,0 +1,9 @@
+.Post {
+  padding: 0 calc(var(--Base-lineHeight) / 2);
+}
+
+@media (--medium-viewport) {
+  .Post {
+    padding: 0 calc(var(--Medium-lineHeight) / 2);
+  }
+}
