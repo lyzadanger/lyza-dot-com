@@ -18,6 +18,7 @@ module.exports = {
     dest: dest
   },
   template: {
+    partialDir: src + '/templates/partials',
     templateDir: src + '/templates'
   }
 };
