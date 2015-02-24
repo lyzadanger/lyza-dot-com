@@ -1,5 +1,6 @@
 ---
 title: Building my Site from Nothing
+template: post
 ---
 
 ## Set up Environment
@@ -295,3 +296,18 @@ This isn't a complete layout by a sight, but I want to move on and work on some 
 ### Revisiting Templating
 
 To start getting ready to make our `template.js` plugin less of a prototype, I added some error-handling and the ability to cache templates per task-run. I also added `test.md` which we'll use as we start expanding the system here.
+
+#### A post template
+
+Right now we're running a content file that feels post-like through a single template, `index.hbs`. Shouldn't this really be `post.hbs`?
+
+I copied `index.hbs` to `post.hbs`, made a trivial change to the `title` tag and then edited the front matter of this content file to indicate I wanted to use the `post` template, e.g.:
+
+```yaml
+---
+title: Building my Site from Nothing
+template: post
+---
+```
+
+The `template.js` plugin already has logic in place to look for `template` and, voila, now `index.md` gets processed with the `post.hbs` template.
