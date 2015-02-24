@@ -8,11 +8,8 @@ var through    = require('through2');
 var gutil      = require('gulp-util');
 var Handlebars = require('handlebars');
 
-var defaults = {
-  template: 'index'
-};
-
 module.exports = function wrapWithHandlebars() {
+  var templates = {};
 
   return through.obj(function(file, enc, cb) {
     if (file.isNull()) {
@@ -21,7 +18,7 @@ module.exports = function wrapWithHandlebars() {
     }
 
     if (file.isStream()) {
-      cb(new gutil.PluginError('myPlugin', 'Streaming not supported'));
+      cb(new gutil.PluginError('gulp-wrap-handlebars', 'Streaming not supported'));
       return;
     }
 
@@ -29,16 +26,24 @@ module.exports = function wrapWithHandlebars() {
       var data = _.extend({
         template : 'index'
       }, file.data || {});
-      // @TODO Note there is no error handling here
-      var template = Handlebars.compile(fs.readFileSync(config.templateDir + '/' + data.template + '.hbs', 'utf8'));
-      // Execute template function
+
+      var templatePath = config.templateDir + '/' + data.template + '.hbs';
+      var template;
+      if (typeof templates[templatePath] === 'undefined') {
+          try {
+            templates[templatePath] = Handlebars.compile(fs.readFileSync(templatePath, 'utf8'));
+            template = templates[templatePath];
+          } catch (err) {
+            this.emit('error', new gutil.PluginError('gulp-wrap-handlebars', err));
+          }
+      } else {
+        template = templates[templatePath];
+      }
+
       data.content = file.contents.toString();
       var wrapped = template(data);
-      // Replace file.contents with result of template call
       file.contents = new Buffer(wrapped);
     }
-
-    // Do stuff
     this.push(file);
     cb();
   });

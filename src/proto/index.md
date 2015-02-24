@@ -291,3 +291,7 @@ This isn't a complete layout by a sight, but I want to move on and work on some 
 * Update watch task to watch for template changes as well as content changes.
 * No need to have `<script>` tags in my template; browserSync will auto-inject.
 * Noticed boneheaded naming misfire on `.jscsrc`
+
+### Revisiting Templating
+
+To start getting ready to make our `template.js` plugin less of a prototype, I added some error-handling and the ability to cache templates per task-run. I also added `test.md` which we'll use as we start expanding the system here.
