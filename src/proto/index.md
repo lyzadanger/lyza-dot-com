@@ -311,3 +311,11 @@ template: post
 ```
 
 The `template.js` plugin already has logic in place to look for `template` and, voila, now `index.md` gets processed with the `post.hbs` template.
+
+#### Partials
+
+OK, though, that's not very DRY, is it? We have a `post.hbs` and `index.hbs` template that are essentially copies of each other. Presumably `index.hbs` will go off in another direction and differ somewhat from `post.hbs` but both share, like, headers and footers and stuff. Partials would be nice.
+
+* `$ npm install --save-dev recursive-readdir`
+
+Added a `registerPartials` function to the `template` plugin. Now we can use a shared header and footer in our initial templates. Dried out again for now. Later I should expand on this documentation.

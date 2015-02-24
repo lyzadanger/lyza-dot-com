@@ -15,7 +15,8 @@ module.exports = function wrapWithHandlebars() {
 
   var registerPartials = function() {
     recursive(config.partialDir, function (err, files) {
-      // Files is an array of filename
+      // @TODO Note that I'm hard-coding options for now
+      // ideally this would take options
       files.forEach(function(file) {
         var partialBits = [],
             relPath, partialKey;
