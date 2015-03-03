@@ -319,3 +319,28 @@ OK, though, that's not very DRY, is it? We have a `post.hbs` and `index.hbs` tem
 * `$ npm install --save-dev recursive-readdir`
 
 Added a `registerPartials` function to the `template` plugin. Now we can use a shared header and footer in our initial templates. Dried out again for now. Later I should expand on this documentation.
+
+### Browserify
+
+Like postcss allows me to do imports and dependency management via npm, so does Browserify support such a thing WRT client JavaScript. Setting this up with gulp is a *touch* complicated in that there are a number of things I'll need to touch and the gulp tasks themselves are a bit less than fully intuitive.
+
+I'm using `gulp-starter`'s lead on this but am making some minor changes here and there to the approach.
+
+First, I need `browserify` installed as a global npm module. I did this by updating my own `boxen` module (this is a sysadmin task).
+
+There are a number of local npm modules I'll need, too.
+
+#### Install dependencies
+
+`$ npm install --save jquery`
+`$ npm install --save-dev browserify browserify-shim vinyl-source-stream watchify`
+
+#### Set up source and config
+
+* Create `src/javascript/site.js` as JavaScript source.
+* Edit `packages.json` to add entries for `browserify` and `browserify-shim`
+* Add single bundle config to `config.js`
+* Add `browserify` task
+* Add `watchify` task
+* Edit `watch` task
+* Add output JS to template

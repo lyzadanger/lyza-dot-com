@@ -11,8 +11,23 @@
   ],
   "author": "Lyza Danger Gardner",
   "license": "MIT",
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "plugin": {
+      "exports": "plugin",
+      "depends": [
+        "jquery:$"
+      ]
+    }
+  },
   "devDependencies": {
     "browser-sync": "^2.2.0",
+    "browserify": "^9.0.3",
+    "browserify-shim": "^3.8.3",
     "cssnext": "^1.0.1",
     "front-matter": "^0.2.1",
     "gulp": "^3.8.11",
@@ -26,6 +41,11 @@
     "recursive-readdir": "^1.2.1",
     "require-dir": "^0.1.0",
     "suitcss-base": "^0.8.0",
-    "through2": "^0.6.3"
+    "through2": "^0.6.3",
+    "vinyl-source-stream": "^1.0.0",
+    "watchify": "^2.4.0"
+  },
+  "dependencies": {
+    "jquery": "^2.1.3"
   }
 }
