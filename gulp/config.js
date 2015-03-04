@@ -26,6 +26,10 @@ module.exports = {
     src: src + '/styles/styles.css',
     dest: dest + '/css'
   },
+  drafts: {
+    src: src + '/posts/drafts/**/*.md',
+    dest: dest + '/drafts'
+  },
   protoHTML: {
     src: src + '/proto/**/*.md',
     dest: dest
