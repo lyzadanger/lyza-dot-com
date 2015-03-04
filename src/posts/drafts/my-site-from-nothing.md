@@ -365,3 +365,7 @@ Now that creates
 `http://localhost:3000/drafts/my-site-from-nothing.html`
 
 when I run gulp.
+
+### Cleanup of proto-html
+
+Don't need this task or its bits anymore. 

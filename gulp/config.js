@@ -30,10 +30,6 @@ module.exports = {
     src: src + '/posts/drafts/**/*.md',
     dest: dest + '/drafts'
   },
-  protoHTML: {
-    src: src + '/proto/**/*.md',
-    dest: dest
-  },
   template: {
     partialDir: src + '/templates/partials',
     templateDir: src + '/templates'
