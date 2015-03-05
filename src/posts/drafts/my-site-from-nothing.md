@@ -368,4 +368,10 @@ when I run gulp.
 
 ### Cleanup of proto-html
 
-Don't need this task or its bits anymore. 
+Don't need this task or its bits anymore. Removing the task, its config, and `src/proto`.
+
+### The furies of gulp
+
+Streams: turtles all the way down. I want to create an archive page with links to all currently-published drafts. This means faking a file.
+
+`npm install --save-dev gulp-file` for now

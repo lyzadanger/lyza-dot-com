@@ -3,6 +3,11 @@ var dest = './build';
 var src  = './src';
 
 module.exports = {
+  archive: {
+    drafts: {
+      dest: dest + '/drafts'
+    }
+  },
   browserSync: {
     server: {
       baseDir: dest
