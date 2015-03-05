@@ -1,3 +1,8 @@
 {{> _header}}
-<h1>We shall have links</h1>
+<h1>Archive of {{ archiveName }}</h1>
+<ul>
+  {{#each draftLinks}}
+    <li><a href="{{{ this }}}">{{ this }}</a></li>
+  {{/each}}
+</ul>
 {{> _footer}}
