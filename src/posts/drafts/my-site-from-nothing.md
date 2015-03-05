@@ -372,6 +372,21 @@ Don't need this task or its bits anymore. Removing the task, its config, and `sr
 
 ### The furies of gulp
 
-Streams: turtles all the way down. I want to create an archive page with links to all currently-published drafts. This means faking a file.
+There are points at which one starts banging one's head against walls. `gulp` is a fantastic tool, but it thinks entirely in streams. Which means the `template` plugin I wrote earlier thinks in streams. But what about when I want to process data that isn't "file-like?"
 
 `npm install --save-dev gulp-file` for now
+
+This allows me to "fake" the notion of an `index` file in the new `archive` task. I'd like to do this more elegantly later on, but this will suffice for a scaffold.
+
+* Added new task `archive`, with dependency on `drafts`
+* Added new simple template `archive.hbs`. Nothing really going on there for now.
+* Added some config for the new task.
+
+### The furies of gulp, redux
+
+After hours (no really) of futzing, I found a vinyl-fs faker I like better. I'd like to swap it in.
+
+* `npm install --save-dev vinyl-fs-fake`
+* `npm uninstall --save-dev gulp-file`
+
+Re-plumb the task...that'll do for now.
