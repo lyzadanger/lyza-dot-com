@@ -26,6 +26,9 @@ module.exports = {
         require: ['jquery']
     }]
   },
+  clean: {
+    out: dest
+  },
   css: {
     importDir: src + '/styles',
     src: src + '/styles/styles.css',

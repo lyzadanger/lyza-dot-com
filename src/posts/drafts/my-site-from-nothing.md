@@ -390,3 +390,11 @@ After hours (no really) of futzing, I found a vinyl-fs faker I like better. I'd 
 * `npm uninstall --save-dev gulp-file`
 
 Re-plumb the task...that'll do for now.
+
+### Clean up
+
+But the `build/index.html` file is still there from before! Long before! I should put the skeleton of a cleaning task in place. Right now I'll keep this nuclear and just wipe the `build` directory. Can build on this later.
+
+`npm install --save-dev rimraf`
+
+Create a `clean` task.
