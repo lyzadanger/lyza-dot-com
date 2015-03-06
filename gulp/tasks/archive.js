@@ -24,9 +24,6 @@ var readDrafts = function() {
 gulp.task('archive', ['drafts'], function() {
   var links = readDrafts();
   return fakeSrc.src([{
-    contents: new Buffer(''),
-    cwd: '',
-    base: '',
     path: 'index.html'
   }])
     .pipe(data(function(file) {

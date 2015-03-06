@@ -398,3 +398,7 @@ But the `build/index.html` file is still there from before! Long before! I shoul
 `npm install --save-dev rimraf`
 
 Create a `clean` task.
+
+### The furies of gulp, the reckoning
+
+Finally, I'm going to use a fork of `vinyl-fs-fake` that we worked on at Cloud Four. That means `npm uninstall --save` for `vinyl-fs-fake` then installing `vinyl-fs-fake` via `github` at a particular commit that I know is what I want. 
