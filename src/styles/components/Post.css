@@ -1,31 +1,3 @@
 .Post {
   padding: 0 calc(var(--Base-lineHeight) / 2);
 }
-
-.Post-title, .Post h1 {
-  font-size: calc(var(--Base-lineHeight) / 0.875);
-  font-weight: 500;
-}
-
-.Post-subtitle, .Post h2 {
-  text-transform: none;
-  font-variant: normal;
-  font-weight: 100;
-  font-style: italic;
-}
-
-.Post h3 {
-  font-size: calc(var(--Base-lineHeight) / 0.925);
-}
-
-@media (--medium-viewport) {
-  .Post {
-    padding: 0 calc(var(--Medium-lineHeight) / 2);
-  }
-  .Post-title, .Post h1 {
-    font-size: calc(var(--Medium-lineHeight) / 0.875);
-  }
-  .Post h3 {
-    font-size: calc(var(--Medium-lineHeight) / 0.925);
-  }
-}

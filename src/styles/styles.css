@@ -3,8 +3,9 @@
 @custom-media --medium-viewport all and (min-width: 40em);
 
 :root {
-  --Base-lineHeight: 1.75rem;
-  --Base-fontSize: 1.25rem;
+  --Base-rhythm: 0.875rem;
+  --Base-lineHeight: calc(var(--Base-rhythm) * 2);
+  --Base-fontSize: 1.2rem;
   --Base-fontMain: "adobe-caslon-pro", "Georgia", "Times New Roman", serif;
   --Base-colorMain: #3b3f43;
   --Base-textLinks: #214870;
@@ -28,49 +29,64 @@ body {
   margin           : auto;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "museo-sans-condensed", sans-serif;
+h1, h2, h4, h6 {
+  font-family: "proxima-nova-condensed", "Helvetica", sans-serif;
+}
+
+h3, h5 {
+  font-family: "proxima-nova-sc-osf-condensed", "Helvetica", sans-serif;
+  text-transform: lowercase;
 }
 
 h1 {
   font-size: calc(var(--Base-lineHeight) / 0.75);
-  font-weight: 100;
-  margin-top: var(--Base-lineHeight);
+  line-height: calc(var(--Base-lineHeight) * 1.5);
+  font-weight: 600;
+  margin-bottom: var(--Base-rhythm);
 }
 
 h2 {
   font-size: calc(var(--Base-lineHeight) / 0.875);
-  margin: calc(var(--Base-lineHeight) / 2) 0;
+  font-weight: 100;
+  font-style: italic;
+  margin: var(--Base-lineHeight) 0;
+  text-align: left;
 }
 
 h3 {
   font-size: calc(var(--Base-lineHeight));
   margin-top: var(--Base-lineHeight);
-  font-weight: 500;
+  font-weight: 300;
+  text-align: center;
 }
 
 h4, time {
-  font-size: calc(var(--Base-lineHeight) / 1.4);
+  font-size: calc(var(--Base-lineHeight) / 1.2);
   margin-top: var(--Base-lineHeight);
   font-weight: 500;
   font-style: italic;
 }
 
-h1, h2, h3 {
-  text-align: center;
+h5 {
+  font-size: calc(var(--Base-lineHeight) / 1.2);
+  font-weight: 400;
 }
 
-h2, h3 {
-  text-transform: lowercase;
-  font-variant: small-caps;
+p {
+  margin: var(--Base-rhythm) 0;
 }
 
-ol, ul, dl {
-  margin: var(--Base-lineHeight) 1rem 0 2rem;
+p+p {
+  margin: var(--Base-lineHeight) 0;
 }
 
-p, li {
-  margin-top: var(--Base-lineHeight);
+li {
+  margin: calc(var(--Base-rhythm) / 2) var(--Base-rhythm);
+}
+
+ul {
+  list-style-type: disc;
+  margin: var(--Base-rhythm);
 }
 
 blockquote {
@@ -80,10 +96,6 @@ blockquote {
 a, a:hover, a:focus, a:active, a:visited {
   text-decoration: none;
   color: var(--Base-textLinks);
-}
-
-ul {
-  list-style-type: disc;
 }
 
 ol {
@@ -101,7 +113,7 @@ pre {
   color            : var(--Base-colorInverse);
 }
 
-@media (--medium-viewport) {
+/*@media (--medium-viewport) {
   h1 {
     font-size: calc(var(--Medium-lineHeight) / 0.75);
     margin-top: var(--Medium-lineHeight);
@@ -133,4 +145,4 @@ pre {
   blockquote {
     margin: var(--Medium-lineHeight);
   }
-}
+}*/

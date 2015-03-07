@@ -1,11 +1,24 @@
 ---
-title: Building my Site from Nothing
+title: Building my Site from Nothing and Watching it Break
 template: post
 ---
 
+I want to build a new web site. No, strike that, it is *incumbent upon me* that I build a new web site. It's embarrassing and unacceptable the state of lyza.com at present. I can't talk about it. I can't. It's been years.
+
+Before, I blogged. I had in some way blogged back until before the year 2000, before the term *blog* existed and I didn't in fact know what to call my homebrew, database-backed, reverse-chronological list of content. Then eventually I (complicatedly) used WordPress. And then there was languish.
+
+And more languish. And more. Some false starts. Some denial.
+
+It's time to fix this. I want to build the site I want, a site that is a quick-publishing vehicle for content that is likely not aggressively regular in date-spacing, but that does change from time to time. And needs to live forever (URLs, once created, are sacred, in my philosophy).
+
+Times are simpler and more complex simultaneously.
+
+
 ## Set up Environment
 
-### Repo
+This part really was slap-dash and nice and quick. We'll need some basic setup to get our `git` repo squared away, as well as some other basics. These steps really do represent every keystroke I made.
+
+### Git repository
 
 ```shell
 $ npm init
@@ -26,7 +39,7 @@ $ git add gulpfile.js
 $ git commit -m "Gulp fundamentals"
 ```
 
-### Environment
+### Environment Basics
 
 * Added .jshintrc, .jscs, .editorconfig
 
@@ -48,6 +61,8 @@ $ touch source/proto/index.md
 $ git add source/proto/index.md
 $ git commit -m "Proto directory and simple index markdown file"
 ```
+
+## Get Gulp Going
 
 ### First Task(s) bones
 
@@ -136,7 +151,7 @@ $ npm install --save-dev handlebars
 
 Our templates plugin isn't done by any means, but it does what we need to proceed.
 
-### Expanding template
+### Expanding on a basic template
 
 * Edits to `index.hbs` to make it a real web page.
 
@@ -153,7 +168,7 @@ $ npm install --save-dev browser-sync
 * Create `watch.js` task
 * Create `default.js` task
 
-### Prototyping as a content page; metadata
+## Prototyping as a content page; metadata
 
 Let's start to morph the prototype index page into a page that represents some content. In certain kinds of parlance, a _post_. To do this, let's think about what represents a _post_. Content elements and chunks of a typical _post_ on the web include:
 
@@ -184,7 +199,7 @@ Time to refine the markup in `index.hbs`, which will ultimately become our `post
 
 TIL: With Chrome user-agent stylesheet, `h1` is rendered larger than an `h1` that is a descendent of `article`, `section`, `nav`, or `aside`.
 
-### Time to think about CSS
+## Time to think about CSS
 
 A few things to sort out:
 
@@ -197,7 +212,7 @@ I prefer to `npm install` and `require` all the things, so I'd like to go the `n
 
 After thinking about this:
 
-#### Proposed CSS build approach, at least for now
+### Proposed CSS build approach, at least for now
 
 * Use `gulp-postcss` as a workflow tool to run CSS through post-processors
 * Use `cssnext` as a postcss-supported CSS postprocessor to do some transformations on my CSS, including the ability to `@import` from `node_modules`. Now we can install CSS utilities as node modules and import them.
@@ -401,4 +416,21 @@ Create a `clean` task.
 
 ### The furies of gulp, the reckoning
 
-Finally, I'm going to use a fork of `vinyl-fs-fake` that we worked on at Cloud Four. That means `npm uninstall --save` for `vinyl-fs-fake` then installing `vinyl-fs-fake` via `github` at a particular commit that I know is what I want. 
+Finally, I'm going to use a fork of `vinyl-fs-fake` that we worked on at Cloud Four. That means `npm uninstall --save` for `vinyl-fs-fake` then installing `vinyl-fs-fake` via `github` at a particular commit that I know is what I want.
+
+## Design do-over
+
+I hate the CSS I have. No, more specifically: I hate the way things look. I struggle with CSS; you'd never know that I have an undergraduate concentration in graphic design and enjoy letterpress printing as a hobby. Or maybe that's the problem.
+
+I wanna start over.
+
+### Type Do-Over
+
+Back to the drawing board on typography and basic styling.
+
+* I'm not going to deliver >600k of Caslon. Come on, it's just not happening. That would be cruel.
+* I'm tired of faking small caps with CSS. It mucks with line-height and looks, frankly, hideous any time a non a-z glyph is rendered. I want to use a real SC font if I'm going to small-caps it.
+* The rigorous vertical rhythm is a nice math trick, but I need to at least halve the units I'm working with. The gaps are making me crazy. I can still use a rhythm, but I'm going to allow myself to cut it in half.
+* Getting rid of a lot of my `Post`-component-specific CSS by getting the main site `h1` and `h2` out of my face for now. Really, they're the oddballs, not every post.
+
+I still don't love my list styling and some other tidbits, but I feel better about this foundation.
