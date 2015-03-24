@@ -43,7 +43,7 @@
     "rimraf": "^2.3.1",
     "suitcss-base": "^0.8.0",
     "through2": "^0.6.3",
-    "vinyl-fs-fake": "cloudfour/vinyl-fs-fake#20af117",
+    "vinyl-fs-fake": "^1.1.0",
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^2.4.0"
   },
