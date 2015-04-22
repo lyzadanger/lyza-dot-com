@@ -31,7 +31,7 @@ gulp.task('archive', ['drafts'], function() {
       return {
         template: 'archive',
         archiveName: 'Drafts',
-        draftLinks: links
+        postLinks: links
       };
     }))
     .pipe(template())
