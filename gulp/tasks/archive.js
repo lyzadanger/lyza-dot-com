@@ -21,10 +21,11 @@ var readDrafts = function() {
   return links;
 };
 
-gulp.task('archive', ['drafts'], function() {
+gulp.task('archive', ['content'], function() {
   var links = readDrafts();
   return fakeSrc.src([{
-    path: 'index.html'
+    path: 'index.html',
+    contents: new Buffer('')
   }])
     .pipe(data(function(file) {
       // @TODO Build context/data elsewhere
@@ -35,5 +36,5 @@ gulp.task('archive', ['drafts'], function() {
       };
     }))
     .pipe(template())
-    .pipe(gulp.dest(config.drafts.dest));
+    .pipe(gulp.dest('./build/drafts'));
 });
