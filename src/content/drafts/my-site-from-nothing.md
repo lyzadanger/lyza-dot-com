@@ -455,3 +455,9 @@ First, let's make the `drafts` task reflect that it's acting on `posts` as well 
 In fact, we can take this further. Consider the transform task that is `drafts` currently. At its core, it's taking markdown, transforming it, compiling it against a `template`. This is certainly applicable for `posts`, but there's no reason it couldn't work subsequently for page content on the site. Assuming I want to write my pages in markdown, which, by the way, I generally do. So, woot.
 
 Because of this, I want to rename the task `content`. I may rue this later, as I generally suck at naming things.
+
+### Collating some tasks
+
+Sometimes my gulp tasks have a tendency to get far flung and dependencies tangled. I'm taking a moment here to consolidate several tasks under a `build` task, and invoking the `build` task from `default`.
+
+I'm adding the `npm` module `run-sequence` because I'm tired of fighting gulp 3.x dependencies.

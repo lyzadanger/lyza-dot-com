@@ -41,6 +41,7 @@
     "recursive-readdir": "^1.2.1",
     "require-dir": "^0.1.0",
     "rimraf": "^2.3.1",
+    "run-sequence": "^1.1.0",
     "suitcss-base": "^0.8.0",
     "through2": "^0.6.3",
     "vinyl-fs-fake": "^1.1.0",
