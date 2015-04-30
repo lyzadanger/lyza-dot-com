@@ -1,7 +1,7 @@
 /* global Buffer */
 'use strict';
 var gulp     = require('gulp');
-var config   = require('../config').drafts;
+var config   = require('../config').content;
 
 var data        = require('gulp-data');
 var frontMatter = require('front-matter');
@@ -9,7 +9,7 @@ var markdown    = require('gulp-markdown');
 var rename      = require('gulp-rename');
 var template    = require('../plugins/template');
 
-gulp.task('drafts', function() {
+gulp.task('content', function() {
   return gulp.src(config.src)
   .pipe(data(function(file) {
       var content = frontMatter(String(file.contents));

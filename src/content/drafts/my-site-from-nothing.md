@@ -434,3 +434,24 @@ Back to the drawing board on typography and basic styling.
 * Getting rid of a lot of my `Post`-component-specific CSS by getting the main site `h1` and `h2` out of my face for now. Really, they're the oddballs, not every post.
 
 I still don't love my list styling and some other tidbits, but I feel better about this foundation.
+
+## But will it blog?
+
+Screw design; it's tripping me up. Let's get what the site _does_ in place. I've been long noodling over the bloggy piece of this and for some reason this has given me the greatest technical pause of the whole project to this point. The particular sticky areas are:
+
+* Promoting drafts to posts (and vice versa/unpublishing)
+* Dates: determining and recording publish dates and updated dates
+* Paths and URLs: Slugs and date involvement, oh my
+
+Right now, I have a workflow that:
+
+* Transforms drafts (`drafts` task)
+* Generates a draft index (`archive` task)
+
+### Drafts are also posts
+
+First, let's make the `drafts` task reflect that it's acting on `posts` as well as `drafts`. It's going to be the same task, used by both drafts and posts.
+
+In fact, we can take this further. Consider the transform task that is `drafts` currently. At its core, it's taking markdown, transforming it, compiling it against a `template`. This is certainly applicable for `posts`, but there's no reason it couldn't work subsequently for page content on the site. Assuming I want to write my pages in markdown, which, by the way, I generally do. So, woot.
+
+Because of this, I want to rename the task `content`. I may rue this later, as I generally suck at naming things.
