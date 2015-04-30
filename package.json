@@ -32,6 +32,7 @@
     "front-matter": "^0.2.1",
     "gulp": "^3.8.11",
     "gulp-data": "^1.2.0",
+    "gulp-ignore": "^1.2.1",
     "gulp-markdown": "^1.0.0",
     "gulp-postcss": "^4.0.3",
     "gulp-rename": "^1.2.0",
@@ -45,6 +46,7 @@
     "suitcss-base": "^0.8.0",
     "through2": "^0.6.3",
     "vinyl-fs-fake": "^1.1.0",
+    "vinyl-paths": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^2.4.0"
   },

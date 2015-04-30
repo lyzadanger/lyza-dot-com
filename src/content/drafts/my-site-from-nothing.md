@@ -454,10 +454,24 @@ First, let's make the `drafts` task reflect that it's acting on `posts` as well 
 
 In fact, we can take this further. Consider the transform task that is `drafts` currently. At its core, it's taking markdown, transforming it, compiling it against a `template`. This is certainly applicable for `posts`, but there's no reason it couldn't work subsequently for page content on the site. Assuming I want to write my pages in markdown, which, by the way, I generally do. So, woot.
 
-Because of this, I want to rename the task `content`. I may rue this later, as I generally suck at naming things.
+Because of this, I want to rename the task `content`. I may rue this later, as I generally suck at naming things. Note that the `src` for this task has now been extended to any `.md` file under `content` overall.
 
 ### Collating some tasks
 
 Sometimes my gulp tasks have a tendency to get far flung and dependencies tangled. I'm taking a moment here to consolidate several tasks under a `build` task, and invoking the `build` task from `default`.
 
 I'm adding the `npm` module `run-sequence` because I'm tired of fighting gulp 3.x dependencies.
+
+### "Publishing a Draft"
+
+I need a task that will peruse the `drafts` folder, looking for drafts that should be published (turned into real `posts`). Let's use front matter as a way to denote the publishing status of a given piece of content. e.g.
+
+`status: published`
+
+This attribute isn't required in front matter in drafts, and when not there, nothing happens. But if it is set, and its value is `published`, we want something, a new task, to promote that content from `drafts` to `posts`.
+
+In addition, I want to generate a path within `posts` that indicates what the final published URL will be. I like bloggy posts to follow the convention `YYYY/MM/slug/index.html`. To make this easier, I want to move a published draft from `drafts` to `YYYY/MM/slug/index.md` under `posts`.
+
+Then the original draft should be deleted (as it has been copied to `posts`).
+
+The goal of the `publish` task, then, is to move drafts marked as `published` out of `drafts` to the appropriate place under `posts`.

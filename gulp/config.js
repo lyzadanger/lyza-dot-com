@@ -38,6 +38,11 @@ module.exports = {
     src: src + '/content/**/*.md',
     dest: dest
   },
+  publish: {
+    drafts: src + '/content/drafts/**/*.md',
+    permalinkPattern: 'YYYY/MM',
+    dest: src + '/content'
+  },
   template: {
     partialDir: src + '/templates/partials',
     templateDir: src + '/templates'
