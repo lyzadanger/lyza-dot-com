@@ -2,23 +2,31 @@
 'use strict';
 var gulp        = require('gulp');
 var config      = require('../config').publish;
+
 var data        = require('gulp-data');
+var gulpIgnore  = require('gulp-ignore');
+
 var del         = require('del');
 var frontMatter = require('front-matter');
-var gulpIgnore  = require('gulp-ignore');
 var moment      = require('moment');
-var Path        = require('path');
+var path        = require('path');
+var slug        = require('slug');
 var vinylPaths  = require('vinyl-paths');
 
 var buildPostPath = function buildPostPath(file, pattern) {
   var date = moment();
-  var path = [];
+  var postPath = [];
+  //var postTitle = file.data.title;
+  var postName = file.data.title || path.basename(file.path, path.extname(file.path));
+  var postFilename = 'index.md';
+  var postSlug = slug(postName.toLowerCase());
   pattern.split('/').forEach(function(chunk) {
-    path.push(date.format(chunk));
+    postPath.push(date.format(chunk));
   });
-  path.push(Path.basename(file.path));
-  path = path.join('/');
-  return path;
+  postPath.push(postSlug);
+  postPath.push(postFilename);
+  postPath = postPath.join('/');
+  return postPath;
 };
 
 gulp.task('publish', function() {
@@ -34,7 +42,7 @@ gulp.task('publish', function() {
   .pipe(data(function(file) {
     var oldPath = file.path;
     // Need to re-path this file in ways `gulp-rename` doesn't support
-    file.path = Path.join(file.base, buildPostPath(file, config.permalinkPattern));
+    file.path = path.join(file.base, buildPostPath(file, config.permalinkPattern));
     // Hang on to the original path
     return { oldPath: oldPath };
   }))

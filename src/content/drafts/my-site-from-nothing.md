@@ -489,3 +489,11 @@ I can see in my first prototyped variant a few places that _could_ be more elega
 As it stands at this very point, the `publish` task will take a given draft that has `status: published` in its front matter and move it into `content/YYYY/MM/DD/post-filename.md`.
 
 Having tested that, I am now going to move the draft _back_ into `drafts` before committing my changes.
+
+#### Slugs and stuff
+
+As of my last commit, `drafts` are moving into `content` in the right path (date-composed) but still maintaining the original filename. I'd like to use the `title` front matter to generate a URL-friendly slug, and also make that part of the path, renaming the resulting final file `index.md` for the directory at hand.
+
+Time to `npm install` `node-slug`.
+
+I'm going to make what I am currently coining a *tack commit*, sort of like when you put a tack-nail or two into something you're building but you haven't fully fine-tuned, aligned, glued or clamped. My task is messy but functional.
