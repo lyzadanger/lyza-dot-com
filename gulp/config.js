@@ -40,7 +40,7 @@ module.exports = {
   },
   publish: {
     drafts: src + '/content/drafts/**/*.md',
-    permalinkPattern: 'YYYY/MM',
+    permalinkPattern: 'YYYY/MM/DD',
     dest: src + '/content'
   },
   template: {

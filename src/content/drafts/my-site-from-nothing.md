@@ -475,3 +475,17 @@ In addition, I want to generate a path within `posts` that indicates what the fi
 Then the original draft should be deleted (as it has been copied to `posts`).
 
 The goal of the `publish` task, then, is to move drafts marked as `published` out of `drafts` to the appropriate place under `posts`.
+
+I'm going to be adding `npm` modules `gulp-ignore`, `del` and `vinyl-paths` to help me on this journey.
+
+#### Dates and Paths
+
+First, let's assume that we by default use the current date and time for a draft to determine its publish date. We'll build on this later.
+
+I like to use `moment` for date-time manipulation.
+
+I can see in my first prototyped variant a few places that _could_ be more elegant, but making them more elegant doesn't seem to benefit me too much (this _is_ my site after all). So I'm going to leave a few things more free-form in the `publish` task for now.
+
+As it stands at this very point, the `publish` task will take a given draft that has `status: published` in its front matter and move it into `content/YYYY/MM/DD/post-filename.md`.
+
+Having tested that, I am now going to move the draft _back_ into `drafts` before committing my changes.
