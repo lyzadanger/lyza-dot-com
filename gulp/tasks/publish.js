@@ -13,6 +13,8 @@ var path        = require('path');
 var slug        = require('slug');
 var vinylPaths  = require('vinyl-paths');
 
+var postData    = require('../utils/blog').postData;
+
 var buildPostPath = function buildPostPath(file, pattern) {
   var date = moment();
   var postPath = [];
@@ -31,10 +33,7 @@ var buildPostPath = function buildPostPath(file, pattern) {
 
 gulp.task('publish', function() {
   gulp.src(config.drafts)
-  .pipe(data(function(file) {
-      var content = frontMatter(String(file.contents));
-      return content.attributes;
-    }))
+  .pipe(data(postData))
   .pipe(gulpIgnore.include(function(file) {
     // Only carry on with posts that should be published
     return (file.data && file.data.status === 'published');
@@ -43,14 +42,15 @@ gulp.task('publish', function() {
     var oldPath = file.path;
     // Need to re-path this file in ways `gulp-rename` doesn't support
     file.path = path.join(file.base, buildPostPath(file, config.permalinkPattern));
+    console.log(file.data);
     // Hang on to the original path
     return { oldPath: oldPath };
-  }))
-  .pipe(gulp.dest(config.dest))
-  .pipe(data(function(file) {
-    // Put back the old path for deletion reasons
-    file.path = file.data.oldPath;
-  }))
-  .pipe(vinylPaths(del));
+  }));
+  // .pipe(gulp.dest(config.dest))
+  // .pipe(data(function(file) {
+  //   // Put back the old path for deletion reasons
+  //   file.path = file.data.oldPath;
+  // }))
+  // .pipe(vinylPaths(del));
 
 });

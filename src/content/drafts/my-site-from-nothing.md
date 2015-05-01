@@ -497,3 +497,11 @@ As of my last commit, `drafts` are moving into `content` in the right path (date
 Time to `npm install` `node-slug`.
 
 I'm going to make what I am currently coining a *tack commit*, sort of like when you put a tack-nail or two into something you're building but you haven't fully fine-tuned, aligned, glued or clamped. My task is messy but functional.
+
+##### Cleanup
+
+I'm feeling the need for a utility function to run post/draft front matter through to get a resultant `file.data` object with some consistent defaults. That's why I let `buildPostPath` get messy in the `publish` task: I'm starting to flesh out what I need in that utility function.
+
+That means I'm going to create some gulp `utils`.
+
+Another tack-commit with some additions to `utils/blog.js`.

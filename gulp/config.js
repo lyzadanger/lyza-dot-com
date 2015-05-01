@@ -8,6 +8,9 @@ module.exports = {
       dest: dest + '/drafts'
     }
   },
+  blog: {
+    permalinkPattern: 'YYYY/MM/DD'
+  },
   browserSync: {
     server: {
       baseDir: dest
