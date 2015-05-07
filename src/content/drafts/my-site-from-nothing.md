@@ -505,3 +505,12 @@ I'm feeling the need for a utility function to run post/draft front matter throu
 That means I'm going to create some gulp `utils`.
 
 Another tack-commit with some additions to `utils/blog.js`.
+
+##### Publish Date is killing me
+
+All right, so this has been whacking me on the side of the head for some time. There are a couple of pieces of metadata that _could_ be hand-managed in front matter but likely will be defined by the build itself:
+
+* Publish date (defaulting to when the publish task runs)
+* Original publish URL and slug (in case later edits change the title; we want to keep the URL constant if possible)
+
+After a considerable spate of hand-wringing (hours, wasted paragraphs, a few lame spikes) I've come to terms with doing something I'm mildly uncomfortable with because its simplicity is much higher than any immediately-obvious alternative. I'm going to modify the YAML front matter in certain circumstances during this publish step. I don't like this because YAML front matter feels like it should be managed by humans, not machines, but I am going to do this. I need to deal with my angst.

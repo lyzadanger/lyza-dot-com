@@ -51,7 +51,8 @@
     "vinyl-fs-fake": "^1.1.0",
     "vinyl-paths": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
-    "watchify": "^2.4.0"
+    "watchify": "^2.4.0",
+    "yaml-js": "^0.1.0"
   },
   "dependencies": {
     "jquery": "^2.1.3"
