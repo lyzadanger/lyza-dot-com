@@ -14,7 +14,7 @@ var slug        = require('slug');
 var vinylPaths  = require('vinyl-paths');
 
 var postData    = require('../utils/blog').postData;
-var publishData = require('../utils/blog').publishData;
+var publishData = require('../utils/blog').buildPublishData;
 
 gulp.task('publish', function() {
   gulp.src(config.drafts)
@@ -26,14 +26,16 @@ gulp.task('publish', function() {
   .pipe(data(publishData))
   .pipe(data(function(file) {
     var oldPath = file.path;
+    file.path = path.dirname(file.path) + '/' + file.data.publish.path;
     // Hang on to the original path
     return { oldPath: oldPath };
-  }));
-  // .pipe(gulp.dest(config.dest))
-  // .pipe(data(function(file) {
-  //   // Put back the old path for deletion reasons
-  //   file.path = file.data.oldPath;
-  // }))
-  // .pipe(vinylPaths(del));
+  }))
+  .pipe(gulp.dest(config.dest))
+  .pipe(data(function(file) {
+    // Put back the old path for deletion reasons
+    file.path = file.data.oldPath;
+    delete file.data.oldPath; // This is kinda gross
+  }))
+  .pipe(vinylPaths(del));
 
 });

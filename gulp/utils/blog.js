@@ -1,16 +1,24 @@
+/**
+ * gulp utils for blog posts (files).
+ */
 'use strict';
 
 var config      = require('../config').blog;
+var yamlUtil    = require('./yaml');
 var frontMatter = require('front-matter');
 var moment      = require('moment');
 var path        = require('path');
 var slug        = require('slug');
 var _           = require('lodash');
 
+/**
+ * Get post-relevant data. Read front matter
+ * and apply some post-specific defaults to it. Should
+ * be idempotent.
+ *
+ * @file Vinyl File object
+ */
 var postData = function postData(file) {
-  if (file.data && file.data.dataIsParsed) {
-    return file.data;
-  }
   var content = frontMatter(String(file.contents));
   var defaults = {
     status  : 'draft',
@@ -18,32 +26,39 @@ var postData = function postData(file) {
     title   : path.basename(file.path, path.extname(file.path))
   };
   var data = _.defaults(content.attributes, defaults);
-  data.dataIsParsed = true;
   return data;
 };
 
-var publishData = function publishData(file) {
+/**
+ * Read, extend AND WRITE relevant data
+ * when publishing a post.
+ *
+ * @file Vinyl File object
+ */
+var buildPublishData = function publishData(file) {
   var data = postData(file);
+  // Publish-relevant defaults
   var defaults = {
     slug: slug(data.title.toLowerCase()),
     date: moment().toISOString()
   };
+  var postPath = [],
+      pubDate;
 
-  var buildPostPath = function buildPostPath() {
-    var postPath = [];
-    var date     = moment(data.publish.date);
-    config.permalinkPattern.split('/').forEach(function(chunk) {
-      postPath.push(date.format(chunk));
-    });
-    postPath.push(data.publish.slug);
-    postPath.push('index.md');
-    postPath = postPath.join('/');
-    return postPath;
-  };
   data.publish = _.defaults(data.publish || {}, defaults);
-  data.publish.path = buildPostPath();
+  pubDate = moment(data.publish.date);
+
+  // Generate publish path
+  config.permalinkPattern.split('/').forEach( function (chunk) {
+    postPath.push(pubDate.format(chunk));
+  });
+  postPath.push(data.publish.slug, 'index.md');
+  data.publish.path = data.publish.path || postPath.join('/');
+
+  // Extend and write updated YAML
+  yamlUtil.extend(file, { publish: data.publish });
   return data;
 };
 
 module.exports.postData = postData;
-module.exports.publishData = publishData;
+module.exports.buildPublishData = buildPublishData;
