@@ -514,3 +514,18 @@ All right, so this has been whacking me on the side of the head for some time. T
 * Original publish URL and slug (in case later edits change the title; we want to keep the URL constant if possible)
 
 After a considerable spate of hand-wringing (hours, wasted paragraphs, a few lame spikes) I've come to terms with doing something I'm mildly uncomfortable with because its simplicity is much higher than any immediately-obvious alternative. I'm going to modify the YAML front matter in certain circumstances during this publish step. I don't like this because YAML front matter feels like it should be managed by humans, not machines, but I am going to do this. I need to deal with my angst.
+
+#### Publishing Step 1 Complete
+
+The `gulp` publish task now does the following:
+
+* Looks for posts in the `drafts` folder(s) that contain a value of `published` for the front matter attribute `status`.
+* It figures out where that draft should go—what the publish date, path and slug should be—based on the publish date (either entered by hand in front matter, or, more likely, the current date and time), slug (derived from the title unless hand-entered) and path (derived from config permalink settings unless already extant in front matter).
+* It copies the draft into the `content` folder under the appropriate path and slug.
+* It deletes the original file out of drafts.
+
+To accomplish this, part of the `buildPublishData` function in the `blogs.js` gulp utility module manages the existence of some `publish` data in front matter. If any of it is missing, it will extend and write additional YAML. It will not overwrite any existing `publish` YAML data and it will leave all other YAML alone. This felt like a good compromise.
+
+You can run the `gulp publish` task as of commit `77a1555` to see what happens to the `test-publish-post.md` draft and the resulting metadata in the YAML front matter.
+
+ONWARD. JESUS.
