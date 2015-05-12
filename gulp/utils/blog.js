@@ -55,7 +55,8 @@ var buildPublishData = function publishData(file) {
   postPath.push(data.publish.slug, 'index.md');
   data.publish.path = data.publish.path || postPath.join('/');
 
-  // Extend and write updated YAML
+  // Extend and write updated YAML for `publish`
+  // attributes
   yamlUtil.extend(file, { publish: data.publish });
   return data;
 };

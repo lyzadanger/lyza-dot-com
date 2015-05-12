@@ -30,7 +30,7 @@ gulp.task('publish', function() {
     // Hang on to the original path
     return { oldPath: oldPath };
   }))
-  .pipe(gulp.dest(config.dest))
+  .pipe(gulp.dest(config.dest.posts))
   .pipe(data(function(file) {
     // Put back the old path for deletion reasons
     file.path = file.data.oldPath;

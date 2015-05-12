@@ -43,8 +43,12 @@ module.exports = {
   },
   publish: {
     drafts: src + '/content/drafts/**/*.md',
+    posts: src + '/content/posts/**/*.md',
     permalinkPattern: 'YYYY/MM/DD',
-    dest: src + '/content'
+    dest: {
+      posts: src + '/content/posts',
+      pages: src + '/content'
+    }
   },
   template: {
     partialDir: src + '/templates/partials',
