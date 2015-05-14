@@ -38,7 +38,8 @@ module.exports = {
     dest: dest + '/css'
   },
   content: {
-    src: [ src + '/content/posts/**/*.md'],
+    src: [ src + '/content/posts/**/*.md',
+           src + '/content/pages/**/*.md'],
     dest: dest
   },
   publish: {

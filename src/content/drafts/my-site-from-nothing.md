@@ -543,3 +543,7 @@ Now I can publish and unpublish to my heart's content by changing the `status` a
 I want to return my attention to the `gulp content` task, once again completely changing what it does for the time being. Let's ignore `drafts` for the moment and instead use `content` to promote template-able `src/content` out to the built area.
 
 Now `content` will take all posts in the `src/content/posts` tree and template and build them out.
+
+### Pages
+
+Oh, my it is easy to drop in a `pages` directory, add an `index.md` file, set it to use the `index` template (see `templates/`) and add `pages` to the `src` globs for `content`. Now I can make pages for my site and I made a quick stand-in landing page.
