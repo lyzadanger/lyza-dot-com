@@ -7,10 +7,7 @@ var data        = require('gulp-data');
 var gulpIgnore  = require('gulp-ignore');
 
 var del         = require('del');
-var frontMatter = require('front-matter');
-var moment      = require('moment');
 var path        = require('path');
-var slug        = require('slug');
 var vinylPaths  = require('vinyl-paths');
 
 var postData    = require('../utils/blog').postData;
@@ -24,7 +21,7 @@ gulp.task('pruneDrafts', ['promote'], function(done) {
 });
 
 gulp.task('promote', function() {
-  return gulp.src(config.drafts)
+  return gulp.src(config.src)
   .pipe(data(postData))
   .pipe(gulpIgnore.include(function(file) {
     // Only carry on with posts that should be published
@@ -39,12 +36,11 @@ gulp.task('promote', function() {
     // Hang on to the original path
     return { oldPath: oldPath };
   }))
-  .pipe(gulp.dest(config.dest.posts))
+  .pipe(gulp.dest(config.dest))
   .pipe(data(function(file) {
     // Put back the old path for deletion reasons
     file.path = file.data.oldPath;
     delete file.data.oldPath; // This is kinda gross
   }))
   .pipe(vinylPaths(del));
-
 });

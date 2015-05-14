@@ -5,11 +5,10 @@ var fs   = require('fs');
 var path = require('path');
 var extfs = require('extfs');
 
-
 module.exports = function(treePath, done) {
   var emptyDirs = [],
       walker,
-      parentDir;
+      parentDir = path.resolve(treePath);
 
   var deleteEmptyPath = function deleteEmptyPath(delPath, cb) {
     extfs.isEmpty(delPath, function (isEmpty) {
@@ -38,7 +37,6 @@ module.exports = function(treePath, done) {
     }
   };
 
-  parentDir = path.resolve(treePath);
   extfs.isEmpty(parentDir, function(isEmpty) {
     if (isEmpty) {
       // Nothing to do here. Either empty

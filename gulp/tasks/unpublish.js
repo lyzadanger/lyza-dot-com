@@ -7,14 +7,10 @@ var data        = require('gulp-data');
 var gulpIgnore  = require('gulp-ignore');
 
 var del         = require('del');
-var frontMatter = require('front-matter');
-var moment      = require('moment');
 var path        = require('path');
-var slug        = require('slug');
 var vinylPaths  = require('vinyl-paths');
 
 var postData    = require('../utils/blog').postData;
-var publishData = require('../utils/blog').buildPublishData;
 var prune       = require('../utils/prune-dirs');
 
 gulp.task('unpublish', ['demote', 'prunePosts']);

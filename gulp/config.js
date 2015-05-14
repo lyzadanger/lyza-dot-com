@@ -42,14 +42,9 @@ module.exports = {
     dest: dest
   },
   publish: {
-    drafts: src + '/content/drafts/**/*.md',
-    posts: src + '/content/posts/**/*.md',
-    permalinkPattern: 'YYYY/MM/DD',
+    dest: src + '/content/posts',
     prune: src + '/content/drafts/',
-    dest: {
-      posts: src + '/content/posts',
-      pages: src + '/content'
-    }
+    src: src + '/content/drafts/**/*.md'
   },
   unpublish: {
     src: src + '/content/posts/**/*.md',
