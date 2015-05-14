@@ -529,3 +529,11 @@ To accomplish this, part of the `buildPublishData` function in the `blogs.js` gu
 You can run the `gulp publish` task as of commit `77a1555` to see what happens to the `test-publish-post.md` draft and the resulting metadata in the YAML front matter.
 
 ONWARD. JESUS.
+
+### Unpublishing
+
+Unpublishing came with its share of complexities, also. Moving a post back into drafts leaves a trail of potentially empty directory trees. Writing a little module to traverse and remove empty directory structures took me a while (`prune-dirs`). Munging paths and making sure we don't over-nest also happened.
+
+Then there was cleaning up and tightening of configs.
+
+Now I can publish and unpublish to my heart's content by changing the `status` attribute's value (`published`, `draft`) and running `gulp publish` or `gulp unpublish`.
