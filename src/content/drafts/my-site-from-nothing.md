@@ -537,3 +537,9 @@ Unpublishing came with its share of complexities, also. Moving a post back into 
 Then there was cleaning up and tightening of configs.
 
 Now I can publish and unpublish to my heart's content by changing the `status` attribute's value (`published`, `draft`) and running `gulp publish` or `gulp unpublish`.
+
+## Returning to content templating
+
+I want to return my attention to the `gulp content` task, once again completely changing what it does for the time being. Let's ignore `drafts` for the moment and instead use `content` to promote template-able `src/content` out to the built area.
+
+Now `content` will take all posts in the `src/content/posts` tree and template and build them out.
