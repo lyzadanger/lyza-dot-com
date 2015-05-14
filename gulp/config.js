@@ -45,10 +45,16 @@ module.exports = {
     drafts: src + '/content/drafts/**/*.md',
     posts: src + '/content/posts/**/*.md',
     permalinkPattern: 'YYYY/MM/DD',
+    prune: src + '/content/drafts/',
     dest: {
       posts: src + '/content/posts',
       pages: src + '/content'
     }
+  },
+  unpublish: {
+    src: src + '/content/posts/**/*.md',
+    prune: src + '/content/posts/',
+    dest: src + '/content/drafts'
   },
   template: {
     partialDir: src + '/templates/partials',

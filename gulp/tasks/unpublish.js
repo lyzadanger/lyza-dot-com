@@ -1,7 +1,7 @@
 /* global Buffer */
 'use strict';
 var gulp        = require('gulp');
-var config      = require('../config').publish;
+var config      = require('../config').unpublish;
 
 var data        = require('gulp-data');
 var gulpIgnore  = require('gulp-ignore');
@@ -17,33 +17,26 @@ var postData    = require('../utils/blog').postData;
 var publishData = require('../utils/blog').buildPublishData;
 var prune       = require('../utils/prune-dirs');
 
-gulp.task('publish', ['promote', 'pruneDrafts']);
+gulp.task('unpublish', ['demote', 'prunePosts']);
 
-gulp.task('pruneDrafts', ['promote'], function(done) {
+gulp.task('prunePosts', ['demote'], function(done) {
   prune(config.prune, done);
 });
 
-gulp.task('promote', function() {
-  return gulp.src(config.drafts)
+gulp.task('demote', function() {
+  return gulp.src(config.src)
   .pipe(data(postData))
   .pipe(gulpIgnore.include(function(file) {
-    // Only carry on with posts that should be published
-    return (file.data && file.data.status === 'published');
+    // Only carry on with posts that should NOT be published
+    return (file.data && file.data.status !== 'published');
   }))
-  .pipe(data(publishData))
   .pipe(data(function(file) {
-    var oldPath = file.path;
-    if (file.path.indexOf(file.data.publish.path) === -1) {
-      file.path = path.dirname(file.path) + '/' + file.data.publish.path;
-    }
-    // Hang on to the original path
-    return { oldPath: oldPath };
+    return { oldPath: file.path };
   }))
-  .pipe(gulp.dest(config.dest.posts))
+  .pipe(gulp.dest(config.dest))
   .pipe(data(function(file) {
-    // Put back the old path for deletion reasons
     file.path = file.data.oldPath;
-    delete file.data.oldPath; // This is kinda gross
+    delete file.data.oldPath;
   }))
   .pipe(vinylPaths(del));
 
