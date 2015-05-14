@@ -30,6 +30,7 @@
     "browserify-shim": "^3.8.3",
     "cssnext": "^1.0.1",
     "del": "^1.1.1",
+    "extfs": "0.0.7",
     "front-matter": "^0.2.1",
     "gulp": "^3.8.11",
     "gulp-data": "^1.2.0",
@@ -52,6 +53,7 @@
     "vinyl-fs-fake": "^1.1.0",
     "vinyl-paths": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
+    "walkdir": "0.0.9",
     "watchify": "^2.4.0"
   },
   "dependencies": {
