@@ -10,8 +10,11 @@ var recursive  = require('recursive-readdir');
 var path       = require('path');
 var Handlebars = require('handlebars');
 
+var buildContext = require('../utils/context');
+
 module.exports = function wrapWithHandlebars() {
   var templates = {};
+  var sharedContext;
 
   var registerPartials = function() {
     recursive(config.partialDir, function (err, files) {
@@ -36,6 +39,11 @@ module.exports = function wrapWithHandlebars() {
   };
 
   registerPartials.call(this);
+
+  buildContext(function(context) {
+    sharedContext = context;
+  });
+
   return through.obj(function(file, enc, cb) {
     if (file.isNull()) {
       this.push(file);
@@ -50,7 +58,7 @@ module.exports = function wrapWithHandlebars() {
     if (file.isBuffer()) {
       var data = _.extend({
         template : 'index'
-      }, file.data || {});
+      }, sharedContext,  file.data || {});
 
       var templatePath = config.templateDir + '/' + data.template + '.hbs';
       var template;
