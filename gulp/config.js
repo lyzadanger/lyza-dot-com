@@ -8,6 +8,13 @@ module.exports = {
       dest: dest + '/drafts'
     }
   },
+  assets: {
+    src: [ src + '/content/pages/**/*.*',
+           '!' + src + '/content/pages/**/*.md',
+           src + '/content/posts/**/*.*',
+           '!' + src + '/content/posts/**/*.md'],
+    dest: dest
+  },
   blog: {
     permalinkPattern: 'YYYY/MM/DD'
   },

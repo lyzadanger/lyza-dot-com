@@ -562,3 +562,9 @@ I want something simple and quick. Goals:
 ## Requires a re-think
 
 To make a sane asset pipeline, I'm going to need to associate posts/drafts with their assets, which means drafts and posts always need to be in their own directories, not just added under `drafts`. This required a refactor of the publish/unpublish tasks, as well as adding a new `move-files` utility to move a post's assets along with it. Using the `q` (for managing promises) and `mv` modules for this.
+
+## Asset pipeline, cont.
+
+Assets are now moving between `drafts` and `posts` but we need to publish them out to `build`. For assets that are images, I want to optimize them using `imagemin`.
+
+Step one is to get assets—basically anything in `posts` or `pages` that is _not_ a `.md` file—to copy over to `build`.
