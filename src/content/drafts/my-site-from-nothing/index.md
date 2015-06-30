@@ -547,3 +547,18 @@ Now `content` will take all posts in the `src/content/posts` tree and template a
 ### Pages
 
 Oh, my it is easy to drop in a `pages` directory, add an `index.md` file, set it to use the `index` template (see `templates/`) and add `pages` to the `src` globs for `content`. Now I can make pages for my site and I made a quick stand-in landing page.
+
+## Other Assets
+
+I want a basic asset pipeline for general images, and a way to easily associate images with posts (post-related images).
+
+I want something simple and quick. Goals:
+
+* Easy to drop images somewhere
+* Easy to link to images from posts and pages
+* Images optimized automatically to some extent
+* Image directories possibly associated with a given post, for ease of naming. This part is more challenging.
+
+## Requires a re-think
+
+To make a sane asset pipeline, I'm going to need to associate posts/drafts with their assets, which means drafts and posts always need to be in their own directories, not just added under `drafts`. This required a refactor of the publish/unpublish tasks, as well as adding a new `move-files` utility to move a post's assets along with it. Using the `q` (for managing promises) and `mv` modules for this.

@@ -2,6 +2,7 @@
 'use strict';
 var gulp        = require('gulp');
 var config      = require('../config').publish;
+var fs          = require('fs');
 
 var data        = require('gulp-data');
 var gulpIgnore  = require('gulp-ignore');
@@ -12,6 +13,7 @@ var vinylPaths  = require('vinyl-paths');
 
 var postData    = require('../utils/blog').postData;
 var publishData = require('../utils/blog').buildPublishData;
+var moveFiles   = require('../utils/move-files');
 var prune       = require('../utils/prune-dirs');
 
 gulp.task('publish', ['promote', 'pruneDrafts']);
@@ -31,16 +33,20 @@ gulp.task('promote', function() {
   .pipe(data(function(file) {
     var oldPath = file.path;
     if (file.path.indexOf(file.data.publish.path) === -1) {
-      file.path = path.dirname(file.path) + '/' + file.data.publish.path;
+      file.path = path.resolve(config.drafts) + '/' + file.data.publish.path;
     }
     // Hang on to the original path
     return { oldPath: oldPath };
   }))
   .pipe(gulp.dest(config.dest))
   .pipe(data(function(file) {
+    var movePromise = moveFiles(path.dirname(file.data.oldPath),
+      path.dirname(file.path),
+      ['index.md']);
     // Put back the old path for deletion reasons
     file.path = file.data.oldPath;
     delete file.data.oldPath; // This is kinda gross
+    return movePromise;
   }))
   .pipe(vinylPaths(del));
 });

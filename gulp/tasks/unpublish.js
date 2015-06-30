@@ -10,6 +10,7 @@ var del         = require('del');
 var path        = require('path');
 var vinylPaths  = require('vinyl-paths');
 
+var moveFiles   = require('../utils/move-files');
 var postData    = require('../utils/blog').postData;
 var prune       = require('../utils/prune-dirs');
 
@@ -31,6 +32,9 @@ gulp.task('demote', function() {
   }))
   .pipe(gulp.dest(config.dest))
   .pipe(data(function(file) {
+    var movePromise = moveFiles(path.dirname(file.data.oldPath),
+      path.dirname(file.path),
+      ['index.md']);
     file.path = file.data.oldPath;
     delete file.data.oldPath;
   }))

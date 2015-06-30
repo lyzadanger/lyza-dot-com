@@ -44,8 +44,9 @@ module.exports = {
   },
   publish: {
     dest: src + '/content/posts',
+    drafts: src + '/content/drafts',
     prune: src + '/content/drafts/',
-    src: src + '/content/drafts/**/*.md'
+    src: src + '/content/drafts/*/**/*.md'
   },
   unpublish: {
     src: src + '/content/posts/**/*.md',
