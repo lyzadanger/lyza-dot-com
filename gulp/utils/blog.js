@@ -49,10 +49,14 @@ var buildPublishData = function publishData(file) {
   pubDate = moment(data.publish.date);
 
   // Generate publish path
+  // 1. Build path elements (dirs) from permalinkPattern
   config.permalinkPattern.split('/').forEach( function (chunk) {
     postPath.push(pubDate.format(chunk));
   });
+  // 2. Push slug on as dir in path
+  // 3. Push `index.md` on as literal filename
   postPath.push(data.publish.slug, 'index.md');
+  // If not already a data.publish.path, use what we just generated
   data.publish.path = data.publish.path || postPath.join('/');
 
   // Extend and write updated YAML for `publish`
