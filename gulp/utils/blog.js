@@ -1,5 +1,7 @@
 /**
  * gulp utils for blog posts (files).
+ * These utils are for file-system manipulation
+ * versus contextual stuff for templates (in context.js)
  */
 'use strict';
 

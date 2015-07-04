@@ -574,3 +574,5 @@ Step two is to add basic `imagemin` functionality to do basic image compression.
 ## Building blog-related context
 
 Back to working on generating a blog. To work with posts in templates, I'm going to want them reverse-sorted by date. I am now taking some steps to build that context for templates...
+
+I'm going to be messy in code for a while and clean up afterward (pushing back on my tendency to want to be good-factored right on the outset).
