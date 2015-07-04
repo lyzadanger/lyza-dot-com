@@ -11,7 +11,7 @@ var del         = require('del');
 var path        = require('path');
 var vinylPaths  = require('vinyl-paths');
 
-var postData    = require('../utils/blog').postData;
+var postData    = require('../utils/blog').readPostData;
 var publishData = require('../utils/blog').buildPublishData;
 var moveFiles   = require('../utils/move-files');
 var prune       = require('../utils/prune-dirs');

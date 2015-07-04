@@ -14,20 +14,30 @@ var slug        = require('slug');
 var _           = require('lodash');
 
 /**
- * Get post-relevant data. Read front matter
- * and apply some post-specific defaults to it. Should
- * be idempotent.
- *
- * @file Vinyl File object
+ * Read front matter from a vinyl File and set any
+ * defaults that can only be calculated if we have a file
+ * object.
  */
-var postData = function postData(file) {
+var readPostData = function readPostData(file) {
   var content = frontMatter(String(file.contents));
   var defaults = {
-    status  : 'draft',
-    template: 'post',
-    title   : path.basename(file.path, path.extname(file.path))
+    title: path.basename(file.path, path.extname(file.path))
   };
-  var data = _.defaults(content.attributes, defaults);
+  var attributes = _.defaults(content.attributes || {}, defaults);
+  attributes = postData(attributes);
+  return attributes;
+};
+
+/**
+ * Get post-relevant data.
+ * @param attributes Object of FM data
+ */
+var postData = function postData(attributes) {
+  var defaults = {
+    status  : 'draft',
+    template: 'post'
+  };
+  var data = _.defaults(attributes, defaults);
   return data;
 };
 
@@ -38,7 +48,7 @@ var postData = function postData(file) {
  * @file Vinyl File object
  */
 var buildPublishData = function publishData(file) {
-  var data = postData(file);
+  var data = readPostData(file);
   // Publish-relevant defaults
   var defaults = {
     slug: slug(data.title.toLowerCase()),
@@ -68,4 +78,5 @@ var buildPublishData = function publishData(file) {
 };
 
 module.exports.postData = postData;
+module.exports.readPostData = readPostData;
 module.exports.buildPublishData = buildPublishData;
