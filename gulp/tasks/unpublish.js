@@ -37,6 +37,7 @@ gulp.task('demote', function() {
       ['index.md']);
     file.path = file.data.oldPath;
     delete file.data.oldPath;
+    return movePromise;
   }))
   .pipe(vinylPaths(del));
 
