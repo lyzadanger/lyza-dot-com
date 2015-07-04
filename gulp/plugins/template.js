@@ -61,7 +61,7 @@ module.exports = function wrapWithHandlebars() {
       }, sharedContext,  file.data || {});
 
       var templatePath = config.templateDir + '/' + data.template + '.hbs';
-      var template;
+      var template, wrapped;
       if (typeof templates[templatePath] === 'undefined') {
           try {
             templates[templatePath] = Handlebars.compile(fs.readFileSync(templatePath, 'utf8'));
@@ -74,7 +74,11 @@ module.exports = function wrapWithHandlebars() {
       }
 
       data.content = file.contents.toString();
-      var wrapped = template(data);
+      try  {
+        wrapped = template(data);
+      } catch (err) {
+        this.emit('error', new gutil.PluginError('gulp-wrap-handlebars', err));
+      }
       file.contents = new Buffer(wrapped);
     }
     this.push(file);

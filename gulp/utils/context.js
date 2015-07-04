@@ -4,19 +4,28 @@ var fs        = require('fs');
 var path      = require('path');
 var recursive = require('recursive-readdir');
 var frontMatter = require('front-matter');
+var moment    = require('moment');
 var _         = require('lodash');
 
 var blogContext = function (cb) {
-  var posts = [];
+  var posts = {},
+      sortedPosts = [];
   recursive('./src/content/posts', function (err, files) {
     files.forEach(function(file) {
-      var contents = fs.readFileSync(path.resolve(file), 'utf8');
-      var fm = frontMatter(contents);
-      if (fm && fm.attributes) {
-        posts.push(fm.attributes);
+      if (path.extname(file) === '.md') {
+        var contents = fs.readFileSync(path.resolve(file), 'utf8');
+        var fm = frontMatter(contents);
+        if (fm && fm.attributes) {
+          var date = (fm.attributes.publish) ? fm.attributes.publish.date : moment().toISOString();
+          posts[date] = fm.attributes;
+        }
       }
     });
-    cb({'posts': posts});
+    // Sort by date, DESC
+    _.keys(posts).sort().reverse().forEach(function(date) {
+      sortedPosts.push(posts[date]);
+    });
+    cb({'posts': sortedPosts});
   });
 };
 

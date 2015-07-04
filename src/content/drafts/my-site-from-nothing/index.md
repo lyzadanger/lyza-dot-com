@@ -568,3 +568,9 @@ To make a sane asset pipeline, I'm going to need to associate posts/drafts with 
 Assets are now moving between `drafts` and `posts` but we need to publish them out to `build`. For assets that are images, I want to optimize them using `imagemin`.
 
 Step one is to get assets—basically anything in `posts` or `pages` that is _not_ a `.md` file—to copy over to `build`.
+
+Step two is to add basic `imagemin` functionality to do basic image compression.
+
+## Building blog-related context
+
+Back to working on generating a blog. To work with posts in templates, I'm going to want them reverse-sorted by date. I am now taking some steps to build that context for templates...
