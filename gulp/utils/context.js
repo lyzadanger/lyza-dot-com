@@ -4,6 +4,7 @@
  * posts and pages.
  */
 
+var config    = require('../config').blog;
 var fs        = require('fs');
 var path      = require('path');
 var postData  = require('./blog').allPostData;
@@ -18,7 +19,7 @@ var getSortedPosts = function(files) {
     sortedPosts = [];
 
   files = _.reject(files, function(file) {
-    return (path.extname(file) !== '.md');
+    return (path.extname(file) !== config.postExtension);
   });
 
   files.forEach(function(file) {
@@ -43,7 +44,7 @@ var blogContext = function (cb) {
   var posts = {},
       sortedPosts = [];
   // TODO Cleanup config stuff and break out context futzing
-  recursive('./src/content/posts', function (err, files) {
+  recursive(config.postDir, function (err, files) {
     var posts = getSortedPosts(files);
     cb({'posts': posts});
   });
@@ -51,7 +52,7 @@ var blogContext = function (cb) {
 
 var pageContext = function (cb) {
   var pages = [];
-  recursive('./src/content/pages', function (err, files) {
+  recursive(config.pageDir, function (err, files) {
     files.forEach(function(file) {
       var contents = fs.readFileSync(path.resolve(file), 'utf8');
       var fm = frontMatter(contents);

@@ -1,4 +1,5 @@
 'use strict';
+// TODO Dry out repetitive src and dest values
 var dest = './build';
 var src  = './src';
 
@@ -16,7 +17,11 @@ module.exports = {
     dest: dest
   },
   blog: {
-    permalinkPattern: 'YYYY/MM/DD'
+    permalinkPattern: 'YYYY/MM/DD',
+    postFileName: 'index',
+    postExtension: '.md',
+    pageDir: src + '/content/pages',
+    postDir: src + '/content/posts'
   },
   browserSync: {
     server: {

@@ -69,7 +69,7 @@ var buildPublishPath = function buildPublishPath(publishAttrs) {
   });
   // 2. Push slug on as dir in path
   // 3. Push `index.md` on as literal filename
-  postPath.push(publishAttrs.slug, 'index.md');
+  postPath.push(publishAttrs.slug, config.postFileName + config.postExtension);
   // If not already a data.publish.path, use what we just generated
   return postPath.join('/');
 };
