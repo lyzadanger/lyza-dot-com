@@ -29,7 +29,20 @@ var readPostData = function readPostData(file) {
 };
 
 /**
- * Get post-relevant data.
+ * Process, and extend YAML front matter
+ * in post to record needed publish data. This function is used
+ * during the publishing process (promotion).
+ */
+var writePublishData = function writePublishData(file) {
+  var data  = readPostData(file);
+  data      = publishData(data);
+  data.publish.path = data.publish.path || buildPublishPath(data.publish);
+  yamlUtil.extend(file, { publish: data.publish });
+  return data;
+};
+
+/**
+ * Get post-relevant data from already-parse front matter.
  * @param attributes Object of FM data
  */
 var postData = function postData(attributes) {
@@ -42,23 +55,12 @@ var postData = function postData(attributes) {
 };
 
 /**
- * Read, extend AND WRITE relevant data
- * when publishing a post.
- *
- * @file Vinyl File object
+ * Given the frontmatter publish attributes of a post, build a path
+ * based on the permalink pattern in the config.
  */
-var buildPublishData = function publishData(file) {
-  var data = readPostData(file);
-  // Publish-relevant defaults
-  var defaults = {
-    slug: slug(data.title.toLowerCase()),
-    date: moment().toISOString()
-  };
-  var postPath = [],
-      pubDate;
-
-  data.publish = _.defaults(data.publish || {}, defaults);
-  pubDate = moment(data.publish.date);
+var buildPublishPath = function buildPublishPath(publishAttrs) {
+  var pubDate = moment(publishAttrs.date),
+    postPath = [];
 
   // Generate publish path
   // 1. Build path elements (dirs) from permalinkPattern
@@ -67,16 +69,60 @@ var buildPublishData = function publishData(file) {
   });
   // 2. Push slug on as dir in path
   // 3. Push `index.md` on as literal filename
-  postPath.push(data.publish.slug, 'index.md');
+  postPath.push(publishAttrs.slug, 'index.md');
   // If not already a data.publish.path, use what we just generated
-  data.publish.path = data.publish.path || postPath.join('/');
-
-  // Extend and write updated YAML for `publish`
-  // attributes
-  yamlUtil.extend(file, { publish: data.publish });
-  return data;
+  return postPath.join('/');
 };
 
+/**
+ * Extend post attributes with publish-related defaults.
+ * @param Object attributes Front matter attributes from post
+ */
+var publishData = function publishData(attributes) {
+  var defaults = {
+    slug: slug(attributes.title.toLowerCase()),
+    date: moment().toISOString()
+  };
+  attributes.publish = _.defaults(attributes.publish || {}, defaults);
+  return attributes;
+};
+/**
+ * Read, extend AND WRITE relevant data
+ * when publishing a post.
+ *
+ * @file Vinyl File object
+ */
+// var buildPublishData = function publishData(file) {
+//   var data = readPostData(file);
+//   // Publish-relevant defaults
+//   var defaults = {
+//     slug: slug(data.title.toLowerCase()),
+//     date: moment().toISOString()
+//   };
+//   var postPath = [],
+//       pubDate;
+//
+//   data.publish = _.defaults(data.publish || {}, defaults);
+//   pubDate = moment(data.publish.date);
+//
+//   // Generate publish path
+//   // 1. Build path elements (dirs) from permalinkPattern
+//   config.permalinkPattern.split('/').forEach( function (chunk) {
+//     postPath.push(pubDate.format(chunk));
+//   });
+//   // 2. Push slug on as dir in path
+//   // 3. Push `index.md` on as literal filename
+//   postPath.push(data.publish.slug, 'index.md');
+//   // If not already a data.publish.path, use what we just generated
+//   data.publish.path = data.publish.path || postPath.join('/');
+//
+//   // Extend and write updated YAML for `publish`
+//   // attributes
+//   yamlUtil.extend(file, { publish: data.publish });
+//   return data;
+// };
+
 module.exports.postData = postData;
+module.exports.publishData = publishData;
 module.exports.readPostData = readPostData;
-module.exports.buildPublishData = buildPublishData;
+module.exports.writePublishData = writePublishData;

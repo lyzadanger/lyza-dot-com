@@ -12,7 +12,7 @@ var path        = require('path');
 var vinylPaths  = require('vinyl-paths');
 
 var postData    = require('../utils/blog').readPostData;
-var publishData = require('../utils/blog').buildPublishData;
+var publishData = require('../utils/blog').writePublishData;
 var moveFiles   = require('../utils/move-files');
 var prune       = require('../utils/prune-dirs');
 
