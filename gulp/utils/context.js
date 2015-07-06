@@ -14,6 +14,25 @@ var frontMatter = require('front-matter');
 var moment    = require('moment');
 var _         = require('lodash');
 
+var getPostURL = function getPostURL(attributes) {
+   var path = attributes.publish.path.replace(
+     config.postFileName + config.postExtension, '');
+   path = config.urlBase + path;
+   attributes.url = path;
+   return attributes;
+};
+
+/**
+ * Do any additional processing of the attributes
+ * object that we get back from the blog utils. Do
+ * things relevant to template contexts...
+ */
+var buildPostContext = function(attributes) {
+  attributes = postData(attributes);
+  attributes = getPostURL(attributes);
+  return attributes;
+};
+
 var getSortedPosts = function(files) {
   var posts = {},
     sortedPosts = [];
@@ -27,7 +46,7 @@ var getSortedPosts = function(files) {
     contents = fs.readFileSync(path.resolve(file), 'utf8');
     fm       = frontMatter(contents);
     if (fm && fm.attributes) {
-      metaData = postData(fm.attributes);
+      metaData = buildPostContext(fm.attributes);
       posts[pubDate(metaData)] = metaData;
     }
   });

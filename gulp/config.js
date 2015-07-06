@@ -21,7 +21,8 @@ module.exports = {
     postFileName: 'index',
     postExtension: '.md',
     pageDir: src + '/content/pages',
-    postDir: src + '/content/posts'
+    postDir: src + '/content/posts',
+    urlBase: '/'
   },
   browserSync: {
     server: {
