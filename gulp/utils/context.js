@@ -6,18 +6,13 @@
 
 var fs        = require('fs');
 var path      = require('path');
+var postData  = require('./blog').allPostData;
+var pubDate   = require('./blog').getPublishDate;
 var recursive = require('recursive-readdir');
 var frontMatter = require('front-matter');
 var moment    = require('moment');
 var _         = require('lodash');
 
-// TODO Normalize against blog utils
-var getPublishDate = function(attributes) {
-  if (attributes.publish && attributes.publish.date) {
-    return attributes.publish.date;
-  }
-  return moment().toISOString();
-};
 
 var getSortedPosts = function(files) {
   var posts = {},
@@ -28,11 +23,12 @@ var getSortedPosts = function(files) {
   });
 
   files.forEach(function(file) {
-    var contents, fm;
+    var contents, fm, metaData;
     contents = fs.readFileSync(path.resolve(file), 'utf8');
     fm       = frontMatter(contents);
     if (fm && fm.attributes) {
-      posts[getPublishDate(fm.attributes)] = fm.attributes;
+      metaData = postData(fm.attributes);
+      posts[pubDate(metaData)] = metaData;
     }
   });
 
@@ -85,8 +81,6 @@ var sharedContext = function(done) {
   for (var key in contextQueue) {
     contextQueue[key](dequeue);
   }
-
 };
-
 
 module.exports = sharedContext;

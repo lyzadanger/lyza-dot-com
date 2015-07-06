@@ -86,42 +86,25 @@ var publishData = function publishData(attributes) {
   attributes.publish = _.defaults(attributes.publish || {}, defaults);
   return attributes;
 };
-/**
- * Read, extend AND WRITE relevant data
- * when publishing a post.
- *
- * @file Vinyl File object
- */
-// var buildPublishData = function publishData(file) {
-//   var data = readPostData(file);
-//   // Publish-relevant defaults
-//   var defaults = {
-//     slug: slug(data.title.toLowerCase()),
-//     date: moment().toISOString()
-//   };
-//   var postPath = [],
-//       pubDate;
-//
-//   data.publish = _.defaults(data.publish || {}, defaults);
-//   pubDate = moment(data.publish.date);
-//
-//   // Generate publish path
-//   // 1. Build path elements (dirs) from permalinkPattern
-//   config.permalinkPattern.split('/').forEach( function (chunk) {
-//     postPath.push(pubDate.format(chunk));
-//   });
-//   // 2. Push slug on as dir in path
-//   // 3. Push `index.md` on as literal filename
-//   postPath.push(data.publish.slug, 'index.md');
-//   // If not already a data.publish.path, use what we just generated
-//   data.publish.path = data.publish.path || postPath.join('/');
-//
-//   // Extend and write updated YAML for `publish`
-//   // attributes
-//   yamlUtil.extend(file, { publish: data.publish });
-//   return data;
-// };
 
+/**
+ * Parse all post and publish data out of extant front matter
+ */
+ var allPostData = function allPostData(attributes) {
+   var data = postData(attributes);
+   data = publishData(attributes);
+   return data;
+ };
+
+/**
+ * Shorthand for grabbing the pub date
+ */
+ var getPublishDate = function getPublishDate(attributes) {
+   var data = publishData(attributes);
+   return data.publish.date;
+ };
+
+module.exports.allPostData = allPostData;
 module.exports.postData = postData;
 module.exports.publishData = publishData;
 module.exports.readPostData = readPostData;
