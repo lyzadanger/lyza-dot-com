@@ -109,3 +109,4 @@ module.exports.postData = postData;
 module.exports.publishData = publishData;
 module.exports.readPostData = readPostData;
 module.exports.writePublishData = writePublishData;
+module.exports.getPublishDate = getPublishDate;

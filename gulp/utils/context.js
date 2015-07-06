@@ -13,7 +13,6 @@ var frontMatter = require('front-matter');
 var moment    = require('moment');
 var _         = require('lodash');
 
-
 var getSortedPosts = function(files) {
   var posts = {},
     sortedPosts = [];
