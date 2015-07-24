@@ -1,22 +1,39 @@
 'use strict';
-// TODO Dry out repetitive src and dest values
-var dest = './build';
-var src  = './src';
+
+var dest = './build',
+  src  = './src',
+  dirs = {
+    drafts: src + '/content/drafts',
+    pages: src + '/content/pages',
+    posts: src + '/content/posts',
+    scripts: src + '/javascript',
+    styles: src + '/styles',
+    templates: src + '/templates'
+  },
+  srcs = {
+    drafts: dirs.drafts + '/*/**/*.md',
+    pages: dirs.pages + '/**/*.md',
+    posts: dirs.posts + '/**/*.md',
+    styles: dirs.styles + '/styles.css'
+  };
 
 module.exports = {
   assets: {
-    src: [ src + '/content/pages/**/*.*',
-           '!' + src + '/content/pages/**/*.md',
-           src + '/content/posts/**/*.*',
-           '!' + src + '/content/posts/**/*.md'],
+    // Everything in pages/* and posts/*
+    // but NOT markdown files
+    src: [ dirs.pages + '/**/*.*',
+           '!' + srcs.pages,
+           dirs.posts + '/**/*.*',
+           '!' + srcs.posts
+         ],
     dest: dest
   },
   blog: {
     permalinkPattern: 'YYYY/MM/DD',
     postFileName: 'index',
     postExtension: '.md',
-    pageDir: src + '/content/pages',
-    postDir: src + '/content/posts',
+    pageDir: dirs.pages,
+    postDir: dirs.posts,
     urlBase: '/'
   },
   browserSync: {
@@ -28,7 +45,7 @@ module.exports = {
   // A separate bundle will be generated for each
   // bundle config in the list below
     bundleConfigs: [{
-        entries: src + '/javascript/site.js',
+        entries: dirs.scripts + '/site.js',
         dest: dest,
         outputName: 'site.js',
         // Additional file extentions to make optional
@@ -41,28 +58,27 @@ module.exports = {
     out: dest
   },
   css: {
-    importDir: src + '/styles',
-    src: src + '/styles/styles.css',
+    importDir: dirs.styles,
+    src: srcs.styles,
     dest: dest + '/css'
   },
   content: {
-    src: [ src + '/content/posts/**/*.md',
-           src + '/content/pages/**/*.md'],
+    src: [ srcs.pages, srcs.posts ],
     dest: dest
   },
   publish: {
-    dest: src + '/content/posts',
-    drafts: src + '/content/drafts',
-    prune: src + '/content/drafts/',
-    src: src + '/content/drafts/*/**/*.md'
+    dest: dirs.posts,
+    drafts: dirs.drafts,
+    prune: dirs.drafts,
+    src: srcs.drafts
   },
   unpublish: {
-    src: src + '/content/posts/**/*.md',
-    prune: src + '/content/posts/',
-    dest: src + '/content/drafts'
+    src: srcs.posts,
+    prune: dirs.posts,
+    dest: dirs.drafts
   },
   template: {
-    partialDir: src + '/templates/partials',
-    templateDir: src + '/templates'
+    partialDir: dirs.templates + '/partials',
+    templateDir: dirs.templates
   }
 };
