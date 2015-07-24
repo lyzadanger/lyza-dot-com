@@ -84,21 +84,23 @@ var pageContext = function (cb) {
 };
 
 var sharedContext = function(done) {
-  var context = {};
-  var contextQueue = {
-    'posts' : blogContext,
-    'pages' : pageContext
-  };
-  var queued = Object.keys(contextQueue).length;
-  var dequeue = function(result) {
-    _.extend(context, result);
+  var context = {},
+    contextQueue = {
+      'posts' : blogContext,
+      'pages' : pageContext
+    },
+    queued = Object.keys(contextQueue).length;
+
+  var dequeueCallback = function(additionalContext) {
+    _.extend(context, additionalContext);
     queued--;
     if (!queued) {
       done(context);
     }
   };
-  for (var key in contextQueue) {
-    contextQueue[key](dequeue);
+
+  for (var contextMethod in contextQueue) {
+    contextQueue[contextMethod](dequeueCallback);
   }
 };
 
