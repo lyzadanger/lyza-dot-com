@@ -1,6 +1,6 @@
 'use strict';
 
-var dest = './build',
+var dest = './dist',
   src  = './src',
   dirs = {
     drafts: src + '/content/drafts',
