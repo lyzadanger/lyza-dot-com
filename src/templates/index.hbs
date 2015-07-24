@@ -1,9 +1,16 @@
 {{> _header}}
-<h1>Nothing here Yet</h1>
-{{{content}}}
-<ul>
-  {{#each posts}}
-    <li><a href="{{url}}">{{title}}</a></li>
-  {{/each}}
-</ul>
+
+<section>
+  {{{content}}}
+  <a href="#">Moar</a>
+</section>
+
+<section>
+  <ul>
+    {{#each posts}}
+      <li><a href="{{url}}">{{title}}</a></li>
+    {{/each}}
+  </ul>
+</section>
+
 {{> _footer}}

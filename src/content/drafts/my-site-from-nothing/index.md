@@ -576,3 +576,9 @@ Step two is to add basic `imagemin` functionality to do basic image compression.
 Back to working on generating a blog. To work with posts in templates, I'm going to want them reverse-sorted by date. I am now taking some steps to build that context for templates...
 
 I'm going to be messy in code for a while and clean up afterward (pushing back on my tendency to want to be good-factored right on the outset).
+
+## Back up, redo
+
+I don't like how I half-assedly did work on CSS and layout before I was ready for the fact. Now I want to reset this. Start over with basic HTML semantics. Build slowly.
+
+A bit of sketching. What do I want on my landing page? That kind of thing. Redo some markup.
