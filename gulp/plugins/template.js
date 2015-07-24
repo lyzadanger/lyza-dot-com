@@ -40,9 +40,18 @@ module.exports = function wrapWithHandlebars() {
 
   registerPartials.call(this);
 
-  buildContext(function(context) {
-    sharedContext = context;
-  });
+  // Retrieve shared context. If it's already
+  // set, invoke cb with it. Else go get it.
+  var getSharedContext = function(cb) {
+    if (sharedContext) {
+      cb(sharedContext);
+    } else {
+      buildContext(function (context) {
+        sharedContext = context;
+        cb(context);
+      });
+    }
+  };
 
   return through.obj(function(file, enc, cb) {
     if (file.isNull()) {
@@ -58,7 +67,8 @@ module.exports = function wrapWithHandlebars() {
     if (file.isBuffer()) {
       var data = _.extend({
         template : 'index'
-      }, sharedContext,  file.data || {});
+      }, file.data || {}),
+        self = this;
 
       var templatePath = config.templateDir + '/' + data.template + '.hbs';
       var template, wrapped;
@@ -75,13 +85,18 @@ module.exports = function wrapWithHandlebars() {
 
       data.content = file.contents.toString();
       try  {
-        wrapped = template(data);
+        getSharedContext(function (context) {
+          data = _.extend(context, data);
+          file.contents = new Buffer(template(data));
+          self.push(file);
+          cb();
+        });
       } catch (err) {
         this.emit('error', new gutil.PluginError('gulp-wrap-handlebars', err));
       }
-      file.contents = new Buffer(wrapped);
+      //file.contents = new Buffer(wrapped);
     }
-    this.push(file);
-    cb();
+    // this.push(file);
+    // cb();
   });
 };
