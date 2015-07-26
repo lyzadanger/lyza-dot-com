@@ -12,7 +12,7 @@ What we need to do here is have a flowing introductory paragraph that looks like
 
 ## A second level heading that is long enough to wrap
 
-What we need to do here is have a flowing introductory paragraph that looks like what you are seeing right at this very moment. Then we need to follow on with some proportional, example headings that indicate what things would actually look like if this were a story about something, **which it is not**.
+What we need to do here is have a flowing introductory paragraph that looks like what you are seeing right at this very moment. Then we need to follow on with some proportional, <strong>example headings in a strong tag</strong> that indicate what things would actually look like if this were a story about something, **which it is not**.
 
 ![foo](http://images.wisegeek.com/tree-no-leaves.jpg)
 

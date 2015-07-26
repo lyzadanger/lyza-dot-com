@@ -6,37 +6,38 @@
 
 html {
   font-size: var(--font-size-px);
+  color: var(--color-base);
 }
 
 /**
  * Increase root font-size for medium screens.
  */
-
+/*
 @media (--md-viewport) {
   html {
     font-size: calc(var(--font-size-px) + var(--font-size-increment) * 1);
   }
-}
+}*/
 
 /**
  * Increase root font-size a little more for large screens.
  */
 
-@media (--lg-viewport) {
+/*@media (--lg-viewport) {
   html {
     font-size: calc(var(--font-size-px) + var(--font-size-increment) * 2);
   }
-}
+}*/
 
 /**
  * Increase root font-size even a little more for extra-large screens.
  */
-
+/*
 @media (--xl-viewport) {
   html {
     font-size: calc(var(--font-size-px) + var(--font-size-increment) * 3);
   }
-}
+}*/
 
 /**
  * Body type styles
@@ -57,6 +58,7 @@ body {
  */
 
 :--headings {
+  color: var(--heading-color);
   font: var(--heading-font);
   font-weight: var(--font-weight);
   line-height: 1;
@@ -68,12 +70,12 @@ body {
 
 h1 {
   font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-heading-lg);
 }
 
 h2 {
   font-style: italic;
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-heading-md);
 }
 
 /**
@@ -128,13 +130,13 @@ var {
 /**
  * Links
  */
-a, a:visited, a:hover {
-  color: #3956d3;
+a, a:visited, a:hover, a:active {
+  color: var(--color-link-base);
   text-decoration: none;
 }
 
 a:active {
-  color: var(--color-pank);
+  color: var(--color-link-active);
 }
 
 /**

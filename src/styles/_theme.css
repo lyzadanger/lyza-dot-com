@@ -37,9 +37,10 @@
 :root {
   --color-black: #111;
   --color-white: #fff;
-  --color-gray: #444;
+  --color-gray: #333;
 
   --color-pank: #e60a62;
+  --color-blue: #3956d3;
 }
 
 /**
@@ -50,8 +51,9 @@
  */
 
 :root {
-  --font-size-px: 18px; /* 1 */
+  --font-size-px: 16px; /* 1 */
   --font-size-increment: 1px; /* 2 */
+  --font-size-heading-adjust: 1.125;
 
   --font-size-xs: calc(1em / var(--ratio));
   --font-size-sm: 1em;
@@ -60,9 +62,18 @@
   --font-size-xl: calc(var(--font-size-lg) * var(--ratio));
   --font-size-xxl: calc(var(--font-size-xl) * var(--ratio));
   --font-size-xxxl: calc(var(--font-size-xxl) * var(--ratio));
-  --font-size-x4: ccalc(var(--font-size-xxxl) * var(--ratio));
+  --font-size-x4: calc(var(--font-size-xxxl) * var(--ratio));
 
-  --font-family: "Questrial", sans-serif;
+  --font-size-heading-xs: calc(var(--font-size-xs) * var(--font-size-heading-adjust));
+  --font-size-heading-sm: calc(var(--font-size-sm) * var(--font-size-heading-adjust));
+  --font-size-heading-md: calc(var(--font-size-md) * var(--font-size-heading-adjust));
+  --font-size-heading-lg: calc(var(--font-size-lg) * var(--font-size-heading-adjust));
+  --font-size-heading-xl: calc(var(--font-size-xl) * var(--font-size-heading-adjust));
+  --font-size-heading-xxl: calc(var(--font-size-xxl) * var(--font-size-heading-adjust));
+  --font-size-heading-xxxl: calc(var(--font-size-xxxl) * var(--font-size-heading-adjust));
+  --font-size-heading-x4: calc(var(--font-size-4x) * var(--font-size-heading-adjust));
+
+  --font-family: "Arimo", sans-serif;
   --heading-font-family: "Playfair Display", serif;
   --font-weight: 400;
   --font-weight-bold: 900;
@@ -85,6 +96,7 @@
  */
 
 :root {
+  --space-xsmall: 0.5rem;
   --space-small: 1rem;
   --space-medium: calc(var(--space-small) * var(--ratio));
   --space-large: calc(var(--space-medium) * var(--ratio));

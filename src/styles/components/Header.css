@@ -58,20 +58,20 @@
  * 1. The z-index here is so that text elements are on top of the photo (above)
  */
  .Header h1 {
-   font-size: var(--font-size-xxl);
+   font-size: var(--font-size-heading-xxl);
    position: relative;
    z-index: 5; /* 1 */
  }
 
  @media (--sm-viewport) {
    .Header h1 {
-     font-size: var(--font-size-xxxl);
+     font-size: var(--font-size-heading-xxxl);
    }
  }
 
  @media (--md-viewport) {
    .Header h1 {
-     font-size: var(--font-size-xxl);
+     font-size: var(--font-size-heading-xxl);
    }
  }
 
