@@ -90,9 +90,9 @@ h2 {
 
 }
 
-strong, b {
+/*strong, b {
   color: var(--color-pank);
-}
+}*/
 
 /**
  * Small text
@@ -130,12 +130,12 @@ var {
 /**
  * Links
  */
-a, a:visited, a:hover, a:active {
+a, a:visited, a:active {
   color: var(--color-link-base);
   text-decoration: none;
 }
 
-a:active {
+a:hover, a:active {
   color: var(--color-link-active);
 }
 
@@ -162,6 +162,7 @@ pre > code {
 
 :--lists {
   list-style-position: outside;
+  padding: 0 var(--space-large);
 }
 
 ul {
