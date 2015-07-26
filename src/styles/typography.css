@@ -1,0 +1,223 @@
+/**
+ * Root font size
+ *
+ * This is the basis for all rem and em unit calculations.
+ */
+
+html {
+  font-size: var(--font-size-px);
+}
+
+/**
+ * Increase root font-size for medium screens.
+ */
+
+@media (--md-viewport) {
+  html {
+    font-size: calc(var(--font-size-px) + var(--font-size-increment) * 1);
+  }
+}
+
+/**
+ * Increase root font-size a little more for large screens.
+ */
+
+@media (--lg-viewport) {
+  html {
+    font-size: calc(var(--font-size-px) + var(--font-size-increment) * 2);
+  }
+}
+
+/**
+ * Increase root font-size even a little more for extra-large screens.
+ */
+
+@media (--xl-viewport) {
+  html {
+    font-size: calc(var(--font-size-px) + var(--font-size-increment) * 3);
+  }
+}
+
+/**
+ * Body type styles
+ *
+ * 1. Base font style for everything
+ * 2. Allow long words (links) to brake at arbitrary points
+ * 3. Auto-hyphens by default (assuming removal for specific elements)
+ */
+
+body {
+  font: var(--font-base); /* 1 */
+  word-wrap: break-word; /* 2 */
+  hyphens: auto; /* 3 */
+}
+
+/**
+ * Headings
+ */
+
+:--headings {
+  font: var(--heading-font);
+  font-weight: var(--font-weight);
+  line-height: 1;
+}
+
+/**
+ * default heading sizes
+ */
+
+h1 {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+}
+
+h2 {
+  font-style: italic;
+  font-size: var(--font-size-md);
+}
+
+/**
+ * Responsive heading size increases
+ */
+
+@media (--md-viewport) {
+
+}
+
+@media (--lg-viewport) {
+
+}
+
+strong, b {
+  color: var(--color-pank);
+}
+
+/**
+ * Small text
+ */
+
+small {
+  font-size: var(--font-size-xs);
+}
+
+/**
+ * Small caps
+ * http://typeplate.com/#small-caps
+ */
+
+abbr {
+  font-variant: small-caps;
+  text-transform: lowercase;
+}
+
+/**
+ * Remove hyphenation from elements with significant formatting
+ */
+
+abbr,
+acronym,
+blockquote,
+code,
+kbd,
+q,
+samp,
+var {
+  hyphens: none;
+}
+
+/**
+ * Links
+ */
+a, a:visited, a:hover {
+  color: #3956d3;
+  text-decoration: none;
+}
+
+a:active {
+  color: var(--color-pank);
+}
+
+/**
+ * Control whitespace and wrapping on code blocks
+ */
+
+pre,
+code {
+  white-space: pre;
+}
+
+code {
+  word-wrap: normal;
+}
+
+pre > code {
+  white-space: pre-wrap;
+}
+
+/**
+ * Lists
+ */
+
+:--lists {
+  list-style-position: outside;
+}
+
+ul {
+  list-style-type: var(--list-style-unordered);
+}
+
+ol {
+  list-style-type: var(--list-style-ordered);
+}
+
+li,
+dd {
+  margin-top: 0;
+}
+
+/**
+ * Horizontal rule
+ */
+
+hr {
+  height: var(--hr-height);
+  min-height: var(--hr-min-height);
+  border-style: none;
+  background: var(--hr-background);
+}
+
+/**
+ * Blockquote
+ *
+ * Assumes markup to be:
+ *
+ * <blockquote>
+ *   <p>The movie was awesome</p>
+ *   <footer>
+ *     <cite>Some Person</cite>
+ *   </footer>
+ * </blockquote>
+ *
+ * http://html5doctor.com/cite-and-blockquote-reloaded/
+ */
+
+blockquote {
+  padding-left: var(--blockquote-padding);
+  font-style: italic;
+}
+
+blockquote p {
+  margin-bottom: var(--margin-base);
+}
+
+blockquote :matches(p:last-of-type, footer) {
+  display: inline;
+}
+
+blockquote cite {
+  font-style: normal;
+}
+
+blockquote cite::before {
+  content: var(--cite-prefix);
+}

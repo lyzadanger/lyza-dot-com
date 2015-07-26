@@ -1,3 +1,10 @@
+:root {
+  --post-image-border: 1px solid var(--color-black);
+}
 .Post {
-  padding: 0 calc(var(--Base-lineHeight) / 2);
+  padding: 0 calc(var(--space-small) / 2);
+}
+
+.Post img {
+  border: var(--post-image-border);
 }

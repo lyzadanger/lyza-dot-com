@@ -1,33 +1,7 @@
-.Page-header {
-  height: 200px;
-}
+/**
+ * Page-level styling
+ */
 
-.Page-header h1 {
-  font-size: calc(var(--Base-rhythm) * 3);
-  font-family: var(--Base-fontHeadingAlt);
-  text-align: center;
-  text-transform: lowercase;
-  margin: 0;
-}
-
-.Page-header h2 {
-  font-family: var(--Base-fontHeading);
-  text-align: center;
-  font-style: italic;
-  font-weight: 100;
-  font-size: calc(var(--Base-rhythm) * 2);
-  margin: 0;
-  position: relative;
-  line-height: calc(var(--Base-lineHeight) * 2);
-  margin-top: -1rem;
-}
-
-.Page-header h2 em {
-  position: relative;
-  top: var(--Base-rhythm);
-  padding-right: 0.25rem;
-  font-family: var(--Base-fontMain);
-  font-style: italic;
-  color: var(--Base-printersRed);
-  font-size: calc(var(--Base-rhythm) * 4);
-}
+ .Page {
+   margin-top: 0.5em;
+ }

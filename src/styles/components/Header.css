@@ -1,0 +1,138 @@
+/**
+ * Header element styling
+ */
+
+ .Header {
+   margin: 0;
+ }
+
+.Header-main {
+  position: relative;
+}
+
+/**
+ * Positioned absolutely to .Header-main
+ * 1. Allow separator to show beneath photo
+ * 2. Low z-index so we slide *behind* text elements of the header
+ */
+.Header-photo {
+  width: 50%;
+  position: absolute;
+  bottom: var(--Separator-height); /* 1 */
+  right: 0;
+  z-index: 0; /* 2 */
+}
+
+@media (--xsm-viewport-minor) {
+  .Header-photo {
+    width: 45%;
+  }
+}
+
+@media (--sm-viewport) {
+  .Header-photo {
+    width: 40%;
+  }
+}
+
+@media (--sm-viewport-minor) {
+  .Header-photo {
+    width: 30%;
+  }
+}
+
+@media (--md-viewport) {
+  .Header-photo {
+    width: 20%;
+  }
+}
+
+@media (--lg-viewport) {
+  .Header-photo {
+    width: 20%;
+  }
+}
+
+/**
+ * This is what displays the chunks of my name.
+ * 1. The z-index here is so that text elements are on top of the photo (above)
+ */
+ .Header h1 {
+   font-size: var(--font-size-xxl);
+   position: relative;
+   z-index: 5; /* 1 */
+ }
+
+ @media (--sm-viewport) {
+   .Header h1 {
+     font-size: var(--font-size-xxxl);
+   }
+ }
+
+ @media (--md-viewport) {
+   .Header h1 {
+     font-size: var(--font-size-xxl);
+   }
+ }
+
+.Header h2 {
+  margin: 0;
+  background-color: white;
+  text-align: center;
+}
+
+/**
+ * Sections of the main heading for each part of my name.
+ * 1. Each chunk should be a block element, even if (likely) a span
+ * 2. Negative top margin for overlap of text elements
+ * 3. z-index to control z-axis compositing of text elements
+ */
+.Lyza {
+  display: block; /* 1 */
+}
+
+.Lyza-lyza {
+  margin: 0.15em 0 0 0.2em;
+}
+
+.Lyza-danger {
+  margin: -0.35em 0 0 1em; /* 2 */
+  color: var(--color-pank);
+  z-index: 25; /* 3 */
+}
+
+.Lyza-gardner {
+  margin: -0.35em 0 0 0.25em;
+  z-index: 10; /* 3 */
+}
+
+@media (--sm-viewport-minor) {
+  .Lyza {
+    padding-left: calc(var(--space-large) * 2);
+  }
+}
+
+@media (--md-viewport) {
+  .Lyza {
+    padding-left: calc(var(--space-large) * 4);
+  }
+}
+
+/**
+ * Create stylized ampersand.
+ * 1. Circle
+ * 2. Width of less than 1em slightly visually crops the &
+ * 3. Negative top margin to bring circle upwards, horizontal margins
+ *    for surrounding text
+ * 4. Double the size of the whole element, but keep it in flow
+ */
+.Header em {
+  background-color: var(--color-pank);
+  border-radius: 100%; /* 1 */
+  color: var(--color-white);
+  display: inline-block;
+  width: 0.9em; /* 2 */
+  height: 0.9em; /* 2 */
+  margin: -1em 0.5em 0 0.5em; /* 3 */
+  transform: scale(2); /* 4 */
+}

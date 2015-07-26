@@ -1,0 +1,13 @@
+/**
+ * base
+ */
+
+:root {
+  --background-base: var(--color-white);
+  --color-base: var(--color-black);
+  --font-base: var(--font-weight) var(--font-size-sm)/var(--line-height) var(--font-family);
+  --margin-base: var(--space-medium);
+}
+:root {
+  --heading-font: var(--font-weight-bold) var(--font-size-sm) var(--heading-font-family);
+}

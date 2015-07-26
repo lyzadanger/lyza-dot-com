@@ -1,0 +1,15 @@
+.u-margins-off {
+  margin: 0;
+}
+
+.u-margins-on {
+  margin-top: var(--margin-base);
+}
+
+.u-margins-all-off, .u-margins-all-off + *, .u-margins-all-off * {
+  margin: 0;
+}
+
+.u-margins-all-on, .u-margins-all-on + * {
+  margin-top: var(--margin-base);
+}
