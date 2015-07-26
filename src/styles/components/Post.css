@@ -2,7 +2,14 @@
   --post-image-border: 1px solid var(--color-black);
 }
 .Post {
+
   padding: 0 calc(var(--space-small) / 2);
+}
+
+@media (--md-viewport) {
+  .Post {
+    padding: 0 var(--space-large) var(--space-small) var(--space-large);
+  }
 }
 
 .Post img {

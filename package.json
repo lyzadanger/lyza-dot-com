@@ -53,6 +53,7 @@
     "run-sequence": "^1.1.0",
     "slug": "^0.9.1",
     "suitcss-base": "^0.8.0",
+    "suitcss-components-arrange": "^0.6.2",
     "suitcss-components-grid": "^2.0.2",
     "suitcss-utils-link": "^0.5.2",
     "suitcss-utils-size": "^0.7.2",
