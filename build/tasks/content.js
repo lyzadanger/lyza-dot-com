@@ -9,7 +9,7 @@ var markdown    = require('gulp-markdown');
 var rename      = require('gulp-rename');
 var template    = require('../plugins/template');
 
-gulp.task('content', function() {
+gulp.task('content', function(callback, rescanTemplates) {
   return gulp.src(config.src)
   .pipe(data(function(file) {
       var content = frontMatter(String(file.contents));

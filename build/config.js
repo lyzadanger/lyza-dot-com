@@ -79,6 +79,7 @@ module.exports = {
   },
   template: {
     partialDir: dirs.templates + '/partials',
-    templateDir: dirs.templates
+    templateDir: dirs.templates,
+    src : dirs.templates + '/**/*.hbs'
   }
 };
