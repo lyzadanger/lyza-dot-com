@@ -5,11 +5,12 @@ var config   = require('../config').content;
 
 var data        = require('gulp-data');
 var frontMatter = require('front-matter');
+var helpers     = require('../utils/helpers');
 var markdown    = require('gulp-markdown');
 var rename      = require('gulp-rename');
 var template    = require('../plugins/template');
 
-gulp.task('content', function(callback, rescanTemplates) {
+gulp.task('content', function(callback) {
   return gulp.src(config.src)
   .pipe(data(function(file) {
       var content = frontMatter(String(file.contents));
@@ -22,7 +23,7 @@ gulp.task('content', function(callback, rescanTemplates) {
       gfm: true,
       smartypants: true
     }))
-    .pipe(template())
+    .pipe(template({ helpers: helpers}))
     .pipe(rename({
       extname: '.html'
     }))

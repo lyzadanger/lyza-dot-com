@@ -29,6 +29,7 @@ module.exports = {
     dest: dest
   },
   blog: {
+    dateDisplayFormat: 'MMMM D, YYYY', // http://momentjs.com/docs/#/displaying/
     permalinkPattern: 'YYYY/MM/DD',
     postFileName: 'index',
     postExtension: '.md',

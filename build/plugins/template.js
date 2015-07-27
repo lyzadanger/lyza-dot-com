@@ -12,7 +12,8 @@ var Handlebars = require('handlebars');
 
 var buildContext = require('../utils/context');
 
-module.exports = function wrapWithHandlebars() {
+module.exports = function wrapWithHandlebars(opts) {
+  opts = opts || {};
   var templates = {};
   var sharedContext;
 
@@ -39,6 +40,12 @@ module.exports = function wrapWithHandlebars() {
   };
 
   registerPartials.call(this);
+
+  if (opts.helpers) {
+    for (var helperKey in opts.helpers) {
+      Handlebars.registerHelper(helperKey, opts.helpers[helperKey]);
+    }
+  }
 
   // Retrieve shared context. If it's already
   // set, invoke cb with it. Else go get it.
@@ -73,18 +80,18 @@ module.exports = function wrapWithHandlebars() {
       var templatePath = config.templateDir + '/' + data.template + '.hbs';
       var template, wrapped;
       if (typeof templates[templatePath] === 'undefined') {
-          try {
-            templates[templatePath] = Handlebars.compile(fs.readFileSync(templatePath, 'utf8'));
-            template = templates[templatePath];
-          } catch (err) {
-            this.emit('error', new gutil.PluginError('gulp-wrap-handlebars', err));
-          }
+        try {
+          templates[templatePath] = Handlebars.compile(fs.readFileSync(templatePath, 'utf8'));
+          template = templates[templatePath];
+        } catch (err) {
+          this.emit('error', new gutil.PluginError('gulp-wrap-handlebars', err));
+        }
       } else {
         template = templates[templatePath];
       }
 
       data.content = file.contents.toString();
-      try  {
+      try {
         getSharedContext(function (context) {
           data = _.extend(context, data);
           file.contents = new Buffer(template(data));
