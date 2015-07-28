@@ -13,7 +13,7 @@
   --Button-border-width: 3px;
   --Button-disabled-opacity: 0.5;
   --Button-font-weight: 600;
-  --Button-padding: 0.5em 1em;
+  --Button-padding: 0.375em 1em;
   --Button-transition-duration: 300ms;
   --Button-transition-timing-function: ease;
 }
@@ -26,8 +26,10 @@
  * 4. Normalize `line-height`. For `input`, it can't be changed from `normal` in
  *    Firefox 4+.
  * 5. Make sure `input` will wrap text across multiple lines.
- * 6. Prevent button text from being selectable.
- * 7. Corrects inability to style clickable `input` types in iOS.
+ * 6. Make button text small caps
+ * 7. Up the size a bit to account for small-caps
+ * 8. Prevent button text from being selectable.
+ * 9. Corrects inability to style clickable `input` types in iOS.
  */
 .Button {
   margin: 0;
@@ -40,6 +42,9 @@
   white-space: normal; /* 5 */
   text-align: center;
   text-decoration: none;
+  text-transform: lowercase; /* 6 */
+  font-variant: small-caps; /* 6 */
+  font-size: 1.25em; /* 7 */
   border-width: var(--Button-border-width);
   border-style: solid;
   border-color: var(--Button-border-color);
@@ -47,9 +52,9 @@
   background: transparent;
   transition: all var(--Button-transition-duration) var(--Button-transition-timing-function);
   cursor: pointer;
-  user-select: none; /* 6 */
+  user-select: none; /* 8 */
 
-  -webkit-appearance: none; /* 7 */
+  -webkit-appearance: none; /* 9 */
 }
 
 /**
@@ -162,3 +167,10 @@
 .Button--secondary:active {
   background-color: color(var(--Button-secondary-background-color) shade(10%));
 }
+
+/**
+ * Links as buttons
+ */
+ .Button--link, .Button--link:visited, .Button--link:hover {
+   color: var(--color-white);
+ }
