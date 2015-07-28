@@ -2,16 +2,28 @@
   --post-image-border: 1px solid var(--color-black);
 }
 .Post {
-
-  padding: 0 calc(var(--space-small) / 2);
+  margin: 0;
+}
+.Post-content {
+    padding: 0 var(--space-small);
 }
 
 @media (--md-viewport) {
-  .Post {
-    padding: 0 var(--space-large) var(--space-small) var(--space-large);
+  .Post-content {
+    /*padding: 0 var(--space-large) var(--space-small) var(--space-large);*/
   }
 }
 
 .Post img {
   border: var(--post-image-border);
+}
+
+.Post-date {
+  color: var(--color-gray-mid);
+  font-style: italic;
+  font-size: var(--font-size-heading-sm);
+}
+
+.Post-meta {
+  margin: calc(var(--space-small) / 2) var(--space-small);
 }

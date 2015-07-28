@@ -1,14 +1,26 @@
 {{> _header }}
-    <article class="Post">
-      <header class="Post-header">
-        <h1 class="Post-title">{{title}}</h1>
-        <p><time datetime="{{isoDate publish.date}}">
-          {{formatDate publish.date}}
-        </time></p>
 
-      </header>
-      <div class="Post-content">
-        {{{content}}}
-      </div>
-    </article>
+      <article class="Post">
+
+        <hr class="Separator">
+        <div class="Grid">
+          <div class="Grid-cell u-md-size1of6">
+            <header class="Post-header">
+              <div class="Post-meta">
+              <h1 class="Post-title">{{title}}</h1>
+              <time class="Post-date" datetime="{{isoDate publish.date}}">{{formatDate publish.date}}</time>
+              </div>
+              <hr class="Separator--small Separator--subtler u-margins-off">
+            </header>
+          </div>
+          <div class="Grid-cell u-md-size4of6">
+            <h1 class="Post-title">{{title}}</h1>
+            <div class="Post-content">
+              {{{content}}}
+            </div>
+          </div>
+        </div>
+      </article>
+
+  </div>
 {{> _footer }}

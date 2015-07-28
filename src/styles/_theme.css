@@ -38,6 +38,9 @@
   --color-black: #111;
   --color-white: #fff;
   --color-gray: #333;
+  --color-gray-mid: #777;
+  --color-gray-light: #999;
+  --color-gray-lighter: #ccc;
 
   --color-pank: #e60a62;
   --color-blue: #3956d3;
@@ -51,9 +54,9 @@
  */
 
 :root {
-  --font-size-px: 16px; /* 1 */
+  --font-size-px: 18px; /* 1 */
   --font-size-increment: 1px; /* 2 */
-  --font-size-heading-adjust: 1.125;
+  --font-size-heading-adjust: 1;
 
   --font-size-xs: calc(1em / var(--ratio));
   --font-size-sm: 1em;
@@ -73,7 +76,7 @@
   --font-size-heading-xxxl: calc(var(--font-size-xxxl) * var(--font-size-heading-adjust));
   --font-size-heading-x4: calc(var(--font-size-4x) * var(--font-size-heading-adjust));
 
-  --font-family: "Arimo", sans-serif;
+  --font-family: "Times New Roman", serif;
   --heading-font-family: "Playfair Display", serif;
   --font-weight: 400;
   --font-weight-bold: 900;
