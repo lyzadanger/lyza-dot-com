@@ -4,14 +4,9 @@
 .Post {
   margin: 0;
 }
+
 .Post-content {
     padding: 0 var(--space-small);
-}
-
-@media (--md-viewport) {
-  .Post-content {
-    /*padding: 0 var(--space-large) var(--space-small) var(--space-large);*/
-  }
 }
 
 .Post img {

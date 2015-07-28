@@ -10,36 +10,6 @@ html {
 }
 
 /**
- * Increase root font-size for medium screens.
- */
-/*
-@media (--md-viewport) {
-  html {
-    font-size: calc(var(--font-size-px) + var(--font-size-increment) * 1);
-  }
-}*/
-
-/**
- * Increase root font-size a little more for large screens.
- */
-
-/*@media (--lg-viewport) {
-  html {
-    font-size: calc(var(--font-size-px) + var(--font-size-increment) * 2);
-  }
-}*/
-
-/**
- * Increase root font-size even a little more for extra-large screens.
- */
-/*
-@media (--xl-viewport) {
-  html {
-    font-size: calc(var(--font-size-px) + var(--font-size-increment) * 3);
-  }
-}*/
-
-/**
  * Body type styles
  *
  * 1. Base font style for everything
@@ -77,22 +47,6 @@ h2 {
   font-style: italic;
   font-size: var(--font-size-heading-md);
 }
-
-/**
- * Responsive heading size increases
- */
-
-@media (--md-viewport) {
-
-}
-
-@media (--lg-viewport) {
-
-}
-
-/*strong, b {
-  color: var(--color-pank);
-}*/
 
 /**
  * Small text

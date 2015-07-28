@@ -7,17 +7,43 @@
    border-bottom: 1px solid var(--color-gray-mid);
  }
 
-.Header-main {
-  background-color: var(--color-white);
-  position: relative;
-}
+ /**
+  * 1. Putting a background-color on this element allows a different
+  * background color on other parts of the header without affecting
+  * this one.
+  * 2. For absolute positioning of .Header-photo
+  */
+ .Header-main {
+   background-color: var(--color-white); /* 1 */
+   position: relative; /* 2 */
+ }
+
+ @media (--md-viewport) {
+   .Header {
+     margin-bottom: var(--space-medium);
+   }
+ }
+
+ /**
+  * At md and larger viewports, the intro paragraph (Header-intro)
+  * is to the right of the main header body
+  * 1. Give it a border on the right to separate it visually from Header-intro
+  * 2. Give more padding on the bottom before main page content
+  */
+ @media (--md-viewport) {
+   .Header-body {
+     border-right: 1px solid var(--color-gray-mid); /* 1 */
+   }
+   .Header-body {
+     padding-bottom: 1rem; /* 2 */
+   }
+ }
 
 /**
  * Positioned absolutely to .Header-main
  * Background size adjusts across breakpoints
  * 1. Allow separator to show beneath photo
  * 2. Low z-index so we slide *behind* text elements of the header
-
  */
 .Header-photo {
   width: 52.5%;
@@ -64,20 +90,6 @@
 }
 
 /**
- * At md and larger viewports, the intro paragraph (Header-intro)
- * is to the right of the main header body
- * 1. Give it a border on the right to separate it visually from Header-intro
- * 2. Give more padding on the bottom before main page content
- */
-@media (--md-viewport) {
-  .Header-body {
-    border-right: 1px solid var(--color-gray-mid); /* 1 */
-  }
-  .Header-body {
-    padding-bottom: 1rem; /* 2 */
-  }
-}
-/**
  * This is what displays the chunks of my name.
  * 1. The z-index here is so that text elements are on top of the photo (above)
  */
@@ -101,11 +113,12 @@
 /**
  * Grow the font size for the h2, and, by extension, the size
  * of the ampersand
+ * 1. Negative margin to bring the bottom hairline up
  */
 @media (--md-viewport) {
   .Header h2 {
     font-size: var(--font-size-heading-lg);
-    margin-bottom: -0.5em;
+    margin-bottom: -0.65em; /* 1 */
   }
 }
 
