@@ -1,18 +1,17 @@
 {{> _header}}
 
-<section>
-  <div class="Grid Grid--alignMiddle">
-    <div class="Grid-cell Page-content u-md-size4of6">
-      {{{content}}}
-    </div>
+<section class="u-padding-sm u-margins-off">
+  {{{content}}}
 </section>
 
 <section>
-  <div class="Grid Grid--withGutter">
-    <div class="Grid-cell u-md-size1of2 u-lg-size2of3">{{#posts count="1"}} {{> post/_blurb }} {{/posts}}</div>
-    <div class="Grid-cell u-md-size1of2 u-lg-size1of3">{{#posts count="1" offset="1"}} {{> post/_blurb}} {{/posts}}</div>
-
-    <div class="Grid-cell u-md-size1of2 u-lg-size1of3">{{#posts count="3" offset="2"}} {{> post/_blurb}} {{/posts}}</div>
+  <div class="Grid">
+    {{#posts count="6"}}
+      <div class="Grid-cell u-md-size1of2 u-lg-size1of3">
+        <div class="Post-Blurb">{{> post/_blurb }}</div>
+      </div>
+    {{/posts}}
+  </div>
 </section>
 
 {{> _footer}}

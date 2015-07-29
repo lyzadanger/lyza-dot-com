@@ -1,0 +1,9 @@
+.u-link-colorless, .u-link-colorless:visited {
+  transition: all 300ms;
+  color: var(--color-black);
+}
+
+.u-link-colorless:hover {
+  transition: all 300ms;
+  color: var(--color-pank);
+}

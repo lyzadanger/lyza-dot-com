@@ -1,4 +1,11 @@
 <div class="PostBlurb">
-  <div class="PostBlurb-title"><h3><a href="{{url}}">{{title}}</a></div>
-  <div class="PostBlurb-blurb">{{{blurb}}}</div>
+  <h3 class="PostBlurb-title"><a class="u-link-colorless" href="{{url}}">{{title}}</a></h3>
+  <h4 class="PostBlurb-date"><time datetime="{{ datePublishedISO }}">{{formatDate datePublished}}</time></h4>
+  <div class="Grid Grid--alignMiddle">
+    <div class="PostBlurb-blurb Grid-cell u-size2of3">
+        <h5><ul class="PostBlurb-tags List--inline">{{#each tags}}<li class="PostBlurb-tag"><span class="u-muted u-text-xs">#</span>{{this}}{{/each}}</ul></h5>
+        {{{blurb}}}
+    </div>
+    <div class="Grid-cell u-size1of3 PostBlurb-link"><a class="Button Button--default Button--default-link" href="{{url}}">Read</a></div>
+  </div>
 </div>

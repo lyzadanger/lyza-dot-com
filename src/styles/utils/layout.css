@@ -13,3 +13,7 @@
 .u-margins-all-on, .u-margins-all-on + * {
   margin-top: var(--margin-base);
 }
+
+.u-padding-sm {
+  padding: var(--space-small);
+}

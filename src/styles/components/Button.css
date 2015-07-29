@@ -103,8 +103,8 @@
  */
 
 :root {
-  --Button-default-background-color: var(--color-black);
-  --Button-default-color: var(--color-white);
+  --Button-default-background-color: var(--color-white);
+  --Button-default-color: var(--color-black);
 }
 
 .Button--default {
@@ -171,6 +171,10 @@
 /**
  * Links as buttons
  */
- .Button--link, .Button--link:visited, .Button--link:hover {
+ .Button--default-link, .Button--default-link:visited {
+   color: var(--color-black);
+ }
+
+ .Button--primary-link, .Button--primary-link:visited, .Button--primary-link:hover {
    color: var(--color-white);
  }

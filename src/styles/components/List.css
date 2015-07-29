@@ -1,0 +1,10 @@
+.List--inline {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.List--inline li {
+  margin: 0 0.5rem 0 0;
+  display: inline-block;
+}

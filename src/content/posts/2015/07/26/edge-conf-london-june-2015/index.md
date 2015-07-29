@@ -2,6 +2,10 @@
 title: 'Edge Conf London, June 2015'
 template: post
 status: published
+tags:
+  - tech
+  - standards
+  - events
 blurb: >
   In which I sweat and moderate a panel, and it is good.
 publish:

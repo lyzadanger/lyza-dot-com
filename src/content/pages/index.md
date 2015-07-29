@@ -2,4 +2,4 @@
 title: Home
 template: index
 ---
-Hi! I'm Lyza. I'm a developer and human being born, raised and living in Portland, Ore. I've been a co-founder and CTO of [Cloud Four](http://www.cloudfour.com) since 2007. I'm a generalist with an abiding love for the Web.
+Have you bought your ticket for [Responsive Field Day](https://www.responsivefieldday.comResponsive) yet? Join us for a spirited, knowledge-packed day scouting the frontiers of responsive web design and development in lovely Portland, Oregon this September 25.

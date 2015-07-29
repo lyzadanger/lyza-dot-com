@@ -4,14 +4,18 @@
 @import "base";
 @import "typography";
 
-@import "utils/layout";
 
 @import "suitcss-utils-link";
 @import "suitcss-utils-size";
 @import "suitcss-components-grid";
 
+@import "utils/layout";
+@import "utils/link";
+@import "utils/typography";
+
 @import "components/Button";
 @import "components/Header";
+@import "components/List";
 @import "components/Navigation";
 @import "components/Page";
 @import "components/Post";

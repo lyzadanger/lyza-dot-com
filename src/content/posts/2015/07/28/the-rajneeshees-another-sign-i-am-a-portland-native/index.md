@@ -2,6 +2,9 @@
 title: 'The Rajneeshees: Another Sign I am a Portland Native'
 template: post
 status: published
+tags:
+  - oregon
+  - life
 blurb: >
   In which I am old, and from here.
 publish:

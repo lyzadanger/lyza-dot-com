@@ -22,3 +22,42 @@
 .Post-meta {
   margin: calc(var(--space-small) / 2) var(--space-small);
 }
+
+.PostBlurb {
+  margin: 0 calc(var(--space-small) / 2);
+  padding: 0 0.125em;
+  border-top: 3px solid var(--color-gray);
+  margin-bottom: 2em;
+}
+
+@media (--md-viewport) {
+  .PostBlurb {
+    margin: 0 var(--space-small);
+      margin-bottom: 1em;
+  }
+}
+
+.PostBlurb-title {
+  margin: 0.25em 0;
+}
+
+.PostBlurb-date {
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid var(--color-gray-lighter);
+}
+
+.PostBlurb-tags {
+
+}
+
+.PostBlurb-blurb {
+  margin: 0.325em 0;
+}
+
+.PostBlurb-link {
+  padding: 0 1em;
+}
+
+.PostBlurb-date {
+  margin: 0;
+}

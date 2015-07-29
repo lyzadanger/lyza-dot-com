@@ -48,6 +48,25 @@ h2 {
   font-size: var(--font-size-heading-md);
 }
 
+h3 {
+  font-size: var(--font-size-heading-md);
+}
+
+h4 {
+  font-size: var(--font-size-heading-sm);
+  font-weight: var(--font-weight);
+  color: var(--color-gray);
+  font-style: italic;
+}
+
+h5 {
+  font: var(--font-base);
+  font-size: var(--font-size-heading-sm);
+  text-transform: lowercase;
+  font-variant: small-caps;
+  color: var(--color-gray-mid);
+}
+
 /**
  * Small text
  */
