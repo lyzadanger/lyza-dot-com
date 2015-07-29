@@ -1,7 +1,7 @@
 /**
  * gulp utils for blog posts (files).
- * These utils are for file-system manipulation
- * versus contextual stuff for templates (in context.js)
+ * These utils are used for file processing and publish/unpublish
+ * See `context-*` for utilities to build context for rendering
  */
 'use strict';
 
@@ -87,26 +87,7 @@ var publishData = function publishData(attributes) {
   return attributes;
 };
 
-/**
- * Parse all post and publish data out of extant front matter
- */
- var allPostData = function allPostData(attributes) {
-   var data = postData(attributes);
-   data = publishData(attributes);
-   return data;
- };
-
-/**
- * Shorthand for grabbing the pub date
- */
- var getPublishDate = function getPublishDate(attributes) {
-   var data = publishData(attributes);
-   return data.publish.date;
- };
-
-module.exports.allPostData = allPostData;
 module.exports.postData = postData;
 module.exports.publishData = publishData;
 module.exports.readPostData = readPostData;
 module.exports.writePublishData = writePublishData;
-module.exports.getPublishDate = getPublishDate;

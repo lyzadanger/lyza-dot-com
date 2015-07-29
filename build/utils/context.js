@@ -7,30 +7,17 @@
 var config    = require('../config').blog;
 var fs        = require('fs');
 var path      = require('path');
-var postData  = require('./blog').allPostData;
-var pubDate   = require('./blog').getPublishDate;
 var recursive = require('recursive-readdir');
 var frontMatter = require('front-matter');
 var moment    = require('moment');
 var _         = require('lodash');
 
-var getPostURL = function getPostURL(attributes) {
-   var path = attributes.publish.path.replace(
-     config.postFileName + config.postExtension, '');
-   path = config.urlBase + path;
-   attributes.url = path;
-   return attributes;
-};
+var postContext = require('./context-posts');
 
-/**
- * Do any additional processing of the attributes
- * object that we get back from the blog utils. Do
- * things relevant to template contexts...
- */
-var buildPostContext = function(attributes) {
-  attributes = postData(attributes);
-  attributes = getPostURL(attributes);
-  return attributes;
+var getFrontMatter = function (filePath) {
+  var contents = fs.readFileSync(path.resolve(filePath), 'utf8');
+  var fm = frontMatter(contents);
+  return (fm && fm.attributes) || {};
 };
 
 var getSortedPosts = function(files) {
@@ -42,15 +29,12 @@ var getSortedPosts = function(files) {
   });
 
   files.forEach(function(file) {
-    var contents, fm, metaData;
-    contents = fs.readFileSync(path.resolve(file), 'utf8');
-    fm       = frontMatter(contents);
-    if (fm && fm.attributes) {
-      metaData = buildPostContext(fm.attributes);
-      posts[pubDate(metaData)] = metaData;
+    var attributes = getFrontMatter(file),
+      metaData = postContext(attributes);
+    if (metaData) {
+      posts[metaData.datePublishedISO] = metaData;
     }
   });
-
   // Sort the keys of posts (which are dates), then reverse 'em
   // so we get posts sorted by reverse chronology
   _.keys(posts).sort().reverse().forEach(function(date) {
@@ -73,11 +57,8 @@ var pageContext = function (cb) {
   var pages = [];
   recursive(config.pageDir, function (err, files) {
     files.forEach(function(file) {
-      var contents = fs.readFileSync(path.resolve(file), 'utf8');
-      var fm = frontMatter(contents);
-      if (fm && fm.attributes) {
-        pages.push(fm.attributes);
-      }
+      // NOTE Use context-pages if we need to do anything with these attrs
+      pages.push(getFrontMatter(file));
     });
     cb({'pages': pages});
   });
@@ -104,4 +85,25 @@ var sharedContext = function(done) {
   }
 };
 
-module.exports = sharedContext;
+/**
+ * Given a file's path and front matter, can we determine what type of content
+ * this is?
+ */
+var localContext = function (filePath, attributes) {
+  /**
+   * TODO This is provisional code. If the whole content-type
+   * thing becomes broader than posts vs. pages, this whole
+   * system should be generalized.
+   */
+  var fullPagePath = path.resolve(config.pageDir),
+    fullPostPath   = path.resolve(config.postDir);
+  if (filePath.indexOf(fullPostPath) !== -1) {
+    return postContext(attributes);
+  } else {
+    // TODO extend when needed
+    return attributes;
+  }
+};
+
+module.exports.shared = sharedContext;
+module.exports.local = localContext;

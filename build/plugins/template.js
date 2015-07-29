@@ -10,7 +10,8 @@ var recursive  = require('recursive-readdir');
 var path       = require('path');
 var Handlebars = require('handlebars');
 
-var buildContext = require('../utils/context');
+var buildContext = require('../utils/context').shared;
+var localContext = require('../utils/context').local;
 
 module.exports = function wrapWithHandlebars(opts) {
   opts = opts || {};
@@ -74,7 +75,7 @@ module.exports = function wrapWithHandlebars(opts) {
     if (file.isBuffer()) {
       var data = _.extend({
         template : 'index'
-      }, file.data || {}),
+      }, localContext(file.path, file.data) || {}),
         self = this;
 
       var templatePath = config.templateDir + '/' + data.template + '.hbs';
@@ -101,9 +102,6 @@ module.exports = function wrapWithHandlebars(opts) {
       } catch (err) {
         this.emit('error', new gutil.PluginError('gulp-wrap-handlebars', err));
       }
-      //file.contents = new Buffer(wrapped);
     }
-    // this.push(file);
-    // cb();
   });
 };
