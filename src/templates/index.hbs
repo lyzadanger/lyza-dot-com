@@ -7,12 +7,10 @@
     </div>
 </section>
 
-<section>
-  <ul>
-    {{#each posts}}
-      <li><a href="{{url}}">{{title}}</a></li>
-    {{/each}}
-  </ul>
+<section class="Grid Grid--withGutter">
+  {{#each posts}}
+    <div class="Grid-cell u-md-size1of2 u-lg-size1of3"><a href="{{url}}">{{title}}</a></div>
+  {{/each}}
 </section>
 
 {{> _footer}}
