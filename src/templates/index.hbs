@@ -7,10 +7,12 @@
     </div>
 </section>
 
-<section class="Grid Grid--withGutter">
-  {{#each posts}}
-    <div class="Grid-cell u-md-size1of2 u-lg-size1of3"><a href="{{url}}">{{title}}</a></div>
-  {{/each}}
+<section>
+  <div class="Grid Grid--withGutter">
+    <div class="Grid-cell u-md-size1of2 u-lg-size2of3">{{#posts count="1"}} {{> post/_blurb }} {{/posts}}</div>
+    <div class="Grid-cell u-md-size1of2 u-lg-size1of3">{{#posts count="1" offset="1"}} {{> post/_blurb}} {{/posts}}</div>
+
+    <div class="Grid-cell u-md-size1of2 u-lg-size1of3">{{#posts count="3" offset="2"}} {{> post/_blurb}} {{/posts}}</div>
 </section>
 
 {{> _footer}}

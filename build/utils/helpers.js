@@ -39,6 +39,20 @@ module.exports = {
     if (theDate) {
       return theDate.toISOString();
     }
+  },
+  'posts': function (options) {
+    var count = parseInt(options.hash.count, 10) || 1,
+      offset = parseInt(options.hash.offset, 10) || 0,
+      ret = '';
+    if (this.posts) {
+      for (var i = offset; i < (count + offset); i++) {
+        if (this.posts[i]) {
+          var compiled = options.fn(this.posts[i]);
+          ret = ret + compiled;
+        }
+      }
 
+    }
+    return ret;
   }
 };

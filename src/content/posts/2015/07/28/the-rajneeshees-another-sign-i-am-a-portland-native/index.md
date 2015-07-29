@@ -2,6 +2,8 @@
 title: 'The Rajneeshees: Another Sign I am a Portland Native'
 template: post
 status: published
+blurb: >
+  In which I am old, and from here.
 publish:
   slug: the-rajneeshees-another-sign-i-am-a-portland-native
   date: '2015-07-28T18:45:01.680Z'

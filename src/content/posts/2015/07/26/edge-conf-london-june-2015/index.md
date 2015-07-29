@@ -3,7 +3,7 @@ title: 'Edge Conf London, June 2015'
 template: post
 status: published
 blurb: >
-  Last month I had the honor of moderating the [progressive enhancement panel](https://docs.google.com/document/d/1aSjbz1A2ifV5Xu-pYx-SGiweaihwZ74R79PXeAJxJh8/edit) at [Edge Conf](https://edgeconf.com/2015-london) in London. Also: sweating and trying to look like I'm really OK despite the failure of the air conditioning at Facebook's glass-lined beautiful fishtank
+  In which I sweat and moderate a panel, and it is good.
 publish:
   slug: edge-conf-london-june-2015
   date: '2015-07-27T01:05:34.321Z'
