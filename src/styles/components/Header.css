@@ -2,9 +2,13 @@
  * Header element styling
  */
 
+ :root {
+   --Header-background-color: var(--color-white);
+ }
+
  .Header {
    margin: 0;
-   border-bottom: 1px solid var(--color-gray-mid);
+   /*border-bottom: 1px solid var(--color-gray-lighter);*/
  }
 
  /**
@@ -14,7 +18,7 @@
   * 2. For absolute positioning of .Header-photo
   */
  .Header-main {
-   background-color: var(--color-white); /* 1 */
+   background-color: var(--Header-background-color); /* 1 */
    position: relative; /* 2 */
  }
 
@@ -32,10 +36,13 @@
   */
  @media (--md-viewport) {
    .Header-body {
-     border-right: 1px solid var(--color-gray-mid); /* 1 */
+     /*border-right: 1px solid var(--color-gray-mid); /* 1 */
    }
    .Header-body {
      padding-bottom: 1rem; /* 2 */
+   }
+   .Header-main {
+     border-right: 1px solid var(--color-gray-mid);
    }
  }
 
