@@ -8,23 +8,23 @@
 
  .Header {
    margin: 0;
-   /*border-bottom: 1px solid var(--color-gray-lighter);*/
  }
 
  /**
   * 1. Putting a background-color on this element allows a different
   * background color on other parts of the header without affecting
   * this one.
-  * 2. For absolute positioning of .Header-photo
   */
  .Header-main {
    background-color: var(--Header-background-color); /* 1 */
-   position: relative; /* 2 */
  }
 
  @media (--md-viewport) {
    .Header {
      margin-bottom: var(--space-medium);
+   }
+   .Header-heading {
+     border-right: 1px solid var(--color-gray);
    }
  }
 
@@ -41,9 +41,6 @@
    .Header-body {
      padding-bottom: 1rem; /* 2 */
    }
-   .Header-main {
-     border-right: 1px solid var(--color-gray-mid);
-   }
  }
 
 /**
@@ -55,7 +52,7 @@
 .Header-photo {
   width: 52.5%;
   position: absolute;
-  bottom: var(--Separator-height); /* 1 */
+  bottom: 0px; /* 1 */ /* TODO FIX ME!!! */
   right: 0;
   z-index: 0; /* 2 */
 }
@@ -74,26 +71,40 @@
 
 @media (--sm-viewport-minor) {
   .Header-photo {
-    width: 30%;
+    width: 35%;
   }
 }
 
 @media (--md-viewport) {
   .Header-photo {
-    width: 30%;
+    width: 45%;
   }
 }
 
 @media (--lg-viewport) {
   .Header-photo {
-    width: 25%;
+    width: 33.3%;
   }
 }
 
 @media (--xl-viewport) {
   .Header-photo {
-    width: 210px;
+    width: 250px;
   }
+}
+
+/**
+ * 1. For .Header-photo absolute positioning
+ */
+.Header-heading {
+  position: relative; /* 1 */
+  border-bottom: 2px solid black;
+}
+
+@media (--md-viewport) {
+ .Header-heading {
+   border-bottom: none;
+ }
 }
 
 /**
@@ -140,18 +151,40 @@
 }
 
 .Header-Lyza-lyza {
-  margin: 0.15em 0 0 0.2em;
+  margin: 0.25em 0 0 0.2em;
+  z-index: 25;
 }
 
 .Header-Lyza-danger {
   margin: -0.35em 0 0 1em; /* 2 */
   color: var(--color-pank);
-  z-index: 25; /* 3 */
+  z-index: 15; /* 3 */
 }
 
 .Header-Lyza-gardner {
-  margin: -0.35em 0 0 0.25em;
+  margin: -0.35em 0 0.5em 0.25em;
   z-index: 10; /* 3 */
+}
+
+/**
+ * Change margins around heading chunks as viewport changes
+ */
+@media (--md-viewport) {
+  .Header-Lyza-lyza {
+    margin-top: 0.5em;
+  }
+  .Header-Lyza-gardner {
+    margin-bottom: 0.75em;
+  }
+}
+
+@media (--lg-viewport) {
+  .Header-Lyza-lyza {
+    margin-top: 0.5em;
+  }
+  .Header-Lyza-gardner {
+    margin-bottom: 0.5em;
+  }
 }
 
 /**
@@ -186,16 +219,18 @@
   padding: var(--space-small);
 }
 
-.Header-greeting {
-  display: inline-block;
-}
-
 /**
- * The intro element is on the right at wider breakpoints
- * 1. Add a top border to continue along the top border from .Header-main
+ * .Header-intro gets unwieldy when really wide
  */
 @media (--md-viewport) {
   .Header-intro {
-    border-top: 1px solid var(--color-black); /* 1 */
+    max-width: 20em;
   }
+}
+.Header-more {
+  margin-top: 0.5em;
+}
+
+.Header-greeting {
+  display: inline-block;
 }

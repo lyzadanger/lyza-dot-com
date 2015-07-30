@@ -17,6 +17,11 @@
   margin-top: var(--margin-base);
 }
 
+body {
+  max-width: 64em;
+  margin: 0 auto;
+}
+
 /**
  * Squash additional UA styles
  */
