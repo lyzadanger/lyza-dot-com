@@ -11,6 +11,7 @@
 
 @import "utils/layout";
 @import "utils/link";
+@import "utils/syntax";
 @import "utils/typography";
 
 @import "components/Announcement";

@@ -20,6 +20,9 @@ gulp.task('content', function(callback) {
       return content.attributes;
     }))
     .pipe(markdown({
+      highlight: function(code) {
+          return require('highlight.js').highlightAuto(code).value;
+      },
       gfm: true,
       smartypants: true
     }))
