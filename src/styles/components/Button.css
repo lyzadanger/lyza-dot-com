@@ -114,7 +114,7 @@
 }
 
 .Button--default:matches(:focus, :hover) {
-  border-color: color(var(--Button-default-background-color) shade(5%));
+  border-color: color(var(--Button-default-background-color) shade(20%));
   background-color: color(var(--Button-default-background-color) l(+5%));
 }
 
@@ -138,7 +138,7 @@
 }
 
 .Button--primary:matches(:focus, :hover) {
-  border-color: color(var(--Button-primary-background-color) shade(5%));
+  border-color: color(var(--Button-primary-background-color) shade(10%));
   background-color: color(var(--Button-primary-background-color) l(+5%));
 }
 
@@ -175,6 +175,10 @@
    color: var(--color-black);
  }
 
+ .Button--default-link:hover {
+   color: var(--Button-primary-background-color);
+ }
+
  .Button--primary-link, .Button--primary-link:visited, .Button--primary-link:hover {
-   color: var(--color-white);
+   color: var(--Button-default-background-color);
  }
