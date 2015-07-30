@@ -15,7 +15,7 @@ var browserifyTask = function(callback, devMode) {
 
     if (devMode) {
       // Add watchify args and debug (sourcemaps) option
-      _.extend(bundleConfig, watchify.args, { debug: true });
+      _.extend(bundleConfig, watchify.args, { debug: false });
       // A watchify require/external bug that prevents proper recompiling,
       // so (for now) we'll ignore these options during development. Running
       // `gulp browserify` directly will properly require and externalize.
