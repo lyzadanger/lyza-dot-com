@@ -19,6 +19,10 @@
    background-color: var(--Header-background-color); /* 1 */
  }
 
+ .Header-subheading {
+   display: none;
+ }
+
  @media (--md-viewport) {
    .Header {
      margin-bottom: var(--space-medium);
@@ -35,8 +39,8 @@
   * 2. Give more padding on the bottom before main page content
   */
  @media (--md-viewport) {
-   .Header-body {
-     /*border-right: 1px solid var(--color-gray-mid); /* 1 */
+   .Header-subheading {
+     display: block;
    }
    .Header-body {
      padding-bottom: 1rem; /* 2 */

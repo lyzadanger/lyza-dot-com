@@ -87,3 +87,22 @@
 .PostBlurb-date {
   margin: 0;
 }
+
+/**
+ * A grid layout of PostBlurbs
+ */
+.PostGrid {
+  margin: 0;
+}
+
+@media (--md-viewport) {
+  .PostGrid {
+    margin-top: var(--space-small);
+  }
+}
+
+@media (--lg-viewport) {
+  .PostGrid {
+    margin-top: var(--space-medium);
+  }
+}

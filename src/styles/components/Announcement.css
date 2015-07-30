@@ -1,0 +1,14 @@
+.Announcement {
+  padding: var(--space-xsmall);
+  padding-bottom: var(--space-large);
+  margin: 0;
+  background-color: #f3f3f3;
+}
+
+@media (--md-viewport) {
+  .Announcement {
+    padding: var(--space-xsmall) var(--space-small);
+    border-left: 10px solid var(--color-pank);
+    margin: 0 var(--space-large);
+  }
+}

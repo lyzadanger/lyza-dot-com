@@ -13,6 +13,7 @@
 @import "utils/link";
 @import "utils/typography";
 
+@import "components/Announcement";
 @import "components/Button";
 @import "components/Header";
 @import "components/List";
