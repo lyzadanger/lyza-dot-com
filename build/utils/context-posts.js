@@ -5,6 +5,11 @@
 
 var config = require('../config').blog;
 var moment = require('moment');
+var _      = require('lodash');
+
+var defaults = {
+  template: 'post'
+};
 
 var getURL = function getURL(attributes) {
   var pubPath = attributes.publish && attributes.publish.path,
@@ -28,6 +33,7 @@ var getPubDate = function getPubDate (attributes) {
 };
 
 module.exports = function (attributes) {
+  attributes = _.defaults(attributes || {}, defaults);
   attributes.url = getURL(attributes);
   attributes.datePublished = getPubDate(attributes);
   attributes.datePublishedISO = attributes.datePublished && attributes.datePublished.toISOString();
