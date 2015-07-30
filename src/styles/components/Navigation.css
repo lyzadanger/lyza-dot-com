@@ -9,10 +9,15 @@
    --Navigation-background-color: var(--color-white);
    --Navigation-color: var(--color-black);
    --Navigation-active-color: var(--color-pank);
-   --Navigation-item-padding: 10px 0.25em 0 0.25em;
-   --Navigation-item-border-width: 0 0 10px 0;
+   --Navigation-item-padding: 0.25em;
+   --Navigation-item-border-width: 10px;
    --Navigation-item-border-active-color: var(--color-pank);
    --Navigation-item-font-size: var(--font-size-md);
+ }
+
+ :root {
+   --Navigation-subtle-color: var(--color-gray-mid);
+   --Navigation-suble-active-color: var(--color-pank);
  }
 
  .Navigation {
@@ -21,21 +26,22 @@
   color: var(--Navigation-color);
  }
 
- /*.Navigation--inverse {
-   color: var(--Navigation-background-color);
-   background-color: var(--Navigation-color);
- }*/
+ .Navigation-list {
+   margin: 0;
+   padding: 0;
+ }
 
  .Navigation-item {
    display: inline-block;
    line-height: normal;
    text-transform: lowercase;
    font-variant: small-caps;
-   padding: var(--Navigation-item-padding);
+   padding: 0 var(--Navigation-item-padding);
+   padding-top: var(--Navigation-item-border-width);
    font-family: var(--Navigation-font-family);
    font-size: var(--Navigation-item-font-size);
-   border-style: solid;
-   border-width: var(--Navigation-item-border-width);
+   border-bottom-style: solid;
+   border-bottom-width: var(--Navigation-item-border-width);
    border-color: transparent;
  }
 
@@ -48,11 +54,26 @@
    transition: all 300ms;
  }
 
- /*.Navigation--inverse .Navigation-item a, .Navigation--inverse .Navigation-item a:visited {
-   color: var(--Navigation-background-color);
- }*/
-
  .Navigation-item--active {
    font-style: italic;
    border-color: var(--Navigation-active-color);
  }
+
+/**
+ * Subtle is paler and smaller
+ */
+
+ .Navigation--subtle .Navigation-item {
+   font-size: var(--font-size-sm);
+ }
+
+ .Navigation--subtle .Navigation-item a, .Navigation--subtle .Navigation-item a:visited {
+   color: var(--Navigation-subtle-color);
+ }
+ .Navigation--subtle .Navigation-item a:hover {
+   color: var(--Navigation-suble-active-color);
+ }
+
+ /**
+  * Navigation with vertical dividers
+  */

@@ -17,3 +17,7 @@
 .u-padding-sm {
   padding: var(--space-small);
 }
+
+.u-align-center {
+  text-align: center;
+}
