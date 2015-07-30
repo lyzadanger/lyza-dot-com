@@ -1,8 +1,18 @@
 {{> _header}}
-<h1>Archive of {{ archiveName }}</h1>
-<ul>
-  {{#each postLinks}}
-    <li><a href="{{{ this }}}">{{ this }}</a></li>
-  {{/each}}
-</ul>
+
+<section class="Announcement TextBlock">
+  {{{content}}}
+</section>
+
+<section>
+  <div class="PostList Grid">
+    <div class="Grid-cell u-lg-size1of12"></div>
+    <div class="Grid-cell u-lg-size10of12">
+      {{#posts}}
+        <div class="Post-Blurb">{{> post/_blurb }}</div>
+      {{/posts}}
+    </div>
+  </div>
+</section>
+
 {{> _footer}}

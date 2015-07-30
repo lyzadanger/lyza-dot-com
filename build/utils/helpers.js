@@ -41,7 +41,7 @@ module.exports = {
     }
   },
   'posts': function (options) {
-    var count = parseInt(options.hash.count, 10) || 1,
+    var count = parseInt(options.hash.count, 10) || (this.posts && this.posts.length),
       offset = parseInt(options.hash.offset, 10) || 0,
       ret = '';
     if (this.posts) {
