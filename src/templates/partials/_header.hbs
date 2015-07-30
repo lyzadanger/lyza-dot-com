@@ -19,13 +19,13 @@
           <div class="Header-utils Grid">
             <nav role="navigation" class="Navigation Grid-cell u-size3of4">
               <ul class="Navigation-list">
-                <li class="Navigation-item Navigation-item--active">
+                <li class="Navigation-item {{#if isHomePage}}Navigation-item--active{{/if}}">
                   <a href="/" class="Navigation-link u-linkClean">Home</a>
                 </li>
-                <li class="Navigation-item">
+                <li class="Navigation-item {{#if isAboutPage}}Navigation-item--active{{/if}}">
                   <a href="/about" class="Navigation-link u-linkClean">About</a>
                 </li>
-                  <li class="Navigation-item"><a href="/blog" class="Navigation-link u-linkClean">Stuff</a></li>
+                  <li class="Navigation-item {{#if isPost }}Navigation-item--active{{/if}}"><a href="/blog" class="Navigation-link u-linkClean">Stuff</a></li>
               </ul>
             </nav>
             <div class="Grid-cell u-size1of4"><!-- When my head grows big, it goes in here --></div>

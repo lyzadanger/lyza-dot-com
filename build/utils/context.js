@@ -98,9 +98,14 @@ var localContext = function (filePath, attributes) {
   var fullPagePath = path.resolve(config.pageDir),
     fullPostPath   = path.resolve(config.postDir);
   if (filePath.indexOf(fullPostPath) !== -1) {
-    return postContext(attributes);
+    attributes = postContext(attributes);
+    attributes.isPost = true;
+    attributes.contentType = 'post';
+    return attributes;
   } else {
     // TODO extend when needed
+    attributes.isPage = true;
+    attributes.contentType = 'page';
     return attributes;
   }
 };

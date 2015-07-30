@@ -77,24 +77,23 @@ module.exports = function wrapWithHandlebars(opts) {
         template : 'index'
       }, localContext(file.path, file.data) || {}),
         self = this;
-
       var templatePath = config.templateDir + '/' + data.template + '.hbs';
       var template, wrapped;
       if (typeof templates[templatePath] === 'undefined') {
         try {
-          templates[templatePath] = Handlebars.compile(fs.readFileSync(templatePath, 'utf8'));
-          template = templates[templatePath];
+          templates[templatePath] = fs.readFileSync(templatePath, 'utf8');
+          template = Handlebars.compile(templates[templatePath]);
         } catch (err) {
           this.emit('error', new gutil.PluginError('gulp-wrap-handlebars', err));
         }
       } else {
-        template = templates[templatePath];
+        template = Handlebars.compile(templates[templatePath]);
       }
 
       data.content = file.contents.toString();
       try {
         getSharedContext(function (context) {
-          data = _.extend(context, data);
+          data = _.extend({}, context, data);
           file.contents = new Buffer(template(data));
           self.push(file);
           cb();
