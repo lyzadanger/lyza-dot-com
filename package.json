@@ -27,7 +27,7 @@
   "devDependencies": {
     "browser-sync": "^2.2.0",
     "browserify": "^9.0.3",
-    "browserify-shim": "^3.8.3",
+    "browserify-shim": "^3.8.10",
     "cssnext": "^1.0.1",
     "del": "^1.1.1",
     "extfs": "0.0.7",
