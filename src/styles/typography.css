@@ -40,7 +40,13 @@ body {
 
 h1 {
   font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-heading-lg);
+  font-size: var(--font-size-heading-md);
+}
+
+@media (--lg-viewport) {
+  h1 {
+    font-size: var(--font-size-heading-lg);
+  }
 }
 
 h2 {

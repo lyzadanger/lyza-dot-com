@@ -76,6 +76,8 @@
   --font-size-heading-xxxl: calc(var(--font-size-xxxl) * var(--font-size-heading-adjust));
   --font-size-heading-x4: calc(var(--font-size-4x) * var(--font-size-heading-adjust));
 
+  --font-size-heading-md-narrow: calc(var(--font-size-heading-md) - 4px);
+
   --font-family: "Times New Roman", serif;
   --heading-font-family: "Playfair Display", serif;
   --font-weight: 400;
