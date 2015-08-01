@@ -32,7 +32,7 @@ var getPosts = function (options, allPosts) {
   if (allPosts && allPosts.length) {
     for(var i = offset; i < (count + offset); i++) {
       if (allPosts[i]) {
-        posts.push(allPosts[i]);
+        posts.push(_.clone(allPosts[i]));
       }
     }
   }
