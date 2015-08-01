@@ -75,7 +75,7 @@
 }
 
 .PostBlurb-tags {
-  margin-top: calc(var(--space-xsmall) / 2);
+  margin: calc(var(--space-xsmall) / 2) var(--space-xsm);
 }
 
 .PostBlurb-blurb {
@@ -84,12 +84,16 @@
 }
 
 .PostBlurb-link {
-  padding: var(--space-xsm) var(--space-xxsm);
+  margin: 0 var(--space-xxsm);
+  padding: var(--space-xsm) 0;
+}
+.Post-thumbnail {
+  margin: 0;
+  text-align: center;
 }
 
-.Post-thumbnail {
-  text-align: center;
-  padding: var(--space-xsmall);
+.PostBlurb-thumbnail {
+  margin: var(--space-xsm) 0;
 }
 
 .Post-thumbnail-embed {

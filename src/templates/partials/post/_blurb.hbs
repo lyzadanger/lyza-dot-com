@@ -1,40 +1,12 @@
 <div class="PostBlurb">
   <h3 class="PostBlurb-title"><a class="u-link-colorless" href="{{url}}">{{title}}</a></h3>
   <h4 class="PostBlurb-date"><time datetime="{{ datePublishedISO }}">{{formatDate datePublished}}</time></h4>
+
   <div class="Grid Grid--alignTop">
-    {{#if thumbnail}}
-      <div class="Post-thumbnail PostBlurb-thumbnail Grid-cell u-md-size1of2">
-        <div class="FlexEmbed">
-          <div class="FlexEmbed-ratio FlexEmbed-ratio--{{thumbnail.ratio}}">
-            <div class="FlexEmbed-content Post-thumbnail-content">
-              <iframe class="Post-thumbnail-embed" src="{{thumbnail.url}}" frameborder="0" allowfullscreen></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
+    {{#if wideBlurb}}
+      {{> post/_blurb--wide }}
+    {{else}}
+      {{> post/_blurb--narrow}}
     {{/if}}
-
-    <div class="PostBlurb-blurb Grid-cell {{#if thumbnail}} u-md-size1of2 {{else}} u-size2of3 {{/if}}">
-      <ul class="PostBlurb-tags List--inline">
-        {{#each tags}}
-          <li class="PostBlurb-tag"><h5><span class="u-muted u-text-xs">#</span>{{this}}</h5></li>
-        {{/each}}
-      </ul>
-
-      {{{blurb}}}
-
-      {{#if thumbnail}}
-        <div class="PostBlurb-link">
-          <a class="Button Button--default Button--default-link u-sizeFill" href="{{url}}">More</a>
-        </div>
-      {{/if}}
-
-    </div>
-
-    {{#unless thumbnail}}
-      <div class="Grid-cell u-size1of3 PostBlurb-link u-align-right">
-        <a class="Button Button--default Button--default-link" href="{{url}}">More</a>
-      </div>
-    {{/unless}}
   </div>
 </div>
