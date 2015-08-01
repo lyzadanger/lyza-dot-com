@@ -50,8 +50,8 @@
 }
 
 .PostBlurb {
-  margin: 0 calc(var(--space-small) / 2);
-  padding: 0 0.125em;
+  margin: 0;
+  padding: 0;
   border-top: 3px solid var(--color-gray);
   margin-bottom: 2em;
 }
@@ -63,8 +63,10 @@
   }
 }
 
-.PostBlurb-title {
-  margin: 0.25em 0;
+.PostBlurb-title, .PostBlurb-date {
+  padding: 0 var(--space-xxsm);
+  margin: 0;
+  margin-top: var(--space-xxsm);
 }
 
 .PostBlurb-date {
@@ -78,14 +80,11 @@
 
 .PostBlurb-blurb {
   margin: 0;
+  padding: 0 var(--space-xsm);
 }
 
 .PostBlurb-link {
-  padding: var(--space-xsmall) 1em;
-}
-
-.PostBlurb-date {
-  margin: 0;
+  padding: var(--space-xsm) var(--space-xxsm);
 }
 
 .Post-thumbnail {
