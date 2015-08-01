@@ -18,6 +18,7 @@
 
 @custom-media --xsm-viewport-minor (width >= 25em);
 @custom-media --sm-viewport-minor (width >= 37.5em);
+@custom-media --md-viewport-minor (width >= 54em);
 
 /**
  * Misc
@@ -75,7 +76,7 @@
   --font-size-heading-xl: calc(var(--font-size-xl) * var(--font-size-heading-adjust));
   --font-size-heading-xxl: calc(var(--font-size-xxl) * var(--font-size-heading-adjust));
   --font-size-heading-xxxl: calc(var(--font-size-xxxl) * var(--font-size-heading-adjust));
-  --font-size-heading-x4: calc(var(--font-size-4x) * var(--font-size-heading-adjust));
+  --font-size-heading-x4: calc(var(--font-size-x4) * var(--font-size-heading-adjust));
 
   --font-size-heading-md-narrow: calc(var(--font-size-heading-md) - 4px);
 

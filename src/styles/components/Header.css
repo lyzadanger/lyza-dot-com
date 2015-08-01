@@ -16,9 +16,6 @@
  }
 
  @media (--md-viewport) {
-   .Header {
-     margin-bottom: var(--space-md);
-   }
    .Header-heading {
      border-right: var(--line-xsm) solid var(--color-gray);
    }
@@ -35,11 +32,9 @@
    z-index: 0;
  }
 
-
-
 @media (--md-viewport) {
   .Header-photo {
-    width: 45%;
+    width: 180px;
   }
 }
 
@@ -67,14 +62,14 @@
 }
 
  .Header h1 {
-   font-size: 48px;
+   font-size: var(--font-size-heading-xxxl);
    position: relative;
  }
 
 
  @media (--md-viewport) {
    .Header h1 {
-     font-size: var(--font-size-heading-xxxl);
+     font-size: var(--font-size-heading-x4);
    }
  }
 
@@ -85,15 +80,10 @@
   background-color: var(--color-gray-barely);
 }
 
-/**
- * Grow the font size for the h2, and, by extension, the size
- * of the ampersand
- * 1. Negative margin to bring the bottom hairline up
- */
 @media (--md-viewport) {
   .Header h2 {
     font-size: var(--font-size-heading-lg);
-    margin-bottom: -0.65em; /* 1 */
+    background-color: transparent;
   }
 }
 
@@ -109,7 +99,6 @@
 }
 
 .Header-Lyza-lyza {
-
   z-index: 50;
   margin-left: 0.75rem;
 }
@@ -131,11 +120,14 @@
  * Change margins around heading chunks as viewport changes
  */
 @media (--md-viewport) {
+  .Header-heading {
+    padding-left: var(--space-md);
+  }
   .Header-Lyza-lyza {
-    margin-top: 0.5em;
+    margin-top: var(--space-xsm);
   }
   .Header-Lyza-gardner {
-    margin-bottom: 0.75em;
+    margin-bottom: var(--space-sm);
   }
 }
 
@@ -176,7 +168,14 @@
  */
 @media (--md-viewport) {
   .Header-intro {
+    padding: var(--space-xsm);
+    font-size: calc(var(--font-size-sm) + 1px);
     max-width: 20em;
+  }
+}
+@media (--md-viewport-minor) {
+  .Header-intro {
+    font-size: calc(var(--font-size-sm) + 2px);
   }
 }
 .Header-more {
