@@ -83,6 +83,10 @@
   padding: 0 var(--space-xsm);
 }
 
+.PostBlurb-blurb--wide {
+  font-size: calc(var(--font-size-sm) + 2px);
+}
+
 .PostBlurb-link {
   margin: 0 var(--space-xxsm);
   padding: var(--space-xsm) 0;
@@ -93,7 +97,7 @@
 }
 
 .PostBlurb-thumbnail {
-  margin: var(--space-xsm) 0;
+  margin: 0;
 }
 
 .Post-thumbnail-embed {

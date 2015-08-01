@@ -1,7 +1,9 @@
+<div class="Grid-cell">
+  {{> post/_tags }}
+</div>
 <div class="Grid-cell {{#if thumbnail}}u-md-size1of2{{else}}u-md-size2of3{{/if}}">
   {{#unless thumbnail }}
-    {{> post/_tags }}
-    <div class="PostBlurb-blurb">
+    <div class="PostBlurb-blurb PostBlurb-blurb--wide">
       {{{blurb}}}
     </div>
   {{else }}
@@ -12,7 +14,6 @@
 </div>
 <div class="Grid-cell {{#if thumbnail}}u-md-size1of2{{else}} u-md-size1of3 u-align-right{{/if}}">
   {{#if thumbnail}}
-    {{> post/_tags }}
     <div class="PostBlurb-blurb">
       {{{blurb}}}
     </div>

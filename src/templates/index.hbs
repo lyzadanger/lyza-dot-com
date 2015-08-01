@@ -6,21 +6,11 @@
 
 <section class="PostGrid">
   <div class="Grid">
-    {{#posts count="1"}}
-      <div class="Grid-cell u-lg-size2of3">
-        <div class="Post-Blurb">{{> post/_blurb wideBlurb="true" }}</div>
-      </div>
-    {{/posts}}
-    {{#posts count="1" offset="1"}}
-      <div class="Grid-cell u-md-size1of2 u-lg-size1of3">
+    {{#gridPosts count="5"}}
+      <div class="Grid-cell {{gridWidth}}">
         <div class="Post-Blurb">{{> post/_blurb }}</div>
       </div>
-    {{/posts}}
-    {{#posts count="3" offset="2"}}
-      <div class="Grid-cell u-md-size1of2 u-lg-size1of3">
-        <div class="Post-Blurb">{{> post/_blurb }}</div>
-      </div>
-    {{/posts}}
+    {{/gridPosts}}
   </div>
 </section>
 

@@ -13,7 +13,7 @@
   --Button-border-width: 3px;
   --Button-disabled-opacity: 0.5;
   --Button-font-weight: 600;
-  --Button-padding: 0.375em 1em;
+  --Button-padding: 0.375em 0.75em;
   --Button-transition-duration: 300ms;
   --Button-transition-timing-function: ease;
 }
