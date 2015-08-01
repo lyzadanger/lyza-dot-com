@@ -18,6 +18,8 @@
  @media (--md-viewport) {
    .Header-heading {
      border-right: var(--line-xsm) solid var(--color-gray);
+     border-bottom: none;
+     padding-left: var(--space-md);
    }
    .Header-body {
      padding-bottom: var(--space-sm);
@@ -44,22 +46,10 @@
   }
 }
 
-/**
- * 1. For .Header-photo absolute positioning
- */
-
-
-@media (--md-viewport) {
- .Header-heading {
-   border-bottom: none;
- }
-}
-
  .Header h1 {
    font-size: var(--font-size-heading-xxxl);
    position: relative;
  }
-
 
  @media (--md-viewport) {
    .Header h1 {
@@ -87,12 +77,6 @@
   }
 }
 
-/**
- * Sections of the main heading for each part of my name.
- * 1. Each chunk should be a block element, even if (likely) a span
- * 2. Negative top margin for overlap of text elements
- * 3. z-index to control z-axis compositing of text elements
- */
 .Header-Lyza {
   position: relative;
   display: block; /* 1 */
@@ -110,19 +94,10 @@
 }
 
 .Header-Lyza-gardner {
-
-  margin-left: var(--space-xsm);
-  margin-top: calc(-1 * var(--space-sm));
-  margin-bottom: var(--space-xsm);
+  margin: calc(-1 * var(--space-sm)) 0 var(--space-xsm) var(--space-xsm);
 }
 
-/**
- * Change margins around heading chunks as viewport changes
- */
 @media (--md-viewport) {
-  .Header-heading {
-    padding-left: var(--space-md);
-  }
   .Header-Lyza-lyza {
     margin-top: var(--space-xsm);
   }
@@ -132,9 +107,6 @@
 }
 
 @media (--lg-viewport) {
-  .Header-Lyza-lyza {
-
-  }
   .Header-Lyza-danger {
     margin-top: calc(-1 * var(--space-md));
   }
@@ -159,13 +131,14 @@
   transform: scale(2); /* 4 */
 }
 
+/**
+ * Header intro blurb
+ */
+
 .Header-intro {
   padding: var(--space-xsm);
 }
 
-/**
- * .Header-intro gets unwieldy when really wide
- */
 @media (--md-viewport) {
   .Header-intro {
     padding: var(--space-xsm);
@@ -179,13 +152,11 @@
     font-size: calc(var(--font-size-sm) + 2px);
   }
 }
+
 @media (--lg-viewport) {
   .Header-intro {
     padding: var(--space-sm);
   }
-}
-.Header-more {
-  margin-top: 0.5em;
 }
 
 .Header-greeting {
