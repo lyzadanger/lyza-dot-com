@@ -73,19 +73,29 @@
 }
 
 .PostBlurb-tags {
-
+  margin-top: calc(var(--space-xsmall) / 2);
 }
 
 .PostBlurb-blurb {
-  margin: 0.325em 0;
+  margin: 0;
 }
 
 .PostBlurb-link {
-  padding: 0 1em;
+  padding: var(--space-xsmall) 1em;
 }
 
 .PostBlurb-date {
   margin: 0;
+}
+
+.Post-thumbnail {
+  text-align: center;
+  padding: var(--space-xsmall);
+}
+
+.Post-thumbnail-embed {
+  width: 100%;
+  height: 100%;
 }
 
 /**

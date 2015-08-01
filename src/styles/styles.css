@@ -4,9 +4,9 @@
 @import "base";
 @import "typography";
 
-
 @import "suitcss-utils-link";
 @import "suitcss-utils-size";
+@import "suitcss-components-flex-embed";
 @import "suitcss-components-grid";
 
 @import "utils/layout";

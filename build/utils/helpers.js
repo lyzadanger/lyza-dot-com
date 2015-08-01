@@ -18,11 +18,25 @@ var getMoment = function (date) {
     return convertedDate.isValid() && convertedDate;
   }
   return false;
-},
+};
 
-formatDate = function(date, format) {
+var formatDate = function(date, format) {
   var theDate = getMoment(date);
   return theDate && theDate.format(format);
+};
+
+var getPosts = function (options, allPosts) {
+  var count = parseInt(options.hash.count, 10) || (allPosts && allPosts.length),
+    offset = parseInt(options.hash.offset, 10) || 0,
+    posts = [];
+  if (allPosts && allPosts.length) {
+    for(var i = offset; i < (count + offset); i++) {
+      if (allPosts[i]) {
+        posts.push(allPosts[i]);
+      }
+    }
+  }
+  return posts;
 };
 
 module.exports = {
@@ -41,18 +55,16 @@ module.exports = {
     }
   },
   'posts': function (options) {
-    var count = parseInt(options.hash.count, 10) || (this.posts && this.posts.length),
-      offset = parseInt(options.hash.offset, 10) || 0,
-      ret = '';
-    if (this.posts) {
-      for (var i = offset; i < (count + offset); i++) {
-        if (this.posts[i]) {
-          var compiled = options.fn(this.posts[i]);
-          ret = ret + compiled;
-        }
-      }
+    var ret = '',
+      posts = getPosts(options, this.posts);
 
-    }
+    posts.forEach(function (post) {
+      ret = ret + options.fn(post);
+    });
+
     return ret;
+  },
+  'postThumbnail': function (options) {
+    console.log(this);
   }
 };
