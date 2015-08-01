@@ -40,13 +40,7 @@
 
 @media (--lg-viewport) {
   .Header-photo {
-    width: 33.3%;
-  }
-}
-
-@media (--xl-viewport) {
-  .Header-photo {
-    width: 250px;
+    width: 200px;
   }
 }
 
@@ -72,6 +66,12 @@
      font-size: var(--font-size-heading-x4);
    }
  }
+
+  @media (--lg-viewport) {
+    .Header h1 {
+      font-size: var(--font-size-heading-big);
+    }
+  }
 
 .Header h2 {
   margin: 0;
@@ -133,10 +133,10 @@
 
 @media (--lg-viewport) {
   .Header-Lyza-lyza {
-    margin-top: 0.5em;
+
   }
-  .Header-Lyza-gardner {
-    margin-bottom: 0.5em;
+  .Header-Lyza-danger {
+    margin-top: calc(-1 * var(--space-md));
   }
 }
 
@@ -173,9 +173,15 @@
     max-width: 20em;
   }
 }
+
 @media (--md-viewport-minor) {
   .Header-intro {
     font-size: calc(var(--font-size-sm) + 2px);
+  }
+}
+@media (--lg-viewport) {
+  .Header-intro {
+    padding: var(--space-sm);
   }
 }
 .Header-more {

@@ -78,6 +78,8 @@
   --font-size-heading-xxxl: calc(var(--font-size-xxxl) * var(--font-size-heading-adjust));
   --font-size-heading-x4: calc(var(--font-size-x4) * var(--font-size-heading-adjust));
 
+  --font-size-heading-big: calc(var(--font-size-heading-x4) * var(--ratio));
+
   --font-size-heading-md-narrow: calc(var(--font-size-heading-md) - 4px);
 
   --font-family: "Times New Roman", serif;
