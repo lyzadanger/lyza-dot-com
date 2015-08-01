@@ -64,16 +64,22 @@
   }
 
 .Header h2 {
+  display: none;
   margin: 0;
-  padding-bottom: var(--space-small);
   text-align: center;
   background-color: var(--color-gray-barely);
+}
+
+@media (--sm-viewport) {
+  .Header h2 {
+    display: block;
+    background-color: transparent;
+  }
 }
 
 @media (--md-viewport) {
   .Header h2 {
     font-size: var(--font-size-heading-lg);
-    background-color: transparent;
   }
 }
 

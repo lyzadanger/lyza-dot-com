@@ -1,14 +1,22 @@
 .Announcement {
-  padding: var(--space-xsmall);
-  padding-bottom: var(--space-large);
   margin: 0;
-  background-color: #f3f3f3;
+  padding: var(--space-xsm);
+  background-color: var(--color-gray-barely);
+  line-height: var(--line-height-spacey);
+  font-size: calc(var(--font-size-sm) + 1px);
+  border-left: 10px solid var(--color-pank);
+}
+
+@media (--sm-viewport) {
+  .Announcement {
+    margin: var(--space-md);
+  }
 }
 
 @media (--md-viewport) {
   .Announcement {
-    padding: var(--space-xsmall) var(--space-small);
-    border-left: 10px solid var(--color-pank);
-    margin: 0 var(--space-large);
+    font-size: calc(var(--font-size-sm) + 2px);
+    padding-left: var(--space-small);
+    margin: 0 var(--space-lg);
   }
 }
