@@ -27,7 +27,7 @@
  */
 
 :root {
-  --ratio: 1.3; /* 1 */
+  --ratio: 1.2; /* 1 */
 }
 
 /**
@@ -41,6 +41,7 @@
   --color-gray-mid: #777;
   --color-gray-light: #999;
   --color-gray-lighter: #ccc;
+  --color-gray-barely: #f3f3f3;
 
   --color-pank: #e60a62;
   --color-blue: #3956d3;
@@ -101,11 +102,27 @@
  */
 
 :root {
+  --space-sm: 1rem;
+  --space-xsm: 0.5rem;
+  --space-xxsm: 0.25rem;
+  --space-md: calc(var(--space-sm) * var(--ratio));
+  --space-lg: calc(var(--space-md) * var(--ratio));
   --space-xsmall: 0.5rem;
   --space-small: 1rem;
   --space-medium: calc(var(--space-small) * var(--ratio));
   --space-large: calc(var(--space-medium) * var(--ratio));
 }
+
+/**
+ * Border/line thicknesses
+ */
+ :root {
+   --line-xsm: 1px;
+   --line-sm: 2px;
+   --line-md: 3px;
+   --line-lg: 4px;
+   --line-xl: 6px;
+ }
 
 /**
  * Custom selectors

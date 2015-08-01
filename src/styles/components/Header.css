@@ -10,74 +10,32 @@
    margin: 0;
  }
 
- /**
-  * 1. Putting a background-color on this element allows a different
-  * background color on other parts of the header without affecting
-  * this one.
-  */
- .Header-main {
-   background-color: var(--Header-background-color); /* 1 */
- }
-
- .Header-subheading {
-   display: none;
+ .Header-heading {
+   position: relative;
+   border-bottom: var(--line-sm) solid black;
  }
 
  @media (--md-viewport) {
    .Header {
-     margin-bottom: var(--space-medium);
+     margin-bottom: var(--space-md);
    }
    .Header-heading {
-     border-right: 1px solid var(--color-gray);
-   }
- }
-
- /**
-  * At md and larger viewports, the intro paragraph (Header-intro)
-  * is to the right of the main header body
-  * 1. Give it a border on the right to separate it visually from Header-intro
-  * 2. Give more padding on the bottom before main page content
-  */
- @media (--md-viewport) {
-   .Header-subheading {
-     display: block;
+     border-right: var(--line-xsm) solid var(--color-gray);
    }
    .Header-body {
-     padding-bottom: 1rem; /* 2 */
+     padding-bottom: var(--space-sm);
    }
  }
 
-/**
- * Positioned absolutely to .Header-main
- * Background size adjusts across breakpoints
- * 1. Allow separator to show beneath photo
- * 2. Low z-index so we slide *behind* text elements of the header
- */
-.Header-photo {
-  width: 52.5%;
-  position: absolute;
-  bottom: 0px; /* 1 */ /* TODO FIX ME!!! */
-  right: 0;
-  z-index: 0; /* 2 */
-}
+ .Header-photo {
+   width: 150px;
+   position: absolute;
+   bottom: 0px; /* TODO FIX ME!!! */
+   right: 0;
+   z-index: 0;
+ }
 
-@media (--xsm-viewport-minor) {
-  .Header-photo {
-    width: 45%;
-  }
-}
 
-@media (--sm-viewport) {
-  .Header-photo {
-    width: 40%;
-  }
-}
-
-@media (--sm-viewport-minor) {
-  .Header-photo {
-    width: 35%;
-  }
-}
 
 @media (--md-viewport) {
   .Header-photo {
@@ -100,10 +58,7 @@
 /**
  * 1. For .Header-photo absolute positioning
  */
-.Header-heading {
-  position: relative; /* 1 */
-  border-bottom: 2px solid black;
-}
+
 
 @media (--md-viewport) {
  .Header-heading {
@@ -111,17 +66,13 @@
  }
 }
 
-/**
- * This is what displays the chunks of my name.
- * 1. The z-index here is so that text elements are on top of the photo (above)
- */
  .Header h1 {
-   font-size: var(--font-size-heading-xxl);
+   font-size: 48px;
    position: relative;
-   z-index: 5; /* 1 */
  }
 
- @media (--sm-viewport) {
+
+ @media (--md-viewport) {
    .Header h1 {
      font-size: var(--font-size-heading-xxxl);
    }
@@ -129,7 +80,9 @@
 
 .Header h2 {
   margin: 0;
+  padding-bottom: var(--space-small);
   text-align: center;
+  background-color: var(--color-gray-barely);
 }
 
 /**
@@ -151,23 +104,27 @@
  * 3. z-index to control z-axis compositing of text elements
  */
 .Header-Lyza {
+  position: relative;
   display: block; /* 1 */
 }
 
 .Header-Lyza-lyza {
-  margin: 0.25em 0 0 0.2em;
-  z-index: 25;
+
+  z-index: 50;
+  margin-left: 0.75rem;
 }
 
 .Header-Lyza-danger {
-  margin: -0.35em 0 0 1em; /* 2 */
   color: var(--color-pank);
-  z-index: 15; /* 3 */
+  margin-top: calc(-1 * var(--space-sm));
+  margin-left: var(--space-md);
 }
 
 .Header-Lyza-gardner {
-  margin: -0.35em 0 0.5em 0.25em;
-  z-index: 10; /* 3 */
+
+  margin-left: var(--space-xsm);
+  margin-top: calc(-1 * var(--space-sm));
+  margin-bottom: var(--space-xsm);
 }
 
 /**
@@ -192,15 +149,6 @@
 }
 
 /**
- * The alignment of the chunks of name changes across breakpoints
- */
-@media (--sm-viewport-minor) {
-  .Header-Lyza {
-    padding-left: var(--space-large);
-  }
-}
-
-/**
  * Create stylized ampersand.
  * 1. Circle
  * 2. Width of less than 1em slightly visually crops the &
@@ -220,7 +168,7 @@
 }
 
 .Header-intro {
-  padding: var(--space-small);
+  padding: var(--space-xsm);
 }
 
 /**
