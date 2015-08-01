@@ -12,77 +12,29 @@ var frontMatter = require('front-matter');
 var moment    = require('moment');
 var _         = require('lodash');
 
+var postData  = require('./blog-data').sortedPosts;
+var pageData  = require('./blog-data').pages;
+
 var postContext = require('./context-posts');
 
-var getFrontMatter = function (filePath) {
-  var contents = fs.readFileSync(path.resolve(filePath), 'utf8');
-  var fm = frontMatter(contents);
-  return (fm && fm.attributes) || {};
-};
-
-var getSortedPosts = function(files) {
-  var posts = {},
-    sortedPosts = [];
-
-  files = _.reject(files, function(file) {
-    return (path.extname(file) !== config.postExtension);
-  });
-
-  files.forEach(function(file) {
-    var attributes = getFrontMatter(file),
-      metaData = postContext(attributes);
-    if (metaData) {
-      posts[metaData.datePublishedISO] = metaData;
-    }
-  });
-  // Sort the keys of posts (which are dates), then reverse 'em
-  // so we get posts sorted by reverse chronology
-  _.keys(posts).sort().reverse().forEach(function(date) {
-    sortedPosts.push(posts[date]);
-  });
-  return sortedPosts;
-};
-
-var blogContext = function (cb) {
-  var posts = {},
-      sortedPosts = [];
-  // TODO Cleanup config stuff and break out context futzing
-  recursive(config.postDir, function (err, files) {
-    var posts = getSortedPosts(files);
-    cb({'posts': posts});
-  });
-};
-
-var pageContext = function (cb) {
-  var pages = [];
-  recursive(config.pageDir, function (err, files) {
-    files.forEach(function(file) {
-      // NOTE Use context-pages if we need to do anything with these attrs
-      pages.push(getFrontMatter(file));
-    });
-    cb({'pages': pages});
-  });
-};
-
-var sharedContext = function(done) {
+var sharedContext = function(win, onErr) {
   var context = {},
-    contextQueue = {
-      'posts' : blogContext,
-      'pages' : pageContext
-    },
-    queued = Object.keys(contextQueue).length;
-
-  var dequeueCallback = function(additionalContext) {
-    _.extend(context, additionalContext);
-    queued--;
-    if (!queued) {
-      done(context);
-    }
+    queue = ['posts', 'pages'];
+  var fail = function (err) {
+    onErr(err);
   };
 
-  for (var contextMethod in contextQueue) {
-    contextQueue[contextMethod](dequeueCallback);
-  }
+  var dequeue = function (key) {
+    return function (data) {
+      context[key] = data;
+      queue = _.without(queue, key);
+      if (!queue.length) {
+        win(context);
+      }
+    };
+  };
+  postData(dequeue('posts'), fail);
+  pageData(dequeue('pages'), fail);
 };
 
 /**

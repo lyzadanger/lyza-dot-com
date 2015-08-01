@@ -57,6 +57,8 @@ module.exports = function wrapWithHandlebars(opts) {
       buildContext(function (context) {
         sharedContext = context;
         cb(context);
+      }, function (err) {
+        throw new Error(err);
       });
     }
   };
