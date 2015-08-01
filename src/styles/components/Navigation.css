@@ -45,6 +45,12 @@
    border-color: transparent;
  }
 
+ @media (--md-viewport) {
+   .Navigation-item {
+     font-size: var(--font-size-lg);
+   }
+ }
+
  .Navigation-item a, .Navigation-item a:visited {
    color: var(--Navigation-color);
  }
