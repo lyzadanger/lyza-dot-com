@@ -35,6 +35,17 @@ body {
 }
 
 /**
+ * Webfont loading
+ */
+:--wfLoading {
+  opacity: 0;
+}
+:--wfActive, :--wfInactive {
+  opacity: 1.0;
+  transition: all 400ms;
+}
+
+/**
  * default heading sizes
  */
 
@@ -51,11 +62,13 @@ h1 {
 
 h2 {
   font-style: italic;
+  font-weight: var(--font-weight);
   font-size: var(--font-size-heading-md);
 }
 
 h3 {
   font-size: var(--font-size-heading-md);
+  font-weight: var(--font-weight-bold);
 }
 
 h4 {
