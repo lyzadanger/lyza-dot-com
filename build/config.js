@@ -29,12 +29,18 @@ module.exports = {
     dest: dest
   },
   blog: {
+    author: 'Lyza Danger Gardner',
     dateDisplayFormat: 'MMMM D, YYYY', // http://momentjs.com/docs/#/displaying/
+    description: 'Developer and Person',
+    domain: 'http://www.lyza.com',
+    feedDir: dest + '/feeds/',
+    language: 'en-US',
     permalinkPattern: 'YYYY/MM/DD',
     postFileName: 'index',
     postExtension: '.md',
     pageDir: dirs.pages,
     postDir: dirs.posts,
+    title: 'Lyza Danger Gardner',
     urlBase: '/'
   },
   browserSync: {

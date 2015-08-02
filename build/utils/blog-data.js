@@ -15,6 +15,9 @@ var postContext = require('./context-posts');
 var getFrontMatter = function (filePath) {
   var contents = fs.readFileSync(path.resolve(filePath), 'utf8');
   var fm = frontMatter(contents);
+  if (fm && fm.attributes) {
+    fm.attributes.source = fm.body;
+  }
   return (fm && fm.attributes) || {};
 };
 
