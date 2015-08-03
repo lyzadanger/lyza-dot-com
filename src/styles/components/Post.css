@@ -1,9 +1,7 @@
 :root {
   --post-image-border: 1px solid var(--color-black);
 }
-.Post {
-  margin: 0;
-}
+
 
 /**
  * At small viewports, we need padding on all sides...

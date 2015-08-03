@@ -9,7 +9,7 @@
 
 @media (--sm-viewport) {
   .Announcement {
-    margin: var(--space-md);
+    margin: var(--space-md) var(--space-sm);
   }
 }
 
@@ -17,6 +17,14 @@
   .Announcement {
     font-size: calc(var(--font-size-sm) + 2px);
     padding-left: var(--space-small);
-    margin: 0 var(--space-lg);
+    margin: var(--space-md) var(--space-sm);
+    margin-bottom: 0;
+  }
+}
+
+@media (--lg-viewport) {
+  .Announcement {
+    margin: var(--space-md) var(--space-lg);
+    margin-bottom: 0;
   }
 }

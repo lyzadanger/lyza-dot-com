@@ -21,9 +21,6 @@
      border-bottom: none;
      padding-left: var(--space-md);
    }
-   .Header-body {
-     padding-bottom: var(--space-sm);
-   }
  }
 
  .Header-photo {
