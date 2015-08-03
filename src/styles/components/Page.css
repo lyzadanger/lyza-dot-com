@@ -2,10 +2,6 @@
  * Page-level styling
  */
 
- .Page {
-   margin-top: 0.5em;
- }
-
  .Page-content {
    padding: 0 var(--space-small);
  }

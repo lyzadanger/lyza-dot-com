@@ -29,7 +29,7 @@
  .Header-photo {
    width: 150px;
    position: absolute;
-   bottom: 0px; /* TODO FIX ME!!! */
+   bottom: 0px;
    right: 0;
    z-index: 0;
  }
@@ -46,24 +46,24 @@
   }
 }
 
- .Header h1 {
+ .Header-heading-main {
    font-size: var(--font-size-heading-xxxl);
    position: relative;
  }
 
  @media (--md-viewport) {
-   .Header h1 {
+   .Header-heading-main {
      font-size: var(--font-size-heading-x4);
    }
  }
 
   @media (--lg-viewport) {
-    .Header h1 {
+    .Header-heading-main {
       font-size: var(--font-size-heading-big);
     }
   }
 
-.Header h2 {
+.Header-subheading {
   display: none;
   margin: 0;
   text-align: center;
@@ -71,14 +71,14 @@
 }
 
 @media (--sm-viewport) {
-  .Header h2 {
+  .Header-subheading {
     display: block;
     background-color: transparent;
   }
 }
 
 @media (--md-viewport) {
-  .Header h2 {
+  .Header-subheading {
     font-size: var(--font-size-heading-lg);
   }
 }
