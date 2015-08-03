@@ -5,11 +5,11 @@
  */
 
  :root {
-   --Navigation-font-family: "Times New Roman", "Georgia", serif;
+   --Navigation-font-family: var(--font-family);
    --Navigation-background-color: var(--color-white);
    --Navigation-color: var(--color-black);
    --Navigation-active-color: var(--color-pank);
-   --Navigation-item-padding: 0.25em;
+   --Navigation-item-padding: var(--space-xxsm);
    --Navigation-item-border-width: 10px;
    --Navigation-item-border-active-color: var(--color-pank);
    --Navigation-item-font-size: var(--font-size-md);
@@ -79,7 +79,3 @@
  .Navigation--subtle .Navigation-item a:hover {
    color: var(--Navigation-suble-active-color);
  }
-
- /**
-  * Navigation with vertical dividers
-  */

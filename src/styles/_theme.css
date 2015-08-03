@@ -82,7 +82,7 @@
 
   --font-size-heading-md-narrow: calc(var(--font-size-heading-md) - 4px);
 
-  --font-family: "Times New Roman", serif;
+  --font-family: "Times New Roman", "Times", "Georgia", serif;
   --heading-font-family: "Playfair Display", serif;
   --font-weight: 400;
   --font-weight-bold: 900;
