@@ -1,0 +1,31 @@
+.Tile {
+  margin-top: var(--margin-base);
+  border-top: var(--line-md) solid var(--color-gray);
+}
+
+@media (--md-viewport) {
+  .Tile {
+    margin: var(--margin-base) var(--space-sm) 0 var(--space-sm);
+  }
+}
+
+.Tile-header {
+  margin: 0;
+  border-bottom: var(--line-xsm) solid var(--color-gray-lighter);
+}
+
+.Tile-heading {
+  margin: var(--space-xxsm);
+}
+
+
+.Tile-body {
+  margin-top: var(--space-xsm);
+  padding: 0 var(--space-xsm);
+}
+
+@media (--md-viewport) {
+  .Tile-body {
+    padding: 0 var(--space-xxsm);
+  }
+}

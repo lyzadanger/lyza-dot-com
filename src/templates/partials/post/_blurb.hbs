@@ -1,6 +1,12 @@
-  <h3 class="PostBlurb-title"><a class="u-link-colorless" href="{{url}}">{{title}}</a></h3>
-  <h4 class="PostBlurb-date"><time datetime="{{ datePublishedISO }}">{{formatDate datePublished}}</time></h4>
-  {{> post/_tags }}
-  <div class="PostBlurb-blurb">
+  <div class="Tile-header">
+    <h3 class="Tile-heading"><a class="u-link-colorless" href="{{url}}">{{title}}</a></h3>
+    <h4 class="Tile-heading"><time datetime="{{ datePublishedISO }}">{{formatDate datePublished}}</time></h4>
+  </div>
+  <ul class="List--inline is-indented--xxsm">
+    {{#each tags}}
+      <li><h5><span class="u-muted u-text-xs">#</span>{{this}}</h5></li>
+    {{/each}}
+  </ul>
+  <div class="Tile-body">
     {{{blurb}}}
   </div>

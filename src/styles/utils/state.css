@@ -1,0 +1,11 @@
+.is-indented {
+  margin-left: var(--space-sm) !important;
+}
+
+.is-indented--xsm {
+  margin-left: var(--space-xsm) !important;
+}
+
+.is-indented--xxsm {
+  margin-left: var(--space-xxsm) !important;
+}
