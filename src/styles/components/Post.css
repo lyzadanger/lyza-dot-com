@@ -89,19 +89,6 @@
   margin: 0 var(--space-xxsm);
   padding: var(--space-xsm) 0;
 }
-.Post-thumbnail {
-  margin: 0;
-  text-align: center;
-}
-
-.PostBlurb-thumbnail {
-  margin: 0;
-}
-
-.Post-thumbnail-embed {
-  width: 100%;
-  height: 100%;
-}
 
 /**
  * A grid layout of PostBlurbs

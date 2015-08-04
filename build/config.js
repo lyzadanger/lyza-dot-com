@@ -44,6 +44,7 @@ module.exports = {
     urlBase: '/'
   },
   browserSync: {
+    open: false,
     server: {
       baseDir: dest
     }

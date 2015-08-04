@@ -7,8 +7,10 @@
       {{{blurb}}}
     </div>
   {{else }}
-    <div class="PostBlurb-thumbnail--wide">
-      {{> post/_thumbnail }}
+    <div class="PostBlurb-thumbnail PostBlurb-thumbnail--wide">
+      {{#with thumbnail}}
+        {{> _embedThumbnail }}
+      {{/with}}
     </div>
   {{/unless}}
 </div>
