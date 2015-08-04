@@ -1,7 +1,7 @@
 .Announcement {
   margin: 0;
   padding: var(--space-xsm);
-  background-color: var(--color-gray-barely);
+  /*background-color: var(--color-gray-barely);*/
   line-height: var(--line-height-spacey);
   font-size: calc(var(--font-size-sm) + 1px);
   border-left: 10px solid var(--color-pank);

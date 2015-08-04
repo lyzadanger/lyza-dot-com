@@ -48,7 +48,6 @@
 }
 
 .PostBlurb {
-  margin: 0;
   padding: 0;
   border-top: 3px solid var(--color-gray);
   margin-bottom: 2em;
@@ -79,15 +78,6 @@
 .PostBlurb-blurb {
   margin: 0;
   padding: 0 var(--space-xsm);
-}
-
-.PostBlurb-blurb--wide {
-  font-size: calc(var(--font-size-sm) + 2px);
-}
-
-.PostBlurb-link {
-  margin: 0 var(--space-xxsm);
-  padding: var(--space-xsm) 0;
 }
 
 /**

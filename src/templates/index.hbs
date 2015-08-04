@@ -6,17 +6,17 @@
 
 <section class="PostGrid">
   <div class="Grid">
-    {{#gridPosts count="5"}}
-      <div class="Grid-cell {{gridWidth}}">
-        <div class="Post-Blurb">{{> post/_blurb }}</div>
+    {{#posts count="6"}}
+      <div class="Grid-cell u-md-size1of2 u-lg-size1of3">
+        <div class="PostBlurb">{{> post/_blurb }}</div>
       </div>
-    {{/gridPosts}}
+    {{/posts}}
   </div>
 </section>
 
 <div class="Grid">
   <div class="Grid-cell u-align-right">
-    <a class="Button--link Button Button--default Button--default-link" href="/blog">Read all the Stuff</a>
+    <a class="Button--link Button Button--default Button-link--default" href="/blog">Read all the Stuff</a>
   </div>
 </div>
 

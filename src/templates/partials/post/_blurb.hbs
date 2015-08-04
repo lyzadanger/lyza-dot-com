@@ -1,12 +1,6 @@
-<div class="PostBlurb">
   <h3 class="PostBlurb-title"><a class="u-link-colorless" href="{{url}}">{{title}}</a></h3>
   <h4 class="PostBlurb-date"><time datetime="{{ datePublishedISO }}">{{formatDate datePublished}}</time></h4>
-
-  <div class="Grid Grid--alignTop">
-    {{#if wideGrid}}
-      {{> post/_blurb--wide }}
-    {{else}}
-      {{> post/_blurb--narrow}}
-    {{/if}}
+  {{> post/_tags }}
+  <div class="PostBlurb-blurb">
+    {{{blurb}}}
   </div>
-</div>

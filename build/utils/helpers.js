@@ -54,39 +54,6 @@ module.exports = {
       return theDate.toISOString();
     }
   },
-  'gridPosts': function (options) {
-    var ret = '',
-      posts = getPosts(options, this.posts);
-    // If the _second_ post has a thumbnail...
-    if (posts.length && posts[1]) {
-      posts[0].gridWidth = 'u-lg-size8of12';
-      posts[1].gridWidth = 'u-md-size1of2 u-lg-size4of12';
-      posts[0].wideGrid = true;
-      posts[1].wideGrid = false;
-
-      if (posts[0].thumbnail && posts[1].thumbnail) {
-        posts[0].gridWidth = 'u-lg-size6of12';
-        posts[1].gridWidth = 'u-lg-size6of12';
-        posts[1].wideGrid = true;
-      } else if (posts[1].thumbnail) {
-        posts[0].gridWidth = 'u-lg-size4of12';
-        posts[1].gridWidth = 'u-lg-size8of12';
-        posts[0].wideGrid = false;
-        posts[1].wideGrid = true;
-      }
-    }
-
-    if (posts.length > 2) {
-      for (var i = 2; i < posts.length; i++) {
-        posts[i].wideGrid = false;
-        posts[i].gridWidth = 'u-md-size1of2 u-lg-size1of3';
-      }
-    }
-    posts.forEach(function (post) {
-      ret = ret + options.fn(post);
-    });
-    return ret;
-  },
   'posts': function (options) {
     var ret = '',
       posts = getPosts(options, this.posts);

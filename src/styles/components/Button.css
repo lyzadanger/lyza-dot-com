@@ -13,7 +13,8 @@
   --Button-border-width: 3px;
   --Button-disabled-opacity: 0.5;
   --Button-font-weight: 600;
-  --Button-padding: 0.375em 0.75em;
+  --Button-padding: 0.375em 0.5em;
+  --Button-padding--tight: 0.375em 0.25em;
   --Button-transition-duration: 300ms;
   --Button-transition-timing-function: ease;
 }
@@ -169,13 +170,21 @@
 }
 
 /**
+ * Buttons for tighter spaces
+ */
+.Button--tight {
+  font-size: var(--font-size-sm);
+  padding: var(--Button-padding--tight);
+}
+
+/**
  * Links as buttons
  */
- .Button--default-link, .Button--default-link:visited {
+ .Button-link--default, .Button-link--default:visited {
    color: var(--color-black);
  }
 
- .Button--default-link:hover {
+ .Button-link--default:hover {
    color: var(--Button-primary-background-color);
  }
 
