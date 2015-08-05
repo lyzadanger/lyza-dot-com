@@ -9,6 +9,20 @@
   }
 }
 
+.TileGrid {
+  margin: 0;
+}
+
+.Tile-container:first-of-type .Tile {
+  margin-top: 0;
+}
+
+@media (--md-viewport) {
+  .Tile-container:first-of-type .Tile {
+    margin-top: var(--margin-base);
+  }
+}
+
 .Tile-header {
   margin: 0;
   border-bottom: var(--line-xsm) solid var(--color-gray-lighter);
