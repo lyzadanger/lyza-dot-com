@@ -123,7 +123,7 @@
  *    for surrounding text
  * 4. Double the size of the whole element, but keep it in flow
  */
-.Header em {
+.Header-ampersand {
   background-color: var(--color-pank);
   border-radius: 100%; /* 1 */
   color: var(--color-white);
@@ -145,14 +145,14 @@
 @media (--md-viewport) {
   .Header-intro {
     padding: var(--space-xsm);
-    font-size: calc(var(--font-size-sm) + 1px);
-    max-width: 20em;
+    /*font-size: calc(var(--font-size-sm) + 1px);*/
+    max-width: 16em;
   }
 }
 
 @media (--md-viewport-minor) {
   .Header-intro {
-    font-size: calc(var(--font-size-sm) + 2px);
+    /*font-size: calc(var(--font-size-sm) + 2px);*/
   }
 }
 

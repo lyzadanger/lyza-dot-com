@@ -1,9 +1,13 @@
 .u-muted {
-  color: var(--color-gray-lighter);
+  color: var(--color-gray-light);
+}
+
+.u-light {
+  color: var(--color-gray-mid);
 }
 
 .u-lighter {
-  color: var(--color-gray);
+  color: var(--color-gray-lighter);
 }
 
 .u-text-xs {
