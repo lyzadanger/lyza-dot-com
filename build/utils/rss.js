@@ -12,6 +12,7 @@ var postData = require('./blog-data').sortedPosts;
 var _     = require('lodash');
 
 var formatRFC822 = 'ddd, DD MMM YYYY HH:mm:ss ZZ',// Required by RSS
+  markedConfig = config.marked,
   rssConfig = config.blog,
   feeds = {},
   feedInfo;
@@ -66,10 +67,7 @@ var addItem = function (post) {
 
 var generateFeeds = function (cb) {
 
-  marked.setOptions({
-    gfm: true,
-    smartypants: true
-  });
+  marked.setOptions(markedConfig);
   // Create the "main" feed for all posts
   var allRSSInfo = _.extend({}, feedInfo, {
     title: rssConfig.title + ': everything',

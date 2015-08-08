@@ -63,6 +63,7 @@
     "suitcss-utils-link": "^0.5.2",
     "suitcss-utils-size": "^0.7.2",
     "through2": "^0.6.3",
+    "typogr": "^0.6.5",
     "vinyl-fs-fake": "^1.1.0",
     "vinyl-paths": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",

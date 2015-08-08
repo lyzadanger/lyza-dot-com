@@ -74,6 +74,13 @@ module.exports = {
     src: [ srcs.pages, srcs.posts ],
     dest: dest
   },
+  marked: { // Shared by several tasks
+    gfm: true,
+    highlight: function(code) {
+        return require('highlight.js').highlightAuto(code).value;
+    },
+    smartypants: true
+  },
   publish: {
     dest: dirs.posts,
     drafts: dirs.drafts,
