@@ -12,6 +12,17 @@
           </div>
           <section class="Grid-cell u-md-size8of12 u-lg-size8of12">
             <div class="Post-content">
+              {{#if thumbnail}}
+                {{#with thumbnail}}
+                  <div class="Thumbnail">
+                    <div class="FlexEmbed">
+                      <div class="FlexEmbed-ratio FlexEmbed-ratio--{{ratio}}">
+                        <iframe class="FlexEmbed-content" src="{{url}}" frameborder="0" allowfullscreen></iframe>
+                      </div>
+                    </div>
+                  </div>
+                {{/with}}
+              {{/if}}
               {{{content}}}
             </article>
           </div>
