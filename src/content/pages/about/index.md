@@ -1,6 +1,6 @@
 ---
 title: About
-template: page
+template: about
 isAboutPage: true
 ---
 
