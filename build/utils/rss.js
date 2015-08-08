@@ -71,7 +71,7 @@ var generateFeeds = function (cb) {
   // Create the "main" feed for all posts
   var allRSSInfo = _.extend({}, feedInfo, {
     title: rssConfig.title + ': everything',
-    feed_url: rssConfig.domain + '/feeds/rss.xml'
+    feed_url: rssConfig.domain + '/feeds/rss.rss'
   });
 
   feeds.rss = new RSS(allRSSInfo);
@@ -94,7 +94,7 @@ var generateFeeds = function (cb) {
     mkdirp(path.resolve(rssConfig.feedDir), function (err) {
       if (err) { throw new Error(err); }
       for (var feed in feeds) {
-        fs.writeFile(path.resolve(rssConfig.feedDir + '/' + feed + '.xml'),
+        fs.writeFile(path.resolve(rssConfig.feedDir + '/' + feed + '.rss'),
           feeds[feed].xml(),
           dequeue
         );
