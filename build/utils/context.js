@@ -12,6 +12,7 @@ var frontMatter = require('front-matter');
 var moment    = require('moment');
 var _         = require('lodash');
 
+var dataData  = require('./blog-data').data;
 var postData  = require('./blog-data').sortedPosts;
 var pageData  = require('./blog-data').pages;
 
@@ -19,7 +20,7 @@ var postContext = require('./context-posts');
 
 var sharedContext = function(win, onErr) {
   var context = {},
-    queue = ['posts', 'pages'];
+    queue = ['posts', 'pages', 'data'];
   var fail = function (err) {
     onErr(err);
   };
@@ -33,6 +34,7 @@ var sharedContext = function(win, onErr) {
       }
     };
   };
+  dataData(dequeue('data'), fail);
   postData(dequeue('posts'), fail);
   pageData(dequeue('pages'), fail);
 };

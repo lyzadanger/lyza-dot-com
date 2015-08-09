@@ -3,6 +3,7 @@
 var dest = './dist',
   src  = './src',
   dirs = {
+    data: src + '/data',
     drafts: src + '/content/drafts',
     pages: src + '/content/pages',
     posts: src + '/content/posts',
@@ -30,6 +31,7 @@ module.exports = {
   },
   blog: {
     author: 'Lyza Danger Gardner',
+    dataDir: dirs.data,
     dateDisplayFormat: 'MMMM D, YYYY', // http://momentjs.com/docs/#/displaying/
     description: 'Developer and Person',
     domain: 'http://www.lyza.com',

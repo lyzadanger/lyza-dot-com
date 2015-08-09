@@ -9,6 +9,7 @@ var path        = require('path');
 var _           = require('lodash');
 var config      = require('../config').blog;
 var recursive   = require('recursive-readdir');
+var yaml        = require('js-yaml');
 
 var postContext = require('./context-posts');
 
@@ -35,6 +36,23 @@ var sortPosts = function(posts) {
     sorted.push(_.findWhere(posts, { datePublishedISO: date}));
   });
   return sorted;
+};
+
+/**
+ * Read YAML data out of data files
+ */
+var dataData = function (win, fail) {
+  var data = {};
+  recursive(config.dataDir, function (err, files) {
+    if (err) { fail(err); }
+    else {
+      files.forEach(function (file) {
+        var key = path.basename(file, path.extname(file));
+        data[key] = yaml.safeLoad(fs.readFileSync(file));
+      });
+    }
+    win(data);
+  });
 };
 
 var pageData = function (win, fail) {
@@ -85,6 +103,7 @@ var sortedPostData = function (win, fail) {
   });
 };
 
+module.exports.data  = dataData;
 module.exports.posts = postData;
 module.exports.pages = pageData;
 module.exports.sortedPosts = sortedPostData;

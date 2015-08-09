@@ -1,0 +1,30 @@
+- url: http://alistapart.com/column/the-tedium-of-managing-code
+  title: "The Tedium of Managing Code"
+  type: article
+  source: "A List Apart"
+  sourceUrl: http://alistapart.com
+  date: "2015-08-06"
+- url: https://twitter.com/triblondon/status/620281007363624960
+  title: "Tweet from @triblondon"
+  type: reference
+  source: "Andrew Betts, @triblondon"
+  sourceUrl: https://twitter.com/triblondon
+  date: "2015-07-12"
+- url: https://adactio.com/journal/9195
+  source: "Jeremy Keith, @adactio"
+  type: reference
+  sourceUrl: https://adactio.com
+  date: "2015-06-30"
+  title: "Adactio: Edge Words"
+- url: https://huffduffer.com/adactio/243779
+  source: "Huffduffer"
+  title: "My Responsive Day Out 3 Talk, Audio"
+  sourceUrl: https://huffduffer.com
+  date: "2015-06-21"
+  type: reference
+- url: http://alistapart.com/column/practicing-mentorship
+  source: "A List Apart"
+  sourceUrl: http://alistapart.com
+  type: article
+  title: "Mentorship for the Novice Expert"
+  date: "2015-05-28"

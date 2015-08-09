@@ -12,6 +12,11 @@
           <h4 class="Tile-heading">Things I wrote and did</h4>
         </div>
         <div class="Tile-body">
+          <ul>
+          {{#each data.works }}
+            <li>{{title}}</li>
+          {{/each}}
+          </ul>
         </div>
       </div>
     </div>
