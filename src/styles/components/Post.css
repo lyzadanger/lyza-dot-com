@@ -23,7 +23,7 @@
  * HACK! I need a font size that is between medium and large
  */
 .Post-title {
-  font-size: calc(var(--font-size-heading-md) - 4px);
+  font-size: var(--font-size-sm-bump);
 }
 
 @media (--lg-viewport) {
@@ -37,7 +37,7 @@
 }
 
 .Post-date {
-  margin: 0.25em 0;
+  margin: var(--space-xxsm) 0;
   color: var(--color-gray-mid);
   font-style: italic;
   font-size: var(--font-size-heading-sm);

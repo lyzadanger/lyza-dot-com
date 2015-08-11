@@ -39,9 +39,8 @@ var getPubDate = function getPubDate (attributes) {
  * Make the typography in some attributes better for the web
  */
 var typographyAttributes = function typographyAttributes (attributes) {
-  ['title', 'blurb'].forEach(function (typeAttr) {
-    attributes[typeAttr] = attributes[typeAttr] && typogr.typogrify(attributes[typeAttr]);
-  });
+  attributes.title = attributes.title && typogr.smartypants(attributes.title);
+  attributes.blurb = attributes.blurb && typogr.typogrify(attributes.blurb);
   return attributes;
 };
 

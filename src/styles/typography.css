@@ -137,6 +137,7 @@ a:hover, a:active {
 
 pre,
 code {
+  font: var(--code-font);
   white-space: pre;
 }
 

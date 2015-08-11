@@ -13,4 +13,5 @@
 :root {
   --heading-font: var(--font-weight-bold) var(--font-size-heading-sm) var(--heading-font-family);
   --heading-color: var(--color-black);
+  --code-font: var(--font-weight) var(--font-size-xs-bump) var(--code-font-family);
 }
