@@ -42,7 +42,7 @@ var getPosts = function (options, allPosts) {
 module.exports = {
   'formatDate': function (date, options) {
     var formatted, format;
-    format = options.format || config.dateDisplayFormat;
+    format = options.hash.format || config.dateDisplayFormat;
     formatted = formatDate(date, format);
     if (formatted) {
       return new Handlebars.SafeString(formatted);

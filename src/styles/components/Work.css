@@ -1,0 +1,20 @@
+.Work {
+  margin-top: var(--margin-base);
+}
+
+.Work-heading {
+  margin: var(--space-xxsm) 0;
+  font-size: var(--font-size-heading-sm);
+}
+
+.Work-body {
+  border-left: 1px solid var(--color-gray-lighter);
+}
+
+.Work-blurb, .Work-embed {
+  margin: 0 var(--space-sm);
+}
+
+.Work-source {
+  font-size: var(--font-size-heading-xs);
+}

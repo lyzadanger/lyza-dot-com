@@ -8,3 +8,9 @@
   margin: 0 0.5rem 0 0;
   display: inline-block;
 }
+
+.List--plain {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

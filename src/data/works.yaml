@@ -1,13 +1,23 @@
+- url: https://twitter.com/bseymour/status/630641046825922560
+  title: "Kind words from Ben Seymour"
+  date: "2015-08-10"
+  sourceUrl: https://www.twitter.com/bseymour
+  embed: >
+  <blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Enthralling ride on the underground this morning, thanks to <a href="https://twitter.com/lyzadanger">@lyzadanger</a>, and <a href="https://twitter.com/fivesimplesteps">@fivesimplesteps</a> <a href="https://t.co/6kbBFqiDMd">https://t.co/6kbBFqiDMd</a> <a href="http://t.co/7yYhnaXaWq">pic.twitter.com/7yYhnaXaWq</a></p>&mdash; Ben Seymour (@bseymour) <a href="https://twitter.com/bseymour/status/630641046825922560">August 10, 2015</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 - url: http://alistapart.com/column/the-tedium-of-managing-code
   title: "The Tedium of Managing Code"
   type: article
+  blurb: >
+    An article I wrote admitting to my own personal Kryptonite: Client-side JavaScript packaging and dependency management.
   source: "A List Apart"
   sourceUrl: http://alistapart.com
   date: "2015-08-06"
 - url: https://twitter.com/triblondon/status/620281007363624960
-  title: "Tweet from @triblondon"
+  title: "Kind words from @triblondon"
   type: reference
-  source: "Andrew Betts, @triblondon"
+  source: "@triblondon"
+  embed: >
+   <blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Facebook did a fantastic job with <a href="https://twitter.com/edgeconf">@edgeconf</a> videos. And as a moderator <a href="https://twitter.com/lyzadanger">@lyzadanger</a> is frankly amazing.</p>&mdash; Andrew Betts (@triblondon) <a href="https://twitter.com/triblondon/status/620281007363624960">July 12, 2015</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   sourceUrl: https://twitter.com/triblondon
   date: "2015-07-12"
 - url: https://adactio.com/journal/9195
@@ -16,6 +26,8 @@
   sourceUrl: https://adactio.com
   date: "2015-06-30"
   title: "Adactio: Edge Words"
+  blurb: >
+    Jeremy has thoughtful coverage of EdgeConf 5 London, and some kind words for my participation. I am honored!
 - url: https://huffduffer.com/adactio/243779
   source: "Huffduffer"
   title: "My Responsive Day Out 3 Talk, Audio"

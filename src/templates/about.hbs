@@ -5,22 +5,42 @@
   </section>
 
   <div class="Grid TileGrid">
-    <div class="Grid-cell u-md-size1of2">
+    <div class="Grid-cell u-md-size2of3">
       <div class="Tile">
         <div class="Tile-header">
           <h3 class="Tile-heading">Shipped it!</h3>
           <h4 class="Tile-heading">Things I wrote and did</h4>
         </div>
         <div class="Tile-body">
-          <ul>
+          <ul class="List List--plain">
           {{#each data.works }}
-            <li>{{title}}</li>
+            <li class="List-item Work">
+              <div class="Grid">
+                <div class="Grid-cell u-size1of3">
+                  <div class="Work-header">
+                    <h3 class="Work-title Post-title Work-heading"><a class="Work-link u-link-colorless" href="{{url}}">{{title}}</a></h3>
+                    <h4 class="Work-date Post-date Work-heading"><time datetime="{{isoDate date}}">{{formatDate date format="MMM D, YYYY"}}</time></h4>
+                    <h6 class="Work-source Work-heading"><a href="{{sourceUrl}}" class="u-link-subtle">{{source}}</a></h6>
+                  </div>
+                </div>
+
+                <div class="Grid-cell u-size2of3 Work-body">
+                  {{#if embed}}
+                    <div class="Work-embed">{{{embed}}}<div>
+                  {{/if}}
+                  {{#if blurb}}
+                    <p class="Work-blurb">{{blurb}}</p>
+                  {{/if}}
+                </div>
+              </div>
+
+            </li>
           {{/each}}
           </ul>
         </div>
       </div>
     </div>
-    <div class="Grid-cell u-md-size1of2">
+    <div class="Grid-cell u-md-size1of3">
       <div class="Tile">
         <div class="Tile-header">
           <h3 class="Tile-heading">Speaking and Community</h3>
