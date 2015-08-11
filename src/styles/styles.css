@@ -17,10 +17,10 @@
 
 @import "components/Announcement";
 @import "components/Button";
+@import "components/Content";
 @import "components/Header";
 @import "components/List";
 @import "components/Navigation";
-@import "components/Page";
 @import "components/Post";
 @import "components/Separator";
 @import "components/TextBlock";

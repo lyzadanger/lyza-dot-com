@@ -1,16 +1,11 @@
-.List--inline {
-  list-style-type: none;
+.List--inline, .List--plain {
   margin: 0;
   padding: 0;
+  list-style-type: none;
 }
 
 .List--inline li {
-  margin: 0 0.5rem 0 0;
-  display: inline-block;
-}
-
-.List--plain {
-  list-style-type: none;
   margin: 0;
-  padding: 0;
+  margin-right: var(--space-xs);
+  display: inline-block;
 }

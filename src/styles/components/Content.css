@@ -1,0 +1,18 @@
+.Content {
+  margin-top: var(--margin-base);
+  padding: 0 var(--space-xs);
+}
+
+@media (--md-viewport) {
+  .Content {
+    padding: 0 var(--space-sm);
+  }
+}
+
+.Content-header {
+  margin: var(--space-xxsm);
+}
+
+.Content-header h1, .Content-header h2, .Content-header h3, .Content-header h4, .Content-header h5, .Content-header h6 {
+  margin-top: var(--space-xxsm);
+}

@@ -1,9 +1,9 @@
 {{> _header }}
-      <article class="Post">
+      <article class="Post u-margins-off u-sm-top-xs u-md-top-default">
         <div class="Grid">
           <div class="Grid-cell u-md-size2of12">
             <header class="Post-header">
-              <div class="Post-meta">
+              <div class="Post-meta Content-header">
               <h1 class="Post-title">{{{title}}}</h1>
               <h4 class="Post-date"><time datetime="{{datePublishedISO}}">{{formatDate datePublished}}</time></h4>
               </div>
@@ -11,7 +11,7 @@
             </header>
           </div>
           <section class="Grid-cell u-md-size8of12 u-lg-size8of12">
-            <div class="Post-content">
+            <div class="Post-content Content">
               {{#if thumbnail}}
                 {{#with thumbnail}}
                   <div class="Thumbnail">

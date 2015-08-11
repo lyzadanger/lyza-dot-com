@@ -114,6 +114,7 @@
 
 :root {
   --space-sm: 1rem;
+  --space-xs: 0.5rem;
   --space-xsm: 0.5rem;
   --space-xxsm: 0.25rem;
   --space-md: calc(var(--space-sm) * var(--ratio));

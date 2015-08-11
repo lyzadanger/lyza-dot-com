@@ -2,26 +2,6 @@
   --post-image-border: 1px solid var(--color-black);
 }
 
-
-/**
- * At small viewports, we need padding on all sides...
- */
-.Post-content {
-    padding: var(--space-small);
-}
-
-/**
- * Wider viewports horizontal padding only because nothing is above
- */
-@media (--md-viewport) {
-  .Post-content {
-    padding: 0 var(--space-small);
-  }
-}
-
-/**
- * HACK! I need a font size that is between medium and large
- */
 .Post-title {
   font-size: var(--font-size-sm-bump);
 }
@@ -37,12 +17,7 @@
 }
 
 .Post-date {
-  margin: var(--space-xxsm) 0;
   color: var(--color-gray-mid);
   font-style: italic;
   font-size: var(--font-size-heading-sm);
-}
-
-.Post-meta {
-  margin: calc(var(--space-small) / 2) calc(var(--space-small) / 2) calc(var(--space-small) / 2) var(--space-small);
 }
