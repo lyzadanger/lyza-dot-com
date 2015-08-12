@@ -185,7 +185,7 @@
  }
 
  .Button-link--default:hover {
-   color: var(--Button-primary-background-color);
+   color: var(--color-black);
  }
 
  .Button-link--primary, .Button-link--primary:visited, .Button-link--primary:hover {
