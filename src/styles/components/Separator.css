@@ -1,9 +1,6 @@
 /** @define Separator */
 
 :root {
-  --Separator-background: var(--hr-background);
-  --Separator-background-subtle: var(--color-gray-mid);
-  --Separator-background-subtler: var(--color-gray-light);
   --Separator-height: var(--hr-height);
   --Separator-height-sm: var(--hr-min-height);
   --Separator-height-lg: calc(var(--Separator-height) * var(--ratio));
@@ -17,7 +14,7 @@
 
 .Separator {
   height: var(--Separator-height);
-  background: var(--Separator-background);
+  background: currentColor;
 }
 
 /**
@@ -36,13 +33,17 @@
   height: var(--Separator-height-lg);
 }
 
+.Separator--light {
+  background: var(--color-gray-light);
+}
+
 /**
  * Modifier: subtler color
  */
 .Separator--subtle {
-  background: var(--Separator-background-subtle);
+  background: var(--color-gray-subtle);
 }
 
-.Separator--subtler {
-  background: var(--Separator-background-subtler);
+.Separator--barely {
+  background: var(--color-gray-barely);
 }
