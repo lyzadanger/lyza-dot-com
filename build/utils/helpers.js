@@ -4,10 +4,12 @@
  */
 'use strict';
 
-var _          = require('lodash');
-var config     = require('../config').blog;
-var Handlebars = require('handlebars');
-var moment     = require('moment');
+var _            = require('lodash');
+var config       = require('../config').blog;
+var marked       = require('marked');
+var markedConfig = require('../config').marked;
+var Handlebars   = require('handlebars');
+var moment       = require('moment');
 
 var getMoment = function (date) {
   var convertedDate;
@@ -54,6 +56,10 @@ module.exports = {
       return theDate.toISOString();
     }
   },
+  'markdown': function (content) {
+    marked.setOptions(markedConfig);
+    return marked(content);
+  },
   'posts': function (options) {
     var ret = '',
       posts = getPosts(options, this.posts);
@@ -63,8 +69,5 @@ module.exports = {
     });
 
     return ret;
-  },
-  'postThumbnail': function (options) {
-    console.log(this);
   }
 };

@@ -25,7 +25,7 @@
 
 .Tile-header {
   margin: 0;
-  border-bottom: var(--line-xsm) solid var(--color-gray-lighter);
+  border-bottom: var(--line-xs) solid var(--color-gray-lighter);
 }
 
 .Tile-body {

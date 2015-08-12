@@ -9,3 +9,11 @@
   margin-right: var(--space-xs);
   display: inline-block;
 }
+
+.List-item--spaced {
+  margin-top: 0;
+}
+
+.List-item--spaced + .List-item--spaced {
+  margin-top: var(--margin-base);
+}

@@ -17,7 +17,7 @@
 
  @media (--md-viewport) {
    .Header-heading {
-     border-right: var(--line-xsm) solid var(--color-gray);
+     border-right: var(--line-xs) solid var(--color-gray);
      border-bottom: none;
      padding-left: var(--space-md);
    }

@@ -46,6 +46,7 @@
   --color-gray-mid: #777;
   --color-gray-light: #929292;
   --color-gray-lighter: #ccc;
+  --color-gray-subtle: #dedede;
   --color-gray-barely: #f3f3f3;
 
   --color-pank: #e60a62;
@@ -129,7 +130,7 @@
  * Border/line thicknesses
  */
  :root {
-   --line-xsm: 1px;
+   --line-xs: 1px;
    --line-sm: 2px;
    --line-md: 3px;
    --line-lg: 4px;

@@ -37,13 +37,13 @@ body {
 /**
  * Webfont loading
  */
-:--wfLoading {
+/*:--wfLoading {
   opacity: 0;
 }
 :--wfActive, :--wfInactive {
   opacity: 1.0;
   transition: all 400ms;
-}
+}*/
 
 /**
  * default heading sizes
