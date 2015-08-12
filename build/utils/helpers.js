@@ -60,6 +60,10 @@ module.exports = {
     marked.setOptions(markedConfig);
     return marked(content);
   },
+  'postCount': function (options) {
+    var posts = getPosts(options, this.posts);
+    return posts.length || 0;
+  },
   'posts': function (options) {
     var ret = '',
       posts = getPosts(options, this.posts);
