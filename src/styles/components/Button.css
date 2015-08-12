@@ -8,7 +8,7 @@
  */
 
 :root {
-  --Button-border-color: transparent;
+  --Button-border-color: var(--color-pank);
   --Button-border-radius: 0px;
   --Button-border-width: 3px;
   --Button-disabled-opacity: 0.5;
@@ -128,18 +128,18 @@
  */
 
 :root {
-  --Button-primary-background-color: var(--color-pank);
-  --Button-primary-color: var(--color-white);
+  --Button-primary-background-color: var(--color-white);
+  --Button-primary-color: var(--color-pank);
 }
 
 .Button--primary {
   color: var(--Button-primary-color);
-  border-color: color(var(--Button-primary-background-color) shade(10%));
+  border-color: var(--Button-border-color);
   background-color: var(--Button-primary-background-color);
 }
 
 .Button--primary:matches(:focus, :hover) {
-  border-color: color(var(--Button-primary-background-color) shade(10%));
+  border-color: color(var(--Button-border-color) shade(10%));
   background-color: color(var(--Button-primary-background-color) l(+5%));
 }
 
@@ -188,6 +188,6 @@
    color: var(--Button-primary-background-color);
  }
 
- .Button--primary-link, .Button--primary-link:visited, .Button--primary-link:hover {
-   color: var(--Button-default-background-color);
+ .Button-link--primary, .Button-link--primary:visited, .Button-link--primary:hover {
+   color: var(--color-black);
  }

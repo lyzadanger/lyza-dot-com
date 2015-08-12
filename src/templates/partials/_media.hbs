@@ -1,0 +1,28 @@
+<li class="List-item List-item--spaced ListTile">
+  <div class="Grid">
+    <div class="Grid-cell">
+      <div class="Content-header">
+        <h3 class="ListTile-heading u-inline"><a class="u-link-subtle" href="{{url}}">{{title}}</a></h3>
+        <h4 class="ListTile-heading u-inline">{{type}}</h4>
+      </div>
+    </div>
+    <div class="Grid-cell">
+      {{#if embed}}
+        {{#with embed}}
+          <div class="u-margin-xs">
+            {{> _embedThumbnail }}
+          </div>
+        {{/with}}
+      {{/if}}
+      {{#if blurb}}
+        <div class="Grid">
+          <div class="Grid-cell">
+            <div class="u-top-tight u-md-top-off">
+              {{{markdown blurb}}}
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</li>

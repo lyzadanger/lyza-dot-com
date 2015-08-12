@@ -15,7 +15,7 @@
   date: "2015-08-06"
 - url: https://twitter.com/triblondon/status/620281007363624960
   title: "Kind words from @triblondon"
-  type: reference
+  type: mention
   source: "@triblondon"
   embed: >
    <blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Facebook did a fantastic job with <a href="https://twitter.com/edgeconf">@edgeconf</a> videos. And as a moderator <a href="https://twitter.com/lyzadanger">@lyzadanger</a> is frankly amazing.</p>&mdash; Andrew Betts (@triblondon) <a href="https://twitter.com/triblondon/status/620281007363624960">July 12, 2015</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -23,7 +23,7 @@
   date: "2015-07-12"
 - url: https://adactio.com/journal/9195
   source: "Jeremy Keith, @adactio"
-  type: reference
+  type: mention
   sourceUrl: https://adactio.com
   date: "2015-06-30"
   title: "Adactio: Edge Words"
@@ -34,10 +34,37 @@
   title: "My Responsive Day Out 3 Talk, Audio"
   sourceUrl: https://huffduffer.com
   date: "2015-06-21"
-  type: reference
+  type: mention
+  blurb: The audio of my talk at Responsive Day Out 3 in Brighton, UK, is available on Huffduffer.
+  embed: >
+    <audio src="http://responsiveconf.com.s3.amazonaws.com/2015/audio/14-lyza-gardner-responsiveconf2015.mp3" controls><a href="https://huffduffer.com/adactio/243779">Listen to Responsive Day Out 3: Lyza Gardner</a></audio>
+- url: https://laurenkinseyblog.wordpress.com/2015/06/14/web-design-day/
+  source: "Lauren Kinsey"
+  title: "Lauren's Coverage of Web Design Day 2015"
+  sourceUrl: "https://laurenkinseyblog.wordpress.com"
+  type: mention
+  blurb: >
+    Columbus, Ohio, women-in-tech blogger Lauren Kinsey attended [Web Design Day 2015](http://webdesignday.com/) in Pittsburgh, where I was lucky enough to speak this year.
 - url: http://alistapart.com/column/practicing-mentorship
   source: "A List Apart"
   sourceUrl: http://alistapart.com
   type: article
   title: "Mentorship for the Novice Expert"
+  blurb: "An article on [A List Apart](http://alistapart.com) about mentorship and how it can make one feel naive and nervous. Also about re-learning to ride a motorcycle."
   date: "2015-05-28"
+- url: http://www.accessiq.org/news/news/2015/04/qa-accessibility-for-the-apathetic
+  source: "Access iQ"
+  sourceUrl: http://accessiq.org
+  type: interview
+  date: "2015-04-14"
+  title: "Q&A about 'Accessibility for the Apathetic'"
+  blurb: >
+    The Australia-based not-for-profit accessibility advocacy organization Access iQ did a Q&A with me about a talk on accessibility I delivered in Stockholm, Sweden at the [Funka Accessibility Days](http://www.funka.com/en/we-offer/funka-accessibility-days/accessibility-days-2015/) conference.
+- url: http://alistapart.com/column/wai-finding-with-aria-landmark-roles
+  title: "WAI-Finding with Aria Landmark Roles"
+  blurb: >
+    During the spring of 2015, I focused on accessibility concerns. This article on [A List Apart](http://alistapart.com) tackles one teeny part of the picture: ARIA landmark roles.
+  type: article
+  date: "2015-04-09"
+  source: "A List Apart"
+  sourceUrl: http://alistapart.com

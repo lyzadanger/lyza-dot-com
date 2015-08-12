@@ -42,6 +42,15 @@
   text-align: right;
 }
 
+.u-float-left {
+  display: block;
+  float: left;
+}
+
+.u-inline {
+  display: inline;
+}
+
 @media (--sm-viewport) {
   .u-sm-margins-default {
     margin-top: var(--margin-base);

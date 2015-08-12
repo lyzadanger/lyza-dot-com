@@ -11,3 +11,7 @@
 .u-link-subtle, .u-link-subtle:visited {
   color: var(--color-blue-subtle);
 }
+
+.u-link-subtle:hover {
+  color: var(--color-pank);
+}

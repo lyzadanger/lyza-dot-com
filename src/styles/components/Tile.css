@@ -52,7 +52,7 @@
   font-size: var(--font-size-heading-xs);
 }
 
-.ListTile-body {
+.ListTile-right {
   border-top: 1px solid var(--color-gray-subtle);
 }
 
@@ -60,9 +60,11 @@
   .ListTile + .ListTile {
     border-top-width: 0;
   }
-  .ListTile-body {
-    padding: 0 var(--space-sm);
+  .ListTile-right {
     border-top-width: 0;
     border-left: var(--line-xs) solid var(--color-gray-lighter);
+  }
+  .ListTile-body {
+    padding: 0 var(--space-sm);
   }
 }

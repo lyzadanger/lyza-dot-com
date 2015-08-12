@@ -9,8 +9,8 @@
       <div class="Tile">
         <div class="Tile-header">
           <div class="Content-header">
-            <h3 class="Tile-heading">Shipped it!</h3>
-            <h4 class="Tile-heading">Things I wrote and did</h4>
+            <h3 class="Tile-heading">Scrapbook</h3>
+            <h4 class="Tile-heading">Latest Community Adventures and Chatter</h4>
           </div>
         </div>
         <div class="Tile-body u-top-tight u-md-top-default">
@@ -25,12 +25,18 @@
     <div class="Grid-cell u-md-size1of3">
       <div class="Tile">
         <div class="Tile-header">
-          <h3 class="Tile-heading">Speaking and Community</h3>
-          <h4 class="Tile-heading">Places I went, things I did</h4>
+          <div class="Content-header">
+            <h3 class="Tile-heading">Speaking, Writing, Community</h3>
+            <h4 class="Tile-heading">Places I went, things I did</h4>
+          </div>
         </div>
-        <ul>
-          <li>Test</li>
-        </ul>
+        <div class="Tile-body u-top-tight u-md-top-default">
+          <ul class="List List--plain">
+            {{#each data.media}}
+             {{> _media }}
+            {{/each}}
+          </ul>
+        </div>
       </div>
     </div>
   </div>
