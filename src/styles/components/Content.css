@@ -16,3 +16,8 @@
 .Content-header h1, .Content-header h2, .Content-header h3, .Content-header h4, .Content-header h5, .Content-header h6 {
   margin-top: var(--space-xxsm);
 }
+
+.Content-lede {
+  font-size: var(--font-size-md);
+  line-height: var(--ratio);
+}
