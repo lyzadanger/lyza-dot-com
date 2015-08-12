@@ -16,29 +16,7 @@
         <div class="Tile-body u-top-tight u-md-top-default">
           <ul class="List List--plain">
           {{#each data.works }}
-            <li class="List-item List-item--spaced Work">
-              <div class="Grid">
-                <div class="Grid-cell u-md-size1of3">
-                  <div class="Work-header Content-header">
-                    <h3 class="Work-title Post-title Work-heading"><a class="Work-link u-link-colorless" href="{{url}}">{{title}}</a></h3>
-                    <h4 class="Work-date Post-date Work-heading"><time datetime="{{isoDate date}}">{{formatDate date format="MMM D, YYYY"}}</time></h4>
-                    <h6 class="Work-source Work-heading"><a href="{{sourceUrl}}" class="u-link-subtle">{{source}}</a></h6>
-                  </div>
-                </div>
-
-                <div class="Grid-cell u-md-size2of3 Work-body">
-                  {{#if embed}}
-                    <div class="Work-embed">{{{embed}}}<div>
-                  {{/if}}
-                  {{#if blurb}}
-                    <div class="Work-blurb u-top-tight u-md-top-off">
-                      {{{markdown blurb}}}
-                    </div>
-                  {{/if}}
-                </div>
-              </div>
-
-            </li>
+            {{> _work }}
           {{/each}}
           </ul>
         </div>

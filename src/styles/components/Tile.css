@@ -37,3 +37,32 @@
     padding: 0 var(--space-xxsm);
   }
 }
+
+/* A tile in a grid list */
+
+.ListTile + .ListTile {
+  border-top: 3px solid var(--color-gray);
+}
+
+.ListTile-heading {
+  font-size: var(--font-size-heading-sm);
+}
+
+.ListTile-subheading {
+  font-size: var(--font-size-heading-xs);
+}
+
+.ListTile-body {
+  border-top: 1px solid var(--color-gray-subtle);
+}
+
+@media (--md-viewport) {
+  .ListTile + .ListTile {
+    border-top-width: 0;
+  }
+  .ListTile-body {
+    padding: 0 var(--space-sm);
+    border-top-width: 0;
+    border-left: var(--line-xs) solid var(--color-gray-lighter);
+  }
+}

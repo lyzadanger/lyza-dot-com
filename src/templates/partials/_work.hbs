@@ -1,0 +1,23 @@
+<li class="List-item List-item--spaced ListTile Work">
+  <div class="Grid">
+    <div class="Grid-cell u-md-size1of3">
+      <div class="Content-header">
+        <h3 class="Work-title ListTile-heading"><a class="u-link-colorless" href="{{url}}">{{title}}</a></h3>
+        <h4 class="Work-date Post-date ListTile-heading"><time datetime="{{isoDate date}}">{{formatDate date format="MMM D, YYYY"}}</time></h4>
+        <h6 class="Work-source ListTile-subheading"><a href="{{sourceUrl}}" class="u-link-subtle">{{source}}</a></h6>
+      </div>
+    </div>
+
+    <div class="Grid-cell u-md-size2of3 ListTile-body">
+      {{#if embed}}
+        <div class="Work-embed">{{{embed}}}<div>
+      {{/if}}
+      {{#if blurb}}
+        <div class="Work-blurb u-top-tight u-md-top-off">
+          {{{markdown blurb}}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+</li>
