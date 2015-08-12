@@ -32,6 +32,10 @@
   padding: 0 var(--space-xsm);
 }
 
+.Tile-body--stacked {
+  margin-bottom: var(--margin-base);
+}
+
 @media (--md-viewport) {
   .Tile-body {
     padding: 0 var(--space-xxsm);
@@ -40,7 +44,7 @@
 
 /* A tile in a grid list */
 
-.ListTile + .ListTile {
+.ListTile--paired + .ListTile--paired {
   border-top: 3px solid var(--color-gray);
 }
 
@@ -56,8 +60,12 @@
   border-top: 1px solid var(--color-gray-subtle);
 }
 
+.ListTile--stacked {
+  border-bottom: 1px solid var(--color-gray-subtle);
+}
+
 @media (--md-viewport) {
-  .ListTile + .ListTile {
+  .ListTile--paired + .ListTile--paired {
     border-top-width: 0;
   }
   .ListTile-right {

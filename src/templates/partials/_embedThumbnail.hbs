@@ -1,7 +1,18 @@
 <div class="Thumbnail">
   <div class="FlexEmbed">
-    <div class="FlexEmbed-ratio FlexEmbed-ratio--{{ratio}}">
-      <iframe class="FlexEmbed-content" src="{{url}}" frameborder="0" allowfullscreen></iframe>
+    <div class="{{#if ratio}}FlexEmbed-ratio  FlexEmbed-ratio--{{ratio}}{{/if}}">
+      {{#ifEqual type "video"}}
+        <iframe class="FlexEmbed-content" src="{{url}}" frameborder="0" allowfullscreen></iframe>
+      {{/ifEqual}}
+      {{#ifEqual type "image" }}
+        {{#if link}}
+          <a href="{{link}}">
+        {{/if}}
+        <img src="{{url}}" alt="{{alt}}">
+        {{#if link}}
+          </a>
+        {{/if}}
+      {{/ifEqual}}
     </div>
   </div>
 </div>

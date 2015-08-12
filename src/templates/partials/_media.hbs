@@ -1,4 +1,4 @@
-<li class="List-item List-item--spaced ListTile">
+<li class="List-item List-item--spaced ListTile ListTile--stacked">
   <div class="Grid">
     <div class="Grid-cell">
       <div class="Content-header">
@@ -6,21 +6,17 @@
         <h4 class="ListTile-heading u-inline">{{type}}</h4>
       </div>
     </div>
-    <div class="Grid-cell">
+    <div class="Grid-cell Tile-body Tile-body--stacked">
       {{#if embed}}
         {{#with embed}}
-          <div class="u-margin-xs">
+          <div class="u-margin-xs {{#if float}}u-float-{{float}}{{/if}}">
             {{> _embedThumbnail }}
           </div>
         {{/with}}
       {{/if}}
       {{#if blurb}}
-        <div class="Grid">
-          <div class="Grid-cell">
-            <div class="u-top-tight u-md-top-off">
-              {{{markdown blurb}}}
-            </div>
-          </div>
+        <div class="u-top-tight u-md-top-off">
+          {{{markdown blurb}}}
         </div>
       {{/if}}
     </div>

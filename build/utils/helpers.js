@@ -50,6 +50,13 @@ module.exports = {
       return new Handlebars.SafeString(formatted);
     }
   },
+  'ifEqual': function (left, right, options) {
+    if (left === right) {
+      return options.fn(this);
+    } else {
+      return options.inverse(this);
+    }
+  },
   'isoDate': function (date) {
     var theDate = getMoment(date);
     if (theDate) {
