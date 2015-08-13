@@ -18,12 +18,14 @@
  @media (--md-viewport) {
    .Header-heading {
      border-right: var(--line-xs) solid var(--color-gray);
+     /*background: linear-gradient(to left, var(--color-gray), var(--color-gray) 2px, var(--color-pank) 3px, var(--color-pank) 5px, var(--color-white) 6px);*/
      border-bottom: none;
      padding-left: var(--space-md);
    }
  }
 
  .Header-photo {
+   transition: all 200ms;
    width: 150px;
    position: absolute;
    bottom: 0;
@@ -34,12 +36,15 @@
 @media (--md-viewport) {
   .Header-photo {
     width: 180px;
+    right: -181px;
+    transform: scaleX(-1);
   }
 }
 
 @media (--lg-viewport) {
   .Header-photo {
     width: 200px;
+    right: -201px;
   }
 }
 
