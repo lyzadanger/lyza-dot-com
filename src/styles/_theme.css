@@ -42,12 +42,13 @@
 :root {
   --color-black: #111;
   --color-white: #fff;
+  --color-gray-brooding: #282828;
   --color-gray: #333;
   --color-gray-mid: #777;
   --color-gray-light: #929292;
   --color-gray-lighter: #ccc;
   --color-gray-subtle: #dedede;
-  --color-gray-barely: #f3f3f3;
+  --color-gray-barely: #f7f7f7;
 
   --color-pank: #e60a62;
   --color-blue: #3956d3;
@@ -89,10 +90,9 @@
 
   --font-size-heading-big: calc(var(--font-size-heading-x4) * var(--ratio));
 
-  --font-family: "Times New Roman", "Times", "Georgia", serif;
+  --font-family: "Times New Roman", "Times", serif;
   --heading-font-family: "Playfair Display", serif;
   --code-font-family: "Inconsolata", monospace;
-  --alt-font-family: "Helvetica";
   --font-weight: 400;
   --font-weight-bold: 900;
   --line-height: var(--ratio);

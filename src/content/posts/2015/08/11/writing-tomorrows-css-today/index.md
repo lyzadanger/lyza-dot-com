@@ -13,8 +13,6 @@ publish:
 
 ---
 
-## I like PostCSS, if that's not already obvious
-
 [Whether or not I'm correct](http://alistapart.com/column/what-will-save-us-from-the-dark-side-of-pre-processors) in calling [PostCSS](https://github.com/postcss/postcss) a CSS _post-processor_ or not, that is, semantic arguments notwithstanding: I love the tool and its general promise and philosophy.
 
 I use PostCSS as part of my workflow on this site. We use it copiously at [Cloud Four](http://www.cloudfour.com). One of the hints, to me, that it's a nice fit is that both dev-y and design-y people seem to thrive in its world.
