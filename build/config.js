@@ -1,4 +1,5 @@
 'use strict';
+var highlight = require('highlight.js');
 
 var dest = './dist',
   src  = './src',
@@ -79,8 +80,12 @@ module.exports = {
   marked: { // Shared by several tasks
     gfm: true,
     highlight: function(code) {
-        return require('highlight.js').highlightAuto(code).value;
+        return highlight.highlightAuto(code).value;
     },
+    smartypants: true
+  },
+  markedLite: {
+    gfm: true,
     smartypants: true
   },
   publish: {

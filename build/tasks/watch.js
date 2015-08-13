@@ -3,7 +3,7 @@
 var gulp     = require('gulp');
 var config   = require('../config');
 
-gulp.task('watch', ['watchify', 'browserSync'], function(callback) {
+gulp.task('watch', ['browserSync'], function(callback) {
   // This will change (task name)
   gulp.watch(config.content.src, ['content']);
   gulp.watch(config.template.src, ['content']);
