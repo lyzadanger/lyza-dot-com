@@ -8,6 +8,7 @@ var cssnext = require('cssnext');
 gulp.task('css', function() {
   var processors = [
     cssnext({
+      compress: true,
       features: {
         import: {
           path: [config.importDir]
