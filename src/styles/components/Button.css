@@ -139,8 +139,9 @@
 }
 
 .Button--primary:matches(:focus, :hover) {
-  border-color: color(var(--Button-border-color) shade(10%));
-  background-color: color(var(--Button-primary-background-color) l(+5%));
+  border-color: color(var(--Button-border-color) l(-10%));
+  background-color: color(var(--Button-primary-color) l(+10%));
+  color: var(--Button-primary-background-color);
 }
 
 .Button--primary:active {
@@ -188,6 +189,10 @@
    color: var(--color-black);
  }
 
- .Button-link--primary, .Button-link--primary:visited, .Button-link--primary:hover {
+ .Button-link--primary, .Button-link--primary:visited {
    color: var(--color-black);
+ }
+
+ .Button-link--primary:hover {
+   color: var(--color-white);
  }

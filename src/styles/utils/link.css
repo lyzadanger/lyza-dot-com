@@ -5,6 +5,7 @@
 
 .u-link-colorless:hover {
   transition: all 300ms;
+  text-decoration: underline;
   color: var(--color-pank);
 }
 
