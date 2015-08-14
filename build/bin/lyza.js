@@ -3,6 +3,7 @@
 
 var minimist = require('minimist');
 var chalk    = require('chalk');
+var config   = require('../config').publish;
 var fs       = require('fs');
 var mkdirp   = require('mkdirp');
 var path     = require('path');
@@ -91,17 +92,18 @@ var commands = {
     };
 
     postSlug = slug(title, {lower: true });
-    fs.stat('./src', function (err, stats) {
+    fileContent = '---\n' + YAML.safeDump(postData) + '---\n';
+    
+    fs.stat(config.drafts, function (err, stats) {
       if (err || !stats.isDirectory()) {
-        fail('post', 'Cannot find `src`. Please run me in the right place');
+        fail('post', 'Cannot find drafts directory. Are you sure you are in the right place?');
       }
       else {
-        mkdirp(path.resolve('./src/content/drafts/' + postSlug), function (err) {
+        mkdirp(path.resolve(config.drafts + '/' + postSlug), function (err) {
           if (err) {
             fail('post', 'Problem creating directory for new draft: ' + err);
           }
-          fileContent = '---\n' + YAML.safeDump(postData) + '---\n';
-          fs.writeFile(path.resolve('./src/content/drafts/' + postSlug) + '/index.md',
+          fs.writeFile(path.resolve(config.drafts + postSlug) + '/index.md',
             fileContent, function (err) {
               if (err) {
                 fail('post', 'Problem writing to new post file: ' + err);
