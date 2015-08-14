@@ -21,3 +21,24 @@
   font-size: var(--font-size-md);
   line-height: var(--ratio);
 }
+
+.Content-heading {
+  margin-top: 0;
+  font: var(--heading-font);
+  font-size: var(--font-size-heading-sm);
+  line-height: 1;
+  font-variant: normal;
+  text-transform: none;
+}
+
+.Content-subheading {
+  margin-top: 0;
+  font-size: var(--font-size-heading-xs);
+}
+
+.Content-meta {
+  font: var(--heading-font);
+  font-weight: var(--font-weight);
+  font-style: italic;
+  color: var(--color-gray-mid);
+}

@@ -158,5 +158,7 @@
 }
 
 .Header-greeting {
+  font: var(--heading-font);
+  font-size: var(--font-size-heading-md);
   display: inline-block;
 }

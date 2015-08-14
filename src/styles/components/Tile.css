@@ -48,14 +48,6 @@
   border-top: 3px solid var(--color-gray);
 }
 
-.ListTile-heading {
-  font-size: var(--font-size-heading-sm);
-}
-
-.ListTile-subheading {
-  font-size: var(--font-size-heading-xs);
-}
-
 .ListTile-right {
   border-top: 1px solid var(--color-gray-subtle);
 }

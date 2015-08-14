@@ -1,10 +1,11 @@
 <li class="List-item List-item--spaced ListTile ListTile--paired">
   <div class="Grid">
+
     <div class="Grid-cell u-md-size1of3">
       <div class="Content-header">
-        <h3 class="Work-title ListTile-heading"><a class="u-link-colorless" href="{{url}}">{{title}}</a></h3>
-        <h4 class="Work-date Post-date ListTile-heading"><time datetime="{{isoDate date}}">{{formatDate date format="MMM D, YYYY"}}</time></h4>
-        <h6 class="Work-source ListTile-subheading"><a href="{{sourceUrl}}" class="u-link-subtle">{{source}}</a></h6>
+        <h5 class="Content-heading ListTile-title"><a class="u-link-colorless" href="{{url}}">{{title}}</a></h5>
+        <time class="Content-meta Content-heading" datetime="{{isoDate date}}">{{formatDate date format="MMM D, YYYY"}}</time>
+        <div class="Content-subheading Content-heading"><a href="{{sourceUrl}}" class="u-link-subtle">{{source}}</a></div>
       </div>
     </div>
 
@@ -27,6 +28,7 @@
         </div>
       {{/if}}
     </div>
+
   </div>
 
 </li>

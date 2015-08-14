@@ -1,11 +1,11 @@
 {{> _header }}
       <article class="Post u-margins-off u-sm-top-xs u-md-top-default">
         <div class="Grid">
-          <div class="Grid-cell u-md-size2of12">
-            <header class="Post-header">
+          <div class="Grid-cell u-md-size2of12 Post-header">
+            <header class="u-top-tight u-md-top-default">
               <div class="Post-meta Content-header">
-              <h1 class="Post-title">{{{title}}}</h1>
-              <h4 class="Post-date"><time datetime="{{datePublishedISO}}">{{formatDate datePublished}}</time></h4>
+                <h2 class="Content-heading Post-title">{{{title}}}</h2>
+                <time class="Content-meta" datetime="{{datePublishedISO}}">{{formatDate datePublished}}</time>
               </div>
               <hr class="Separator--small Separator--light u-margins-off">
             </header>

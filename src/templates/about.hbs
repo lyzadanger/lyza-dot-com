@@ -1,18 +1,23 @@
 {{> _header}}
 
   <section>
-    <div class="Content Content-lede">{{{content}}}</div>
-  </section>
+    <h1 class="u-visually-hidden">About Lyza Danger Gardner</h1>
+    <section>
+      <h2 class="u-visually-hidden">Biography and Overview</h2>
+      <div class="Content Content-lede">{{{content}}}</div>
+    </section>
 
-  <div class="Grid TileGrid">
+  <section class="Grid TileGrid">
+    <h2 class="u-visually-hidden">Collected Works</h2>
     <div class="Grid-cell u-md-size2of3">
-      <div class="Tile">
+      <section class="Tile">
         <div class="Tile-header">
           <div class="Content-header">
             <h3 class="Tile-heading">Scrapbook</h3>
-            <h4 class="Tile-heading">Latest Community Adventures and Chatter</h4>
+            <h4 class="Tile-heading">Latest Community Adventures and Coverage</h4>
           </div>
         </div>
+
         <div class="Tile-body u-top-tight u-md-top-default">
           <ul class="List List--plain">
           {{#each data.works }}
@@ -20,16 +25,18 @@
           {{/each}}
           </ul>
         </div>
-      </div>
+
+      </section>
     </div>
     <div class="Grid-cell u-md-size1of3">
-      <div class="Tile">
+      <section class="Tile">
         <div class="Tile-header">
           <div class="Content-header">
-            <h3 class="Tile-heading">Speaking, Writing, Community</h3>
-            <h4 class="Tile-heading">Places I went, things I did</h4>
+            <h3 class="Tile-heading">Media</h3>
+            <h4 class="Tile-heading">Publications, Videos, and More</h4>
           </div>
         </div>
+
         <div class="Tile-body u-top-tight u-md-top-default">
           <ul class="List List--plain">
             {{#each data.media}}
@@ -37,8 +44,11 @@
             {{/each}}
           </ul>
         </div>
-      </div>
+
+      </section>
     </div>
-  </div>
+  </section>
+
+</section>
 
 {{> _footer}}
