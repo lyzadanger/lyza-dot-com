@@ -30,6 +30,11 @@
   margin-top: var(--space-xs);
 }
 
+.u-v-xs {
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-xs);
+}
+
 .u-top-sm {
   margin-top: var(--space-sm);
 }

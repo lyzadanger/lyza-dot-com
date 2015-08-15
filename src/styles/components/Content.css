@@ -40,5 +40,6 @@
   font: var(--heading-font);
   font-weight: var(--font-weight);
   font-style: italic;
+  line-height: 1;
   color: var(--color-gray-mid);
 }
