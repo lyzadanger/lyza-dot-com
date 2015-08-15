@@ -86,6 +86,7 @@ var commands = {
     }
     postData = {
       title: title,
+      blurb: '',
       status: (args.p && args.publish) ? 'published' : 'draft',
       tags: (args.tags) ? args.tags.split(' ') : [],
       thumbnail: { }
