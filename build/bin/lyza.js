@@ -93,7 +93,7 @@ var commands = {
 
     postSlug = slug(title, {lower: true });
     fileContent = '---\n' + YAML.safeDump(postData) + '---\n';
-    
+
     fs.stat(config.drafts, function (err, stats) {
       if (err || !stats.isDirectory()) {
         fail('post', 'Cannot find drafts directory. Are you sure you are in the right place?');
@@ -103,7 +103,7 @@ var commands = {
           if (err) {
             fail('post', 'Problem creating directory for new draft: ' + err);
           }
-          fs.writeFile(path.resolve(config.drafts + postSlug) + '/index.md',
+          fs.writeFile(path.resolve(config.drafts + '/' + postSlug) + '/index.md',
             fileContent, function (err) {
               if (err) {
                 fail('post', 'Problem writing to new post file: ' + err);
