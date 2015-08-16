@@ -1,16 +1,18 @@
 {{> _header }}
       <article class="Post u-margins-off u-sm-top-xs u-md-top-default">
         <div class="Grid">
-          <div class="Grid-cell u-md-size2of12 Post-header">
+          <div class="Grid-cell Post-header u-md-size3of12 u-lg-size2of10">
             <header class="u-top-tight u-md-top-default">
-              <div class="Post-meta Content-header">
+              <div class="Content-header">
                 <h2 class="Content-heading Post-title">{{{title}}}</h2>
-                <time class="Content-meta" datetime="{{datePublishedISO}}">{{formatDate datePublished}}</time>
+                <div class="Content-meta"><time datetime="{{datePublishedISO}}">{{formatDate datePublished}}</time></div>
               </div>
-              <hr class="Separator--small Separator--light u-margins-off">
+              <hr class="Separator--small Separator--light">
+              <div class="Post-blurb Content-header">{{{blurb}}}</div>
+              <hr class="Separator--small Separator--light">
             </header>
           </div>
-          <section class="Grid-cell u-md-size8of12 u-lg-size8of12">
+          <section class="Grid-cell u-md-size9of12 u-lg-size6of10">
             <div class="Post-content Content">
               {{#if thumbnail}}
                 {{#with thumbnail}}

@@ -4,8 +4,8 @@
     <div class="Grid-cell u-md-size1of3">
       <div class="Content-header">
         <h5 class="Content-heading ListTile-title"><a class="u-link-colorless" href="{{url}}">{{title}}</a></h5>
-        <time class="Content-meta Content-heading" datetime="{{isoDate date}}">{{formatDate date format="MMM D, YYYY"}}</time>
-        <div class="Content-subheading Content-heading"><a href="{{sourceUrl}}" class="u-link-subtle">{{source}}</a></div>
+        <div class="Content-meta Content-heading"><time datetime="{{isoDate date}}">{{formatDate date format="MMM D, YYYY"}}</time></div>
+        {{!-- <div class="Content-subheading Content-heading"><a href="{{sourceUrl}}" class="u-link-subtle">{{source}}</a></div> --}}
       </div>
     </div>
 
@@ -16,7 +16,7 @@
       {{#if blurb}}
         <div class="Grid">
           <div class="Grid-cell u-size2of3 u-sm-size3of4">
-            <div class="Work-blurb u-top-tight u-md-top-off">
+            <div class="u-top-tight u-md-top-off">
               {{{markdown blurb}}}
             </div>
           </div>

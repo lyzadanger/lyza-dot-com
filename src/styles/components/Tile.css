@@ -24,7 +24,7 @@
 }
 
 .Tile-header {
-  margin: 0;
+  padding-bottom: var(--space-xxsm);
   border-bottom: var(--line-xs) solid var(--color-gray-lighter);
 }
 

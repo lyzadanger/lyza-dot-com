@@ -44,6 +44,7 @@
   --color-white: #fff;
   --color-gray-brooding: #282828;
   --color-gray: #333;
+  --color-gray-alt: #555;
   --color-gray-mid: #777;
   --color-gray-light: #929292;
   --color-gray-lighter: #ccc;
@@ -78,6 +79,7 @@
 
   --font-size-xs-bump: calc(var(--font-size-xs) * var(--ratio-bump));
   --font-size-sm-bump: calc(var(--font-size-sm) * var(--ratio-bump));
+  --font-size-md-bump: calc(var(--font-size-md) * var(--ratio-bump));
 
   --font-size-heading-xs: calc(var(--font-size-xs) * var(--font-size-heading-adjust));
   --font-size-heading-sm: calc(var(--font-size-sm) * var(--font-size-heading-adjust));
