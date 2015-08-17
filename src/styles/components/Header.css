@@ -10,33 +10,41 @@
    margin: 0;
  }
 
- .Header-heading {
+ .Header-title-container {
    position: relative;
    border-bottom: var(--line-sm) solid var(--color-black);
  }
 
  @media (--md-viewport) {
-   .Header-heading {
+   .Header-title-container {
      border-right: var(--line-xs) solid var(--color-gray);
      border-bottom: none;
      padding-left: var(--space-md);
    }
  }
 
+/**
+ * The photo is positioned absolutely to .Header-heading
+ */
  .Header-photo {
    transition: all 200ms;
    width: 150px;
    position: absolute;
    bottom: 0;
    right: 0;
-   z-index: 0;
  }
 
+/**
+ * 1. This flips the image over the x axis (horizontal flip)
+ * 2. Because we've flipped over the x axis leftwards, the image has in effect
+ *    moved its own width leftwards.
+ *
+ */
 @media (--md-viewport) {
   .Header-photo {
+    transform: scaleX(-1); /* 1 */
     width: 180px;
-    right: -181px;
-    transform: scaleX(-1);
+    right: -181px; /* 2 */
   }
 }
 
@@ -81,9 +89,10 @@
   }
 }
 
+/* Chunks of main heading */
 .Header-Lyza {
   position: relative;
-  display: block; /* 1 */
+  display: block;
 }
 
 .Header-Lyza-lyza {
@@ -146,14 +155,23 @@
 @media (--md-viewport) {
   .Header-intro {
     color: var(--color-gray-alt);
+    line-height: var(--line-height-tight);
     font-style: italic;
+    max-width: 20em;
   }
 }
 
 @media (--lg-viewport) {
   .Header-intro {
-    font-size: var(--font-size-sm-bump);
+    max-width: none;
     padding: var(--space-sm);
+    line-height: var(--line-height);
+  }
+}
+
+@media (--lg-viewport-minor) {
+  .Header-intro {
+    font-size: var(--font-size-sm-bump);
   }
 }
 
