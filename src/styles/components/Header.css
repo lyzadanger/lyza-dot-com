@@ -8,14 +8,24 @@
 
  .Header {
    margin: 0;
+   border-top: var(--line-md) solid var(--color-black);
  }
 
  .Header-title-container {
    position: relative;
-   border-bottom: var(--line-sm) solid var(--color-black);
+   border-bottom: var(--line-sm) solid var(--color-gray);
+ }
+
+ @media (--sm-viewport) {
+   .Header-title-container {
+     border-bottom: var(--line-sm) solid var(--color-gray);
+   }
  }
 
  @media (--md-viewport) {
+   .Header {
+     border-bottom: var(--line-sm) solid var(--color-gray);
+   }
    .Header-title-container {
      border-right: var(--line-xs) solid var(--color-gray);
      border-bottom: none;
@@ -23,8 +33,9 @@
    }
  }
 
+
 /**
- * The photo is positioned absolutely to .Header-heading
+ * The photo is positioned absolutely to .Header-title-container
  */
  .Header-photo {
    transition: all 200ms;
@@ -55,19 +66,19 @@
   }
 }
 
- .Header-heading-main {
+ .Header-title {
    font-size: var(--font-size-heading-xxxl);
    position: relative;
  }
 
  @media (--md-viewport) {
-   .Header-heading-main {
+   .Header-title {
      font-size: var(--font-size-heading-x4);
    }
  }
 
   @media (--lg-viewport) {
-    .Header-heading-main {
+    .Header-title {
       font-size: var(--font-size-heading-big);
     }
   }
@@ -180,4 +191,49 @@
   font: var(--heading-font);
   font-size: var(--font-size-heading-md);
   display: inline-block;
+}
+
+@media (--md-viewport) {
+  .Header--small .Header-title {
+    font-size: var(--font-size-heading-xl);
+  }
+  .Header--small .Header-photo {
+    width: 100px;
+    right: -101px;
+  }
+  .Header--small .Header-Lyza {
+    display: inline-block;
+    margin-top: var(--space-xxsm);
+    margin-bottom: var(--space-xs);
+  }
+  .Header--small .Header-Lyza-lyza {
+    margin-left: 0;
+    z-index: 50;
+  }
+  .Header--small .Header-Lyza-danger {
+    z-index: 25;
+    margin-left: calc(-1 * var(--space-sm));
+  }
+  .Header--small .Header-Lyza-gardner {
+    margin-left: calc(-1.5 * var(--space-xs));
+  }
+  .Header--small .Header-subheading {
+
+    font-size: var(--font-size-heading-md);
+    color: var(--color-gray);
+  }
+  .Header--small .Header-ampersand {
+    transform: scale(1.4);
+    margin: 0 0 0 0.1em;
+  }
+}
+
+@media (--lg-viewport) {
+  .Header--small .Header-title {
+    font-size: var(--font-size-heading-xxl);
+  }
+  .Header--small .Header-photo {
+    width: 110px;
+    right: -111px;
+  }
 }
