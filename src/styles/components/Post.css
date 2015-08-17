@@ -9,7 +9,13 @@
   font-style: italic;
 }
 
-@media (--lg-viewport) {
+@media (--md-viewport) {
+  .Post-blurb {
+    margin: var(--space-xs);
+  }
+}
+
+@media (--lg-viewport-minor) {
   .Post-title {
     font-size: var(--font-size-heading-md);
   }

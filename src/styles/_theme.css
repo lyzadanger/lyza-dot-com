@@ -19,6 +19,7 @@
 @custom-media --xsm-viewport-minor (width >= 25em);
 @custom-media --sm-viewport-minor (width >= 37.5em);
 @custom-media --md-viewport-minor (width >= 54em);
+@custom-media --lg-viewport-minor (width >= 72em);
 
 /**
  * Misc

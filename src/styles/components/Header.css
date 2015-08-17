@@ -66,7 +66,6 @@
 
 .Header-subheading {
   display: none;
-  margin: 0;
   text-align: center;
 }
 
@@ -146,18 +145,20 @@
 
 @media (--md-viewport) {
   .Header-intro {
-    padding: var(--space-xsm);
-    max-width: 16em;
+    color: var(--color-gray-alt);
+    font-style: italic;
   }
 }
 
 @media (--lg-viewport) {
   .Header-intro {
+    font-size: var(--font-size-sm-bump);
     padding: var(--space-sm);
   }
 }
 
 .Header-greeting {
+  color: var(--color-gray);
   font: var(--heading-font);
   font-size: var(--font-size-heading-md);
   display: inline-block;
