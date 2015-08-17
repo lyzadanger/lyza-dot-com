@@ -45,7 +45,6 @@
 .Content-meta {
   margin-top: var(--space-xxsm);
   font: var(--heading-font);
-  font-size: var(--heading-font-size-md);
   font-weight: var(--font-weight);
   font-style: italic;
   line-height: 1;
