@@ -10,6 +10,11 @@
               <hr class="Separator--small Separator--light">
               <div class="Post-blurb Content-header">{{{blurb}}}</div>
               <hr class="Separator--small Separator--light">
+              <ul class="List--inline is-indented--xxsm u-top-xs">
+                {{#each tags}}
+                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>{{this}}</span></li>
+                {{/each}}
+              </ul>
             </header>
           </div>
           <section class="Grid-cell u-md-size9of12 u-lg-size6of10">
