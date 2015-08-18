@@ -71,6 +71,46 @@ module.exports = {
     var posts = getPosts(options, this.posts);
     return posts.length || 0;
   },
+  'postsByMonth': function (options) {
+    var posts = getPosts(options, this.posts),
+      monthPosts = [],
+      currentMonth,
+      currentMonthPosts,
+      ret = '';
+    var monthFormatted = function (date) {
+      return getMoment(date).format('MMMM, YYYY');
+    };
+
+    var addPost = function (post) {
+      var postMonth;
+      if (post) {
+        postMonth = monthFormatted(post.datePublished);
+      }
+      if (!post || postMonth !== currentMonth) {
+        if (currentMonthPosts) {
+          monthPosts.push(currentMonthPosts);
+        }
+        if (post) {
+          currentMonth = postMonth;
+          currentMonthPosts = {
+            month: currentMonth,
+            posts: [post]
+          };
+        }
+      } else {
+        currentMonthPosts.posts.push(post);
+      }
+    };
+
+    if (posts && posts.length) {
+      posts.forEach(addPost);
+    }
+    addPost(null);
+    monthPosts.forEach(function (month) {
+      ret = ret + options.fn(month);
+    });
+    return ret;
+  },
   'posts': function (options) {
     var ret = '',
       posts = getPosts(options, this.posts);

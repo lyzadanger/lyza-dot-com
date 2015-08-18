@@ -1,18 +1,28 @@
 {{> _header}}
 
-<section class="Announcement">
+<section class="Content">
   {{{content}}}
 </section>
 
 <section>
-  <div class="Grid">
-    <div class="Grid-cell u-lg-size1of12"></div>
-    <div class="Grid-cell u-lg-size10of12">
-      {{#posts}}
-        <div class="Tile">{{> post/_blurb wideGrid="true" }}</div>
-      {{/posts}}
-    </div>
-  </div>
+
+    {{#postsByMonth}}
+      <div>
+        <h2 class="Heading--full">{{ month }}</h2>
+      </div>
+      <div class="Grid TileGrid">
+      {{#each this.posts }}
+        <div class="Grid-cell u-md-size1of2 Tile-container">
+          <div class="Tile">
+            {{> post/_blurb }}
+          </div>
+        </div>
+      {{/each}}
+      </div>
+        {{!-- <div class="Tile">{{> post/_blurb }}</div> --}}
+
+      {{/postsByMonth}}
+
 </section>
 
 {{> _footer}}

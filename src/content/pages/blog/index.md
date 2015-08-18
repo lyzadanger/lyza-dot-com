@@ -4,4 +4,4 @@ template: archive
 isPost: true
 ---
 
-Ah, yes! All of the stuff I've written here! It's like a blog.
+Here is all the stuff. Depending on what you're after, you may wish to look at a subset of stuff.

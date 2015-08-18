@@ -1,0 +1,5 @@
+.Heading--full {
+  border-left: var(--space-xs) solid var(--color-pank);
+  padding: var(--space-xs);
+  background-color: var(--color-gray-barely);
+}
