@@ -34,8 +34,6 @@
   font: var(--heading-font);
   font-size: var(--font-size-sm-bump);
   line-height: 1;
-  font-variant: normal;
-  text-transform: none;
 }
 
 .Content-subheading {

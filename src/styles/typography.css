@@ -79,11 +79,7 @@ h4 {
 }
 
 h5 {
-  font: var(--font-base);
-  font-size: var(--font-size-heading-sm);
-  text-transform: lowercase;
-  font-variant: small-caps;
-  color: var(--color-gray-mid);
+
 }
 
 /**
