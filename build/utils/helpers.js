@@ -30,7 +30,13 @@ var formatDate = function(date, format) {
 var getPosts = function (options, allPosts) {
   var count = parseInt(options.hash.count, 10) || (allPosts && allPosts.length),
     offset = parseInt(options.hash.offset, 10) || 0,
+    tag    = options.hash.tag || '',
     posts = [];
+  if (tag) {
+    allPosts = _.filter(allPosts, function (post) {
+      return (_.contains(post.tags, tag) || tag === 'all');
+    });
+  }
   if (allPosts && allPosts.length) {
     for(var i = offset; i < (count + offset); i++) {
       if (allPosts[i]) {

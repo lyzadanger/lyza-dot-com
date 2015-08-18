@@ -6,7 +6,7 @@
 
 <section>
 
-    {{#postsByMonth}}
+    {{#postsByMonth tag=archiveTag}}
       <div>
         <h2 class="Heading--full">{{ month }}</h2>
       </div>
@@ -19,9 +19,7 @@
         </div>
       {{/each}}
       </div>
-        {{!-- <div class="Tile">{{> post/_blurb }}</div> --}}
-
-      {{/postsByMonth}}
+    {{/postsByMonth}}
 
 </section>
 
