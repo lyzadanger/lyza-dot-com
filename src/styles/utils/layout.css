@@ -84,6 +84,10 @@
   display: inline;
 }
 
+.u-inline-block {
+  display: inline-block;
+}
+
 .u-visually-hidden {
   border: 0;
   clip: rect(0 0 0 0);
