@@ -9,3 +9,7 @@
 .is-indented--xxsm {
   margin-left: var(--space-xxsm) !important;
 }
+
+.is-shaded {
+  background-color: var(--color-gray-barely);
+}

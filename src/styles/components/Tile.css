@@ -3,6 +3,10 @@
   border-top: var(--line-md) solid var(--color-gray);
 }
 
+.Tile--heavy {
+  border-bottom: var(--line-lg) solid var(--color-gray);
+}
+
 @media (--md-viewport) {
   .Tile {
     margin: var(--margin-base) var(--space-sm) 0 var(--space-sm);
@@ -29,7 +33,8 @@
 }
 
 .Tile-body {
-  padding: 0 var(--space-xsm);
+  margin: 0;
+  padding: var(--space-xsm) var(--space-xsm);
 }
 
 .Tile-body--stacked {
@@ -38,7 +43,7 @@
 
 @media (--md-viewport) {
   .Tile-body {
-    padding: 0 var(--space-xxsm);
+    padding: var(--space-xs) var(--space-xxsm);
   }
 }
 

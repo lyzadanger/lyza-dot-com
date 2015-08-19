@@ -22,6 +22,7 @@
 @import "components/List";
 @import "components/Navigation";
 @import "components/Post";
+@import "components/Pull";
 @import "components/Separator";
 @import "components/Thumbnail";
 @import "components/Tile";
