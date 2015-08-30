@@ -5,4 +5,4 @@ isPost: true
 archiveTag: life
 ---
 
-Life posts.
+Scribblings about stuff I saw, did, learned or thought about.

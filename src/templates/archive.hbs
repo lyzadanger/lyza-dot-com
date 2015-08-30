@@ -1,57 +1,29 @@
 {{> _header}}
-
-{{#if isArchiveHome }}
-<div class="Grid TileGrid">
-  <div class="Grid-cell Tile-container u-md-size1of3">
-    <div class="Tile">
-      <div class="Tile-header">
-        <div class="Content-header">
-          <h1 class="Tile-heading">All the Stuff</h1>
-        </div>
+<div class="Grid">
+  <div class="Grid-cell Post-header u-md-size3of12 u-lg-size2of10">
+    <header class="u-top-tight u-md-top-default">
+      <div class="Content-header">
+        {{#if isArchiveHome}}
+        <h2 class="Content-heading Post-title">{{{title}}}</h2>
+        {{else}}
+        <h2 class="Content-heading Post-title u-inline-block"><a href="/blog" class="u-link-subtle">Blog</a> &rsaquo;</h2>
+        <h3 class="Content-meta u-inline-block">{{{title}}}</h3>
+        {{/if}}
       </div>
+      <hr class="Separator--small Separator--light u-top-tight u-md-top-default">
+      <div class="Post-blurb Content-header">{{{content}}}</div>
+      <hr class="Separator--small Separator--light">
+      {{#if isArchiveHome }}
+      <div class="Content u-align-center">
 
-      <div class="Tile-body Content">
-        Here is all the stuff that I have written in the last while. Want it all? Tolerant of mixed metaphors and non-sequiturs? You're already in the right place. Here it comes.
-      </div>
-    </div>
-
-  </div>
-
-  <aside class="Grid-cell Tile-container u-md-size2of3">
-    <div class="Tile">
-      <div class="Tile-header">
-        <div class="Content-header">
-          <h2 class="Tile-heading">Or: Some of the Stuff</h2>
-        </div>
-      </div>
-
-      <div class="Tile-body">
-        Maybe you are from the tech community and don't want to read about Sea Canaries and what driving in Sweden is like. Or maybe you know me as a human and don't care about JavaScript bundlers and Web APIs. In that case you can read:
-        <div class="Grid Grid--alignMiddle u-v-sm">
-          <div class="Grid-cell u-sm-size5of12 u-lg-size4of12 u-lg-before1of12 u-align-center">
-            <a class="Button Button--primary Button-link--primary" href="tech/">Tech Stuff Only</a>
-          </div>
-          <div class="Grid-cell u-sm-size2of12 u-align-center u-v-xs">
-            <em>- or -</em>
-          </div>
-          <div class="Grid-cell u-sm-size5of12 u-lg-size4of12 u-lg-after1of12 u-align-center">
+        <a class="Button Button--primary Button-link--primary" href="tech/">Tech Stuff Only</a>
+        <div class="u-align-center u-v-xs"><em>- or -</em></div>
             <a class="Button Button--primary Button-link--primary" href="life/">Life Stuff Only</a>
-          </div>
-        </div>
-
       </div>
-    </div>
-
-  </aside>
-</div>
-
-{{else}}
-  <div class="Content u-top-off">
-    <h1 class="u-inline-block"><a href="/blog" class="u-link-subtle">Stuff</a>  <h2 class="u-inline-block">&nbsp;&nbsp;&gt;&nbsp; about {{archiveTag}}</h2>
+      {{/if}}
+    </header>
   </div>
-{{/if}}
-<section>
-
+  <div class="Grid-cell u-md-size9of12 u-lg-size8of10 u-top-default">
     {{#postsByMonth tag=archiveTag}}
       <div>
         <h2 class="Heading--full">{{ month }}</h2>
@@ -66,7 +38,8 @@
       {{/each}}
       </div>
     {{/postsByMonth}}
+  </div>
+</div>
 
-</section>
 
 {{> _footer}}

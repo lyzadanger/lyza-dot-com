@@ -5,4 +5,4 @@ isPost: true
 archiveTag: tech
 ---
 
-Technical posts.
+Scribblings about developing, designing and shaping the web for everyone and everywhere.

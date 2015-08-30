@@ -2,7 +2,7 @@
   margin: 0 !important;
 }
 
-.u-margins-on, .u-margins-default {
+.u-margins-on, .u-margins-default, .u-top-default {
   margin-top: var(--margin-base);
 }
 
