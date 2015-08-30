@@ -19,7 +19,7 @@
 
 body {
   max-width: 64em;
-  margin: 0 auto;
+  margin: var(--space-md) auto;
 }
 
 /**
