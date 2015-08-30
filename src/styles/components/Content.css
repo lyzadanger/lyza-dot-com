@@ -47,3 +47,13 @@
   font-style: italic;
   line-height: 1;
 }
+
+.Content-container:first-of-type  {
+  margin-top: 0;
+}
+
+@media (--md-viewport) {
+  .Content-container:first-of-type {
+    margin-top: var(--margin-base);
+  }
+}
