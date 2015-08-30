@@ -121,6 +121,8 @@ var lyza = function () {
   var cmd = args._[0];
   if (cmd && commands[cmd]) {
     commands[cmd](args);
+  } else {
+    help('help', args);
   }
 };
 
