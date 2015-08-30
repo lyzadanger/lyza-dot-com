@@ -89,12 +89,17 @@ var generateFeeds = function (cb) {
 
     posts.forEach(addItem);
 
-    queue = Object.keys(feeds).length;
+    queue = Object.keys(feeds).length * 2;
 
     mkdirp(path.resolve(rssConfig.feedDir), function (err) {
       if (err) { throw new Error(err); }
       for (var feed in feeds) {
         fs.writeFile(path.resolve(rssConfig.feedDir + '/' + feed + '.rss'),
+          feeds[feed].xml(),
+          dequeue
+        );
+        // Generate feedburner feeds
+        fs.writeFile(path.resolve(rssConfig.feedDir + '/' + feed + '-fb.rss'),
           feeds[feed].xml(),
           dequeue
         );
