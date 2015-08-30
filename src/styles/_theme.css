@@ -109,7 +109,7 @@
   --hr-min-height: 1px;
   --hr-background: currentColor;
 
-  --blockquote-padding: 2em;
+  --blockquote-padding: 1em;
   --cite-prefix: "—";
 }
 
