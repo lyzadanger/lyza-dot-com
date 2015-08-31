@@ -52,7 +52,7 @@ var addItem = function (post) {
     title      : post.title,
     description: marked(post.source),
     url        : rssConfig.domain + post.url,
-    date       : post.datePublished.format(formatRFC822),
+    date       : post.datePublished.toDate(),
     categories : post.tags
   };
   feeds.rss.item(postRSSInfo);
