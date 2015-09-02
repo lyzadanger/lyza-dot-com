@@ -17,6 +17,7 @@
 @import "components/Announcement";
 @import "components/Button";
 @import "components/Content";
+@import "components/Figure";
 @import "components/Header";
 @import "components/Heading";
 @import "components/List";
@@ -24,5 +25,4 @@
 @import "components/Post";
 @import "components/Pull";
 @import "components/Separator";
-@import "components/Thumbnail";
 @import "components/Tile";

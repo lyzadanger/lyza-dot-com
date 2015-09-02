@@ -8,6 +8,7 @@ thumbnail:
   type: video
   ratio: 16by9
   url: 'https://www.youtube.com/embed/cz6EUrXizXo'
+  caption: 'This video about my spring doings is the most concrete thing I made in July.'
 blurb: "I guess I shipped a few things at the end of the summer, but now it's time to find the next biggish thing. Will I be able to emerge from the inspirational doldrums?"
 publish:
   slug: time-for-a-new-project

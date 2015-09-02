@@ -21,13 +21,16 @@
             <div class="Post-content Content">
               {{#if thumbnail}}
                 {{#with thumbnail}}
-                  <div class="Thumbnail">
-                    <div class="FlexEmbed">
+                  <figure class="Figure">
+                    <div class="FlexEmbed Figure-embed">
                       <div class="FlexEmbed-ratio FlexEmbed-ratio--{{ratio}}">
                         <iframe class="FlexEmbed-content" src="{{url}}" frameborder="0" allowfullscreen></iframe>
                       </div>
                     </div>
-                  </div>
+                  {{#if caption}}
+                    <figcaption class="Figure-caption">{{{caption}}}</figcaption>
+                  {{/if}}
+                  </figure>
                 {{/with}}
               {{/if}}
               {{{content}}}
