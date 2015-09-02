@@ -3,6 +3,7 @@ title: About
 template: about
 isAboutPage: true
 ---
+Hi! I'm Lyza. I'm a developer and human, native of Portland, Ore., CTO and co-founder of [Cloud Four](http://www.cloudfour.com). I'm a generalist with an abiding love for the Web.
 
 Every day, I get to explore and analyze the edge of web and mobile technologies. I'm especially interested in the synthesis of evolving technologies, balancing implementation (I do like to code) with speaking (hi!), writing (scribble scribble) and education (let's help each other learn!) in the world-wide web community.
 
