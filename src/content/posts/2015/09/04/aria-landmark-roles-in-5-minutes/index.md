@@ -6,6 +6,7 @@ tags:
   - tech
   - a11y
   - web
+  - howto
 publish:
   slug: aria-landmark-roles-in-5-minutes
   date: '2015-09-04T20:13:17.977Z'
@@ -69,3 +70,5 @@ With the exception of `navigation`, each of these roles should appear _only once
 ### Am I doing it right?
 
 Go grab the [tota11y](http://khan.github.io/tota11y/) toolkit and quickly check any page. It has a section for `Landmarks`. Easy peasy!
+
+p.s.: This isn't the [first I've spoken of this](http://alistapart.com/column/wai-finding-with-aria-landmark-roles).
