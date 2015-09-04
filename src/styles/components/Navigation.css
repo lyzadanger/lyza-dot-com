@@ -21,14 +21,7 @@
  }
 
  .Navigation {
-  margin: 0;
-  padding: 0;
   color: var(--Navigation-color);
- }
-
- .Navigation-list {
-   margin: 0;
-   padding: 0;
  }
 
  .Navigation-item {
