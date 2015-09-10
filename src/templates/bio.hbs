@@ -1,0 +1,49 @@
+{{> _header}}
+
+  <section>
+    <div class="Grid">
+      <div class="Grid-cell u-md-size3of12">
+        <header>
+          <div class="Content-header">
+            <h2 class="Content-heading Content-title">{{{title}}}</h2>
+          </div>
+          <hr class="Separator--small Separator--light u-top-tight u-md-top-default">
+          <div class="Content-blurb Content-header">{{{blurb}}}</div>
+          <hr class="Separator--small Separator--light">
+        </header>
+      </div>
+      <div class="Grid-cell u-md-size8of12 u-md-after1of12">
+        <div class="Content u-top-sm u-md-top-off">
+          {{{content}}}
+        </div>
+        <hr class="Separator Separator--small">
+
+
+        <section class="Content">
+          <h2 class="u-v-sm u-md-top-off">Photos</h2>
+          <div class="Grid Grid--alignMiddle">
+            {{#each data.bio.photos}}
+              <div class="Grid-cell u-md-size1of3 Tile-container">
+                <div class="Tile">
+                  <div class="Tile-header">
+                    <div class="Content-header">
+                      <h3 class="Tile-heading"><a class="u-link-colorless" href="{{url}}">{{{title}}}</a></h3>
+                    </div>
+                  </div>
+                  <div class="Tile-body">
+                    <figure class="Figure">
+                      <img src="{{thumbnail}}" alt="{{{title}}}"></a>
+                      <figcaption class="u-text-xs"><a href="{{url}}">[Download Larger JPG]</a></figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+
+{{> _footer}}
