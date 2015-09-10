@@ -2,7 +2,7 @@
   margin: 0;
 }
 
-.Figure-caption {
+.Figure figcaption, .Figure-caption {
   color: var(--color-gray-mid);
   margin-top: var(--space-xs);
   padding: 0 var(--space-xs);
