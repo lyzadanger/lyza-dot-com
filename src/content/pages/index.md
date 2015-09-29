@@ -3,4 +3,4 @@ title: Home
 template: index
 isHomePage: true
 ---
-Have you bought your ticket for [Responsive Field Day](https://www.responsivefieldday.com) yet? Join us for a spirited, knowledge-packed day scouting the frontiers of responsive web design and development in lovely Portland, Oregon this September 25.
+What fun! I'm keynoting one of the days at [Mozilla's View Source](https://viewsourceconf.org/) conference, November 2 - 4 at the Gerding Theater (Armory) here in Portland. See you there?
