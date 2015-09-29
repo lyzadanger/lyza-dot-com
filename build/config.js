@@ -60,7 +60,7 @@ module.exports = {
         dest: dest,
         outputName: 'site.js',
         // Additional file extentions to make optional
-        //extensions: ['.coffee', '.hbs'],
+        // extensions: ['.coffee', '.hbs'],
         // list of modules to make require-able externally
         require: ['jquery']
     }]
