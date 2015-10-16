@@ -1,3 +1,12 @@
+- embed:
+    type: video
+    url: https://www.youtube.com/embed/zdPzu5XBypo?rel=0
+    ratio: 16by9
+  url: https://www.youtube.com/watch?v=zdPzu5XBypo
+  title: "Responsive Field Day"
+  type: Event Co-Host
+  blurb: >
+    As co-host, I got to have fun moderating this panel (among other things!) at [Responsive Field Day](http://www.responsivefieldday.com) in Portland. Videos available for all talks and panels at [the conference site](http://www.responsivefieldday.com).
 - url: "http://www.amazon.com/gp/product/1457186950/ref=s9_simh_gw_p14_d0_i1?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=desktop-1&pf_rd_r=1G5MXG10MHEX4Y3JT66N&pf_rd_t=36701&pf_rd_p=2079475242&pf_rd_i=desktop"
   title: "Make: JavaScript Robotics"
   type: Book
