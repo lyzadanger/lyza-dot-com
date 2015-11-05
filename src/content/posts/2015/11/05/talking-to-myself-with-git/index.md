@@ -22,4 +22,4 @@ Am I being pedantic? Do I have a glimmer of hope that someone will somehow benef
 
 (p.s. That mandala, despite title to the contrary on the above linked, is not in any way _unexplained_. An artist came forward at the time and explained how he did it. I have a former colleague who covered this story for local media. It's intriguing and on-theme how only the story about it being supernatural or extra-terrestrial survives now in the longer-term internet annals. I guess that's a more interesting take.)
 
-I have just asked many questions. Asking them to myself, the way I assign myself to my own PRs. However dingy and talking-to-myself this all may seem, the process just feels right. GIT WORKFLOW FOREVER.
+I have just asked many questions. Asking them to myself, the way I assign myself to my own PRs. However dingbat and talking-to-myself this all may seem, the process just feels right. GIT WORKFLOW FOREVER.
