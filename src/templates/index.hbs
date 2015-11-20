@@ -1,8 +1,10 @@
 {{> _header}}
 
-  <div class="Announcement">
-    {{{content}}}
-  </div>
+  {{#if content}}
+    <div class="Announcement">
+        {{{content}}}
+    </div>
+  {{/if}}
 
 <section class="TileGrid">
   <h2 class="u-visually-hidden">Recent Posts</h2>
