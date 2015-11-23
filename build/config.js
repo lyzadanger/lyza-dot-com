@@ -23,7 +23,7 @@ module.exports = {
   assets: {
     // Everything in pages/* and posts/*
     // but NOT markdown files
-    src: [ dirs.pages + '/**/*.*',
+    src: [ dirs.pages + '/**/*',
            '!' + srcs.pages,
            dirs.posts + '/**/*.*',
            '!' + srcs.posts
