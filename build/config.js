@@ -6,6 +6,7 @@ var dest = './dist',
   dirs = {
     data: src + '/data',
     drafts: src + '/content/drafts',
+    js: src + '/javascript',
     pages: src + '/content/pages',
     posts: src + '/content/posts',
     scripts: src + '/javascript',
@@ -14,6 +15,7 @@ var dest = './dist',
   },
   srcs = {
     drafts: dirs.drafts + '/*/**/*.md',
+    js: dirs.js + '/**/*.js',
     pages: dirs.pages + '/**/*.md',
     posts: dirs.posts + '/**/*.md',
     styles: dirs.styles + '/styles.css'
@@ -66,10 +68,13 @@ module.exports = {
     dest: dest
   },
   js: {
-    entry: src + '/javascript/site.js',
-    output: {
-      filename: dest + '/js/site.js'
-    }
+    webpack: {
+      entry: dirs.js + '/site.js',
+      output: {
+        filename: dest + '/js/site.js'
+      }
+    },
+    src: srcs.js
   },
   marked: { // Shared by several tasks
     gfm: true,
