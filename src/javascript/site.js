@@ -1,5 +1,6 @@
+/* global navigator */
 'use strict';
-var $ = require('jquery');
-// $(function() {
-//   console.log('jQuery ready in a browserify world');
-// });
+
+if ('serviceWorker' in navigator) {
+  console.log('We have a service worker and we are GTG');
+}
