@@ -65,6 +65,7 @@
     "vinyl-fs-fake": "^1.1.0",
     "vinyl-paths": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
-    "walkdir": "0.0.9"
+    "walkdir": "0.0.9",
+    "webpack": "^1.12.9"
   }
 }

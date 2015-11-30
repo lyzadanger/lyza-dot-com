@@ -65,6 +65,12 @@ module.exports = {
     src: [ srcs.pages, srcs.posts ],
     dest: dest
   },
+  js: {
+    entry: src + '/javascript/site.js',
+    output: {
+      filename: dest + '/js/site.js'
+    }
+  },
   marked: { // Shared by several tasks
     gfm: true,
     highlight: function(code) {

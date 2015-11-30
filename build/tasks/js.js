@@ -3,9 +3,10 @@
 var gulp = require('gulp');
 var webpack = require('webpack');
 var gutil = require('gulp-util');
+var config = require('../config').js;
 
 gulp.task('js', function (callback) {
-  webpack({}, function (err, stats) {
+  webpack(config, function (err, stats) {
     if (err) {
       throw new gutil.PluginError('js', err);
     }
