@@ -2,7 +2,6 @@
 'use strict';
 var gulp        = require('gulp');
 var config      = require('../config').publish;
-var fs          = require('fs');
 
 var data        = require('gulp-data');
 var gulpIgnore  = require('gulp-ignore');

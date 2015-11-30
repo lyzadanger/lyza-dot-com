@@ -10,9 +10,9 @@ var markdown    = require('gulp-markdown');
 var rename      = require('gulp-rename');
 var template    = require('../plugins/template');
 
-gulp.task('content', function(callback) {
+gulp.task('content', function() {
   return gulp.src(config.src)
-  .pipe(data(function(file) {
+    .pipe(data(function(file) {
       var content = frontMatter(String(file.contents));
       // Replace file's contents with just the body
       // of the current contents (sans front matter)
@@ -21,12 +21,12 @@ gulp.task('content', function(callback) {
     }))
     .pipe(markdown({
       highlight: function(code) {
-          return require('highlight.js').highlightAuto(code).value;
+        return require('highlight.js').highlightAuto(code).value;
       },
       gfm: true,
       smartypants: true
     }))
-    .pipe(template({ helpers: helpers}))
+    .pipe(template({ helpers: helpers }))
     .pipe(rename({
       extname: '.html'
     }))

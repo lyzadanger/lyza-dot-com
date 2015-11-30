@@ -24,7 +24,8 @@ module.exports = function wrapWithHandlebars(opts) {
       // ideally this would take options
       files.forEach(function(file) {
         var partialBits = [],
-            relPath, partialKey;
+          relPath,
+          partialKey;
         relPath = path.relative(config.partialDir, path.dirname(file));
         if (relPath !== '') {
           partialBits = relPath.split(path.sep);
@@ -75,12 +76,10 @@ module.exports = function wrapWithHandlebars(opts) {
     }
 
     if (file.isBuffer()) {
-      var data = _.extend({
-        template : 'index'
-      }, localContext(file.path, file.data) || {}),
+      var data = _.extend({ template : 'index' }, localContext(file.path, file.data) || {}),
         self = this;
       var templatePath = config.templateDir + '/' + data.template + '.hbs';
-      var template, wrapped;
+      var template;
       if (typeof templates[templatePath] === 'undefined') {
         try {
           templates[templatePath] = fs.readFileSync(templatePath, 'utf8');
