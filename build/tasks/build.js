@@ -8,7 +8,6 @@ gulp.task('build', ['clean', 'publish', 'unpublish'], function (done) {
     'content',
     'css',
     'rss'
-    // browserify
   ];
 
   runSequence(tasks, function() {

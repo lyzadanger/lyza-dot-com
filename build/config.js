@@ -52,19 +52,7 @@ module.exports = {
       baseDir: dest
     }
   },
-  browserify: {
-  // A separate bundle will be generated for each
-  // bundle config in the list below
-    bundleConfigs: [{
-        entries: dirs.scripts + '/site.js',
-        dest: dest,
-        outputName: 'site.js',
-        // Additional file extentions to make optional
-        // extensions: ['.coffee', '.hbs'],
-        // list of modules to make require-able externally
-        require: ['jquery']
-    }]
-  },
+
   clean: {
     out: dest
   },
@@ -80,7 +68,7 @@ module.exports = {
   marked: { // Shared by several tasks
     gfm: true,
     highlight: function(code) {
-        return highlight.highlightAuto(code).value;
+      return highlight.highlightAuto(code).value;
     },
     smartypants: true
   },
