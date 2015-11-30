@@ -5,11 +5,7 @@
  */
 
 var config    = require('../config').blog;
-var fs        = require('fs');
 var path      = require('path');
-var recursive = require('recursive-readdir');
-var frontMatter = require('front-matter');
-var moment    = require('moment');
 var _         = require('lodash');
 
 var dataData  = require('./blog-data').data;
@@ -49,8 +45,7 @@ var localContext = function (filePath, attributes) {
    * thing becomes broader than posts vs. pages, this whole
    * system should be generalized.
    */
-  var fullPagePath = path.resolve(config.pageDir),
-    fullPostPath   = path.resolve(config.postDir);
+  var fullPostPath   = path.resolve(config.postDir);
   if (filePath.indexOf(fullPostPath) !== -1) {
     attributes = postContext(attributes);
     attributes.isPost = true;

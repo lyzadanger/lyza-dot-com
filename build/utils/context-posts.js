@@ -21,7 +21,7 @@ var getURL = function getURL(attributes) {
     url = config.urlBase + pubPath.replace(
       config.postFileName + config.postExtension, '');
   }
-   return url;
+  return url;
 };
 
 var getPubDate = function getPubDate (attributes) {

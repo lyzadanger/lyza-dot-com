@@ -33,7 +33,7 @@ var sortPosts = function(posts) {
   dates = dates.sort();
   dates = dates.reverse();
   dates.forEach(function(date) {
-    sorted.push(_.findWhere(posts, { datePublishedISO: date}));
+    sorted.push(_.findWhere(posts, { datePublishedISO: date }));
   });
   return sorted;
 };
