@@ -10,7 +10,8 @@ gulp.task('js', function (callback) {
     if (err) {
       throw new gutil.PluginError('js', err);
     }
-    gutil.log('[js]', stats.toString());
+    // Debug if I need it
+    // gutil.log('[js]', stats.toString());
     callback();
   });
 });

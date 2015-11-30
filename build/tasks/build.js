@@ -7,7 +7,8 @@ gulp.task('build', ['clean', 'publish', 'unpublish'], function (done) {
     'assets',
     'content',
     'css',
-    'rss'
+    'rss',
+    'js'
   ];
 
   runSequence(tasks, function() {
