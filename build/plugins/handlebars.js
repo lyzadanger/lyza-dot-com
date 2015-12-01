@@ -1,16 +1,18 @@
 'use strict';
 
-var gutil   = require('gulp-util');
-var through = require('through2');
-var Promise = require('bluebird');
-var fs      = require('fs');
-var recursive   = Promise.promisify(require('recursive-readdir'));
-var path    = require('path');
+var fs         = require('fs');
+var path       = require('path');
+
+var Promise    = require('bluebird');
+var gutil      = require('gulp-util');
+var through    = require('through2');
+var recursive  = Promise.promisify(require('recursive-readdir'));
 var Handlebars = require('handlebars');
-var _ = require('lodash');
+var _          = require('lodash');
 
 module.exports = function buildTemplates(opts) {
   var templates = {};
+  
   opts = _.defaults(opts || {}, {
     context         : {},
     defaultTemplate : 'index',
@@ -21,10 +23,6 @@ module.exports = function buildTemplates(opts) {
     templateDir     : ''
   });
 
-  /**
-   * Returns uncompiled template source from filepath;
-   * caches source
-   */
   var getTemplate = function (file) {
     if (typeof(templates[file]) === 'undefined') {
       templates[file] = fs.readFileSync(file, 'utf8');
@@ -93,7 +91,6 @@ module.exports = function buildTemplates(opts) {
     }
 
     if (file.isBuffer()) {
-      // Do things
       prepReady.then(() => {
         var context = _.extend(
           { template: opts.defaultTemplate,
