@@ -12,11 +12,13 @@ var _ = require('lodash');
 module.exports = function buildTemplates(opts) {
   var templates = {};
   opts = _.defaults(opts || {}, {
-    context : {},
+    context         : {},
+    defaultTemplate : 'index',
+    localContextFn  : _.noop,
     helpers         : {},
     partialDir      : '',
-    partialExtension: '.hbs',
-    templateDir: ''
+    extension: '.hbs',
+    templateDir     : ''
   });
 
   /**
@@ -34,7 +36,7 @@ module.exports = function buildTemplates(opts) {
     var pathBase = path.relative(opts.partialDir, path.dirname(file)),
       pathElements = (pathBase !== '') ? [pathBase] : [],
       partialKey;
-    pathElements.push(path.basename(file, opts.partialExtension));
+    pathElements.push(path.basename(file, opts.extension));
     partialKey = pathElements.join(path.sep);
     Handlebars.registerPartial(partialKey, getTemplate(file));
   };
@@ -54,9 +56,12 @@ module.exports = function buildTemplates(opts) {
   };
 
   var registerHelpers = function () {
-    for (var helperKey in opts.helpers) {
-      Handlebars.registerHelper(helperKey, opts.helpers[helperKey]);
-    }
+    return new Promise(function (resolve) {
+      for (var helperKey in opts.helpers) {
+        Handlebars.registerHelper(helperKey, opts.helpers[helperKey]);
+      }
+      resolve();
+    });
   };
 
   var registerTemplates = function () {
@@ -76,6 +81,7 @@ module.exports = function buildTemplates(opts) {
   var prepReady = Promise.all([registerHelpers(), registerPartials(), registerTemplates()]);
 
   return through.obj(function(file, enc, cb) {
+
     if (file.isNull()) {
       this.push(file);
       return cb();
@@ -88,16 +94,24 @@ module.exports = function buildTemplates(opts) {
 
     if (file.isBuffer()) {
       // Do things
-      prepReady.then(function () {
-        console.log('all kinds of ready');
+      prepReady.then(() => {
+        var context = _.extend(
+          { template: opts.defaultTemplate,
+            content: file.contents.toString() },
+          opts.context,
+          opts.localContextFn(file.path, file.data) || {}
+        );
+
+        try {
+          let template  = getTemplate(`${opts.templateDir}/${context.template}${opts.extension}`);
+          let templateFn = Handlebars.compile(template);
+          file.contents = new Buffer(templateFn(context));
+        } catch (err) {
+          this.emit('error', new gutil.PluginError('gulp-wrap-handlebars', err));
+        }
+        this.push(file);
+        cb();
       });
-      cb();
-      // Data: merge in shared to local
-      // Generate path to template / figure out which template
-      // If template is not cached...
-      // TRY reading and Handlebars-compiling the template from the path
-      // Store read file (but not compiled) in caching object
-      // Add `content` as a property on the data
     }
   });
 };

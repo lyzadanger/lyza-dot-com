@@ -4,6 +4,7 @@ var gulp        = require('gulp');
 
 var config      = require('../config').template;
 var blogConfig  = require('../config').blog;
+var contentConfig = require('../config').content;
 var helpers     = require('../utils/helpers');
 
 var postContext = require('../utils/context-posts');
@@ -22,6 +23,8 @@ var markdown    = require('gulp-markdown');
 var recursive   = Promise.promisify(require('recursive-readdir'));
 
 var template    = require('../plugins/handlebars');
+
+var localContext = require('../utils/context').local;
 
 /** PREP (SHARED) DATA CONTEXT **/
 
@@ -109,8 +112,8 @@ gulp.task('templates', function (done) {
       posts: values[1],
       pages: values[2]
     };
-    
-    gulp.src(config.src)
+
+    return gulp.src(contentConfig.src)
       .pipe(data(function(file) {
         var content = frontMatter(String(file.contents));
         // Replace file's contents with just the body
@@ -129,8 +132,10 @@ gulp.task('templates', function (done) {
         partialDir: 'src/templates/partials',
         templateDir: 'src/templates',
         helpers: helpers,
-        context: context
+        context: context,
+        localContextFn: localContext
       }))
+      .pipe(gulp.dest('dist'))
       .on('finish', function () {
         console.log('all through');
         done();
