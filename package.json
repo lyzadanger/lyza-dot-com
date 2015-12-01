@@ -16,13 +16,12 @@
       "browserify-shim"
     ]
   },
-  "browserify-shim": {
-    "plugin": {
-      "exports": "plugin",
-      "depends": [
-        "jquery:$"
-      ]
-    }
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lyzadanger/lyza-dot-com.git"
+  },
+  "engines": {
+    "node": ">=4.0.0"
   },
   "devDependencies": {
     "bluebird": "^3.0.5",
