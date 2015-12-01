@@ -8,7 +8,7 @@ var helpers     = require('../utils/helpers');
 
 var postContext = require('../utils/context-posts');
 
-var Handlebars  = require('handlebars');
+// var Handlebars  = require('handlebars');
 var Promise     = require('bluebird');
 var frontMatter = require('front-matter');
 var fs          = require('fs');
@@ -16,33 +16,12 @@ var path        = require('path');
 var yaml        = require('js-yaml');
 var _           = require('lodash');
 
+var data        = require('gulp-data');
+var markdown    = require('gulp-markdown');
+
 var recursive   = Promise.promisify(require('recursive-readdir'));
 
-/** PREP HANDLEBARS **/
-var registerHelpers = function () {
-  for (var helperKey in helpers) {
-    Handlebars.registerHelper(helperKey, helpers[helperKey]);
-  }
-};
-
-var registerPartial = function (file) {
-  var pathBase = path.relative(config.partialDir, path.dirname(file)),
-    pathElements = (pathBase !== '') ? [pathBase] : [],
-    partialKey;
-  pathElements.push(path.basename(file, '.hbs'));
-  partialKey = pathElements.join(path.sep);
-  Handlebars.registerPartial(partialKey, fs.readFileSync(file, 'utf8'));
-};
-
-var registerPartials = function () {
-  return new Promise (function (resolve) {
-    recursive(config.partialDir)
-      .then((files) => {
-        files.forEach(registerPartial);
-        resolve();
-      });
-  });
-};
+var template    = require('../plugins/handlebars');
 
 /** PREP (SHARED) DATA CONTEXT **/
 
@@ -122,16 +101,39 @@ var readPages = function () {
 
 /** NOW, LOCAL CONTEXT **/
 
-gulp.task('templates', function () {
-  registerHelpers();
-  var prepDone = Promise.all([readData(), readPosts(), readPages(), registerPartials()]);
-  var context;
+gulp.task('templates', function (done) {
+  var prepDone = Promise.all([readData(), readPosts(), readPages()]);
   prepDone.then(function (values) {
-    context = {
+    let context = {
       data: values[0],
       posts: values[1],
       pages: values[2]
     };
+    
+    gulp.src(config.src)
+      .pipe(data(function(file) {
+        var content = frontMatter(String(file.contents));
+        // Replace file's contents with just the body
+        // of the current contents (sans front matter)
+        file.contents = new Buffer(content.body);
+        return content.attributes;
+      }))
+      .pipe(markdown({
+        highlight: function(code) {
+          return require('highlight.js').highlightAuto(code).value;
+        },
+        gfm: true,
+        smartypants: true
+      }))
+      .pipe(template({
+        partialDir: 'src/templates/partials',
+        templateDir: 'src/templates',
+        helpers: helpers,
+        context: context
+      }))
+      .on('finish', function () {
+        console.log('all through');
+        done();
+      });
   });
-
 });
