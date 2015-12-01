@@ -25,6 +25,7 @@
     }
   },
   "devDependencies": {
+    "bluebird": "^3.0.5",
     "browser-sync": "^2.2.0",
     "cssnext": "^1.0.1",
     "del": "^1.1.1",
