@@ -1,4 +1,4 @@
-/* jshint camelcase: false */
+/* eslint camelcase: 0 */
 'use strict';
 
 var RSS = require('rss');
@@ -8,14 +8,13 @@ var fs     = require('fs');
 var marked = require('marked');
 var mkdirp = require('mkdirp');
 var path   = require('path');
-var postData = require('./blog-data').sortedPosts;
+var postData = require('./template-data').sortedPosts;
 var _     = require('lodash');
 
 var formatRFC822 = 'ddd, DD MMM YYYY HH:mm:ss ZZ',// Required by RSS
   markedConfig = config.marked,
   rssConfig = config.blog,
-  feeds = {},
-  feedInfo;
+  feeds = {};
 
 var feedInfo = {
   description   : rssConfig.description,
@@ -31,8 +30,7 @@ var feedInfo = {
  * create the feed if it doesn't exist
  */
 var getTagFeed = function (tag) {
-  var tagRSS,
-    tagRSSInfo;
+  var tagRSSInfo;
   if (!feeds[tag]) {
     tagRSSInfo = _.extend({}, feedInfo, {
       title: rssConfig.title + ': ' + tag,
@@ -76,7 +74,7 @@ var generateFeeds = function (cb) {
 
   feeds.rss = new RSS(allRSSInfo);
 
-  postData(function (posts) {
+  postData(config.blog).then(function (posts) {
     var queue;
     // Callback for writeFile
     var dequeue = function (err) {
