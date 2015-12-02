@@ -12,14 +12,14 @@ var _          = require('lodash');
 
 module.exports = function buildTemplates(opts) {
   var templates = {};
-  
+
   opts = _.defaults(opts || {}, {
     context         : {},
     defaultTemplate : 'index',
     localContextFn  : _.noop,
     helpers         : {},
     partialDir      : '',
-    extension: '.hbs',
+    extension       : '.hbs',
     templateDir     : ''
   });
 

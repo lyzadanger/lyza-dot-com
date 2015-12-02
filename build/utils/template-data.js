@@ -1,12 +1,13 @@
 'use strict';
 
 var Promise     = require('bluebird');
-var recursive   = Promise.promisify(require('recursive-readdir'));
 var fs          = require('fs');
 var path        = require('path');
+
+var frontMatter = require('front-matter');
+var recursive   = Promise.promisify(require('recursive-readdir'));
 var yaml        = require('js-yaml');
 var _           = require('lodash');
-var frontMatter = require('front-matter');
 
 var postContext = require('../utils/context-posts');
 
@@ -81,7 +82,7 @@ var readPages = function (opts) {
   });
 };
 
-module.exports.data = readData;
-module.exports.posts = readPosts;
-module.exports.pages = readPages;
+module.exports.data        = readData;
+module.exports.posts       = readPosts;
+module.exports.pages       = readPages;
 module.exports.sortedPosts = readPosts;
