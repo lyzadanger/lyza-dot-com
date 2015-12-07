@@ -100,7 +100,7 @@ module.exports = function buildTemplates(opts) {
         );
 
         try {
-          var template  = getTemplate(`${opts.templateDir}/${context.template}${opts.extension}`);
+          var template  = getTemplate(opts.templateDir + '/' + context.template + opts.extension);
           var templateFn = Handlebars.compile(template);
           file.contents = new Buffer(templateFn(context));
         } catch (err) {
