@@ -6,12 +6,10 @@ var gutil = require('gulp-util');
 var config = require('../config').js.webpack;
 
 gulp.task('js', function (callback) {
-  webpack(config, function (err, stats) {
+  webpack(config, function (err) {
     if (err) {
       throw new gutil.PluginError('js', err);
     }
-    // Debug if I need it
-    // gutil.log('[js]', stats.toString());
     callback();
   });
 });
