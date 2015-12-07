@@ -6,34 +6,8 @@
 
 var config    = require('../config').blog;
 var path      = require('path');
-var _         = require('lodash');
-
-var dataData  = require('./blog-data').data;
-var postData  = require('./blog-data').sortedPosts;
-var pageData  = require('./blog-data').pages;
 
 var postContext = require('./context-posts');
-
-var sharedContext = function(win, onErr) {
-  var context = {},
-    queue = ['posts', 'pages', 'data'];
-  var fail = function (err) {
-    onErr(err);
-  };
-
-  var dequeue = function (key) {
-    return function (data) {
-      context[key] = data;
-      queue = _.without(queue, key);
-      if (!queue.length) {
-        win(context);
-      }
-    };
-  };
-  dataData(dequeue('data'), fail);
-  postData(dequeue('posts'), fail);
-  pageData(dequeue('pages'), fail);
-};
 
 /**
  * Given a file's path and front matter, can we determine what type of content
@@ -59,5 +33,4 @@ var localContext = function (filePath, attributes) {
   }
 };
 
-module.exports.shared = sharedContext;
 module.exports.local = localContext;
