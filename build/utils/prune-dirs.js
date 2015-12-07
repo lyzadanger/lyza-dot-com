@@ -1,20 +1,20 @@
 'use strict';
 
-var walk = require('walkdir');
-var fs   = require('fs');
-var path = require('path');
+var walk  = require('walkdir');
+var fs    = require('fs');
+var path  = require('path');
 var extfs = require('extfs');
 
 module.exports = function(treePath, done) {
   var emptyDirs = [],
-      walker,
-      parentDir = path.resolve(treePath);
+    walker,
+    parentDir = path.resolve(treePath);
 
   var deleteEmptyPath = function deleteEmptyPath(delPath, cb) {
     extfs.isEmpty(delPath, function (isEmpty) {
       // Delete if empty AND it's not the top level dir
       if (isEmpty && delPath !== parentDir) {
-        fs.rmdir(delPath, function(err) {
+        fs.rmdir(delPath, function() {
           // Walk up and check for emptiness until
           // we find a non-empty directory, deleting all the way
           deleteEmptyPath(path.dirname(delPath), cb);
@@ -48,7 +48,7 @@ module.exports = function(treePath, done) {
       // but not on the empty directory's parents
       // if all they contain is this dir
       // because they are not empty YET
-      walker.on('empty', function (emptyPath, stat) {
+      walker.on('empty', function (emptyPath) {
         emptyDirs.push(emptyPath);
       });
       walker.on('end', function() {

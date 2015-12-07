@@ -24,12 +24,12 @@ var moveFiles = function(fromDir, toDir, ignore) {
       mv(fromDir + '/' + file,
         toDir + '/' + file,
         function(err) {
-        if (err) {
-          deferred.reject(new Error(err));
-          return;
-        }
+          if (err) {
+            deferred.reject(new Error(err));
+            return;
+          }
           processNextFile(files);
-      });
+        });
     }
   };
 

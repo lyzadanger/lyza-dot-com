@@ -83,10 +83,6 @@ module.exports = {
     },
     smartypants: true
   },
-  markedLite: {
-    gfm        : true,
-    smartypants: true
-  },
   publish: {
     dest  : dirs.posts,
     drafts: dirs.drafts,

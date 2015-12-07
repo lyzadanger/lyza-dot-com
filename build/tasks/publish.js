@@ -29,7 +29,7 @@ gulp.task('promote', function() {
     return (file.data && file.data.status === 'published');
   }))
   .pipe(data(publishData))
-  .pipe(data(function(file) {
+  .pipe(data(function(file) { // Mess with paths
     var oldPath = file.path;
     if (file.path.indexOf(file.data.publish.path) === -1) {
       file.path = path.resolve(config.drafts) + '/' + file.data.publish.path;
@@ -38,7 +38,7 @@ gulp.task('promote', function() {
     return { oldPath: oldPath };
   }))
   .pipe(gulp.dest(config.dest))
-  .pipe(data(function(file) {
+  .pipe(data(function(file) { // Move the other files that may be in the post dir
     var movePromise = moveFiles(path.dirname(file.data.oldPath),
       path.dirname(file.path),
       ['index.md']);
