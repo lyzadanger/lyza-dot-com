@@ -19,7 +19,7 @@ gulp.task('content', function (done) {
     templateData.posts(config.blog),
     templateData.pages(config.blog)]);
   prepDone.then(function (values) {
-    let context = {
+    var context = {
       data: values[0],
       posts: values[1],
       pages: values[2]
