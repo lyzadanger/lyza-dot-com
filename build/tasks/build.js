@@ -5,7 +5,7 @@ var runSequence = require('run-sequence');
 gulp.task('build', ['clean', 'publish', 'unpublish'], function (done) {
   var tasks = [
     'assets',
-    'templates',
+    'content',
     'css',
     'rss',
     'js'

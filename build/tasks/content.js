@@ -1,19 +1,19 @@
 'use strict';
 
-var gulp        = require('gulp');
-var data        = require('gulp-data');
+var gulp         = require('gulp');
+var data         = require('gulp-data');
+var markdown     = require('gulp-markdown');
 
-var Promise     = require('bluebird');
-var frontMatter = require('front-matter');
-var markdown    = require('gulp-markdown');
+var Promise      = require('bluebird');
+var frontMatter  = require('front-matter');
 
-var config      = require('../config');
-var helpers     = require('../utils/helpers');
-var template    = require('../plugins/handlebars');
+var config       = require('../config');
+var helpers      = require('../utils/helpers');
+var template     = require('../plugins/handlebars');
 var localContext = require('../utils/context').local;
-var templateData     = require('../utils/template-data');
+var templateData = require('../utils/template-data');
 
-gulp.task('templates', function (done) {
+gulp.task('content', function (done) {
   var prepDone = Promise.all([
     templateData.data(config.blog),
     templateData.posts(config.blog),

@@ -18,7 +18,8 @@ var dest = './dist',
     js: dirs.js + '/**/*.js',
     pages: dirs.pages + '/**/*.md',
     posts: dirs.posts + '/**/*.md',
-    styles: dirs.styles + '/styles.css'
+    styles: dirs.styles + '/styles.css',
+    templates: dirs.templates + '/**/*.hbs'
   };
 
 module.exports = {
@@ -54,7 +55,6 @@ module.exports = {
       baseDir: dest
     }
   },
-
   clean: {
     out: dest
   },
@@ -98,9 +98,9 @@ module.exports = {
     prune: dirs.posts,
     dest: dirs.drafts
   },
-  template: {
+  templates: {
     partialDir: dirs.templates + '/partials',
     templateDir: dirs.templates,
-    src : dirs.templates + '/**/*.hbs'
+    src : srcs.templates
   }
 };
