@@ -21,10 +21,11 @@ var _           = require('lodash');
 var readPostData = function readPostData(file) {
   var content = frontMatter(String(file.contents));
   var defaults = {
-    title: path.basename(file.path, path.extname(file.path))
+    title   : path.basename(file.path, path.extname(file.path)),
+    status  : 'draft',
+    template: 'post'
   };
   var attributes = _.defaults(content.attributes || {}, defaults);
-  attributes = postData(attributes);
   return attributes;
 };
 
@@ -34,24 +35,15 @@ var readPostData = function readPostData(file) {
  * during the publishing process (promotion).
  */
 var writePublishData = function writePublishData(file) {
-  var data  = readPostData(file);
-  data      = publishData(data);
-  data.publish.path = data.publish.path || buildPublishPath(data.publish);
-  yamlUtil.extend(file, { publish: data.publish });
-  return data;
-};
-
-/**
- * Get post-relevant data from already-parse front matter.
- * @param attributes Object of FM data
- */
-var postData = function postData(attributes) {
-  var defaults = {
-    status  : 'draft',
-    template: 'post'
-  };
-  var data = _.defaults(attributes, defaults);
-  return data;
+  var attributes = readPostData(file),
+    defaults = {
+      slug: slug(attributes.title.toLowerCase()),
+      date: moment().toISOString()
+    };
+  attributes.publish = _.defaults(attributes.publish || {}, defaults);
+  attributes.publish.path = attributes.publish.path || buildPublishPath(attributes.publish);
+  yamlUtil.extend(file, { publish: attributes.publish });
+  return attributes;
 };
 
 /**
@@ -74,20 +66,5 @@ var buildPublishPath = function buildPublishPath(publishAttrs) {
   return postPath.join('/');
 };
 
-/**
- * Extend post attributes with publish-related defaults.
- * @param Object attributes Front matter attributes from post
- */
-var publishData = function publishData(attributes) {
-  var defaults = {
-    slug: slug(attributes.title.toLowerCase()),
-    date: moment().toISOString()
-  };
-  attributes.publish = _.defaults(attributes.publish || {}, defaults);
-  return attributes;
-};
-
-module.exports.postData = postData;
-module.exports.publishData = publishData;
 module.exports.readPostData = readPostData;
 module.exports.writePublishData = writePublishData;
