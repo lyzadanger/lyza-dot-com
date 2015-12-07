@@ -37,8 +37,8 @@ var readData = function (opts) {
   return new Promise(function (resolve) {
     var data = {};
     recursive(opts.dataDir)
-      .then((files) => {
-        files.forEach((file) => {
+      .then(function (files) {
+        files.forEach(function (file) {
           var key = path.basename(file, path.extname(file));
           data[key] = yaml.safeLoad(fs.readFileSync(file));
         });
@@ -51,11 +51,11 @@ var readPosts = function (opts) {
   var data = [];
   return new Promise(function (resolve) {
     recursive(opts.postDir)
-      .then((files) => {
+      .then(function (files) {
         files = _.reject(files, function(file) {
           return (path.extname(file) !== opts.postExtension);
         });
-        files.forEach((post) => {
+        files.forEach(function (post) {
           var attributes = getFrontMatter(post),
             metaData     = postContext(attributes);
           if (metaData) {
@@ -72,11 +72,13 @@ var readPages = function (opts) {
   var data = [];
   return new Promise(function (resolve) {
     recursive(opts.pageDir)
-      .then((files) => {
+      .then(function (files) {
         files = _.reject(files, function(file) {
           return (path.extname(file) !== opts.postExtension);
         });
-        files.forEach((file) => data.push(getFrontMatter(file)));
+        files.forEach(function (file) {
+          data.push(getFrontMatter(file));
+        });
         resolve(data);
       });
   });

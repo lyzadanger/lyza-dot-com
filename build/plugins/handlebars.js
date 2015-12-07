@@ -100,8 +100,8 @@ module.exports = function buildTemplates(opts) {
         );
 
         try {
-          let template  = getTemplate(`${opts.templateDir}/${context.template}${opts.extension}`);
-          let templateFn = Handlebars.compile(template);
+          var template  = getTemplate(`${opts.templateDir}/${context.template}${opts.extension}`);
+          var templateFn = Handlebars.compile(template);
           file.contents = new Buffer(templateFn(context));
         } catch (err) {
           this.emit('error', new gutil.PluginError('gulp-wrap-handlebars', err));
