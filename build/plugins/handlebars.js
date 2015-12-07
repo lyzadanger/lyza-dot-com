@@ -43,7 +43,7 @@ module.exports = function buildTemplates(opts) {
     return new Promise (function (resolve) {
       if (opts.partialDir) {
         recursive(opts.partialDir)
-          .then((files) => {
+          .then(function (files) {
             files.forEach(registerPartial);
             resolve();
           });
@@ -66,7 +66,7 @@ module.exports = function buildTemplates(opts) {
     return new Promise (function (resolve) {
       if (opts.templateDir) {
         recursive(opts.templateDir)
-          .then((files) => {
+          .then(function (files) {
             files.forEach(getTemplate);
             resolve();
           });
@@ -91,7 +91,7 @@ module.exports = function buildTemplates(opts) {
     }
 
     if (file.isBuffer()) {
-      prepReady.then(() => {
+      prepReady.then(function () {
         var context = _.extend(
           { template: opts.defaultTemplate,
             content: file.contents.toString() },
@@ -108,7 +108,7 @@ module.exports = function buildTemplates(opts) {
         }
         this.push(file);
         cb();
-      });
+      }.bind(this));
     }
   });
 };
