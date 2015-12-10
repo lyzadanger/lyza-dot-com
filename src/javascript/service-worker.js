@@ -103,27 +103,9 @@
             fetch(request)
               .then((response) => addToCache(request, response))
               .catch(() => console.log('need to fall back static'));
-
           })
       );
-
-      //   findInCache(request)
-      //     .catch( () => {
-      //       fetch(request)
-      //         .then((response) => addToCache(request, response))
-      //         .catch(() => {
-      //           console.log('need to fall back static', request);
-      //         })
-      //     }
-      // );
     }
-    // HTML requests
-    // fetch().then(stash).catch(fromCache).catch(offlinePage)
-    // Image requests
-    // fromCache().then(fetch).then(stash).catch(offlineImage)
-    // Other requests
-    // fromCache().then(fetch).then(stash)
-
     return;
 
   });
