@@ -1,8 +1,8 @@
-/* global self, caches, URL, fetch */
+/* global self, caches, URL, fetch, Response */
 'use strict';
 
 (function () {
-  var version  = 'sally-forth',
+  var version  = 'prance-forth',
     preCache   = ['/lyza-2.gif',
                   '/css/styles.css',
                   '/site.js',
@@ -58,6 +58,16 @@
     return response;
   };
 
+  var getOffline = function (request) {
+    let offlineType = fetchType(request);
+    if (offlineType === 'image') {
+      return new Response('<svg role="img" aria-labelledby="offline-title" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"><title id="offline-title">Offline</title><g fill="none" fill-rule="evenodd"><path fill="#D8D8D8" d="M0 0h400v300H0z"/><text fill="#9B9B9B" font-family="Helvetica Neue,Arial,Helvetica,sans-serif" font-size="72" font-weight="bold"><tspan x="93" y="172">offline</tspan></text></g></svg>', {headers: {'Content-Type': 'image/svg+xml'}});
+    } else if (offlineType === 'content') {
+      return caches.match('/offline/');
+    }
+    return false;
+  };
+
   var findInCache = function (request) {
     return new Promise((resolve, reject) => {
       caches.match(request)
@@ -70,7 +80,6 @@
         });
     });
   };
-
 
   ['static', 'content', 'image']
     .forEach((cacheKey) => cacheNames[cacheKey] = `${version}${cacheKey}`);
@@ -93,20 +102,18 @@
         fetch(request)
           .then((response) => addToCache(request, response))
           .catch(() => findInCache(request))
-          .catch(() => caches.match('/offline/'))
+          .catch(() => getOffline(request))
       );
     } else {
       event.respondWith(
         findInCache(request)
           .catch(() => {
-            fetch(request)
+            return fetch(request)
               .then((response) => addToCache(request, response))
-              .catch(() => console.log('need to fall back static'));
+              .catch(() => getOffline(request));
           })
       );
     }
-    return;
-
   });
 
 }());
