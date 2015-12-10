@@ -69,10 +69,13 @@ module.exports = {
   },
   js: {
     webpack: {
-      entry: dirs.js + '/site.js',
+      entry: {
+        site: dirs.js + '/site.js',
+        serviceWorker: dirs.js + '/service-worker.js'
+      },
       output: {
-        path: dest + '/js/',
-        filename: 'site.js'
+        path    : dest + '/js/',
+        filename: '[name].js'
       },
       module: {
         loaders: [
