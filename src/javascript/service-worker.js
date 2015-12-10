@@ -6,6 +6,7 @@
     preCache   = ['/lyza-2.gif',
                   '/css/styles.css',
                   '/site.js',
+                  '/offline/',
                   '/'],
     cacheNames = {};
 
@@ -92,9 +93,7 @@
         fetch(request)
           .then((response) => addToCache(request, response))
           .catch(() => findInCache(request))
-          .catch(() => {
-            console.log('need to fall back content', request);
-          })
+          .catch(() => caches.match('/offline/'))
       );
     } else {
       event.respondWith(
