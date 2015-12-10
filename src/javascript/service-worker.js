@@ -1,10 +1,12 @@
-/* global self, caches */
+/* global self, caches, URL, fetch */
 'use strict';
 
 (function () {
-  var version  = '8jkjk98-0000999shMe199898',
+  var version  = '8jkj98090989e199898',
     preCache   = ['/lyza-2.gif',
-                  '/css/styles.css'],
+                  '/css/styles.css',
+                  '/site.js',
+                  '/'],
     cacheNames = {};
 
   var updateStaticCache = function () {
@@ -19,20 +21,56 @@
         .map((deleteKey) => caches.delete(deleteKey)) )
     );
   };
-  //
-  // var requestShouldCache = function (request) {
-  //   // It's from my server
-  //   // It's from one of the whitelisted paths
-  //   // It's a GET request
-  // };
-  //
-  // var fetchPrecedence = function (request) {
-  //   // Default: network only
-  //   // HTML: network, cache
-  //   // ELSE, GET requests: cache, network
-  // };
 
-  ['static', 'pages', 'images']
+  var shouldHandleFetch = function (request) {
+    let url = new URL(request.url),
+      criteria = {
+        'fromMyOwnServer': url.origin === self.location.origin,
+        'isAGETRequest': request.method === 'GET',
+        'inAValidPath': (function () {
+          var matchesWhitelist =  /^\/(20[0-9]{2}|about|blog|css)/.exec(url.pathname);
+          var matchesPreCache = preCache.filter((path) => path === url.pathname);
+          return matchesWhitelist || matchesPreCache.length;
+        }())
+      };
+    var failingCriteria = Object.keys(criteria).filter((value) => !criteria[value]);
+    return !failingCriteria.length;
+  };
+
+  var fetchType = function (request) {
+    let acceptHeader = request.headers.get('Accept');
+    if (acceptHeader.indexOf('text/html') !== -1) {
+      return 'content';
+    } else if (acceptHeader.indexOf('image') !== -1)  {
+      return 'image';
+    }
+    return 'static';
+  };
+
+  var addToCache = function (cacheName, request, response) {
+    var copy = response.clone();
+    caches.open(cacheNames[cacheName])
+      .then((cache) => {
+        cache.put(request, copy);
+      });
+    return response;
+  };
+
+  var findInCache = function (request) {
+    return new Promise((resolve, reject) => {
+      caches.match(request)
+        .then((response) => {
+          if (response !== undefined) {
+            resolve(response);
+          } else {
+            reject();
+          }
+        });
+    });
+  };
+
+
+  ['static', 'content', 'images', 'other']
     .forEach((cacheKey) => cacheNames[cacheKey] = `${version}${cacheKey}`);
 
   self.addEventListener('install', (event) => {
@@ -43,15 +81,43 @@
     event.waitUntil(clearOldCaches().then(() => self.clients.claim()));
   });
 
-  self.addEventListener('fetch', () => {
+  self.addEventListener('fetch', (event) => {
+    var request = event.request,
+      requestType = fetchType(request);
+    if (!shouldHandleFetch(request)) { return; }
+
+    if (requestType === 'content') {
+      // Try to fetch
+      // if that succeeds, put this in cache
+      event.respondWith(
+        fetch(request)
+          .then((response) => addToCache('content', request, response))
+          .catch(() => findInCache(request))
+          .catch(() => {
+            console.log('need to fall back content', request);
+          })
+      );
+    } else {
+      event.respondWith(
+        findInCache(request)
+          .catch(() => {
+            fetch(request)
+              .then((response) => addToCache('static', request, response)
+              .catch(() => {
+                console.log('need to fall back static', request);
+              });
+          })
+      );
+    }
+    // HTML requests
+    // fetch().then(stash).catch(fromCache).catch(offlinePage)
+    // Image requests
+    // fromCache().then(fetch).then(stash).catch(offlineImage)
+    // Other requests
+    // fromCache().then(fetch).then(stash)
+
     return;
-    // If we should do anything
-    // try to fetch from appropriate precedence
-    // fail (be offline) in appropriate way
-    // cache appropriately
-    // Validate request is cacheable
-    // Get fetch precedence
-    // Respond with correct fetch precedence
+
   });
 
 }());
