@@ -71,7 +71,20 @@ module.exports = {
     webpack: {
       entry: dirs.js + '/site.js',
       output: {
-        filename: dest + '/js/site.js'
+        path: dest + '/js/',
+        filename: 'site.js'
+      },
+      module: {
+        loaders: [
+          {
+            test: /.js$/,
+            loader: 'babel-loader',
+            exclude: /node_modules/,
+            query: {
+              presets: ['es2015']
+            }
+          }
+        ]
       }
     },
     src: srcs.js
