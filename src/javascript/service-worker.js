@@ -2,7 +2,7 @@
 'use strict';
 
 (function () {
-  var version  = '8jkj98090989e199898',
+  var version  = 'sally-forth',
     preCache   = ['/lyza-2.gif',
                   '/css/styles.css',
                   '/site.js',
@@ -47,8 +47,9 @@
     return 'static';
   };
 
-  var addToCache = function (cacheName, request, response) {
-    var copy = response.clone();
+  var addToCache = function (request, response) {
+    var copy = response.clone(),
+      cacheName = fetchType(request);
     caches.open(cacheNames[cacheName])
       .then((cache) => {
         cache.put(request, copy);
@@ -70,7 +71,7 @@
   };
 
 
-  ['static', 'content', 'images', 'other']
+  ['static', 'content', 'image']
     .forEach((cacheKey) => cacheNames[cacheKey] = `${version}${cacheKey}`);
 
   self.addEventListener('install', (event) => {
@@ -87,11 +88,9 @@
     if (!shouldHandleFetch(request)) { return; }
 
     if (requestType === 'content') {
-      // Try to fetch
-      // if that succeeds, put this in cache
       event.respondWith(
         fetch(request)
-          .then((response) => addToCache('content', request, response))
+          .then((response) => addToCache(request, response))
           .catch(() => findInCache(request))
           .catch(() => {
             console.log('need to fall back content', request);
@@ -102,12 +101,21 @@
         findInCache(request)
           .catch(() => {
             fetch(request)
-              .then((response) => addToCache('static', request, response)
-              .catch(() => {
-                console.log('need to fall back static', request);
-              });
+              .then((response) => addToCache(request, response))
+              .catch(() => console.log('need to fall back static'));
+
           })
       );
+
+      //   findInCache(request)
+      //     .catch( () => {
+      //       fetch(request)
+      //         .then((response) => addToCache(request, response))
+      //         .catch(() => {
+      //           console.log('need to fall back static', request);
+      //         })
+      //     }
+      // );
     }
     // HTML requests
     // fetch().then(stash).catch(fromCache).catch(offlinePage)
