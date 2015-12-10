@@ -74,7 +74,7 @@ module.exports = {
         serviceWorker: dirs.js + '/service-worker.js'
       },
       output: {
-        path    : dest + '/js/',
+        path    : dest,
         filename: '[name].js'
       },
       module: {

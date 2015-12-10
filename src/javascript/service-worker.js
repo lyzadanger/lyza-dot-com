@@ -2,8 +2,7 @@
 
 (function () {
   var version = 'hashMe',
-    caches;
+    caches = {};
   ['static', 'pages', 'images']
     .forEach((cacheKey) => caches[cacheKey] = `${version}${cacheKey}`);
-  console.log(caches);
 }());
