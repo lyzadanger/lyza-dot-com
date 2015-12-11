@@ -13,6 +13,11 @@ var template     = require('../plugins/handlebars');
 var localContext = require('../utils/context').local;
 var templateData = require('../utils/template-data');
 
+var opts = {
+  src: [ config.srcs.pages, config.srcs.posts ],
+  dest: config.dest
+};
+
 gulp.task('content', function (done) {
   var prepDone = Promise.all([
     templateData.data(config.blog),
@@ -25,7 +30,7 @@ gulp.task('content', function (done) {
       pages: values[2]
     };
 
-    return gulp.src(config.content.src)
+    return gulp.src(opts.src)
       .pipe(data(function(file) {
         var content = frontMatter(String(file.contents));
         // Replace file's contents with just the body
@@ -48,7 +53,7 @@ gulp.task('content', function (done) {
         context       : context,
         localContextFn: localContext
       }))
-      .pipe(gulp.dest('dist'))
+      .pipe(gulp.dest(opts.dest))
       .on('finish', function () {
         done();
       });

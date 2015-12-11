@@ -45,10 +45,6 @@ module.exports = {
     title            : 'Lyza Danger Gardner',
     urlBase          : '/'
   },
-  content: {
-    src: [ srcs.pages, srcs.posts ],
-    dest: dest
-  },
   js: {
     webpack: {
       entry: {
