@@ -2,7 +2,7 @@
 'use strict';
 
 (function () {
-  var version  = '##versionHash##', // hash auto-generated on build
+  var version  = 'artemis-',
     preCache   = ['/lyza-2.gif',
                   '/css/styles.css',
                   '/site.js',
