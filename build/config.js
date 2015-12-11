@@ -1,7 +1,5 @@
 'use strict';
 var highlight = require('highlight.js');
-var StringReplacePlugin = require('string-replace-webpack-plugin');
-var randomWords = require('random-words');
 
 var dest = './dist',
   src    = './src',
@@ -44,52 +42,6 @@ module.exports = {
     postDir          : dirs.posts,
     title            : 'Lyza Danger Gardner',
     urlBase          : '/'
-  },
-  js: {
-    webpack: {
-      entry: {
-        site: dirs.js + '/site.js',
-        serviceWorker: dirs.js + '/service-worker.js'
-      },
-      output: {
-        path    : dest,
-        filename: '[name].js'
-      },
-      plugins: [
-        new StringReplacePlugin()
-      ],
-      module: {
-        loaders: [
-          {
-            test: /.js$/,
-            loader: 'babel-loader',
-            exclude: /node_modules/,
-            query: {
-              presets: ['es2015']
-            }
-          },
-          {
-            test: /.js$/,
-            loader: StringReplacePlugin.replace({
-              replacements: [
-                {
-                  pattern: /(versionHash)/,
-                  replacement: function () {
-                    var sillyHash = randomWords({
-                      exactly: 3,
-                      join: '-'
-                    });
-                    return sillyHash + '-';
-
-                  }
-                }
-              ]
-            })
-          }
-        ]
-      }
-    },
-    src: srcs.js
   },
   marked: { // Shared by several tasks
     gfm        : true,
