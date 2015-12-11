@@ -14,8 +14,11 @@ var localContext = require('../utils/context').local;
 var templateData = require('../utils/template-data');
 
 var opts = {
-  src: [ config.srcs.pages, config.srcs.posts ],
-  dest: config.dest
+  src           : config.srcs.content,
+  dest          : config.dest,
+  partialDir    : config.dirs.partials,
+  templateDir   : config.dirs.templates,
+  localContextFn: localContext
 };
 
 gulp.task('content', function (done) {
@@ -47,11 +50,11 @@ gulp.task('content', function (done) {
         smartypants: true
       }))
       .pipe(template({
-        partialDir    : 'src/templates/partials',
-        templateDir   : 'src/templates',
+        partialDir    : opts.partialDir,
+        templateDir   : opts.templateDir,
         helpers       : helpers,
         context       : context,
-        localContextFn: localContext
+        localContextFn: opts.localContextFn
       }))
       .pipe(gulp.dest(opts.dest))
       .on('finish', function () {

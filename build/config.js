@@ -11,6 +11,7 @@ var dest = './dist',
     posts    : src + '/content/posts',
     scripts  : src + '/javascript',
     styles   : src + '/styles',
+    partials : src + '/templates/partials',
     templates: src + '/templates'
   },
   srcs   = {
@@ -51,10 +52,5 @@ module.exports = {
       return highlight.highlightAuto(code).value;
     },
     smartypants: true
-  },
-  templates: {
-    partialDir : dirs.templates + '/partials',
-    templateDir: dirs.templates,
-    src        : srcs.templates
   }
 };
