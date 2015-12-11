@@ -45,12 +45,6 @@ module.exports = {
     title            : 'Lyza Danger Gardner',
     urlBase          : '/'
   },
-  browserSync: {
-    open     : false,
-    server   : {
-      baseDir: dest
-    }
-  },
   clean: {
     out: dest
   },
