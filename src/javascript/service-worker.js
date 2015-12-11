@@ -2,7 +2,7 @@
 'use strict';
 
 (function () {
-  var version  = 'prance-forth',
+  var version  = 'borpy-forth',
     preCache   = ['/lyza-2.gif',
                   '/css/styles.css',
                   '/site.js',
@@ -45,7 +45,18 @@
     } else if (acceptHeader.indexOf('image') !== -1)  {
       return 'image';
     }
-    return 'static';
+    return 'other';
+  };
+
+  var trimCache = function (cacheName, maxItems) {
+    caches.open(cacheNames[cacheName]).then((cache) => {
+      cache.keys().then((keys) => {
+        if (keys.length > maxItems) {
+          cache.delete(keys[0]).then(trimCache(cacheName, maxItems));
+        }
+      });
+    });
+
   };
 
   var addToCache = function (request, response) {
@@ -81,7 +92,7 @@
     });
   };
 
-  ['static', 'content', 'image']
+  ['static', 'content', 'image', 'other']
     .forEach((cacheKey) => cacheNames[cacheKey] = `${version}${cacheKey}`);
 
   self.addEventListener('install', (event) => {
@@ -90,6 +101,13 @@
 
   self.addEventListener('activate', (event) => {
     event.waitUntil(clearOldCaches().then(() => self.clients.claim()));
+  });
+
+  self.addEventListener('message', function(event) {
+    if (event.data.command == 'trimCaches') {
+      trimCache('image', 15);
+      trimCache('content', 50);
+    }
   });
 
   self.addEventListener('fetch', (event) => {
