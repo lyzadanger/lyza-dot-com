@@ -35,7 +35,7 @@ var opts = {
         loader: StringReplacePlugin.replace({
           replacements: [
             {
-              pattern: /(versionHash)/,
+              pattern: /(##versionHash##)/,
               replacement: function () {
                 var sillyHash = randomWords({
                   exactly: 3,
