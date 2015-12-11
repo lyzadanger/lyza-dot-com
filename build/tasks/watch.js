@@ -5,8 +5,8 @@ var config   = require('../config');
 
 gulp.task('watch', ['browserSync'], function() {
   // This will change (task name)
-  gulp.watch(config.content.src, ['content']);
-  gulp.watch(config.templates.src, ['content']);
-  gulp.watch(config.css.importDir + '/**/*', ['css']);
-  gulp.watch(config.js.src, ['js']);
+  gulp.watch(config.srcs.content, ['content']);
+  gulp.watch(config.srcs.templates, ['content']);
+  gulp.watch(config.srcs.css + '/**/*', ['css']);
+  gulp.watch(config.srcs.js, ['js']);
 });

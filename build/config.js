@@ -14,6 +14,7 @@ var dest = './dist',
     templates: src + '/templates'
   },
   srcs   = {
+    css      : dirs.styles + '/**/*',
     drafts   : dirs.drafts + '/*/**/*.md',
     js       : dirs.js + '/**/*.js',
     pages    : dirs.pages + '/**/*.md',
@@ -21,6 +22,7 @@ var dest = './dist',
     styles   : dirs.styles + '/styles.css',
     templates: dirs.templates + '/**/*.hbs'
   };
+srcs.content = [srcs.pages, srcs.posts];
 
 module.exports = {
   dirs: dirs,
