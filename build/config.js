@@ -69,9 +69,25 @@ module.exports = {
   },
   js: {
     webpack: {
-      entry: dirs.js + '/site.js',
+      entry: {
+        site: dirs.js + '/site.js',
+        serviceWorker: dirs.js + '/service-worker.js'
+      },
       output: {
-        filename: dest + '/js/site.js'
+        path    : dest,
+        filename: '[name].js'
+      },
+      module: {
+        loaders: [
+          {
+            test: /.js$/,
+            loader: 'babel-loader',
+            exclude: /node_modules/,
+            query: {
+              presets: ['es2015']
+            }
+          }
+        ]
       }
     },
     src: srcs.js
