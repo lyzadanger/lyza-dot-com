@@ -2,7 +2,7 @@
 'use strict';
 
 (function () {
-  var version  = 'borpy-forth',
+  var version  = 'antigone-',
     preCache   = ['/lyza-2.gif',
                   '/css/styles.css',
                   '/site.js',
@@ -133,5 +133,4 @@
       );
     }
   });
-
 }());
