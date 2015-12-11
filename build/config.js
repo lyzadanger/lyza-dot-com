@@ -45,9 +45,6 @@ module.exports = {
     title            : 'Lyza Danger Gardner',
     urlBase          : '/'
   },
-  clean: {
-    out: dest
-  },
   css: {
     importDir: dirs.styles,
     src      : srcs.styles,

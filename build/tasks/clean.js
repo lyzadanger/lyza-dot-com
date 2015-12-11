@@ -2,8 +2,12 @@
 
 var gulp   = require('gulp');
 var rimraf = require('rimraf');
-var config = require('../config').clean;
+var config = require('../config');
+
+var opts = {
+  out: config.dest
+};
 
 gulp.task('clean', function(cb) {
-  rimraf(config.out, cb);
+  rimraf(opts.out, cb);
 });
