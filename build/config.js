@@ -25,16 +25,10 @@ var dest = './dist',
   };
 
 module.exports = {
-  assets: {
-    // Everything in pages/* and posts/*
-    // but NOT markdown files
-    src: [ dirs.pages + '/**/*',
-           '!' + srcs.pages,
-           dirs.posts + '/**/*.*',
-           '!' + srcs.posts
-         ],
-    dest: dest
-  },
+  dirs: dirs,
+  srcs: srcs,
+  src : src,
+  dest: dest,
   blog: {
     author           : 'Lyza Danger Gardner',
     dataDir          : dirs.data,
