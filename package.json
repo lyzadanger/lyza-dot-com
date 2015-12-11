@@ -58,6 +58,7 @@
     "rss": "^1.1.1",
     "run-sequence": "^1.1.0",
     "slug": "^0.9.1",
+    "string-replace-webpack-plugin": "0.0.2",
     "suitcss-base": "^0.8.0",
     "suitcss-components-arrange": "^0.6.2",
     "suitcss-components-flex-embed": "^2.0.2",

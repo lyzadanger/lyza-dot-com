@@ -1,5 +1,6 @@
 'use strict';
 var highlight = require('highlight.js');
+var StringReplacePlugin = require('string-replace-webpack-plugin');
 
 var dest = './dist',
   src    = './src',
@@ -77,6 +78,9 @@ module.exports = {
         path    : dest,
         filename: '[name].js'
       },
+      plugins: [
+        new StringReplacePlugin()
+      ],
       module: {
         loaders: [
           {
@@ -86,6 +90,19 @@ module.exports = {
             query: {
               presets: ['es2015']
             }
+          },
+          {
+            test: /.js$/,
+            loader: StringReplacePlugin.replace({
+              replacements: [
+                {
+                  pattern: /(versionHash)/,
+                  replacement: function () {
+                    return 'hashed';
+                  }
+                }
+              ]
+            })
           }
         ]
       }

@@ -2,7 +2,7 @@
 'use strict';
 
 (function () {
-  var version  = 'antigone-',
+  var version  = 'versionHash',
     preCache   = ['/lyza-2.gif',
                   '/css/styles.css',
                   '/site.js',
