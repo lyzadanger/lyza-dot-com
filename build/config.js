@@ -1,6 +1,7 @@
 'use strict';
 var highlight = require('highlight.js');
 var StringReplacePlugin = require('string-replace-webpack-plugin');
+var randomWords = require('random-words');
 
 var dest = './dist',
   src    = './src',
@@ -98,7 +99,12 @@ module.exports = {
                 {
                   pattern: /(versionHash)/,
                   replacement: function () {
-                    return 'hashed';
+                    var sillyHash = randomWords({
+                      exactly: 3,
+                      join: '-'
+                    });
+                    return sillyHash + '-';
+
                   }
                 }
               ]

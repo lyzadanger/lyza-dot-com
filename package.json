@@ -52,6 +52,7 @@
     "moment": "^2.10.2",
     "mv": "^2.1.1",
     "q": "^1.4.1",
+    "random-words": "0.0.1",
     "recursive-readdir": "^1.2.1",
     "require-dir": "^0.1.0",
     "rimraf": "^2.3.1",
