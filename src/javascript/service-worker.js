@@ -2,6 +2,7 @@
 'use strict';
 
 (function () {
+  // https://en.wikipedia.org/wiki/List_of_Greek_mythological_figures
   var version  = 'artemis-',
     preCache   = ['/lyza-2.gif',
                   '/css/styles.css',
