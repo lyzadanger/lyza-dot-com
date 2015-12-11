@@ -50,17 +50,6 @@ module.exports = {
     },
     smartypants: true
   },
-  publish: {
-    dest  : dirs.posts,
-    drafts: dirs.drafts,
-    prune : dirs.drafts,
-    src   : srcs.drafts
-  },
-  unpublish: {
-    src  : srcs.posts,
-    prune: dirs.posts,
-    dest : dirs.drafts
-  },
   templates: {
     partialDir : dirs.templates + '/partials',
     templateDir: dirs.templates,
