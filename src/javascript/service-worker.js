@@ -25,7 +25,7 @@ var shouldHandleFetch = function (request) {
     isGETRequest    : request.method === 'GET',
     inAValidPath    : checkCachePath(url)
   };
-  // failingCriteria will the keys from any tests (values) in
+  // failingCriteria will contain the keys from any tests (values) in
   // criteria that did not pass. Having length > 0 means that
   // there is something about this request that makes it not
   // applicable for our fetch handling. Examining any keys here
@@ -51,6 +51,7 @@ var checkCachePath = function (url) {
  * What "type" of resource does this request represent?
  * This will affect which cache it may end up in and how
  * it is handled during fetch.
+ *
  * @param request {Request}
  * @return {String}
  */
@@ -163,7 +164,7 @@ var onActivate = function () {
  *
  * @param cacheName {String}    cache to stick this in
  * @param maxItems {Number}     max keys this cache should have
- * @return {Promise} || resolves to {Number} of entries in cache
+ * @return {Promise}            resolves to {Number} of entries in cache
  */
 var trimCache = function (cacheName, maxItems) {
   return caches.open(cacheNames[cacheName]).then((cache) => {
