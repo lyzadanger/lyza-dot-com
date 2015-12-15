@@ -1,5 +1,5 @@
 ---
-title: Four Things I Loved and a Few Things I Didn't about 2015 Conferences
+title: "2015 Conference Trends: Hat-tips and a Few Grimaces"
 tags:
   - tech
   - opinion
@@ -51,4 +51,4 @@ My attitude puts me somewhere in the middle. As a conference attendee, monitorin
 
 As I recall my year of conferences, what floats into my head is happiness. Whenever I speak at an event, I feel honored to have been invited, and hope that I am living up to the high expectations of attendees and organizers. I've attended  events with crackerjack content and energy. And now I've been fortunate enough to come full circle and see what it's like from the organizers' side.
 
-Curious about other conference-goers' experiences this year! 
+Curious about other conference-goers' experiences this year!
