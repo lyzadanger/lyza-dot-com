@@ -1,0 +1,5 @@
+@import "importMe";
+
+html {
+  background-color: red;
+}
