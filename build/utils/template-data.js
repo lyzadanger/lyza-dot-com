@@ -4,7 +4,7 @@ var Promise     = require('bluebird');
 var fs          = require('fs');
 var path        = require('path');
 
-var frontMatter = require('front-matter');
+var frontMatter = require('./yaml').getFrontMatter;
 var recursive   = Promise.promisify(require('recursive-readdir'));
 var yaml        = require('js-yaml');
 var _           = require('lodash');
@@ -12,15 +12,6 @@ var _           = require('lodash');
 var postContext = require('./post-data');
 
 var config      = require('../config');
-
-var getFrontMatter = function (filePath) {
-  var contents = fs.readFileSync(path.resolve(filePath), 'utf8');
-  var fm = frontMatter(contents);
-  if (fm && fm.attributes) {
-    fm.attributes.source = fm.body;
-  }
-  return (fm && fm.attributes) || {};
-};
 
 var sortPosts = function(posts) {
   var dates = [],
@@ -58,7 +49,7 @@ var readPosts = function (opts) {
           return (path.extname(file) !== opts.postExtension);
         });
         files.forEach(function (post) {
-          var attributes = getFrontMatter(post),
+          var attributes = frontMatter(post),
             metaData     = postContext(attributes, config);
           if (metaData) {
             data.push(metaData);
@@ -79,7 +70,7 @@ var readPages = function (opts) {
           return (path.extname(file) !== opts.postExtension);
         });
         files.forEach(function (file) {
-          data.push(getFrontMatter(file));
+          data.push(frontMatter(file));
         });
         resolve(data);
       });

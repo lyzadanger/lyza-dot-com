@@ -5,8 +5,20 @@
 'use strict';
 
 var frontMatter = require('front-matter');
+var fs          = require('fs-extra');
+var path        = require('path');
 var YAML        = require('js-yaml');
 var _           = require('lodash');
+
+
+var getFrontMatter = function (filePath) {
+  var contents = fs.readFileSync(path.resolve(filePath), 'utf8');
+  var fm = frontMatter(contents);
+  if (fm && fm.attributes) {
+    fm.attributes.source = fm.body;
+  }
+  return (fm && fm.attributes) || {};
+};
 
 /**
  * Extend the existing YAML attributes in the
@@ -33,3 +45,4 @@ var replaceYAML = function(file, obj) {
 };
 
 module.exports.extend = extendYAML;
+module.exports.getFrontMatter = getFrontMatter;
