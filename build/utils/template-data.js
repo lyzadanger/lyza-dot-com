@@ -11,6 +11,8 @@ var _           = require('lodash');
 
 var postContext = require('./post-data');
 
+var config      = require('../config');
+
 var getFrontMatter = function (filePath) {
   var contents = fs.readFileSync(path.resolve(filePath), 'utf8');
   var fm = frontMatter(contents);
@@ -57,7 +59,7 @@ var readPosts = function (opts) {
         });
         files.forEach(function (post) {
           var attributes = getFrontMatter(post),
-            metaData     = postContext(attributes);
+            metaData     = postContext(attributes, config);
           if (metaData) {
             data.push(metaData);
           }

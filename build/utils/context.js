@@ -4,7 +4,7 @@
  * posts and pages.
  */
 
-var config    = require('../config').blog;
+var config    = require('../config');
 var path      = require('path');
 
 var postContext = require('./post-data');
@@ -19,9 +19,9 @@ var localContext = function (filePath, attributes) {
    * thing becomes broader than posts vs. pages, this whole
    * system should be generalized.
    */
-  var fullPostPath   = path.resolve(config.postDir);
+  var fullPostPath   = path.resolve(config.blog.postDir);
   if (filePath.indexOf(fullPostPath) !== -1) {
-    attributes = postContext(attributes);
+    attributes = postContext(attributes, config);
     attributes.isPost = true;
     attributes.contentType = 'post';
     return attributes;
