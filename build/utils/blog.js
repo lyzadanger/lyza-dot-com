@@ -2,6 +2,8 @@
  * gulp utils for blog posts (files).
  * These utils are used for file processing and publish/unpublish
  * See `context-*` for utilities to build context for rendering
+ *
+ * @TODO config should be passed, not required
  */
 'use strict';
 
