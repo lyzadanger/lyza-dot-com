@@ -5,16 +5,17 @@
 var expect = require('chai').expect;
 var exec   = require('child_process').exec;
 var path   = require('path');
+var fs     = require('fs-extra');
 
 var utils  = require('./utils');
 
-describe('css task', function () {
+describe('assets task', function () {
 
-  var cssOut = path.resolve(path.join(__dirname, 'temp/dist/css/') + 'styles.css');
+  var assetsOut = path.resolve(path.join(__dirname, 'temp/dist/asset-directory/') + 'lyza-2.gif');
   this.timeout(5000);
 
   before(function (done) {
-    exec('gulp css', { cwd: path.join(__dirname, 'temp') }, function (err, stdout, stderr) {
+    exec('gulp assets', { cwd: path.join(__dirname, 'temp') }, function (err, stdout, stderr) {
       if (err) {
         return console.error(stdout, stderr, err);
       }
@@ -22,9 +23,8 @@ describe('css task', function () {
     });
   });
 
-  it('should output a css file to dist', function (done) {
-    expect(utils.fileExists(cssOut)).to.be.true;
-    expect(utils.fileContains(cssOut, 'background-color')).to.be.true;
+  it('should output an image file to dist', function (done) {
+    expect(utils.fileExists(assetsOut)).to.be.true;
     done();
   });
 
