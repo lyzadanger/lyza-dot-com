@@ -2,6 +2,7 @@
 'use strict';
 
 var fs = require('fs-extra');
+var File = require('vinyl');
 //var path = require('path');
 
 module.exports = {
@@ -12,5 +13,11 @@ module.exports = {
   fileExists : function (filePath) {
     var stats = fs.statSync(filePath);
     return stats.isFile();
+  },
+  getVinyl: function (filePath) {
+    return new File({
+      path: filePath,
+      contents: Buffer(fs.readFileSync(filePath, 'utf8'))
+    });
   }
 };

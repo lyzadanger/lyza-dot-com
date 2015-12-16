@@ -5,7 +5,6 @@
 var expect = require('chai').expect;
 var exec   = require('child_process').exec;
 var path   = require('path');
-var fs     = require('fs-extra');
 
 var utils  = require('./utils');
 
