@@ -7,9 +7,11 @@ var exec   = require('child_process').exec;
 var path   = require('path');
 var fs     = require('fs-extra');
 
+var utils  = require('./utils');
+
 describe('css task', function () {
 
-  var cssOut = path.resolve(path.join(__dirname, 'dist/css') + 'styles.css');
+  var cssOut = path.resolve(path.join(__dirname, 'temp/dist/css/') + 'styles.css');
   this.timeout(5000);
 
   before(function (done) {
@@ -22,10 +24,9 @@ describe('css task', function () {
   });
 
   it('should output a css file to dist', function (done) {
-    fs.ensureFile(cssOut, function (err) {
-      expect(err).to.be.undefined;
-      done();
-    });
+    expect(utils.fileExists(cssOut)).to.be.true;
+    expect(utils.fileContains(cssOut, 'background-color')).to.be.true;
+    done();
   });
 
 });
