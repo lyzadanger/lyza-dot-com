@@ -52,7 +52,7 @@ describe('unit/utils/blog', function () {
     });
 
     it('should generate publish attributes', function () {
-      console.log(postData);
+      expect(postData.publish).to.be.an.object;
     });
   });
 
