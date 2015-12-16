@@ -4,7 +4,7 @@
   "description": "gulp-driven static site FTW",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive ./test",
+    "test": "mocha --recursive ./test/unit",
     "coverage": "istanbul cover _mocha -- --recursive ./test/unit"
   },
   "keywords": [
