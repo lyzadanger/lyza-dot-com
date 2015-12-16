@@ -1,5 +1,6 @@
 /**
  * From attributes, build context for a post
+ * @TODO consolidate defaults
  */
 'use strict';
 
@@ -35,31 +36,22 @@ var getPubDate = function getPubDate (attributes) {
   }
 };
 
-/**
- * Make the typography in some attributes better for the web
- */
-var typographyAttributes = function typographyAttributes (attributes) {
-  attributes.title = attributes.title && typogr.smartypants(attributes.title);
-  attributes.blurb = attributes.blurb && typogr.typogrify(attributes.blurb);
-  return attributes;
-};
-
-/**
- * Run some attributes through marked
- */
-var mdAttributes = function mdAttributes (attributes) {
+var webifyAttributes = function (attributes) {
+  // Run certain attributes through marked
   marked.setOptions(markedConfig);
   ['blurb'].forEach(function (mdAttr) {
     attributes[mdAttr] = attributes[mdAttr] && marked(attributes[mdAttr]);
   });
+  // Do some typography enchancements
+  attributes.title = attributes.title && typogr.smartypants(attributes.title);
+  attributes.blurb = attributes.blurb && typogr.typogrify(attributes.blurb);
   return attributes;
 };
 
 module.exports = function (attributes) {
   attributes = _.defaults(attributes || {}, defaults);
   attributes.url = getURL(attributes);
-  attributes = typographyAttributes(attributes);
-  attributes = mdAttributes(attributes);
+  attributes = webifyAttributes(attributes);
   attributes.datePublished = getPubDate(attributes);
   attributes.datePublishedISO = attributes.datePublished && attributes.datePublished.toISOString();
   return attributes;
