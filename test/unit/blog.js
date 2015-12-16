@@ -7,6 +7,8 @@ var path   = require('path');
 var blog   = require('../../build/utils/blog');
 var utils  = require('../utils');
 
+var moment = require('moment');
+
 var config = require('../../build/config');
 
 var basePath = path.join(__dirname, '../temp/');
@@ -14,7 +16,7 @@ var draftsPath = path.join(basePath, config.dirs.drafts);
 
 describe('unit/utils/blog', function () {
 
-  describe('parsing default post (draft)', function () {
+  describe('readPostData', function () {
 
     var postFile,
       postData;
@@ -41,18 +43,53 @@ describe('unit/utils/blog', function () {
     });
   });
 
-  describe('processing post-to-publish', function () {
+  describe('writePublishData', function () {
     var postFile,
-      postData;
+      postData,
+      publishAttrs;
 
     before(function() {
       var filePath = draftsPath + '/post-to-publish/index.md';
       postFile = utils.getVinyl(filePath);
       postData = blog.writePublishData(postFile);
+      publishAttrs = postData.publish;
     });
 
     it('should generate publish attributes', function () {
-      expect(postData.publish).to.be.an.object;
+      expect(publishAttrs).to.be.an.object;
+      expect(publishAttrs.slug).to.equal('post-to-publish');
+    });
+
+    it('should generate correct publication date', function () {
+      var now = moment();
+      var pubDate = moment(publishAttrs.date);
+      // They won't be EXACTLY the same time, but close
+      expect(now.isSame(pubDate, 'minute')).to.be.true;
+    });
+  });
+
+  describe('buildPublishPath', function () {
+    var postFile,
+      postData,
+      postPath;
+
+    before(function() {
+      var filePath = draftsPath + '/published-post/index.md';
+      postFile = utils.getVinyl(filePath);
+      postData = blog.readPostData(postFile);
+      postPath = blog.buildPublishPath(postData.publish);
+    });
+
+    it('should retain publish attributes', function () {
+      expect(postData.publish).to.exist.and.to.be.an.object;
+    });
+
+    it('should build a path with date parts', function () {
+      // Date is known to be 2015-07-28T18:45:01.680Z
+      var postDate = moment('2015-07-28T18:45:01.680Z'),
+        expectedPath = postDate.format('YYYY/MM/DD/'),
+        expectedSlug = 'already-published-post';
+      expect(postPath).to.equal(expectedPath + expectedSlug + '/index.md');
     });
   });
 
