@@ -68,3 +68,4 @@ var buildPublishPath = function buildPublishPath(publishAttrs) {
 
 module.exports.readPostData = readPostData;
 module.exports.writePublishData = writePublishData;
+module.exports.buildPublishPath = buildPublishPath;
