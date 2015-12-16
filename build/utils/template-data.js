@@ -9,7 +9,7 @@ var recursive   = Promise.promisify(require('recursive-readdir'));
 var yaml        = require('js-yaml');
 var _           = require('lodash');
 
-var postContext = require('../utils/context-posts');
+var postContext = require('./post-data');
 
 var getFrontMatter = function (filePath) {
   var contents = fs.readFileSync(path.resolve(filePath), 'utf8');

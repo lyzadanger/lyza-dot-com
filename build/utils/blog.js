@@ -4,6 +4,7 @@
  * See `context-*` for utilities to build context for rendering
  *
  * @TODO config should be passed, not required
+ * @TODO consolidate defaults with other utils
  */
 'use strict';
 

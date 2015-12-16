@@ -7,7 +7,7 @@
 var config    = require('../config').blog;
 var path      = require('path');
 
-var postContext = require('./context-posts');
+var postContext = require('./post-data');
 
 /**
  * Given a file's path and front matter, can we determine what type of content
