@@ -41,4 +41,19 @@ describe('unit/utils/blog', function () {
     });
   });
 
+  describe('processing post-to-publish', function () {
+    var postFile,
+      postData;
+
+    before(function() {
+      var filePath = draftsPath + '/post-to-publish/index.md';
+      postFile = utils.getVinyl(filePath);
+      postData = blog.writePublishData(postFile);
+    });
+
+    it('should generate publish attributes', function () {
+      console.log(postData);
+    });
+  });
+
 });
