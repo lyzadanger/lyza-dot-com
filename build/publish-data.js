@@ -1,14 +1,14 @@
 /**
- * gulp utils for blog posts (files).
- * These utils are used for file processing and publish/unpublish
+ * Read and write post frontMatter metaData during publish and unpublish
+ * processes.
  *
  * @TODO config should be passed, not required
  * @TODO consolidate defaults with other utils
  */
 'use strict';
 
-var config      = require('../config').blog;
-var yamlUtil    = require('./yaml');
+var config      = require('./config').blog;
+var yamlUtil    = require('./utils/yaml');
 var frontMatter = require('front-matter');
 var moment      = require('moment');
 var path        = require('path');

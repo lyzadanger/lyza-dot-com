@@ -4,7 +4,7 @@
 
 var expect = require('chai').expect;
 var path   = require('path');
-var blog   = require('../../build/utils/blog');
+var blog   = require('../../build/publish-data');
 var utils  = require('../utils');
 
 var moment = require('moment');
@@ -14,7 +14,7 @@ var config = require('../../build/config');
 var basePath = path.join(__dirname, '../temp/');
 var draftsPath = path.join(basePath, config.dirs.drafts);
 
-describe('unit/utils/blog', function () {
+describe('unit/publish-data', function () {
 
   describe('readPostData', function () {
 

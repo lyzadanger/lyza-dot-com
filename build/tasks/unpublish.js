@@ -11,7 +11,7 @@ var path        = require('path');
 var vinylPaths  = require('vinyl-paths');
 
 var moveFiles   = require('../utils/move-files');
-var postData    = require('../utils/blog').readPostData;
+var postData    = require('../publish-data').readPostData;
 var prune       = require('../utils/prune-dirs');
 
 var opts = {
