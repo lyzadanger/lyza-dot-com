@@ -8,7 +8,7 @@ var markdown     = require('gulp-markdown');
 var frontMatter  = require('front-matter');
 
 var config       = require('../config');
-var helpers      = require('../utils/helpers');
+var helpers      = require('../handlebars-helpers');
 var template     = require('../plugins/handlebars');
 var localContext = require('../utils/template-data-local');
 var templateData = require('../utils/template-data');
