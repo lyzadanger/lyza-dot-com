@@ -3,7 +3,6 @@
 'use strict';
 
 var expect = require('chai').expect;
-var utils  = require('../utils');
 
 var templateData = require('../../build/utils/template-data');
 

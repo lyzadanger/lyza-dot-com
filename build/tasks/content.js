@@ -1,10 +1,10 @@
+/* global Buffer */
 'use strict';
 
 var gulp         = require('gulp');
 var data         = require('gulp-data');
 var markdown     = require('gulp-markdown');
 
-var Promise      = require('bluebird');
 var frontMatter  = require('front-matter');
 
 var config       = require('../config');
@@ -22,17 +22,7 @@ var opts = {
 };
 
 gulp.task('content', function (done) {
-  var prepDone = Promise.all([
-    templateData.data(config.blog),
-    templateData.posts(config.blog),
-    templateData.pages(config.blog)]);
-  prepDone.then(function (values) {
-    var context = {
-      data: values[0],
-      posts: values[1],
-      pages: values[2]
-    };
-
+  templateData.all(config.blog).then(function (context) {
     return gulp.src(opts.src)
       .pipe(data(function(file) {
         var content = frontMatter(String(file.contents));
