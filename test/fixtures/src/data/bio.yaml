@@ -1,0 +1,10 @@
+photos:
+  - url: "/about/lyza-danger-gardner-dev.jpg"
+    thumbnail: "/about/lyza-danger-gardner-dev-sm.jpg"
+    title: "Lyza, Dev"
+  - url: "/about/lyza-danger-gardner-tech.jpg"
+    thumbnail: "/about/lyza-danger-gardner-tech-sm.jpg"
+    title: "Lyza, Technical"
+  - url: "/about/lyza-danger-gardner-human.jpg"
+    thumbnail: "/about/lyza-danger-gardner-human-sm.jpg"
+    title: "Lyza, Human"
