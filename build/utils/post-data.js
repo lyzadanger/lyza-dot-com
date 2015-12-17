@@ -15,6 +15,15 @@ var defaults = {
   template: 'post'
 };
 
+/**
+ * Get URL relative to web root for a given post
+ * based on its frontMatter attributes.
+ *
+ * @param attributes {Object}
+ * @param opts {Object}         config.blog
+ *
+ * @return {String}
+ */
 var postURL = function postURL(attributes, opts) {
   var pubPath = attributes.publish && attributes.publish.path,
     url;
@@ -50,22 +59,22 @@ var postPublicationDate = function postPublicationDate(attributes, format) {
 
 module.exports = function (attributes, opts) {
 
-  attributes = _.defaults(attributes || {}, defaults);
+  var data = _.extend({}, _.defaults(attributes || {}, defaults));
 
   // Web-ify some attributes
 
   // Run some attributes through markdown
   marked.setOptions(opts.marked);
   ['blurb'].forEach(function (mdAttr) {
-    attributes[mdAttr] = attributes[mdAttr] && marked(attributes[mdAttr]);
+    data[mdAttr] = data[mdAttr] && marked(data[mdAttr]);
   });
 
   // Do some typography enchancements
-  attributes.title = attributes.title && typogr.smartypants(attributes.title);
-  attributes.blurb = attributes.blurb && typogr.typogrify(attributes.blurb);
+  data.title = data.title && typogr.smartypants(data.title);
+  data.blurb = data.blurb && typogr.typogrify(data.blurb);
 
-  attributes.url = postURL(attributes, opts.blog);
-  attributes.datePublished = postPublicationDate(attributes, 'moment');
-  attributes.datePublishedISO = postPublicationDate(attributes, 'iso');
-  return attributes;
+  data.url = postURL(data, opts.blog);
+  data.datePublished = postPublicationDate(data, 'moment');
+  data.datePublishedISO = postPublicationDate(data, 'iso');
+  return data;
 };

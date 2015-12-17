@@ -1,9 +1,9 @@
 ---
-title: Talking to myself with git
+title: Talkin' to myself with git
 tags:
   - web
   - tech
-blurb: 'Even when my projects involve a crowd with a size of one (me), I still use git workflow tactics. Is this good practice or an unnecessary monologue?'
+blurb: "Isn't this--awesome? [Try this](http://example.com)"
 status: published
 publish:
   slug: talking-to-myself-with-git

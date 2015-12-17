@@ -3,9 +3,12 @@
 
 var fs = require('fs-extra');
 var File = require('vinyl');
-//var path = require('path');
+var path = require('path');
 
 module.exports = {
+  basePath: function () {
+    return path.join(__dirname, '/temp/');
+  },
   fileContains: function (filePath, contents) {
     var fileContents = fs.readFileSync(filePath, 'utf8');
     return fileContents.indexOf(contents) !== -1;
