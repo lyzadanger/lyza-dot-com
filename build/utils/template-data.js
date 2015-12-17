@@ -1,5 +1,17 @@
 'use strict';
-
+/**
+ * To build the pages on the site, we compile content (pages, posts) against
+ * templates. There are two types of context given to a template when it
+ * renders.
+ *
+ * One is a "shared context"—that's a single context we give to
+ * all templates on the site. This file is concerned with generating that.
+ *
+ * This second kind of context is a "local context", a context object generated
+ * individually for each piece of content (as identified by its filePath).
+ * @see template-data-local for that
+ *
+ */
 var Promise     = require('bluebird');
 var fs          = require('fs');
 var path        = require('path');
@@ -13,6 +25,13 @@ var postContext = require('./post-data');
 
 var config      = require('../config');
 
+/**
+ * Sort posts by date published, reversed.
+ * Utility function.
+ *
+ * @param posts {Array} of {Objects}    Each object representing a post's data
+ * @return {Array}                      Sorted
+ */
 var sortPosts = function(posts) {
   var dates = [],
     sorted = [];
@@ -26,6 +45,14 @@ var sortPosts = function(posts) {
   return sorted;
 };
 
+/**
+ * Read in data from YAML files in the data directory.
+ * Data is added to the data object keyed by each data file's basename.
+ * This is intended to be part of the shared context for compiling content.
+ *
+ * @param opts {object}             blog configuration object
+ * @return {Promise}                resolves to data object, keyed by filenames
+ */
 var readData = function (opts) {
   return new Promise(function (resolve) {
     var data = {};
@@ -40,6 +67,14 @@ var readData = function (opts) {
   });
 };
 
+/**
+ * Parse all posts and build an array of metadata about them. This gives
+ * other content on the site information about all the posts for various
+ * template needs.
+ *
+ * @param opts {Object}       blog configuration object
+ * @return {Promise}          resolves to array of post metadata
+ */
 var readPosts = function (opts) {
   var data = [];
   return new Promise(function (resolve) {
@@ -61,6 +96,12 @@ var readPosts = function (opts) {
   });
 };
 
+/**
+ * Parse all pages and build an array of metadata about them.
+ *
+ * @param opts {Object}         blog configuration object
+ * @return {Array}              page metadata
+ */
 var readPages = function (opts) {
   var data = [];
   return new Promise(function (resolve) {
