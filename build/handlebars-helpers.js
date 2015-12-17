@@ -5,9 +5,9 @@
 'use strict';
 
 var _            = require('lodash');
-var config       = require('../config').blog;
+var config       = require('./config').blog;
 var marked       = require('marked');
-var markedConfig = require('../config').marked;
+var markedConfig = require('./config').marked;
 var Handlebars   = require('handlebars');
 var moment       = require('moment');
 
