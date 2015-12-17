@@ -11,7 +11,7 @@ before (function () {
   var tempDir = path.join(__dirname, '../temp'),
     fixturesDir = path.join(__dirname, '../fixtures');
   return rimraf(tempDir).then(function () {
-    return copy(fixturesDir, tempDir);
+    return copy(fixturesDir + '/src/', tempDir + '/src/');
   });
 });
 
