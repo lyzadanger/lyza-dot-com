@@ -19,10 +19,10 @@
  */
 
 // @TODO Remove reliance on config
-var config    = require('../config');
+var config    = require('./config');
 var path      = require('path');
 
-var postContext = require('../template-data-post');
+var postContext = require('./template-data-post');
 
 /**
  * Build the "local Context" for this content at filePath

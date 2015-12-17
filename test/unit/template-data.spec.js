@@ -4,7 +4,7 @@
 
 var expect = require('chai').expect;
 
-var templateData = require('../../build/utils/template-data');
+var templateData = require('../../build/template-data');
 
 var config = require('../../build/config');
 

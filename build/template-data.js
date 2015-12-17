@@ -18,13 +18,13 @@ var Promise     = require('bluebird');
 var fs          = require('fs');
 var path        = require('path');
 
-var frontMatter = require('./yaml').getFrontMatter;
+var frontMatter = require('./utils/yaml').getFrontMatter;
 var recursive   = Promise.promisify(require('recursive-readdir'));
 var yaml        = require('js-yaml');
 var _           = require('lodash');
 
-var postContext = require('../template-data-post');
-var config      = require('../config');
+var postContext = require('./template-data-post');
+var config      = require('./config');
 
 /**
  * Sort posts by date published, reversed.

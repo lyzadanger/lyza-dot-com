@@ -10,8 +10,8 @@ var frontMatter  = require('front-matter');
 var config       = require('../config');
 var helpers      = require('../handlebars-helpers');
 var template     = require('../plugins/handlebars');
-var localContext = require('../utils/template-data-local');
-var templateData = require('../utils/template-data');
+var localContext = require('../template-data-local');
+var templateData = require('../template-data');
 
 var opts = {
   src           : config.srcs.content,

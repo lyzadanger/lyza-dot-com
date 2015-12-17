@@ -6,7 +6,7 @@ var expect = require('chai').expect;
 var path   = require('path');
 var utils  = require('../utils');
 
-var templateDataLocal = require('../../build/utils/template-data-local');
+var templateDataLocal = require('../../build/template-data-local');
 var frontMatter = require('../../build/utils/yaml').getFrontMatter;
 
 var config = require('../../build/config');
