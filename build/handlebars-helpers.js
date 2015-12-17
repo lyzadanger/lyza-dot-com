@@ -1,16 +1,28 @@
 /**
- * Exports an object of Handlebars helpers
- * intended for SSR needs.
+ * Site-relevant Handlebars (template) helpers for
+ * formatting, displaying post information, etc.
+ *
+ * Used by the `content` task and handed to the `handlebars`
+ * plugin.
+ *
  */
 'use strict';
 
 var _            = require('lodash');
-var config       = require('./config').blog;
-var marked       = require('marked');
-var markedConfig = require('./config').marked;
 var Handlebars   = require('handlebars');
 var moment       = require('moment');
+var marked       = require('marked');
 
+var config       = require('./config').blog;
+var markedConfig = require('./config').marked;
+
+/**
+ * Utility: Returns a {Moment} object for the date in question.
+ * Noop if date is already a {Moment}
+ *
+ * @param date {String} || {Moment}
+ * @return {Moment} || false on failure
+ */
 var getMoment = function (date) {
   var convertedDate;
   if (moment.isMoment(date)) {
@@ -22,11 +34,32 @@ var getMoment = function (date) {
   return false;
 };
 
+/**
+ * Utility date formatter.
+ *
+ * @param date {Moment} || {String}
+ * @param format {String}            Moment-compatible date format string
+ *
+ * @return {String} || false on failure
+ */
 var formatDate = function(date, format) {
   var theDate = getMoment(date);
   return theDate && theDate.format(format);
 };
 
+/**
+ * Filter an array of posts to match options.
+ *
+ * Recognized options:
+ * - count {Number} default allPost.length  How many posts you want?
+ * - offset {Number} default 0              What index to start from
+ * - tag {String}                           Filter posts by tag
+ *
+ * @param options {Object}        filter options (handlebars arguments)
+ * @param allPosts {Array}        Array of posts to filter.
+ *
+ * @return {Array}                Posts from allPosts matching options
+ */
 var getPosts = function (options, allPosts) {
   var count = parseInt(options.hash.count, 10) || (allPosts && allPosts.length),
     offset = parseInt(options.hash.offset, 10) || 0,
@@ -47,6 +80,7 @@ var getPosts = function (options, allPosts) {
   return posts;
 };
 
+/** Helpers **/
 module.exports = {
   formatDate: function (date, options) {
     var formatted, format;
