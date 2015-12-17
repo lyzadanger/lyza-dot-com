@@ -11,6 +11,8 @@
  * individually for each piece of content (as identified by its filePath).
  * @see template-data-local for that
  *
+ * @TODO Fix config situation
+ *
  */
 var Promise     = require('bluebird');
 var fs          = require('fs');
@@ -22,7 +24,6 @@ var yaml        = require('js-yaml');
 var _           = require('lodash');
 
 var postContext = require('./post-data');
-
 var config      = require('../config');
 
 /**
@@ -118,6 +119,12 @@ var readPages = function (opts) {
   });
 };
 
+/**
+ * Get all the data.
+ *
+ * @param opts {Object}    blog config object
+ * @return {Promise}       resolves to object with `data`, `posts`, `pages` keys
+ */
 var allData = function (opts) {
   return Promise.all([readData(opts),
     readPosts(opts),
