@@ -14,7 +14,7 @@ var moment       = require('moment');
 var marked       = require('marked');
 
 var config       = require('./config').blog;
-var markedConfig = require('./config').marked;
+var markedConfig = config.marked;
 
 /**
  * Utility: Returns a {Moment} object for the date in question.
