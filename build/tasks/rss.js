@@ -1,6 +1,6 @@
 'use strict';
 
 var gulp = require('gulp');
-var rss  = require('../utils/rss');
+var rss  = require('../rss');
 
 gulp.task('rss', rss);

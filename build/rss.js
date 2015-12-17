@@ -1,15 +1,16 @@
 /* eslint camelcase: 0 */
 'use strict';
 
-var RSS = require('rss');
-var moment = require('moment');
-var config = require('../config');
-var fs     = require('fs');
-var marked = require('marked');
-var mkdirp = require('mkdirp');
-var path   = require('path');
+var fs       = require('fs-extra');
+var marked   = require('marked');
+var mkdirp   = require('mkdirp');
+var moment   = require('moment');
+var path     = require('path');
+var RSS      = require('rss');
+var _        = require('lodash');
+
+var config   = require('./config');
 var postData = require('./template-data').sortedPosts;
-var _     = require('lodash');
 
 var formatRFC822 = 'ddd, DD MMM YYYY HH:mm:ss ZZ',// Required by RSS
   markedConfig = config.marked,
