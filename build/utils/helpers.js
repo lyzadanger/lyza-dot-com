@@ -48,7 +48,7 @@ var getPosts = function (options, allPosts) {
 };
 
 module.exports = {
-  'formatDate': function (date, options) {
+  formatDate: function (date, options) {
     var formatted, format;
     format = options.hash.format || config.dateDisplayFormat;
     formatted = formatDate(date, format);
@@ -56,28 +56,28 @@ module.exports = {
       return new Handlebars.SafeString(formatted);
     }
   },
-  'ifEqual': function (left, right, options) {
+  ifEqual: function (left, right, options) {
     if (left === right) {
       return options.fn(this);
     } else {
       return options.inverse(this);
     }
   },
-  'isoDate': function (date) {
+  isoDate: function (date) {
     var theDate = getMoment(date);
     if (theDate) {
       return theDate.toISOString();
     }
   },
-  'markdown': function (content) {
+  markdown: function (content) {
     marked.setOptions(markedConfig);
     return marked(content);
   },
-  'postCount': function (options) {
+  postCount: function (options) {
     var posts = getPosts(options, this.posts);
     return posts.length || 0;
   },
-  'postsByMonth': function (options) {
+  postsByMonth: function (options) {
     var posts = getPosts(options, this.posts),
       monthPosts = [],
       currentMonth,
@@ -117,7 +117,7 @@ module.exports = {
     });
     return ret;
   },
-  'posts': function (options) {
+  posts: function (options) {
     var ret = '',
       posts = getPosts(options, this.posts);
 
