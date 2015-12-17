@@ -60,4 +60,28 @@ describe('unit/utils/template-data', function () {
       });
     });
   });
+
+  describe('shared context: all data', function () {
+    var allData;
+    before(function() {
+      allData = templateData.all(config.blog);
+    });
+
+    it('should return a Promise resolving to an Object', function () {
+      this.slow(300); // Allow for known sync IO
+      return allData.then(function (all) {
+        expect(all).to.be.an('object');
+      });
+    });
+
+    it('should contain keys for posts, pages, data', function () {
+      this.slow(300); // Allow for known sync IO
+      return allData.then(function (all) {
+        expect(all).to.contain.all.keys('posts', 'pages', 'data');
+        expect(all.data).to.be.an('object');
+        expect(all.posts).to.be.an('array');
+        expect(all.pages).to.be.an('array');
+      });
+    });
+  });
 });

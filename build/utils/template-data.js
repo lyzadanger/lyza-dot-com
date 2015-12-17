@@ -118,7 +118,20 @@ var readPages = function (opts) {
   });
 };
 
+var allData = function (opts) {
+  return Promise.all([readData(opts),
+    readPosts(opts),
+    readPages(opts)]).then(function (data) {
+      return {
+        data: data[0],
+        posts: data[1],
+        pages: data[2]
+      };
+    });
+};
+
 module.exports.data        = readData;
 module.exports.posts       = readPosts;
 module.exports.pages       = readPages;
+module.exports.all          = allData;
 module.exports.sortedPosts = readPosts;
