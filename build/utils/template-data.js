@@ -23,7 +23,7 @@ var recursive   = Promise.promisify(require('recursive-readdir'));
 var yaml        = require('js-yaml');
 var _           = require('lodash');
 
-var postContext = require('./post-data');
+var postContext = require('../template-data-post');
 var config      = require('../config');
 
 /**

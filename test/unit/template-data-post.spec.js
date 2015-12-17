@@ -6,7 +6,7 @@ var expect = require('chai').expect;
 var path   = require('path');
 var utils  = require('../utils');
 
-var postData = require('../../build/utils/post-data');
+var postData = require('../../build/template-data-post');
 var frontMatter = require('../../build/utils/yaml').getFrontMatter;
 var moment = require('moment');
 var config = require('../../build/config');

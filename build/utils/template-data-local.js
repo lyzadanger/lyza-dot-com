@@ -22,7 +22,7 @@
 var config    = require('../config');
 var path      = require('path');
 
-var postContext = require('./post-data');
+var postContext = require('../template-data-post');
 
 /**
  * Build the "local Context" for this content at filePath
