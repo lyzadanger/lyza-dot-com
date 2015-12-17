@@ -13,6 +13,7 @@ var config = require('../../build/config');
 
 var basePath = utils.basePath();
 var postsPath = path.join(basePath, config.dirs.posts);
+var pagesPath = path.join(basePath, config.dirs.pages);
 
 describe('unit/utils/template-data-local', function () {
   describe('local context for post', function () {
@@ -38,8 +39,25 @@ describe('unit/utils/template-data-local', function () {
   });
 
   describe('local context for page', function () {
-    it('should know it is a page');
-    it('should retain front matter attributes');
+    var filePath,
+      fileAttributes,
+      localContext;
+
+    before(function () {
+      filePath = pagesPath + '/about/index.md';
+      fileAttributes = frontMatter(filePath);
+      localContext = templateDataLocal(filePath, fileAttributes);
+    });
+
+    it('should know it is a page', function () {
+      expect(localContext.isPage).to.be.true;
+      expect(localContext.contentType).to.equal('page');
+    });
+
+    it('should retain front matter attributes', function () {
+      expect(localContext.isAboutPage).to.be.true;
+      expect(localContext.template).to.equal('about');
+    });
   });
 
 });
