@@ -11,8 +11,6 @@
  * individually for each piece of content (as identified by its filePath).
  * @see template-data-local for that
  *
- * @TODO Fix config situation
- *
  */
 var Promise     = require('bluebird');
 var fs          = require('fs');

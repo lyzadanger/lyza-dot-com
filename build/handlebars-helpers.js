@@ -13,8 +13,7 @@ var Handlebars   = require('handlebars');
 var moment       = require('moment');
 var marked       = require('marked');
 
-var config       = require('./config').blog;
-var markedConfig = config.marked;
+var config       = require('./config');
 
 /**
  * Utility: Returns a {Moment} object for the date in question.
@@ -84,7 +83,7 @@ var getPosts = function (options, allPosts) {
 module.exports = {
   formatDate: function (date, options) {
     var formatted, format;
-    format = options.hash.format || config.dateDisplayFormat;
+    format = options.hash.format || config.blog.dateDisplayFormat;
     formatted = formatDate(date, format);
     if (formatted) {
       return new Handlebars.SafeString(formatted);
@@ -104,7 +103,7 @@ module.exports = {
     }
   },
   markdown: function (content) {
-    marked.setOptions(markedConfig);
+    marked.setOptions(config.marked);
     return marked(content);
   },
   postCount: function (options) {

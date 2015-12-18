@@ -13,17 +13,15 @@ var config   = require('./config');
 var postData = require('./template-data').sortedPosts;
 
 var formatRFC822 = 'ddd, DD MMM YYYY HH:mm:ss ZZ',// Required by RSS
-  markedConfig = config.marked,
-  rssConfig = config.blog,
   feeds = {};
 
 var feedInfo = {
-  description   : rssConfig.description,
-  site_url      : rssConfig.domain,
-  language      : rssConfig.language,
+  description   : config.blog.description,
+  site_url      : config.blog.domain,
+  language      : config.blog.language,
   pubDate       : moment().format(formatRFC822),
-  managingEditor: rssConfig.author,
-  webMaster     : rssConfig.author
+  managingEditor: config.blog.author,
+  webMaster     : config.blog.author
 };
 
 /**
@@ -34,8 +32,8 @@ var getTagFeed = function (tag) {
   var tagRSSInfo;
   if (!feeds[tag]) {
     tagRSSInfo = _.extend({}, feedInfo, {
-      title: rssConfig.title + ': ' + tag,
-      feed_url: rssConfig.domain + '/feeds/' + tag + '.xml'
+      title: config.blog.title + ': ' + tag,
+      feed_url: config.blog.domain + '/feeds/' + tag + '.xml'
     });
     feeds[tag] = new RSS(tagRSSInfo);
   }
@@ -50,7 +48,7 @@ var addItem = function (post) {
   var postRSSInfo = {
     title      : post.title,
     description: marked(post.source),
-    url        : rssConfig.domain + post.url,
+    url        : config.blog.domain + post.url,
     date       : post.datePublished.toDate(),
     categories : post.tags
   };
@@ -66,11 +64,11 @@ var addItem = function (post) {
 
 var generateFeeds = function (cb) {
 
-  marked.setOptions(markedConfig);
+  marked.setOptions(config.marked);
   // Create the "main" feed for all posts
   var allRSSInfo = _.extend({}, feedInfo, {
-    title: rssConfig.title + ': everything',
-    feed_url: rssConfig.domain + '/feeds/rss.rss'
+    title: config.blog.title + ': everything',
+    feed_url: config.blog.domain + '/feeds/rss.rss'
   });
 
   feeds.rss = new RSS(allRSSInfo);
@@ -90,15 +88,15 @@ var generateFeeds = function (cb) {
 
     queue = Object.keys(feeds).length * 2;
 
-    mkdirp(path.resolve(rssConfig.feedDir), function (err) {
+    mkdirp(path.resolve(config.blog.feedDir), function (err) {
       if (err) { throw new Error(err); }
       for (var feed in feeds) {
-        fs.writeFile(path.resolve(rssConfig.feedDir + '/' + feed + '.rss'),
+        fs.writeFile(path.resolve(config.blog.feedDir + '/' + feed + '.rss'),
           feeds[feed].xml(),
           dequeue
         );
         // Generate feedburner feeds
-        fs.writeFile(path.resolve(rssConfig.feedDir + '/' + feed + '-fb.rss'),
+        fs.writeFile(path.resolve(config.blog.feedDir + '/' + feed + '-fb.rss'),
           feeds[feed].xml(),
           dequeue
         );

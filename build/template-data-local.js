@@ -18,7 +18,6 @@
  * beyond pages and posts.
  */
 
-// @TODO Remove reliance on config
 var config    = require('./config');
 var path      = require('path');
 

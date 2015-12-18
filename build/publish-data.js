@@ -7,7 +7,7 @@
  */
 'use strict';
 
-var config      = require('./config').blog;
+var config      = require('./config');
 var yamlUtil    = require('./utils/yaml');
 var frontMatter = require('front-matter');
 var moment      = require('moment');
@@ -58,12 +58,12 @@ var buildPublishPath = function buildPublishPath(publishAttrs) {
 
   // Generate publish path
   // 1. Build path elements (dirs) from permalinkPattern
-  config.permalinkPattern.split('/').forEach( function (chunk) {
+  config.blog.permalinkPattern.split('/').forEach( function (chunk) {
     postPath.push(pubDate.format(chunk));
   });
   // 2. Push slug on as dir in path
   // 3. Push `index.md` on as literal filename
-  postPath.push(publishAttrs.slug, config.postFileName + config.postExtension);
+  postPath.push(publishAttrs.slug, config.blog.postFileName + config.blog.postExtension);
   // If not already a data.publish.path, use what we just generated
   return postPath.join('/');
 };
