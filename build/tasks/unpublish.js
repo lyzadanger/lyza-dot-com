@@ -40,7 +40,7 @@ gulp.task('demote', function() {
   .pipe(data(function(file) {
     var movePromise = moveFiles(path.dirname(file.data.oldPath),
       path.dirname(file.path),
-      ['index.md']);
+      { ignore: /index\.md/ });
     file.path = file.data.oldPath;
     delete file.data.oldPath;
     return movePromise;

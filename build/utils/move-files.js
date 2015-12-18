@@ -1,47 +1,58 @@
 /**
- * Move all files from fromDir to toDir, ignoring
- * anything in the array ignore.
- * Return a promise to work well in the gulp chain
+ * Utility to move files
  */
 'use strict';
-var fs = require('fs');
-var mv = require('mv');
-var Q  = require('q');
-var _  = require('lodash');
+var fs      = require('fs-extra');
+var Promise = require('bluebird');
+var readdir = Promise.promisify(fs.readdir);
+var mv      = Promise.promisify(require('mv'));
 
-var moveFiles = function(fromDir, toDir, ignore) {
-  var deferred = Q.defer();
+/**
+ * Move all the files from fromDir to toDir except
+ * any that match an optional regex in opts.include
+ *
+ * @param fromDir {String}
+ * @param toDir   {String}
+ * @return {Object}           Promise
+ */
+var moveFiles = function(fromDir, toDir, opts) {
+  opts = opts || {};
 
-  var processNextFile = function(files) {
-    if (!files.length) {
-      deferred.resolve();
-      return;
+  /**
+   * Filter list of files in directory against (optional)
+   * ignore option.
+   *
+   * @param files {Array}    of filenames from `readdir`
+   * @return {Array}         of valid files to move
+   */
+  var filterFiles = function(files) {
+    if (opts.ignore) {
+      files = files.filter(function(file) {
+        return !opts.ignore.test(file);
+      });
     }
-    var file = files.pop();
-    if (_.contains(ignore, file)) {
-      processNextFile(files);
-    } else {
-      mv(fromDir + '/' + file,
-        toDir + '/' + file,
-        function(err) {
-          if (err) {
-            deferred.reject(new Error(err));
-            return;
-          }
-          processNextFile(files);
-        });
-    }
+    return files;
   };
 
-  fs.readdir(fromDir, function(err, files) {
-    if (err) {
-      deferred.reject(new Error(err));
-      return;
-    }
-    processNextFile(files);
-  });
+  /**
+   * Generate a promise for each file that needs to be moved
+   * and return them via `Promise.all`
+   *
+   * @param files {Array}     of filenames to move
+   * @return {Object}         `Promise.all` with a promise for each file
+   */
+  var moveFilteredFiles = function (files) {
+    var filePromises = files.map(function (file) {
+      return mv(fromDir + '/' + file,
+      toDir + '/' + file);
+    });
+    return Promise.all(filePromises);
+  };
 
-  return deferred;
+  return readdir(fromDir)
+    .then(filterFiles)
+    .then(moveFilteredFiles);
+
 };
 
 module.exports = moveFiles;

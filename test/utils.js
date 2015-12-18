@@ -9,13 +9,21 @@ module.exports = {
   basePath: function () {
     return path.join(__dirname, '/temp/');
   },
+  fixturesPath: function () {
+    return path.join(__dirname, '/fixtures/');
+  },
   fileContains: function (filePath, contents) {
     var fileContents = fs.readFileSync(filePath, 'utf8');
     return fileContents.indexOf(contents) !== -1;
   },
   fileExists : function (filePath) {
-    var stats = fs.statSync(filePath);
-    return stats.isFile();
+    var stats;
+    try {
+      stats = fs.statSync(filePath);
+    } catch (err) {
+      return false;
+    }
+    return stats && stats.isFile();
   },
   getVinyl: function (filePath) {
     return new File({

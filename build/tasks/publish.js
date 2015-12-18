@@ -48,7 +48,7 @@ gulp.task('promote', function() {
   .pipe(data(function(file) { // Move the other files that may be in the post dir
     var movePromise = moveFiles(path.dirname(file.data.oldPath),
       path.dirname(file.path),
-      ['index.md']);
+      { ignore: /index\.md/ });
     // Put back the old path for deletion reasons
     file.path = file.data.oldPath;
     delete file.data.oldPath; // This is kinda gross

@@ -8,10 +8,11 @@ var copy   = Promise.promisify(require('fs-extra').copy);
 var rimraf = Promise.promisify(require('rimraf'));
 
 before (function () {
+  console.log('global setup');
   var tempDir = path.join(__dirname, '../temp'),
     fixturesDir = path.join(__dirname, '../fixtures');
   return rimraf(tempDir).then(function () {
-    return copy(fixturesDir + '/src/', tempDir + '/src/');
+    return copy(fixturesDir, tempDir);
   });
 });
 
