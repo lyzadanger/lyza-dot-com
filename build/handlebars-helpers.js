@@ -81,9 +81,13 @@ var getPosts = function (options, allPosts) {
 
 /** Helpers **/
 module.exports = {
+  currentDate: function (options) {
+    var format = (options && options.hash && options.hash.format) || config.blog.dateDisplayFormat;
+    return new Handlebars.SafeString(formatDate(moment(), format));
+  },
   formatDate: function (date, options) {
     var formatted, format;
-    format = options.hash.format || config.blog.dateDisplayFormat;
+    format = (options && options.hash && options.hash.format) || config.blog.dateDisplayFormat;
     formatted = formatDate(date, format);
     if (formatted) {
       return new Handlebars.SafeString(formatted);
