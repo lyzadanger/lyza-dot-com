@@ -31,3 +31,7 @@ Adding a new `helper` for **`handlebars`** on my own site sent me running back t
 As the week goes on, I am tiring of fighting `boxen` and other provisioning-related things. I am running up against [sudo issues](https://github.com/boxen/puppet-brewcask/issues/22) with `brewcask` and spent a while troubleshooting `ruby` and `bundler` versions vis-a-vis `boxen` for a co-worker. I feel tired and uninspired with that.
 
 I have clued in on the [Generator Coroutine](https://github.com/thalesmello/exploring-async/blob/master/exploring_async.md#generator-coroutines) as a possible balm for my occasional tangle of Promise piles.
+
+I have spent some time reading and thinking about [AirBnB's JavaScript Style Guide](https://github.com/airbnb/javascript). The _default_ and _emphatic_ use of `const` floored me at first; I'm still coming to terms with it. A few gems in here, like a link to [why `typeof` is no longer a safe operation](http://es-discourse.com/t/why-typeof-is-no-longer-safe/15) (bah).
+
+This led me to re-reading style guides by [Google](https://google.github.io/styleguide/javascriptguide.xml), Rick Waldron's [Idiomatic JS](https://github.com/rwaldron/idiomatic.js) and a few other, and re-assessing a couple of my own inconsistencies. Is it dorky to find this stuff kind of inspiring?
