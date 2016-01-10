@@ -15,7 +15,7 @@ var version  = 'aether',
  * Should our fetch handler concern itself with this
  * particular request?
  *
- * @param request {Request}
+ * @param {Request} request
  * @return {boolean}
  */
 var shouldHandleFetch = function (request) {
@@ -38,7 +38,7 @@ var shouldHandleFetch = function (request) {
  * Utility function to check path of request (via url property)
  * to determine whether it's in a valid path for caching.
  *
- * @param url {URL}
+ * @param {URL} url
  * @return {boolean}
  */
 var checkCachePath = function (url) {
@@ -52,7 +52,7 @@ var checkCachePath = function (url) {
  * This will affect which cache it may end up in and how
  * it is handled during fetch.
  *
- * @param request {Request}
+ * @param {Request} request
  * @return {String}
  */
 var resourceType = function (request) {
@@ -69,8 +69,8 @@ var resourceType = function (request) {
  * Add the given response (keyed by request) into
  * the appropriate cache.
  *
- * @param request {Request}
- * @param response {Response}
+ * @param {Request} request
+ * @param {Response} response
  * @return {Response}
  */
 var addToCache = function (request, response) {
@@ -87,7 +87,7 @@ var addToCache = function (request, response) {
  * used as a fallback if other methods of fetching do not succeed.
  * Returns undefined on failure to sorta mimic the behavior of `caches.match`
  *
- * @param request {Request}
+ * @param {Request} request
  * @return {Promise} resolving to {Response} || {Response} || undefined
  */
 var getOffline = function (request) {
@@ -106,7 +106,7 @@ var getOffline = function (request) {
  * Here I wrap that whole situation with another Promise such that it
  * rejects on failure to match
  *
- * @param request {Request}
+ * @param {Request} request
  * @return {Promise} resolving to {Response} || rejecting on `undefined`
  */
 var findInCache = function (request) {
@@ -162,8 +162,8 @@ var onActivate = function () {
  *
  * Recursively trim a given cache until its entry count is <= maxItems
  *
- * @param cacheName {String}    cache to stick this in
- * @param maxItems {Number}     max keys this cache should have
+ * @param {String} cacheName    cache to trim
+ * @param  {Number} maxItems    max keys this cache should have
  * @return {Promise}            resolves to {Number} of entries in cache
  */
 var trimCache = function (cacheName, maxItems) {
