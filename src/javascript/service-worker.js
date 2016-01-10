@@ -18,7 +18,7 @@ var version  = 'aether',
  * @param {Request} request
  * @return {boolean}
  */
-var shouldHandleFetch = function (request) {
+function shouldHandleFetch (request) {
   let url = new URL(request.url);
   var criteria = {
     fromMyOwnServer : url.origin     === self.location.origin,
@@ -32,7 +32,7 @@ var shouldHandleFetch = function (request) {
   // could help for debug.
   var failingCriteria = Object.keys(criteria).filter((value) => !criteria[value]);
   return !failingCriteria.length;
-};
+}
 
 /**
  * Utility function to check path of request (via url property)
@@ -41,11 +41,11 @@ var shouldHandleFetch = function (request) {
  * @param {URL} url
  * @return {boolean}
  */
-var checkCachePath = function (url) {
+function checkCachePath (url) {
   var matchesPathPattern = cachePathPattern.exec(url.pathname);
   var matchesPreCache = preCache.filter((path) => path === url.pathname).length;
   return matchesPathPattern || matchesPreCache;
-};
+}
 
 /**
  * What "type" of resource does this request represent?
@@ -55,7 +55,7 @@ var checkCachePath = function (url) {
  * @param {Request} request
  * @return {String}
  */
-var resourceType = function (request) {
+function resourceType (request) {
   let acceptHeader = request.headers.get('Accept');
   if (acceptHeader.indexOf('text/html') !== -1) {
     return 'content';
@@ -63,7 +63,7 @@ var resourceType = function (request) {
     return 'image';
   }
   return 'other';
-};
+}
 
 /**
  * Add the given response (keyed by request) into
@@ -73,7 +73,7 @@ var resourceType = function (request) {
  * @param {Response} response
  * @return {Response}
  */
-var addToCache = function (request, response) {
+function addToCache (request, response) {
   var copy = response.clone(),
     cacheName = resourceType(request);
   caches.open(cacheNames[cacheName]).then((cache) => {
@@ -90,7 +90,7 @@ var addToCache = function (request, response) {
  * @param {Request} request
  * @return {Promise} resolving to {Response} || {Response} || undefined
  */
-var getOffline = function (request) {
+function getOffline (request) {
   let offlineType = resourceType(request);
   if (offlineType === 'image') {
     return new Response('<svg role="img" aria-labelledby="offline-title" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"><title id="offline-title">Offline</title><g fill="none" fill-rule="evenodd"><path fill="#D8D8D8" d="M0 0h400v300H0z"/><text fill="#9B9B9B" font-family="Times New Roman,Times,serif" font-size="72" font-weight="bold"><tspan x="93" y="172">offline</tspan></text></g></svg>', {headers: {'Content-Type': 'image/svg+xml'}});
@@ -98,7 +98,7 @@ var getOffline = function (request) {
     return caches.match('/offline/');
   }
   return undefined;
-};
+}
 
 /**
  * Look for request in the caches. `caches.match` will resolve its
@@ -109,7 +109,7 @@ var getOffline = function (request) {
  * @param {Request} request
  * @return {Promise} resolving to {Response} || rejecting on `undefined`
  */
-var findInCache = function (request) {
+function findInCache (request) {
   return new Promise((resolve, reject) => {
     caches.match(request).then((response) => {
       if (response !== undefined) {
@@ -119,7 +119,7 @@ var findInCache = function (request) {
       }
     });
   });
-};
+}
 
 /**
  * During install stage, do this:
@@ -130,10 +130,10 @@ var findInCache = function (request) {
  *
  * @return {Promise}
  */
-var onInstall = function () {
+function onInstall () {
   return caches.open(cacheNames.static)
     .then((cache) => cache.addAll(preCache));
-};
+}
 
 /**
  * During activate stage, do this:
@@ -145,13 +145,13 @@ var onInstall = function () {
  *
  * @return {Promise}
  */
-var onActivate = function () {
+function onActivate () {
   return caches.keys()
     .then((keys)       => Promise.all(keys
       .filter((key)      => key.indexOf(version) !== 0)
       .map((deleteKey)   => caches.delete(deleteKey)) )
   );
-};
+}
 
 /**
  * Keep the caches a reasonable size by limiting the number of entries.
@@ -166,7 +166,7 @@ var onActivate = function () {
  * @param  {Number} maxItems    max keys this cache should have
  * @return {Promise}            resolves to {Number} of entries in cache
  */
-var trimCache = function (cacheName, maxItems) {
+function trimCache (cacheName, maxItems) {
   return caches.open(cacheNames[cacheName]).then((cache) => {
     return cache.keys().then((keys) => {
       if (keys.length > maxItems) {
@@ -176,7 +176,7 @@ var trimCache = function (cacheName, maxItems) {
       }
     });
   });
-};
+}
 
 // Set up cache names based on current version hash
 ['static', 'content', 'image', 'other']
