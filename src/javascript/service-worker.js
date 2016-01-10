@@ -2,7 +2,7 @@
 'use strict';
 
 // https://en.wikipedia.org/wiki/List_of_Greek_mythological_figures
-var version  = 'artemis-',
+var version  = 'aether',
   preCache   = ['/lyza-2.gif',
                 '/css/styles.css',
                 '/site.js',
@@ -180,7 +180,7 @@ var trimCache = function (cacheName, maxItems) {
 
 // Set up cache names based on current version hash
 ['static', 'content', 'image', 'other']
-  .forEach((cacheKey) => cacheNames[cacheKey] = `${version}${cacheKey}`);
+  .forEach((cacheKey) => cacheNames[cacheKey] = `${version}-${cacheKey}`);
 
 // Handle install stage: pre-cache and skipWaiting to make this
 // new SW activate immediately
