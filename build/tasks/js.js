@@ -6,33 +6,40 @@ var gutil = require('gulp-util');
 var config = require('../config');
 
 var opts = {
-  entry: {
-    site: config.dirs.js + '/site.js',
-    serviceWorker: config.dirs.js + '/service-worker.js'
-  },
-  output: {
-    path    : config.dest,
-    filename: '[name].js'
-  },
-  module: {
-    loaders: [
-      {
-        test: /.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ['es2015']
+  staticSrc: config.dirs.js + '/serviceWorker.js',
+  webpack: {
+    entry: {
+      site: config.dirs.js + '/site.js'
+    },
+    output: {
+      path    : config.dest,
+      filename: '[name].js'
+    },
+    module: {
+      loaders: [
+        {
+          test: /.js$/,
+          loader: 'babel-loader',
+          exclude: /node_modules/,
+          query: {
+            presets: ['es2015']
+          }
         }
-      }
-    ]
+      ]
+    }
   }
 };
 
-gulp.task('js', function (callback) {
-  webpack(opts, function (err) {
+gulp.task('webpack', function (callback) {
+  webpack(opts.webpack, function (err) {
     if (err) {
       throw new gutil.PluginError('js', err);
     }
     callback();
   });
+});
+
+gulp.task('js', ['webpack'], function () {
+  return gulp.src(opts.staticSrc)
+    .pipe(gulp.dest(config.dest));
 });
