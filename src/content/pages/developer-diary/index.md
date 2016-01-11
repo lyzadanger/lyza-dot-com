@@ -35,3 +35,17 @@ I have clued in on the [Generator Coroutine](https://github.com/thalesmello/expl
 I have spent some time reading and thinking about [AirBnB's JavaScript Style Guide](https://github.com/airbnb/javascript). The _default_ and _emphatic_ use of `const` floored me at first; I'm still coming to terms with it. A few gems in here, like a link to [why `typeof` is no longer a safe operation](http://es-discourse.com/t/why-typeof-is-no-longer-safe/15) (bah).
 
 This led me to re-reading style guides by [Google](https://google.github.io/styleguide/javascriptguide.xml), Rick Waldron's [Idiomatic JS](https://github.com/rwaldron/idiomatic.js) and a few other, and re-assessing a couple of my own inconsistencies. Is it dorky to find this stuff kind of inspiring?
+
+### Week of January 9 -
+
+Learned about better ways to manage multiple git users and SSH keys, in my case pertinent to a private instance of gitlab not connected to my github user or email. [This gist](https://gist.github.com/jexchan/2351996) helped.
+
+#### Service Workers
+
+I am doing much research and tinkering with **Service Worker** this week.
+
+I found a hitherto-unfound-by-me [debug resource from Chromium](https://www.chromium.org/blink/serviceworker/service-worker-faq).
+
+I stumbled onto a [`console.log` staleness bug](https://code.google.com/p/chromium/issues/detail?id=543104&q=service%20worker%20event&colspec=ID%20Pri%20M%20Stars%20ReleaseBlock%20Cr%20Status%20Owner%20Summary%20OS%20Modified#makechanges), or, if not bug, at least...confusion. I'm glad to find that it is probably this `console` issue, not how it was suggesting itself to me initially, which was a more severe problem with `addEventListener` behavior in service worker lifecycles.
+
+I realized one cannot rename the file that is an installed service worker on a given site, at least not without massive pain, because it doesn't uninstall.
