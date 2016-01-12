@@ -1,234 +1,148 @@
-/* global self, caches, URL, fetch, Response */
+/* global self, caches, fetch, URL, Response */
 'use strict';
 
-// https://en.wikipedia.org/wiki/List_of_Greek_mythological_figures
-var version  = 'aether3',
-  preCache   = ['/lyza-2.gif',
-                '/css/styles.css',
-                '/site.js',
-                '/offline/',
-                '/'],
-  cachePathPattern = /^\/(20[0-9]{2}|about|blog|css)/,
-  cacheNames = {};
+var config = {
+  version: 'aether102',
+  staticCacheItems: [
+    '/lyza-2.gif',
+    '/css/styles.css',
+    '/site.js',
+    '/offline/',
+    '/'
+  ],
+  cachePathPattern: /^\/(20[0-9]{2}|about|blog|css)/,
+  offlineImage: '<svg role="img" aria-labelledby="offline-title"'
+    + ' viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">'
+    + '<title id="offline-title">Offline</title>'
+    + '<g fill="none" fill-rule="evenodd"><path fill="#D8D8D8" d="M0 0h400v300H0z"/>'
+    + '<text fill="#9B9B9B" font-family="Times New Roman,Times,serif" font-size="72" font-weight="bold">'
+    + '<tspan x="93" y="172">offline</tspan></text></g></svg>',
+  offlinePage: '/offline/'
+};
 
-/**
- * Should our fetch handler concern itself with this
- * particular request?
- *
- * @param {Request} request
- * @return {boolean}
- */
-function shouldHandleFetch (request) {
-  let url = new URL(request.url);
-  var criteria = {
-    fromMyOwnServer : url.origin     === self.location.origin,
-    isGETRequest    : request.method === 'GET',
-    inAValidPath    : checkCachePath(url)
-  };
-  // failingCriteria will contain the keys from any tests (values) in
-  // criteria that did not pass. Having length > 0 means that
-  // there is something about this request that makes it not
-  // applicable for our fetch handling. Examining any keys here
-  // could help for debug.
-  var failingCriteria = Object.keys(criteria).filter((value) => !criteria[value]);
-  return !failingCriteria.length;
+function cacheName (key, opts) {
+  return `${opts.version}-${key}`;
 }
 
-/**
- * Utility function to check path of request (via url property)
- * to determine whether it's in a valid path for caching.
- *
- * @param {URL} url
- * @return {boolean}
- */
-function checkCachePath (url) {
-  var matchesPathPattern = cachePathPattern.exec(url.pathname);
-  var matchesPreCache = preCache.filter((path) => path === url.pathname).length;
-  return matchesPathPattern || matchesPreCache;
-}
-
-/**
- * What "type" of resource does this request represent?
- * This will affect which cache it may end up in and how
- * it is handled during fetch.
- *
- * @param {Request} request
- * @return {String}
- */
-function resourceType (request) {
-  let acceptHeader = request.headers.get('Accept');
-  if (acceptHeader.indexOf('text/html') !== -1) {
-    return 'content';
-  } else if (acceptHeader.indexOf('image') !== -1)  {
-    return 'image';
-  }
-  return 'other';
-}
-
-/**
- * Add the given response (keyed by request) into
- * the appropriate cache.
- *
- * @param {Request} request
- * @param {Response} response
- * @return {Response}
- */
-function addToCache (request, response) {
-  var copy = response.clone(),
-    cacheName = resourceType(request);
-  caches.open(cacheNames[cacheName]).then((cache) => {
+function addToCache (cacheKey, request, response) {
+  var copy = response.clone();
+  caches.open(cacheKey).then( cache => {
     cache.put(request, copy);
   });
   return response;
-};
+}
 
-/**
- * Return the appropriate offline handling for this request. This is
- * used as a fallback if other methods of fetching do not succeed.
- * Returns undefined on failure to sorta mimic the behavior of `caches.match`
- *
- * @param {Request} request
- * @return {Promise} resolving to {Response} || {Response} || undefined
- */
-function getOffline (request) {
-  let offlineType = resourceType(request);
-  if (offlineType === 'image') {
-    return new Response('<svg role="img" aria-labelledby="offline-title" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"><title id="offline-title">Offline</title><g fill="none" fill-rule="evenodd"><path fill="#D8D8D8" d="M0 0h400v300H0z"/><text fill="#9B9B9B" font-family="Times New Roman,Times,serif" font-size="72" font-weight="bold"><tspan x="93" y="172">offline</tspan></text></g></svg>', {headers: {'Content-Type': 'image/svg+xml'}});
-  } else if (offlineType === 'content') {
-    return caches.match('/offline/');
+function fetchFromCache (event) {
+  return new Promise((resolve, reject) => {
+    caches.match(event.request).then((response) => {
+      if (response !== undefined) {
+        resolve(response);
+      } else {
+        reject(`${event.request.url} not found in cache`);
+      }
+    });
+  });
+}
+
+function offlineResource (resourceType, opts) {
+  if (resourceType === 'image') {
+    return new Response(opts.offlineImage,
+      { headers: { 'Content-Type': 'image/svg+xml' } }
+    );
   }
   return undefined;
 }
 
-/**
- * Look for request in the caches. `caches.match` will resolve its
- * Promise with `undefined` on failure to find a matching cache entry.
- * Here I wrap that whole situation with another Promise such that it
- * rejects on failure to match
- *
- * @param {Request} request
- * @return {Promise} resolving to {Response} || rejecting on `undefined`
- */
-function findInCache (request) {
-  return new Promise((resolve, reject) => {
-    caches.match(request).then((response) => {
-      if (response !== undefined) {
-        resolve(response);
-      } else {
-        reject();
-      }
-    });
-  });
+function offlinePage (opts) {
+  return caches.match(opts.offlinePage);
 }
 
-/**
- * During install stage, do this:
- *   Add all items defined in preCache
- *   to the static cache.
- *
- * Invoked by eventListener on `install`.
- *
- * @return {Promise}
- */
-function onInstall () {
-  return caches.open(cacheNames.static)
-    .then((cache) => cache.addAll(preCache));
-}
+self.addEventListener('install', event => {
+  function onInstall (event, opts) {
+    var cacheKey = cacheName('static', opts);
+    return caches.open(cacheKey)
+      .then(cache =>
+        cache.addAll(opts.staticCacheItems)
+      );
+  }
 
-/**
- * During activate stage, do this:
- *   Clean up old caches from previous version(s) of this SW.
- *   Look for any existing caches with keys that do not match our current
- *   version string. Delete the hell out of them.
- *
- * Invoked by eventListener on `activate` event.
- *
- * @return {Promise}
- */
-function onActivate () {
-  return caches.keys()
-    .then((keys)       => Promise.all(keys
-      .filter((key)      => key.indexOf(version) !== 0)
-      .map((deleteKey)   => caches.delete(deleteKey)) )
+  event.waitUntil(
+    onInstall(event, config)
+      .then( () => self.skipWaiting() )
   );
-}
+});
 
-/**
- * Keep the caches a reasonable size by limiting the number of entries.
- * I wanted to be fancier and look, say, at cache Responses' Content-Length
- * headers to manage this on a size-based level, but that's inefficient with
- * current SW architecture.
- * @see https://github.com/slightlyoff/ServiceWorker/issues/587
- *
- * Recursively trim a given cache until its entry count is <= maxItems
- *
- * @param {String} cacheName    cache to trim
- * @param  {Number} maxItems    max keys this cache should have
- * @return {Promise}            resolves to {Number} of entries in cache
- */
-function trimCache (cacheName, maxItems) {
-  return caches.open(cacheNames[cacheName]).then((cache) => {
-    return cache.keys().then((keys) => {
-      if (keys.length > maxItems) {
-        cache.delete(keys[0]).then(trimCache(cacheName, maxItems));
-      } else {
-        return keys.length;
+self.addEventListener('activate', event => {
+  function onActivate (event, opts) {
+    return caches.keys()
+      .then(cacheKeys => {
+        var oldCacheKeys = cacheKeys.filter(key => key.indexOf(opts.version) !== 0);
+        return Promise.all(oldCacheKeys.map(oldKey => caches.delete(oldKey)));
+      });
+  }
+
+  event.waitUntil(
+    onActivate(event, config)
+      .then( () => self.clients.claim() )
+  );
+});
+
+self.addEventListener('fetch', event => {
+
+  function shouldHandleFetch (event, opts) {
+    var request            = event.request;
+    var url                = new URL(request.url);
+    var matchesPathPattern = opts.cachePathPattern.exec(url.pathname);
+    var matchesPreCache    = opts.staticCacheItems.filter(path =>
+        path === url.pathname
+      ).length;
+
+    return new Promise(function (resolve, reject) {
+      if (url.origin !== self.location.origin) {
+        reject(`${url} is not from my origin (${self.location.origin})`);
       }
+      if (request.method !== 'GET') {
+        reject(`request method is not 'GET' (${request.method})`);
+      }
+      if (!(matchesPathPattern || matchesPreCache)) {
+        reject(`path '${url.pathname}' does not match cache whitelist`);
+      }
+      resolve(event);
     });
-  });
-}
-
-// Set up cache names based on current version hash
-['static', 'content', 'image', 'other']
-  .forEach((cacheKey) => cacheNames[cacheKey] = `${version}-${cacheKey}`);
-
-// Handle install stage: pre-cache and skipWaiting to make this
-// new SW activate immediately
-self.addEventListener('install', (event) => {
-  event.waitUntil(onInstall().then(() => self.skipWaiting()));
-});
-
-// Handle activate stage: clean up old SW caches and then
-// "claim" clients to make this SW take effect in all tabs
-self.addEventListener('activate', (event) => {
-  event.waitUntil(onActivate().then(() => self.clients.claim()));
-});
-
-// Listen for the `trimCaches` message from the main thread
-// and do so
-self.addEventListener('message', function(event) {
-  if (event.data.command == 'trimCaches') {
-    trimCache('image', 15);
-    trimCache('content', 50);
   }
-});
 
-// Handle fetches
-self.addEventListener('fetch', (event) => {
-  var request = event.request,
-    requestType = resourceType(request);
-  // Determine if we should handle this fetch at all...
-  if (!shouldHandleFetch(request)) { return; }
+  function onFetch (event, opts) {
+    var request = event.request;
+    var acceptHeader = request.headers.get('Accept');
+    var resourceType = 'static';
+    var cacheKey;
 
-  // For HTML content, try network first (and cache result)
-  // Try cache second, and fall back to the offline page finally
-  if (requestType === 'content') {
-    event.respondWith(
-      fetch(request)
-        .then((response) => addToCache(request, response))
-        .catch(() => findInCache(request))
-        .catch(() => getOffline(request))
-    );
-  } else {
-    // For other requests, try cache first, then network (and cache result)
-    // Fall back to offline response
-    event.respondWith(
-      findInCache(request)
-        .catch(() => {
-          return fetch(request)
-            .then((response) => addToCache(request, response))
-            .catch(() => getOffline(request));
-        })
-    );
+    if (acceptHeader.indexOf('text/html') !== -1) {
+      resourceType = 'content';
+    } else if (acceptHeader.indexOf('image') !== -1) {
+      resourceType = 'image';
+    }
+
+    cacheKey = cacheName(resourceType, opts);
+
+    if (acceptHeader.indexOf('text/html') !== -1) {
+      event.respondWith(
+        fetch(request)
+          .then(response => addToCache(cacheKey, request, response))
+          .catch(() => fetchFromCache(event))
+          .catch(() => offlinePage(opts))
+      );
+    } else {
+      event.respondWith(
+        fetchFromCache(event)
+          .catch(() => fetch(request))
+            .then(response => addToCache(cacheKey, request, response))
+          .catch(() => offlineResource(resourceType, opts))
+      );
+    }
   }
+
+  shouldHandleFetch(event, config)
+    .then(event => onFetch(event, config))
+    .catch(() => true);
 });
