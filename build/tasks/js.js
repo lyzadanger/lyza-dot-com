@@ -6,7 +6,8 @@ var gutil = require('gulp-util');
 var config = require('../config');
 
 var opts = {
-  staticSrc: config.dirs.js + '/serviceWorker.js',
+  staticSrc: [ config.dirs.js + '/serviceWorker.js',
+               config.dirs.js + '/serviceWorker.config.js'],
   webpack: {
     entry: {
       site: config.dirs.js + '/site.js'
