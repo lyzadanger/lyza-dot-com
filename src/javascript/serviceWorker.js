@@ -32,13 +32,12 @@ function offlineResource (resourceType, opts) {
     return new Response(opts.offlineImage,
       { headers: { 'Content-Type': 'image/svg+xml' } }
     );
+  } else if (resourceType === 'content') {
+    return caches.match(opts.offlinePage);
   }
   return undefined;
 }
 
-function offlinePage (opts) {
-  return caches.match(opts.offlinePage);
-}
 
 self.addEventListener('install', event => {
   function onInstall (event, opts) {
@@ -108,12 +107,12 @@ self.addEventListener('fetch', event => {
 
     cacheKey = cacheName(resourceType, opts);
 
-    if (acceptHeader.indexOf('text/html') !== -1) {
+    if (resourceType === 'content') {
       event.respondWith(
         fetch(request)
           .then(response => addToCache(cacheKey, request, response))
           .catch(() => fetchFromCache(event))
-          .catch(() => offlinePage(opts))
+          .catch(() => offlineResource(resourceType, opts))
       );
     } else {
       event.respondWith(
