@@ -225,11 +225,9 @@ function shouldHandleFetch (event, opts) {
 
 Of course, the criteria here are my own and would vary from site to site. `event.request` is a [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) object that has all kinds of data you can look at to assess how you'd like your fetch handler to behave.
 
-#### Brief aside about importScripts
+#### Brief aside about config convenience
 
 Aha! There has been an incursion of a `config` object, passed as an `opts` argument to handling functions. Where does `config` come from? I created it so I could factor out common config-like values for reuse.
-
-You can use the [`importScripts`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/importScripts) method in service worker files (available because we are in `WorkerGlobalScope`) to include JavaScript code from other files. Now I can create a new file, `serviceWorker.config.js` with the following contents initially:
 
 ```
 var config = {
@@ -244,13 +242,7 @@ var config = {
 };
 ```
 
-Then at the top of `serviceWorker.js`:
-
-```
-self.importScripts('/serviceWorker.config.js');
-```
-
-Now we have `config` in our scope. This allows me to keep my config-like values, which may change as we go, isolated from the main logic of my service worker. Just a personal-preference organization thing. Thanks for your patience.
+This allows me to keep my config-like values, which may change as we go, isolated from the main logic of my service worker. Just a personal-preference organization thing. Thanks for your patience.
 
 ### Our service worker so far
 
@@ -448,7 +440,7 @@ function offlineResource (resourceType, opts) {
 }
 ```
 
-And relevant updates to `serviceWorker.config.js`:
+And relevant updates to `config` :
 
 ```
 var config = {
