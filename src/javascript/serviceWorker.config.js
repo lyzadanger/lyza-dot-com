@@ -1,7 +1,7 @@
 'use strict';
 
 var config = {
-  version: 'aether885',
+  version: 'achilles',
   staticCacheItems: [
     '/lyza-2.gif',
     '/css/styles.css',

@@ -59,7 +59,8 @@ self.addEventListener('activate', event => {
     return caches.keys()
       .then(cacheKeys => {
         var oldCacheKeys = cacheKeys.filter(key => key.indexOf(opts.version) !== 0);
-        return Promise.all(oldCacheKeys.map(oldKey => caches.delete(oldKey)));
+        var deletePromises = oldCacheKeys.map(oldKey => caches.delete(oldKey));
+        return Promise.all(deletePromises);
       });
   }
 
@@ -126,5 +127,5 @@ self.addEventListener('fetch', event => {
 
   shouldHandleFetch(event, config)
     .then(event => onFetch(event, config))
-    .catch(() => true);
+    .catch(reason => console.log(`I am not going to handle this fetch because ${reason}`));
 });
