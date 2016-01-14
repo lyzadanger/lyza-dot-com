@@ -12,60 +12,46 @@ publish:
 
 ---
 
-ServiceWorker has been getting a lot of press.
+TODO:
 
-Nod to Jeremy.
-
-What does it do?
-
-Lots of recipes, but it's helpful to have a case study focusing on one detail for normal devs.
-
-Case study here is for app cache replacement, in essence.
+* Props to Jeremy
+* Intro and explanation of WTF we're doing
+* Compatibility details
+* Links to info on Promises, ES6 features
+* Cross-linking to specs, etc.
 
 
-Service Worker at first looks a little daunting. There's so much you can do with it—where to begin? The syntax can be intimidating, and there are numerous APIs related to it... Compared to Application Cache it looks...complicated. Yet AppCache's simple-looking syntax belied its underlying confounding nature and lack of flexibility.
+[Service Worker](https://www.w3.org/TR/service-workers/) ([Helpful MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)) at first looks a little daunting. There's so much you can do with it—where to begin? The syntax can be intimidating, and there are numerous APIs that are subservient to it or otherwise related: `cache`, `fetch`, etc.
 
-There are a growing number of resources offering recipes for brewing up Service Workers, and there are tools like SW-precache to automate
+Compared to Application Cache it looks...complicated. Yet AppCache's simple-looking syntax belied its [underlying confounding nature and lack of flexibility](http://alistapart.com/article/application-cache-is-a-douchebag).
 
-But Service Worker is a concept, not a tool. It's something to learn and get one's head around. For me, the best way to do that is to actually walk through putting one together for an applied need—in this case, my simple, static personal web site—without tools that might serve as a crutch or blur the concept...
-
-I turned my own site into a case study in hand-building a basic Service Worker.
-
-Here's what I want to accomplish:
-
-* Precache some assets
-* Lean on the network for some assets, while optimizing by grabbing other things out of cache
-* Be able to manage this sanely
-* Keep cache sizes under control
 
 ## Learning about service worker
 
 A service worker is a file with some JavaScript in it. Inside of that file you can write JavaScript as you know and love it, with a few important differences:
 
 * Everything needs to be async-friendly. That means you can't use synchronous XHR or, e.g., LocalStorage (the LocalStorage API is synchronous).
-* Service workers run in a context called the `ServiceWorkerGlobalScope`. You don't have access to the DOM, for example, of a page under its control. I visualize a service worker as sort of running in a separate tab from the page it affects; this is not at all _accurate_ but it is a helpful rough approximation for keeping myself out of confusion.
+* Service workers run in a context called the [`ServiceWorkerGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope). You don't have access to the DOM, for example, of a page under its control. I visualize a service worker as sort of running in a separate tab from the page it affects; this is not at all _accurate_ but it is a helpful rough metaphor for keeping myself out of confusion.
 
 ### Registering a service worker
 
-You make a service worker take effect by **registering** it. This registration is done from outside the service worker, by another page or script on your site.
+You make a service worker take effect by **registering** it. This registration is done from outside the service worker, by another page or script on your site. On my site, there is a global `site.js` script included in every HTML page. I register my service worker from there.
 
-On my site, there is a global `site.js` script included in every HTML page. It contains this snippet for registration of my service worker:
-
-```
-navigator.serviceWorker.register('/serviceWorker.js', {
-  scope: '/'
-});
-```
-
-When you register a service worker, you (optionally) also tell it what **scope** it should apply itself to. You can instruct a service worker only to handle stuff for part of your site, e.g. `'/blog/'`, or you can register it for your whole site (`'/'`) like I do. As such, there's nothing stopping you from having multiple service workers on the same site—or even multiple service workers in the same scope, if you can think of some reason you'd want to do that.
+When you register a service worker, you (optionally) also tell it what **scope** it should apply itself to. You can instruct a service worker only to handle stuff for part of your site, e.g. `'/blog/'`, or you can register it for your whole site (`'/'`) like I do.
 
 ### Service worker lifecycle and events
 
-A service worker does the bulk of its work by listening for relevant events and responding to them in useful ways. Different events are triggered at different points in a service worker's **lifecycle**.
+A service worker does the bulk of its work by **listening for relevant events and responding to them in useful ways**. Different events are triggered at different points in a service worker's **lifecycle**.
 
-Once the service worker has been registered and downloaded, it gets _installed_ in the background. Your service worker can listen for the **`install` event** and perform tasks appropriate for this stage. In our case, we want to take advantage of the install state to pre-cache a bunch of assets we know we want available offline.
+#### Install
 
-After the `install` stage is finished, the service worker is then _activated_. That means the service worker is now in control of things within its `scope` and can do its thing. The **`activate`** event isn't too exciting for a new service worker, but we'll see how it's useful when updating a service worker with a new version.
+Once the service worker has been registered and downloaded, it gets _installed_ in the background. Your service worker can listen for the **install event** and perform tasks appropriate for this stage.
+
+In our case, we want to take advantage of the install state to pre-cache a bunch of assets we know we want available offline.
+
+#### Activate
+
+After the `install` stage is finished, the service worker is then _activated_. That means the service worker is now in control of things within its `scope` and can do its thing. The **activate event** isn't too exciting for a new service worker, but we'll see how it's useful when updating a service worker with a new version.
 
 Exactly when _activation_ occurs depends on whether this is a brand-new service worker or an updated version of a pre-existing service worker. If the browser does not have a previous version of a given service worker already registered,
 _activation_ will happen immediately after _installation_ is complete.
@@ -88,17 +74,19 @@ getAnAnswerToADifficultQuestionSomewhereFarAway()
 
 The `getAnAnswer...` function returns a `Promise` that (we hope) will eventually be _fulfilled_ by, or _resolve_ to, the `answer` we're looking for. Then that `answer` can be fed to any chained `then` handler functions, or, in the sorry case of failure to achieve its objective, the `Promise` can be _rejected_—often with a _reason_—and `catch` handler functions can take care of these situations.
 
-There's more to `Promises`, but I'll try to keep the examples here straightforward (or at least commented). I urge you to do some informative reading if you're still new to Promises.
+There's more to `Promises`, but I'll try to keep the examples here straightforward (or at least commented). I urge you to do some [informative reading](https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Promise.jsm/Promise) if you're still new to Promises.
 
-**Note**: I use certain ES6/ES2015 features in the example code for service workers because browsers that support service workers also support these features. Specifically here I am using arrow functions and template strings.
+**Note**: I use certain ES6/ES2015 features in the example code for service workers because browsers that support service workers also support these features. Specifically here I am using [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) and [template strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings).
 
 ### Other service worker necessities
 
-It's also important to note that service workers **require HTTPS** to work. There is an important and useful exception to this rule: service workers work for `localhost`, which is a relief because setting up local SSL can sometimes be a slog.
+It's also important to note that service workers **require HTTPS** to work. There is an important and useful exception to this rule: service workers work for `localhost` on insecure `http`, which is a relief because setting up local SSL can sometimes be a slog.
 
-At time of writing, these examples fully work in Chrome (what version, Lyza?) and (Firefox beta??). There's hope for other browsers shipping service worker in the near future.
+**TODO** At time of writing, these examples fully work in Chrome (what version, Lyza?) and (Firefox beta??). There's hope for other browsers shipping service worker in the near future.
 
 ## Building a service worker
+
+Now that we've taken care of some theory, we can start putting together our service worker.
 
 ### Installing and activating our service worker
 
@@ -155,13 +143,11 @@ You can see `Promises` at work here: `caches.open` returns a `Promise` resolving
 
 I tell the `event` to wait until the `Promise` returned by my handler function is resolved successfully. Then we can be sure all of those pre-cache items get sorted before the _installation_ is complete.
 
-You can also read more about the `cache` API...
+You can [read more about the `cache` API](https://developer.mozilla.org/en-US/docs/Web/API/Cache) and its available methods if you like.
 
 ### Registering our service worker
 
 Now we need to tell the pages on our site to _use_ the service worker.
-
-I gave a preview of `serviceWorkerContainer.register` above, but there's one more detail. Let's wrap this registration in a feature test to make sure service worker is supported in the browser loading this page.
 
 Remember, this registration happens from outside the service worker—in my case, from within a script (`site.js`) that is included on every page of my site.
 
@@ -177,32 +163,33 @@ if ('serviceWorker' in navigator) {
 
 ### Handling Fetches
 
-The magic of our service worker is really going to happen when **fetch events** are triggered. We can _respond to_ fetches in different ways to improve performance or provide offline capabilities.
+So far our service worker has a fleshed-out `install` handler, but doesn't _do_ anything beyond that. The magic of our service worker is really going to happen when **fetch events** are triggered. We can _respond to_ fetches in different ways to improve performance or provide offline capabilities.
 
 Whenever a browser wants to _fetch_ an asset that is within the _scope_ of this service worker, we can hear about it by, yep, adding an `eventListener` in `serviceWorker.js`:
 
 ```
 self.addEventListener('fetch', event => {
-  // ... do something useful?
+  // ... Perhaps respond to this fetch in a useful way?
 });
 ```
 
+Again, _every_ fetch that falls within this service worker's scope (i.e. path) will trigger this event—HTML pages, scripts, images, CSS, you name it. We can selectively handle the way the browser responds to any of those fetches.
 
-#### Should we handle this fetch?
+### Should we handle this fetch?
 
-When a `fetch` event occurs for an asset, the first thing I want to determine is whether this service worker should handle responding to this request. Otherwise, it should do nothing and let the browser assert its default behavior.
+When a `fetch` event occurs for an asset, the first thing I want to determine is whether this service worker should handle responding to this fetch. Otherwise, it should do nothing and let the browser assert its default behavior.
 
 We'll end up with basic logic like this in `serviceWorker.js`:
 
 ```
-shouldHandleFetch(event, config)
+shouldHandleFetch(event, config) // I'll explain config shortly
   .then(event => onFetch(event, config))
   .catch(reason =>
     console.log(`I am not going to handle this fetch because ${reason}`)
-  );
+);
 ```
 
-I wrote a `shouldHandleFetch` function to assess a given request and _resolve_ or _reject_ its returned `Promise`. In `serviceWorker.js`:
+I wrote a `shouldHandleFetch` function to assess a given request and return a Promise that _resolves_, meaning yes, let's go ahead and do something specific for this fetch, or _rejects_, meaning no, I don't want to handle this specially, let the browser do its own thing. In `serviceWorker.js`:
 
 ```
 function shouldHandleFetch (event, opts) {
@@ -215,12 +202,16 @@ function shouldHandleFetch (event, opts) {
 
   return new Promise(function (resolve, reject) {
     if (url.origin !== self.location.origin) {
+      // I only want to process fetches that are on my own site
       reject(`${url} not from my origin (${self.location.origin})`);
     }
     if (request.method !== 'GET') {
+      // I don't want to mess with non-GET requests
       reject(`request method is not 'GET' (${request.method})`);
     }
     if (!(matchesPathPattern || matchesPreCache)) {
+      // I am using a path whitelist so I don't cache weird things
+      // (e.g. browsersync injected stuff when developing locally)
       reject(`path '${url.pathname}' does not match cache whitelist`);
     }
     resolve(event);
@@ -229,13 +220,13 @@ function shouldHandleFetch (event, opts) {
 
 ```
 
-Of course, the criteria here are my own and would vary from site to site.
+Of course, the criteria here are my own and would vary from site to site. `event.request` is a [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) object that has all kinds of data you can look at to assess how you'd like your fetch handler to behave.
 
 #### Brief aside about importScripts
 
-Aha! There has been an incursion of a `config` object, passed as an `opts` argument to handling functions. This is for my own sanity.
+Aha! There has been an incursion of a `config` object, passed as an `opts` argument to handling functions. Where does `config` come from? I created it so I could factor out common config-like values for reuse.
 
-You can use the `importScripts` method in service worker files (available because we are in `WorkerGlobalScope`) to include JavaScript code from other files. Now I can create a new file, `serviceWorker.config.js` with the following contents initially:
+You can use the [`importScripts`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/importScripts) method in service worker files (available because we are in `WorkerGlobalScope`) to include JavaScript code from other files. Now I can create a new file, `serviceWorker.config.js` with the following contents initially:
 
 ```
 var config = {
@@ -256,19 +247,25 @@ Then at the top of `serviceWorker.js`:
 importScripts('/serviceWorker.config.js');
 ```
 
-This allows me to keep my config-like values, which may change as we go, isolated from the main logic of my service worker. Just a personal-preference organization thing.
+Now we have `config` in our scope. This allows me to keep my config-like values, which may change as we go, isolated from the main logic of my service worker. Just a personal-preference organization thing. Thanks for your patience.
 
-At this point, we've registered a service worker that installs some things in a static cache, and can determine when a fetch comes in that it should respond to. Here's what `serviceWorker.js` looks like right now.
+### Our service worker so far
 
-#### Writing the fetch handler
+At this point, we've registered a service worker that installs some things in a static cache, and can determine when a fetch comes in that it should respond to.
 
-The `onFetch` function needs to:
+**TODO**: You can review the contents of `serviceWorker.js` at this point.
 
-1. Review the `request` information and see what "kind" of asset this is
+### Writing the fetch handler
+
+Now we're ready to pass applicable `fetch` requests on to a handler. The `onFetch` function needs to:
+
+1. Review the `request` information and see what "kind" of asset this is. This is my own construct, which I am calling `resourceType`.
 2. Figure out which `cache` to fetch from or store into
 3. Execute the appropriate strategy for this asset type and actually respond to the request
 
-First, I can look at the `HTTP Accept` header to get a hint as to what kind of asset is being requested.
+#### 1. What kind of thing is being requested?
+
+First, I can look at the `HTTP Accept` header to get a hint as to what kind of asset is being requested. This helps me figure out how I want to handle it.
 
 ```
 function onFetch (event, opts) {
@@ -287,17 +284,20 @@ function onFetch (event, opts) {
 }
 ```
 
-Then, I can figure out which `cache` is involved for this `fetch`. There are three caches in play here:
+#### 2. Which cache should I use?
+
+For organization, I want to stick different kinds of things into different caches. That allows me to manage those caches later. In my setup, I have three caches under the control of this service worker:
 
 * A `static` cache, which holds pre-cached items and any other asset that is neither an image nor content
 * A `content` cache, for HTML pages
 * An `image` cache for images
 
-For the moment, deriving the cache key is as simple as:
+These three cache key `String`s are arbitrary—you can call your caches whatever you like; the cache API doesn't have opinions. For the moment, deriving the cache key is as simple as:
 
 ```
   function onFetch (event, opts) {
-    // ...
+    // 1. Determine what kind of resource this is... (above)
+    // {String} [static|image|content]
     cacheKey = resourceType;
   }
 
@@ -305,29 +305,9 @@ For the moment, deriving the cache key is as simple as:
 
 (That will change later).
 
-The third and final thing for `onFetch` to do is to execute the appropriate strategy for the asset.
+#### 3. Respond to the fetch
 
-### Strategy: _How_ should we handle this fetch?
-
-Once I'm sure the `fetch` should be fulfilled by my service worker, and I know what kind of asset is being fetched, the next question is _how to deal with it_? Dealing with different kinds of _fetches_ involves choosing **strategies**.
-
-#### HTML content: network-first strategy
-
-When fetching HTML documents, I should check the network first. HTML content is the core concern of my site, and changes often. I always want to try to retrieve the newest version. If the network request fails (which may indicate the user is offline), try looking to see if I have a cached copy of this page and provide that, if so. If there's nothing available in the cache, show the user the offline fallback page.
-
-#### Images and other content: cache-first strategy
-
-Once images are in place on my site, they don't tend to change. For network performance optimization, I want to check for a cached copy _first_ when fetching images. If there is not a cached copy available, request from the network. If that network request fails, return instead an SVG image that has the text "Offline" in it.
-
-For any content that is neither HTML nor an image, yet still meets criteria to be handled by this service worker, treat it like an image (i.e. cache-first) except that there is no offline fallback (page or offline image).
-
-#### Pass-thru Caching
-
-To be able to fetch things from cache as I want to in these strategies, those assets have to be put into cache in the first place. To do this I use a technique called _pass-thru caching_. Any time I request a handled asset from the network successfully, I subsequently stash a copy of the response in cache so it's available for later.
-
-### Finishing `onFetch`
-
-We can finish out the structure of `onFetch`, by sketching in the right strategies:
+The third and final thing for `onFetch` to do is to execute the appropriate strategy for the asset and `respondTo` the `fetch` event with an intelligent `Response`.
 
 ```
 function onFetch (event, opts) {
@@ -335,6 +315,7 @@ function onFetch (event, opts) {
   // 2. Determine the cache involved...(above)
 
   if (resourceType === 'content') {
+    // Use a network-first strategy
     event.respondWith(
       fetch(request)
           .then(response => addToCache(cacheKey, request, response))
@@ -342,6 +323,7 @@ function onFetch (event, opts) {
         .catch(() => offlineResource(opts))
     );
   } else {
+    // Use a cache-first strategy
     event.respondWith(
       fetchFromCache(event)
         .catch(() => fetch(request))
@@ -352,18 +334,34 @@ function onFetch (event, opts) {
 }
 ```
 
-We'll need to fill in functions for `addToCache`, `fetchFromCache` and `offlineResource`, but the shape of the strategy is in place.
+### Fetch strategy for HTML content
 
-### Implementing Fetch Strategies
+Responding to fetch requests involves implementing an appropriate **network strategy**. Let's look more closely at the way we're responding to requests for HTML content (`resourceType === 'content'`).
 
-Let's look more closely at one of the strategies. For HTML content (`resourceType === 'content'`), we first try to `fetch` the `request`ed asset from the network:
+```
+if (resourceType === 'content') {
+  // Respond with a network-first strategy
+  event.respondWith(
+    fetch(request)
+        .then(response => addToCache(cacheKey, request, response))
+      .catch(() => fetchFromCache(event))
+      .catch(() => offlineResource(opts))
+  );
+}
+```
+
+The way we fulfill requests for content here is a **network-first strategy**. Because HTML content is the core concern of my site and it changes often, always try to get fresh HTML documents from the network.
+
+These are the ordered steps for this strategy:
+
+#### 1. Try fetching from the network
 
 ```
 fetch(request)
    .then(response => addToCache(cacheKey, request, response))
 ```
 
-If that works, subsequently call `addToCache` to store a cached copy of that resource. The `addToCache` function looks like:
+If the network request is successful (the Promise resolves), go ahead and stash a copy of the HTML document in the appropriate cache (`content`). This is called **read-through caching**:
 
 ```
 function addToCache (cacheKey, request, response) {
@@ -375,12 +373,15 @@ function addToCache (cacheKey, request, response) {
 }
 ```
 
-*Note*: you need to `.clone` `Response` objects before caching them.
+*Note*: you need to clone `Response` objects before caching them.
 
-If retrieving the asset from the network succeeds, we're done, however, if it doesn't, try getting a previously-cached copy of the HTML from cache:
+#### 2. Try to retrieve from cache
 
+If retrieving the asset from the network succeeds, we're done, however, if it doesn't, we might be offline or otherwise network-compromised. Try retrieving a previously-cached copy of the HTML from cache:
 
 ```
+fetch(request)
+  .then(response => addToCache(cacheKey, request, response))
   .catch(() => fetchFromCache(event))
 ```
 
@@ -402,13 +403,55 @@ function fetchFromCache (event) {
 
 *Note*: `caches.match` returns a `Promise` that resolves to `undefined` (instead of rejecting) if there is no match for the thing we're trying to find. I wrap this in another `Promise` so I can manually reject it if there is no match, allowing for logical chaining in the fetch handler.
 
-If we've made it this far, but there's nothing in the cache we can respond with an appropriate offline fallback, if possible:
+*Another Note*: You don't have to indicate which cache you wish to check with `caches.match`; you can check all of 'em at once.
+
+#### 3. Provide an offline fallback
+
+If we've made it this far, but there's nothing in the cache we can respond with, return an appropriate offline fallback, if possible. For HTML pages, this is the page cached from `/offline/`. It's a reasonably well-formatted page that lets the user know they're offline and I can't fulfill what they're after.
 
 ```
+fetch(request)
+  .then(response => addToCache(cacheKey, request, response))
+  .catch(() => fetchFromCache(event))
     .catch(() => offlineResource(opts))
 ```
 
 And here is the `offlineResource` function:
+
+```
+function offlineResource (resourceType, opts) {
+  if (resourceType === 'image') {
+    // ... return an offline image
+  } else if (resourceType === 'content') {
+    return caches.match('/offline/');
+  }
+  return undefined;
+}
+```
+
+### Fetch strategy for other resources
+
+The fetch logic for resources other than HTML content use a **cache-first strategy**. Images and other static content on the site rarely change, so check the cache first.
+
+```
+event.respondWith(
+  fetchFromCache(event)
+    .catch(() => fetch(request))
+      .then(response => addToCache(cacheKey, request, response))
+    .catch(() => offlineResource(resourceType, opts))
+);
+```
+
+The steps here are:
+
+1. Try to retrieve the asset from cache;
+2. If that fails, try retrieving from network (with read-through caching);
+3. If that fails, provide a offline fallback resource if possible.
+
+
+#### Offline image
+
+We can return an SVG image with the text "Offline" as an offline fallback by completing the `offlineResource` function:
 
 ```
 function offlineResource (resourceType, opts) {
@@ -423,9 +466,22 @@ function offlineResource (resourceType, opts) {
 }
 ```
 
-The non-content strategy (images and other) uses the same components, but in different order. It will try to fetch from the cache first, network with pass-through caching second, and offline fallback if both fail.
+And relevant updates to `serviceWorker.config.js`:
 
-### Explaining fallback image and offline page
+```
+var config = {
+  // ...
+  offlineImage: '<svg role="img" aria-labelledby="offline-title"'
+    + ' viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">'
+    + '<title id="offline-title">Offline</title>'
+    + '<g fill="none" fill-rule="evenodd"><path fill="#D8D8D8" d="M0 0h400v300H0z"/>'
+    + '<text fill="#9B9B9B" font-family="Times New Roman,Times,serif" font-size="72" font-weight="bold">'
+    + '<tspan x="93" y="172">offline</tspan></text></g></svg>',
+  offlinePage: '/offline/'
+};
+```
+
+--------
 
 ## Updating the service worker
 
