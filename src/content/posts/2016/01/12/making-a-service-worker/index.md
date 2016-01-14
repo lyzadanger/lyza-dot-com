@@ -17,10 +17,6 @@ TODO:
 * Props to Jeremy
 * Intro and explanation of WTF we're doing
 * Compatibility details
-* Cross-linking to specs, etc.
-* The first version in action
-* The second version in action
-* Tips and gotchas
 
 
 [Service Worker](https://www.w3.org/TR/service-workers/) ([Helpful MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)) at first looks a little daunting. There's so much you can do with it—where to begin? The syntax can be intimidating, and there are numerous APIs that are subservient to it or otherwise related: `cache`, `fetch`, etc.
@@ -107,7 +103,21 @@ self.addEventListener('activate', event => {
 });
 ```
 
-We won't need to elaborate on `activate` handling _just_ yet, but let's make the `install` handler actually do something.
+### Registering our service worker
+
+Now we need to tell the pages on our site to _use_ the service worker.
+
+Remember, this registration happens from outside the service worker—in my case, from within a script (`site.js`) that is included on every page of my site.
+
+In my `site.js`:
+
+```
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/serviceWorker.js', {
+    scope: '/'
+  });
+}
+```
 
 ### Pre-caching static assets during install
 
@@ -148,21 +158,7 @@ I tell the `event` to wait until the `Promise` returned by my handler function i
 
 You can [read more about the `cache` API](https://developer.mozilla.org/en-US/docs/Web/API/Cache) and its available methods if you like.
 
-### Registering our service worker
-
-Now we need to tell the pages on our site to _use_ the service worker.
-
-Remember, this registration happens from outside the service worker—in my case, from within a script (`site.js`) that is included on every page of my site.
-
-In my `site.js`:
-
-```
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/serviceWorker.js', {
-    scope: '/'
-  });
-}
-```
+**TODO**: Add review here
 
 ### Handling Fetches
 
@@ -243,12 +239,6 @@ var config = {
 ```
 
 This allows me to keep my config-like values, which may change as we go, isolated from the main logic of my service worker. Just a personal-preference organization thing. Thanks for your patience.
-
-### Our service worker so far
-
-At this point, we've registered a service worker that installs some things in a static cache, and can determine when a fetch comes in that it should respond to.
-
-**TODO**: You can review the contents of `serviceWorker.js` at this point.
 
 ### Writing the fetch handler
 
@@ -459,8 +449,7 @@ var config = {
 
 The first version of our service worker is now done. We have an install handler, and a fleshed-out `fetch` handler that can respond to applicable fetches with optimized responses, as well as provide cached resources and an offline page when offline.
 
-You can see the current state of `serviceWorker.js` here.
-
+**TODO:** You can see the current state of `serviceWorker.js` here.
 ------------
 
 ## Updating the service worker
@@ -570,6 +559,8 @@ self.addEventListener('activate', event => {
 
 `self.clients.claim` will make the new service worker take effect immediately in any open pages in its scope.
 
+**TODO**: Review here.
+
 ## Tips and gotchas
 
 ### CDNs
@@ -587,3 +578,9 @@ Another odd thing is that once a service worker is installed and activated, subs
 ### Don't rename your service worker
 
 At one point I was futzing around with naming conventions for the service worker's file name. Don't do this. The browser will register the new service worker but the old service worker will stay installed, too. This is a messy state of affairs. There's probably a workaround, but I'd say: don't rename your service worker.
+
+### Don't use importScripts for config
+
+I went down a path of putting my `config` object in an external file and using `self.importScripts()` in the service worker file to pull that script in. That _seemed_ like a reasonable way to manage my config external to the service worker, but there was a hitch.
+
+The browser byte-compares service worker files to determine if they has been updated—that's how it knows when to re-trigger a download-and-install cycle. Changes to the external config don't _cause_ any changes to the service worker itself, meaning that changes to the config weren't causing the service worker to update. Whoops.
