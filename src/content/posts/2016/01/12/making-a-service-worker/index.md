@@ -34,6 +34,8 @@ Let's break the monumental topic of service worker down today by examining how I
 * increases online performance by reducing network requests for certain assets
 * provides a customized offline fallback experience
 
+This subset of what service worker lets us do _roughly_ aligns with what AppCache was designed to do.
+
 There are already tons of cookbooks and code snippets and tools for generating things with service workers, but I find that it's useful to dive in and build things from scratch when trying to learn a new web technology thoroughly. There are so very many ways to skin a cat. This is mine.
 
 Inspired by [Jeremy Keith's post](https://adactio.com/journal/9888) describing his recent successes building a service worker for his site, I decided to build on his solution and create my own.
@@ -79,9 +81,9 @@ _activation_ will happen immediately after _installation_ is complete.
 
 Once _installation_ and _activation_ are complete, they won't occur again until an updated version of the service worker is downloaded and registered.
 
-#### Fetch
+#### Other events
 
-**Fetch** events occur any time the browser needs a resource. Listening for these and responding in different ways will be what makes our service worker useful.
+Beyond _install_ and _activate_, we'll be looking primarily at the _fetch_ event today to make our service worker useful. But there are several useful events beyond that: _sync_ events and _notification_ events, for example. You can [read more about the interfaces that service worker implements](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API#Interfaces). It's by implementing these interfaces that service worker gets the bulk of its events and much of its extended functionality.
 
 ### Service worker's Promise-based API
 
@@ -178,11 +180,11 @@ self.addEventListener('install', event => {
 });
 ```
 
-You can see `Promises` at work here: `caches.open` returns a `Promise` resolving to a `cache` object once it has successfully opened the `static` cache; `addAll` also returns a `Promise` that resolves when all of the items passed to it have been stashed in the cache.
+Service worker implements the [`CacheStorage` interface](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage), which makes the `caches` property available globally in our service worker. There are several useful methods on `caches`, for example `open` and `delete`.
+
+You can see `Promises` at work here: `caches.open` returns a `Promise` resolving to a [`cache`](https://developer.mozilla.org/en-US/docs/Web/API/Cache) object once it has successfully opened the `static` cache; `addAll` also returns a `Promise` that resolves when all of the items passed to it have been stashed in the cache.
 
 I tell the `event` to wait until the `Promise` returned by my handler function is resolved successfully. Then we can be sure all of those pre-cache items get sorted before the _installation_ is complete.
-
-You can [read more about the `cache` API](https://developer.mozilla.org/en-US/docs/Web/API/Cache) and its available methods if you like.
 
 ### What we've accomplished so far
 
@@ -215,11 +217,15 @@ We'll end up with basic logic like this in `serviceWorker.js`:
 ```
 self.addEventListener('fetch', event => {
 
-  function onFetch(event, opts) {
-    // ... TBD
+  function shouldHandleFetch (event, opts) {
+    // Should we handle this fetch?
   }
 
-  shouldHandleFetch(event, config) // I'll explain config shortly
+  function onFetch (event, opts) {
+    // ... TBD: respond to the fetch
+  }
+
+  shouldHandleFetch(event, config)
     .then(event => onFetch(event, config))
     .catch(reason =>
       console.log(`I am not going to handle this fetch because ${reason}`)
@@ -281,7 +287,7 @@ var config = {
 
 ### Writing the fetch handler
 
-Now we're ready to pass applicable `fetch` requests on to a handler. The `onFetch` function needs to figure out:
+Now we're ready to pass applicable `fetch` requests on to a handler. The `onFetch` function needs to determine:
 
 1. What kind of resource is being requested?
 2. How should I fulfill this request?
@@ -555,13 +561,6 @@ function onActivate (event, opts) {
     });
 }
 ```
-
-This function:
-
-1. Retrieves keys for all caches visible to this service worker
-2. Filters the `Array` of keys to find those don't match the new version—that is, cache keys representing caches that are old and should be deleted
-3. Invokes `cache.delete` for old caches and builds an `Array` of the resulting `Promise`s
-4. Returns a `Promise` that will resolve once all of the delete promises are resolved.
 
 #### Speeding up install and activate
 
