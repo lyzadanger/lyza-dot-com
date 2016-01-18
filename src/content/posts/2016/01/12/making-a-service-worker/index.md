@@ -12,23 +12,47 @@ publish:
 
 ---
 
-TODO:
+# A Service Worker Case Study
 
-* Props to Jeremy
-* Intro and explanation of WTF we're doing
-* Compatibility details
+A service worker is a script that stands between your web site and the network, giving you, among other things, the ability to intercept network requests and respond to them in different ways.
 
+For your site or app to work, the browser fetches its assets—e.g. HTML pages, JavaScript, images, fonts. In the past, the management of this was chiefly the browser's prerogative. If the browser couldn't access the network, you would probably see its "Hey, you're offline" interface. There were techniques you could use to encourage the local caching of assets, but the browser often had the last say.
 
-[Service Worker](https://www.w3.org/TR/service-workers/) ([Helpful MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)) at first looks a little daunting. There's so much you can do with it—where to begin? The syntax can be intimidating, and there are numerous APIs that are subservient to it or otherwise related: `cache`, `fetch`, etc.
+This wasn't such a great experience for users who were offline, and it left web developers with little control over browser caching.
 
-Compared to Application Cache it looks...complicated. Yet AppCache's simple-looking syntax belied its [underlying confounding nature and lack of flexibility](http://alistapart.com/article/application-cache-is-a-douchebag).
+Cue Application Cache, whose arrival several years ago seemed promising. It ostensibly let you dictate how different assets should be handled so that your site or app could work offline. Yet AppCache's simple-looking syntax belied its [underlying confounding nature and lack of flexibility](http://alistapart.com/article/application-cache-is-a-douchebag).
 
-## Learning about service worker
+The fledgling service worker API can do what Application Cache did, and also a whole lot more. But service worker at first looks a little daunting. The specs can be heavy and abstract reading, and there are numerous APIs that are subservient to it or otherwise related: `cache`, `fetch`, etc. Service workers encompass so much functionality: push notifications, and, soon, background synching. Compared to Application Cache it looks...complicated.
 
-A service worker is a file with some JavaScript in it. Inside of that file you can write JavaScript as you know and love it, with a few important differences:
+Whereas Application Cache (which, by the way, is [going away](https://html.spec.whatwg.org/multipage/browsers.html#offline)) was easy to learn but terrible for every single moment after that (my opinion), service worker is more of an initial cognitive investment, but it is powerful and useful and you can generally get yourself out of trouble if you break things.
 
-* Everything needs to be async-friendly. That means you can't use synchronous XHR or, e.g., LocalStorage (the LocalStorage API is synchronous).
-* Service workers run in a context called the [`ServiceWorkerGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope). You don't have access to the DOM, for example, of a page under its control. I visualize a service worker as sort of running in a separate tab from the page it affects; this is not at all _accurate_ but it is a helpful rough metaphor for keeping myself out of confusion.
+## Let's build a service worker
+
+Let's break the monumental topic of service worker down today by examining how I built a service worker for a small, static site that:
+
+* makes the site function offline
+* increases online performance by reducing network requests for certain assets
+* provides a customized offline fallback experience
+
+There are already tons of cookbooks and code snippets and tools for generating things with service workers, but I find that it's useful to dive in and build things from scratch when trying to learn a new web technology thoroughly. There are so very many ways to skin a cat. This is mine.
+
+Inspired by [Jeremy Keith's post](https://adactio.com/journal/9888) describing his recent successes building a service worker for his site, I decided to build on his solution and create my own.
+
+Before I begin, I should point out that I'm _hugely_ in debt to Jeremy for the source of this work, and almost wouldn't write about it save for an exhortation in [his post](https://adactio.com/journal/9775):
+
+> So if you decide to play around with Service Workers, please, please share your experience.
+
+My marching orders are set!
+
+--------
+
+## Some basic service worker concepts
+
+A service worker is a file with some JavaScript in it. Inside of that file you can write JavaScript as you know and love it, with a few important things to keep in mind.
+
+Service worker scripts run in a separate thread in the browser from the pages they control. There are ways to communicate between workers and pages, but they execute in a separate [scope](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope). That means you won't have access to the DOM of those pages, for example. I visualize a service worker as sort of running in a separate tab from the page it affects; this is not at all _accurate_ but it is a helpful rough metaphor for keeping myself out of confusion.
+
+JavaScript in a service worker must not block. You need to use asynchronous APIs. For example, you cannot use `localStorage` inside a service worker (`localStorage` is a synchronous API).
 
 ### Registering a service worker
 
@@ -55,6 +79,10 @@ _activation_ will happen immediately after _installation_ is complete.
 
 Once _installation_ and _activation_ are complete, they won't occur again until an updated version of the service worker is downloaded and registered.
 
+#### Fetch
+
+**Fetch** events occur any time the browser needs a resource. Listening for these and responding in different ways will be what makes our service worker useful.
+
 ### Service worker's Promise-based API
 
 The service worker API makes heavy use of `Promises`. A `Promise` represents the eventual result of an asynchronous operation, even if the actual value won't be known until the operation completes some time in the future.
@@ -79,17 +107,15 @@ There's more to `Promises`, but I'll try to keep the examples here straightforwa
 
 It's also important to note that service workers **require HTTPS** to work. There is an important and useful exception to this rule: service workers work for `localhost` on insecure `http`, which is a relief because setting up local SSL can sometimes be a slog.
 
-**TODO** At time of writing, these examples fully work in Chrome (what version, Lyza?) and (Firefox beta??). There's hope for other browsers shipping service worker in the near future.
+**TODO** Browser compatibility
 
 --------------
 
-## Building a service worker
+## Registering, installing and activating a service worker
 
 Now that we've taken care of some theory, we can start putting together our service worker.
 
-### Installing and activating our service worker
-
-To install and activate our service worker, we want to listen out for `install` and `activate` events and act on them. We can start with an empty file for our service worker and add a couple of `eventListeners`.
+To install and activate our service worker, we want to listen for `install` and `activate` events and act on them. We can start with an empty file for our service worker and add a couple of `eventListeners`.
 
 In `serviceWorker.js`:
 
@@ -129,7 +155,7 @@ I want to use the _install_ stage to pre-cache some assets on my site:
 The steps to do this are:
 
 1. Tell the `install` event to hang on and not complete until I've done what I need to do by using `event.waitUntil`.
-2. Open the appropriate `cache` and stick the static assets inside of it by using `Cache.addAll`.
+2. Open the appropriate `cache` and stick the static assets inside of it by using `Cache.addAll`. In [progressive web app](https://developers.google.com/web/progressive-web-apps?hl=en) parlance, these assets make up my _application shell_.
 
 In `/serviceWorker.js`, expanding the `install` handler:
 
@@ -158,11 +184,17 @@ I tell the `event` to wait until the `Promise` returned by my handler function i
 
 You can [read more about the `cache` API](https://developer.mozilla.org/en-US/docs/Web/API/Cache) and its available methods if you like.
 
-**TODO**: Add review here
+### What we've accomplished so far
 
-### Handling Fetches
+The service worker handles the `install` event and pre-caches some static assets. You can [see the contents of serviceWorker.js here](https://github.com/lyzadanger/serviceworker-example/blob/master/01-install-precache/serviceWorker.js).
 
-So far our service worker has a fleshed-out `install` handler, but doesn't _do_ anything beyond that. The magic of our service worker is really going to happen when **fetch events** are triggered. We can _respond to_ fetches in different ways to improve performance or provide offline capabilities.
+------------------
+
+## Fetch handling with service workers
+
+So far our service worker has a fleshed-out `install` handler, but doesn't _do_ anything beyond that. The magic of our service worker is really going to happen when **fetch events** are triggered.
+
+We can _respond to_ fetches in different ways. By using different **network strategies**, we can tell the browser to always try to fetch certain assets from the network (making sure key content is fresh) while favoring cached copies for static assets—really slimming down our page payloads. We can also provide a nice offline fallback if all else fails.
 
 Whenever a browser wants to _fetch_ an asset that is within the _scope_ of this service worker, we can hear about it by, yep, adding an `eventListener` in `serviceWorker.js`:
 
@@ -176,19 +208,26 @@ Again, _every_ fetch that falls within this service worker's scope (i.e. path) w
 
 ### Should we handle this fetch?
 
-When a `fetch` event occurs for an asset, the first thing I want to determine is whether this service worker should handle responding to this fetch. Otherwise, it should do nothing and let the browser assert its default behavior.
+When a `fetch` event occurs for an asset, the first thing I want to determine is whether this service worker should interfere with the fetching of the given resource. Otherwise, it should do nothing and let the browser assert its default behavior.
 
 We'll end up with basic logic like this in `serviceWorker.js`:
 
 ```
-shouldHandleFetch(event, config) // I'll explain config shortly
-  .then(event => onFetch(event, config))
-  .catch(reason =>
-    console.log(`I am not going to handle this fetch because ${reason}`)
-);
+self.addEventListener('fetch', event => {
+
+  function onFetch(event, opts) {
+    // ... TBD
+  }
+
+  shouldHandleFetch(event, config) // I'll explain config shortly
+    .then(event => onFetch(event, config))
+    .catch(reason =>
+      console.log(`I am not going to handle this fetch because ${reason}`)
+  );
+});
 ```
 
-I wrote a `shouldHandleFetch` function to assess a given request and return a Promise that _resolves_, meaning yes, let's go ahead and do something specific for this fetch, or _rejects_, meaning no, I don't want to handle this specially, let the browser do its own thing. In `serviceWorker.js`:
+The `shouldHandleFetch` function assesses a given request. It returns a Promise that either _resolves_—meaning yes, let's go ahead and do something specific for this fetch—or _rejects_—meaning no, I don't want to handle this specially, let the browser do its own thing. In `serviceWorker.js`:
 
 ```
 function shouldHandleFetch (event, opts) {
@@ -221,9 +260,11 @@ function shouldHandleFetch (event, opts) {
 
 Of course, the criteria here are my own and would vary from site to site. `event.request` is a [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) object that has all kinds of data you can look at to assess how you'd like your fetch handler to behave.
 
-#### Brief aside about config convenience
+<a href="logging-fetch-handling.png"><img src="logging-fetch-handling.png" alt="Logging Fetch Evaluation" /></a>
 
-Aha! There has been an incursion of a `config` object, passed as an `opts` argument to handling functions. Where does `config` come from? I created it so I could factor out common config-like values for reuse.
+_Figure: When I load a page under the control of the service worker, I can see shouldHandleFetch rejections logging to Chrome's console._
+
+*Trivial note:* If you noticed the incursion of `config`, passed as `opts` to handler functions, well-spotted. I factored out some reusable config-like values and created a `config` object in the top-level scope of the service worker:
 
 ```
 var config = {
@@ -238,18 +279,16 @@ var config = {
 };
 ```
 
-This allows me to keep my config-like values, which may change as we go, isolated from the main logic of my service worker. Just a personal-preference organization thing. Thanks for your patience.
-
 ### Writing the fetch handler
 
-Now we're ready to pass applicable `fetch` requests on to a handler. The `onFetch` function needs to:
+Now we're ready to pass applicable `fetch` requests on to a handler. The `onFetch` function needs to figure out:
 
-1. Review the `request` information and see what "kind" of asset this is. This helps to figure out what to do with it and what `cache` to put it in.
-2. Execute the appropriate strategy for this asset type and actually respond to the request
+1. What kind of resource is being requested?
+2. How should I fulfill this request?
 
-#### 1. What kind of thing is being requested?
+#### 1. What kind of resource is being requested?
 
-First, I can look at the `HTTP Accept` header to get a hint as to what kind of asset is being requested. This helps me figure out how I want to handle it.
+I can look at the `HTTP Accept` header to get a hint as to what kind of asset is being requested. This helps me figure out how I want to handle it.
 
 ```
 function onFetch (event, opts) {
@@ -266,14 +305,15 @@ function onFetch (event, opts) {
 
   // {String} [static|image|content]
   cacheKey = resourceType;
+  // ... now do something
 }
 ```
 
-For organization, I want to stick different kinds of things into different caches. That allows me to manage those caches later. These cache key `String`s are arbitrary—you can call your caches whatever you like; the cache API doesn't have opinions.
+For organization, I want to stick different kinds of resources into different caches. That allows me to manage those caches later. These cache key `String`s are arbitrary—you can call your caches whatever you like; the cache API doesn't have opinions.
 
 #### 2. Respond to the fetch
 
-The next thing for `onFetch` to do is to execute the appropriate strategy for the asset and `respondTo` the `fetch` event with an intelligent `Response`.
+The next thing for `onFetch` to do is to `respondTo` the `fetch` event with an intelligent `Response`.
 
 ```
 function onFetch (event, opts) {
@@ -298,9 +338,9 @@ function onFetch (event, opts) {
 }
 ```
 
-### Fetch strategy for HTML content
+### HTML content: implementing a network-first strategy
 
-Responding to fetch requests involves implementing an appropriate **network strategy**. Let's look more closely at the way we're responding to requests for HTML content (`resourceType === 'content'`).
+Responding to fetch requests involves implementing an appropriate network strategy. Let's look more closely at the way we're responding to requests for HTML content (`resourceType === 'content'`).
 
 ```
 if (resourceType === 'content') {
@@ -316,7 +356,7 @@ if (resourceType === 'content') {
 
 The way we fulfill requests for content here is a **network-first strategy**. Because HTML content is the core concern of my site and it changes often, always try to get fresh HTML documents from the network.
 
-These are the ordered steps for this strategy:
+Let's step through this:
 
 #### 1. Try fetching from the network
 
@@ -329,11 +369,13 @@ If the network request is successful (the Promise resolves), go ahead and stash 
 
 ```
 function addToCache (cacheKey, request, response) {
-  var copy = response.clone();
-  caches.open(cacheKey).then( cache => {
-    cache.put(request, copy);
-  });
-  return response;
+  if (response.ok) { // Don't cache bad responses, e.g. 404!
+    var copy = response.clone();
+    caches.open(cacheKey).then( cache => {
+      cache.put(request, copy);
+    });
+    return response;
+  }
 }
 ```
 
@@ -393,9 +435,13 @@ function offlineResource (resourceType, opts) {
 }
 ```
 
-### Fetch strategy for other resources
+<a href="offline-page.png"><img src="offline-page.png" alt="Providing an offline page" /></a>
 
-The fetch logic for resources other than HTML content use a **cache-first strategy**. Images and other static content on the site rarely change, so check the cache first.
+_Figure: An offline page_
+
+### Other resources: implementing a cache-first strategy
+
+The fetch logic for resources other than HTML content use a **cache-first strategy**. Images and other static content on the site rarely change, so check the cache first and avoid the network round-trip.
 
 ```
 event.respondWith(
@@ -445,21 +491,30 @@ var config = {
 };
 ```
 
+<a href="offline-image.png"><img src="offline-image.png" alt="Providing an offline image" /></a>
+
+_Figure: An offline image. Credit for SVG source: Jeremy Keith_
+
 ### Completing the first version
 
 The first version of our service worker is now done. We have an install handler, and a fleshed-out `fetch` handler that can respond to applicable fetches with optimized responses, as well as provide cached resources and an offline page when offline.
 
-**TODO:** You can see the current state of `serviceWorker.js` here.
+<a href="preview-offline.png"><img src="preview-offline.png" alt="Testing Offline Mode" /></a>
+
+_Figure: In Chrome, you can test how your service worker behaves offline by entering Device Mode and selecting the 'Offline' Network preset. This is an invaluable trick._
+
+Code: You can see the full [code with fetch handling (`serviceWorker.js`)](https://github.com/lyzadanger/serviceworker-example/blob/master/02-fetch-handling/serviceWorker.js).
+
 ------------
 
-## Updating the service worker
+## Versioning and updating the service worker
 
-If nothing were ever going to change on our site again, we could ostensiby say we're done, but service workers do need to be updated from time to time. Maybe I want to add more cache-able paths. Maybe I want to evolve the way my offline fallbacks work. Maybe there's something slightly buggy in my service worker I want to fix.
+If nothing were ever going to change on our site again, we could say we're done, but service workers need to be updated from time to time. Maybe I want to add more cache-able paths. Maybe I want to evolve the way my offline fallbacks work. Maybe there's something slightly buggy in my service worker I want to fix.
 
-I want to stress that there are automated tools for making service-worker management part of your workflow, like [`sw-precache`](https://github.com/GoogleChrome/sw-precache) from Google. You don't _need_ to do this by hand. However, the complexity on my site is low enough, and my desire strong enough, that I use a human versioning strategy to manage changes to my service worker. This consists of:
+I want to stress that there are automated tools for making service-worker management part of your workflow, like [`sw-precache`](https://github.com/GoogleChrome/sw-precache) from Google. You don't _need_ to manage versioning this by hand. However, the complexity on my site is low enough that I use a human versioning strategy to manage changes to my service worker. This consists of:
 
 * A simple version string to indicate versions
-* Fleshing out the `activate` handler to clean up after old versions
+* Implementing an `activate` handler to clean up after old versions
 * Updating the `install` handler to make updated service workers `activate` faster
 
 ### Versioning cache keys
@@ -470,28 +525,13 @@ I can add a `version` property to my `config` object:
 version: 'aether'
 ```
 
-This should change any time I want to deploy an updated version of my service worker. I use the names of Greek dieties because they're more interesting to me than random strings or numbers.
+This should change any time I want to deploy an updated version of my service worker. I use the names of Greek deities because they're more interesting to me than random strings or numbers.
 
-We can use this version string to prefix the names of our caches—in other words, the keys for our caches will change each time we have a new version. Here's a utility function to make working with that easier:
+*Note*: I made some changes to code to add a convenience function (`cacheName`) to generate prefixed cache keys. It's tangential so I'm not including it here, but you can see it in the [completed service worker code](https://github.com/lyzadanger/serviceworker-example/blob/master/03-versioning/serviceWorker.js).
 
-```
-function cacheName (key, opts) {
-  return `${opts.version}-${key}`;
-}
-```
+<a href="cache-contents.png"><img src="cache-contents.png" alt="Cache contents in Chrome Developer Tools" /></a>
 
-Then, instead of using cache keys directly, like we did before, e.g.:
-
-```
-return caches.open('static')
-```
-
-we use the version-prefixing function:
-
-```
-var cacheKey = cacheName('static', opts);
-return caches.open(cacheKey)
-```
+_Figure: In Chrome, you can see the contents of caches in the `Resources` tab. You can see how different versions of my service worker have different cache names (This is version `achilles`)._
 
 ### Adding an activate handler
 
@@ -518,9 +558,9 @@ function onActivate (event, opts) {
 
 This function:
 
-1. Gets all of the keys for all of the caches that currently exist in the scope of this service worker;
-2. Filters that `Array` of keys to get a new `Array` of keys that don't match the new version name—that is, cache keys representing caches that are old and should be deleted;
-3. Generates an `Array` of `Promises` by mapping all of the keys for deletion over `cache.delete`—this fires off the actual deletion of these caches;
+1. Retrieves keys for all caches visible to this service worker
+2. Filters the `Array` of keys to find those don't match the new version—that is, cache keys representing caches that are old and should be deleted
+3. Invokes `cache.delete` for old caches and builds an `Array` of the resulting `Promise`s
 4. Returns a `Promise` that will resolve once all of the delete promises are resolved.
 
 #### Speeding up install and activate
@@ -529,9 +569,7 @@ An updated service worker will get downloaded and will `install` in the backgrou
 
 ```
 self.addEventListener('install', event => {
-  function onInstall (event, opts) {
-    // ...
-  }
+  // ... as before
 
   event.waitUntil(
     onInstall(event, config)
@@ -542,7 +580,7 @@ self.addEventListener('install', event => {
 
 `skipWaiting` will cause `activate` to happen immediately.
 
-Then, one last change to the `activate` handler:
+Now, finish the `activate` handler:
 
 ```
 self.addEventListener('activate', event => {
@@ -559,28 +597,66 @@ self.addEventListener('activate', event => {
 
 `self.clients.claim` will make the new service worker take effect immediately in any open pages in its scope.
 
-**TODO**: Review here.
+<a href="serviceworker-internals.png"><img src="serviceworker-internals.png" alt="Viewing Serviceworker Internals in Chrome" /></a>
 
-## Tips and gotchas
+_Figure: You can use the special URL `chrome://serviceworker-internals` in Chrome to see all of the service workers the browser has registered_
+
+<a href="my-site-offline.png"><img src="my-site-offline.png" alt="My site's offline mode" /></a>
+
+_Figure: My site as it appears in Chrome's Device Mode, Offline Network Preset, emulating what a user would see when offline. It works!_
+
+## Tada!
+
+Now we have a version-managed service worker! You can see the updated [serviceWorker.js with version management](https://github.com/lyzadanger/serviceworker-example/blob/master/03-versioning/serviceWorker.js).
+
+---------------
+
+## Things to keep in mind
+
+I ran into these the hard way so that maybe you won't have to!
 
 ### CDNs
 
-Watch out for CDNs if you are restricting fetch handling to your origin. When constructing my first service worker, I forgot that my hosting provider sharded assets (images, scripts) out onto its CDN, so that they no were no longer served from my site's origin (lyza.com). Whoops. That didn't work. I ended up disabling the CDN.
+Watch out for CDNs if you are restricting fetch handling to your origin. When constructing my first service worker, I forgot that my hosting provider sharded assets (images, scripts) out onto its CDN, so that they no were no longer served from my site's origin (lyza.com). Whoops. That didn't work. I ended up disabling the CDN for the affected assets (but optimizing those assets, of course!).
 
 ### Console.log and console errors
 
-Maybe not a bug, but certainly a confusion: if you `console.log` from service workers, Chrome will continue to re-display (not clear) those log message in subsequent page requests. This can make it _seem_ like events are firing too many times or code is executing over and over. [Chromium issue here](https://code.google.com/p/chromium/issues/detail?id=543104&q=service%20worker%20event&colspec=ID%20Pri%20M%20Stars%20ReleaseBlock%20Cr%20Status%20Owner%20Summary%20OS%20Modified#makechanges).
+_Possibly_ not a bug, but certainly a confusion: if you `console.log` from service workers, Chrome will continue to re-display (not clear) those log message in subsequent page requests. This can make it _seem_ like events are firing too many times or code is executing over and over. [Chromium issue here](https://code.google.com/p/chromium/issues/detail?id=543104&q=service%20worker%20event&colspec=ID%20Pri%20M%20Stars%20ReleaseBlock%20Cr%20Status%20Owner%20Summary%20OS%20Modified#makechanges).
 
-Another odd thing is that once a service worker is installed and activated, subsequent page loads for any page within its scope will always cause a single error in the console:
+For example, if we add a log statement to our install handler:
+
+```
+self.addEventListener('install', event => {
+  // ... as before
+  console.log('installing');
+});
+
+```
+
+<a href="stale-logging.png"><img src="stale-logging.png" alt="Stale Logs Freak Me Out" /></a>
+
+_Figure: As of Chrome 47, the 'installing' log message will continue to appear on subsequent page requests. Chrome isn't really firing the 'install' event on every page load. Instead, it's showing stale logs._
+
+Another odd thing is that once a service worker is installed and activated, subsequent page loads for any page within its scope will always cause a single error in the console. I thought I was doing something wrong.
+
+<a href="console-error.png"><img src="console-error.png" alt="Omnimpresent Chrome Service Worker Error" /></a>
+
+_Figure: As of Chrome 47, accessing a page with an already-registered service worker will **always** cause this error in the console._
 
 [Here's a Chromium issue thread about that](https://code.google.com/p/chromium/issues/detail?id=541797).
 
 ### Don't rename your service worker
 
-At one point I was futzing around with naming conventions for the service worker's file name. Don't do this. The browser will register the new service worker but the old service worker will stay installed, too. This is a messy state of affairs. There's probably a workaround, but I'd say: don't rename your service worker.
+At one point I was futzing around with naming conventions for the service worker's file name. Don't do this. The browser will register the new service worker but the old service worker will stay installed, too. This is a messy state of affairs. I'm sure there's a workaround, but I'd say: don't rename your service worker.
 
 ### Don't use importScripts for config
 
-I went down a path of putting my `config` object in an external file and using `self.importScripts()` in the service worker file to pull that script in. That _seemed_ like a reasonable way to manage my config external to the service worker, but there was a hitch.
+I went down a path of putting my `config` object in an external file and using [`self.importScripts()`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/importScripts) in the service worker file to pull that script in. That _seemed_ like a reasonable way to manage my config external to the service worker, but there was a hitch.
 
 The browser byte-compares service worker files to determine if they has been updated—that's how it knows when to re-trigger a download-and-install cycle. Changes to the external config don't _cause_ any changes to the service worker itself, meaning that changes to the config weren't causing the service worker to update. Whoops.
+
+### More tips
+
+The [Chromium Project's Service Worker Debugging page](https://www.chromium.org/blink/serviceworker/service-worker-faq) is super useful.
+
+**TODO**: Wrap, next steps (include cache-size management and messaging)

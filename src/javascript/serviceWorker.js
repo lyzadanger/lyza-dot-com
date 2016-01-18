@@ -2,7 +2,7 @@
 'use strict';
 
 var config = {
-  version: 'achilles',
+  version: 'achilles-123',
   staticCacheItems: [
     '/lyza-2.gif',
     '/css/styles.css',
@@ -25,10 +25,12 @@ function cacheName (key, opts) {
 }
 
 function addToCache (cacheKey, request, response) {
-  var copy = response.clone();
-  caches.open(cacheKey).then( cache => {
-    cache.put(request, copy);
-  });
+  if (response.ok) {
+    var copy = response.clone();
+    caches.open(cacheKey).then( cache => {
+      cache.put(request, copy);
+    });
+  }
   return response;
 }
 
@@ -54,7 +56,6 @@ function offlineResource (resourceType, opts) {
   }
   return undefined;
 }
-
 
 self.addEventListener('install', event => {
   function onInstall (event, opts) {
@@ -144,5 +145,5 @@ self.addEventListener('fetch', event => {
 
   shouldHandleFetch(event, config)
     .then(event => onFetch(event, config))
-    .catch(reason => console.log(`I am not going to handle this fetch because ${reason}`));
+    .catch(() => true);
 });
