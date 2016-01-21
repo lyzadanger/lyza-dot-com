@@ -2,7 +2,7 @@
 'use strict';
 
 var config = {
-  version: 'achilles-89898',
+  version: 'achilles-009896',
   staticCacheItems: [
     '/images/lyza.gif',
     '/css/styles.css',
@@ -35,14 +35,9 @@ function addToCache (cacheKey, request, response) {
 }
 
 function fetchFromCache (event) {
-  return new Promise((resolve, reject) => {
-    caches.match(event.request).then((response) => {
-      if (response !== undefined) {
-        resolve(response);
-      } else {
-        reject(`${event.request.url} not found in cache`);
-      }
-    });
+  return caches.match(event.request).then(response => {
+    if (!response) throw Error(`${event.request.url} not found in cache`);
+    return response;
   });
 }
 
