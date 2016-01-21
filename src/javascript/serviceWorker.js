@@ -2,7 +2,7 @@
 'use strict';
 
 var config = {
-  version: 'achilles-123',
+  version: 'achilles-89898',
   staticCacheItems: [
     '/images/lyza.gif',
     '/css/styles.css',
@@ -10,7 +10,7 @@ var config = {
     '/offline/',
     '/'
   ],
-  cachePathPattern: /^\/(20[0-9]{2}|about|blog|css|images|js)\//,
+  cachePathPattern: /^\/(20[0-9]{2}|about|blog|css|images|js|index\.html)/,
   offlineImage: '<svg role="img" aria-labelledby="offline-title"'
     + ' viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">'
     + '<title id="offline-title">Offline</title>'
@@ -93,23 +93,15 @@ self.addEventListener('fetch', event => {
   function shouldHandleFetch (event, opts) {
     var request            = event.request;
     var url                = new URL(request.url);
-    var matchesPathPattern = opts.cachePathPattern.exec(url.pathname);
-    var matchesPreCache    = opts.staticCacheItems.filter(path =>
-        path === url.pathname
-      ).length;
+    var criteria           = {
+      matchesPathPattern: !!(opts.cachePathPattern.exec(url.pathname)),
+      isGETRequest      : request.method === 'GET',
+      isFromMyOrigin    : url.origin === self.location.origin
+    };
+    var failingCriteria    = Object.keys(criteria)
+      .filter(criteriaKey => !criteria[criteriaKey]);
 
-    return new Promise(function (resolve, reject) {
-      if (url.origin !== self.location.origin) {
-        reject(`${url} is not from my origin (${self.location.origin})`);
-      }
-      if (request.method !== 'GET') {
-        reject(`request method is not 'GET' (${request.method})`);
-      }
-      if (!(matchesPathPattern || matchesPreCache)) {
-        reject(`path '${url.pathname}' does not match cache whitelist`);
-      }
-      resolve(event);
-    });
+    return !failingCriteria.length;
   }
 
   function onFetch (event, opts) {
@@ -142,8 +134,8 @@ self.addEventListener('fetch', event => {
       );
     }
   }
+  if (shouldHandleFetch(event, config)) {
+    onFetch(event, config);
+  }
 
-  shouldHandleFetch(event, config)
-    .then(event => onFetch(event, config))
-    .catch(() => true);
 });
