@@ -2,7 +2,7 @@
 'use strict';
 
 var config = {
-  version: 'achilles-009896',
+  version: 'antares-009896',
   staticCacheItems: [
     '/images/lyza.gif',
     '/css/styles.css',
@@ -10,7 +10,7 @@ var config = {
     '/offline/',
     '/'
   ],
-  cachePathPattern: /^\/(20[0-9]{2}|about|blog|css|images|js|index\.html)/,
+  cachePathPattern: /^\/(20[0-9]{2}|about|blog|css|images|js)/,
   offlineImage: '<svg role="img" aria-labelledby="offline-title"'
     + ' viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">'
     + '<title id="offline-title">Offline</title>'
@@ -89,13 +89,13 @@ self.addEventListener('fetch', event => {
     var request            = event.request;
     var url                = new URL(request.url);
     var criteria           = {
-      matchesPathPattern: !!(opts.cachePathPattern.exec(url.pathname)),
+      matchesPathPattern: !!(opts.cachePathPattern.exec(url.pathname) ||
+                              url.pathname === '/'),
       isGETRequest      : request.method === 'GET',
       isFromMyOrigin    : url.origin === self.location.origin
     };
     var failingCriteria    = Object.keys(criteria)
       .filter(criteriaKey => !criteria[criteriaKey]);
-
     return !failingCriteria.length;
   }
 
