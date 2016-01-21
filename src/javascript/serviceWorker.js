@@ -41,7 +41,7 @@ function fetchFromCache (event) {
   });
 }
 
-function offlineResource (resourceType, opts) {
+function offlineResponse (resourceType, opts) {
   if (resourceType === 'image') {
     return new Response(opts.offlineImage,
       { headers: { 'Content-Type': 'image/svg+xml' } }
@@ -118,14 +118,14 @@ self.addEventListener('fetch', event => {
         fetch(request)
           .then(response => addToCache(cacheKey, request, response))
           .catch(() => fetchFromCache(event))
-          .catch(() => offlineResource(resourceType, opts))
+          .catch(() => offlineResponse(resourceType, opts))
       );
     } else {
       event.respondWith(
         fetchFromCache(event)
           .catch(() => fetch(request))
             .then(response => addToCache(cacheKey, request, response))
-          .catch(() => offlineResource(resourceType, opts))
+          .catch(() => offlineResponse(resourceType, opts))
       );
     }
   }
