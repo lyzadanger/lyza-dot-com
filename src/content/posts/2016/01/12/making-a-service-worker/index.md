@@ -12,6 +12,24 @@ publish:
 
 ---
 
+There's no shortage of boosterism and excitement about the fledgling [Service Worker API](https://www.w3.org/TR/service-workers/), now shipping in some popular browsers. There are cookbooks and blog posts, code snippets and tools. But I find that I when I want to learn a new web concept thoroughly, it can be ideal to dive in, roll up my proverbial sleeves, and build something from scratch. The bumps and bruises, gotchas and bugs I ran into have benefits: now _I_ understand service worker a lot better, and with any luck I can help _you_ avoid some of the headaches I encountered when working with the new API.
+
+Service worker can do a lot of different things; there are myriad ways to harness its powers. I decided to build a simple service worker for my (static, uncomplicated) site that _roughly_ mirrored the features that the obsolete Application Cache API used to provide—that is:
+
+* makes the site function offline
+* increases online performance by reducing network requests for certain assets
+* provides a customized offline fallback experience
+
+Inspired by [Jeremy Keith's post](https://adactio.com/journal/9888) describing his recent successes building a service worker for his site, I decided to build on his solution and create my own. There are so very many ways to skin a cat. This is mine.
+
+Before I begin, I should point out that I'm _hugely_ in debt to Jeremy for the source of this work, and almost wouldn't write about it save for an exhortation in [his post](https://adactio.com/journal/9775):
+
+> So if you decide to play around with Service Workers, please, please share your experience.
+
+My marching orders are set!
+
+## What is service worker, anyway?
+
 A service worker is a script that stands between your web site and the network, giving you, among other things, the ability to intercept network requests and respond to them in different ways.
 
 For your site or app to work, the browser fetches its assets—e.g. HTML pages, JavaScript, images, fonts. In the past, the management of this was chiefly the browser's prerogative. If the browser couldn't access the network, you would probably see its "Hey, you're offline" interface. There were techniques you could use to encourage the local caching of assets, but the browser often had the last say.
@@ -24,26 +42,6 @@ The fledgling service worker API can do what Application Cache did, and also a w
 
 Whereas Application Cache (which, by the way, is [going away](https://html.spec.whatwg.org/multipage/browsers.html#offline)) was easy to learn but terrible for every single moment after that (my opinion), service worker is more of an initial cognitive investment, but it is powerful and useful and you can generally get yourself out of trouble if you break things.
 
-## Let's build a service worker
-
-Let's break the monumental topic of service worker down today by examining how I built a service worker for a small, static site that:
-
-* makes the site function offline
-* increases online performance by reducing network requests for certain assets
-* provides a customized offline fallback experience
-
-This subset of what service worker lets us do _roughly_ aligns with what AppCache was designed to do.
-
-There are already tons of cookbooks and code snippets and tools for generating things with service workers, but I find that it's useful to dive in and build things from scratch when trying to learn a new web technology thoroughly. There are so very many ways to skin a cat. This is mine.
-
-Inspired by [Jeremy Keith's post](https://adactio.com/journal/9888) describing his recent successes building a service worker for his site, I decided to build on his solution and create my own.
-
-Before I begin, I should point out that I'm _hugely_ in debt to Jeremy for the source of this work, and almost wouldn't write about it save for an exhortation in [his post](https://adactio.com/journal/9775):
-
-> So if you decide to play around with Service Workers, please, please share your experience.
-
-My marching orders are set!
-
 --------
 
 ## Some basic service worker concepts
@@ -52,7 +50,7 @@ A service worker is a file with some JavaScript in it. Inside of that file you c
 
 Service worker scripts run in a separate thread in the browser from the pages they control. There are ways to communicate between workers and pages, but they execute in a separate [scope](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope). That means you won't have access to the DOM of those pages, for example. I visualize a service worker as sort of running in a separate tab from the page it affects; this is not at all _accurate_ but it is a helpful rough metaphor for keeping myself out of confusion.
 
-JavaScript in a service worker must not block. You need to use asynchronous APIs. For example, you cannot use `localStorage` inside a service worker (`localStorage` is a synchronous API).
+JavaScript in a service worker must not block. You need to use asynchronous APIs. For example, you cannot use `localStorage` inside a service worker (`localStorage` is a synchronous API). Humorously enough, even knowing this I managed to run the risk of violating it, as we'll see.
 
 ### Registering a service worker
 
