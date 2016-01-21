@@ -166,10 +166,11 @@ self.addEventListener('install', event => {
     return caches.open('static')
       .then(cache =>
         cache.addAll([
-          '/lyza.gif',
-          '/site.js',
+          '/images/lyza.gif',
+          '/js/site.js',
           '/css/styles.css',
-          '/offline/'
+          '/offline/',
+          '/'
         ])
       );
   }
@@ -183,6 +184,8 @@ Service worker implements the [`CacheStorage` interface](https://developer.mozil
 You can see `Promises` at work here: `caches.open` returns a `Promise` resolving to a [`cache`](https://developer.mozilla.org/en-US/docs/Web/API/Cache) object once it has successfully opened the `static` cache; `addAll` also returns a `Promise` that resolves when all of the items passed to it have been stashed in the cache.
 
 I tell the `event` to wait until the `Promise` returned by my handler function is resolved successfully. Then we can be sure all of those pre-cache items get sorted before the _installation_ is complete.
+
+GOTCHA: STALE LOGGING
 
 ### What we've accomplished so far
 
@@ -223,63 +226,64 @@ self.addEventListener('fetch', event => {
     // ... TBD: respond to the fetch
   }
 
-  shouldHandleFetch(event, config)
-    .then(event => onFetch(event, config))
-    .catch(reason =>
-      console.log(`I am not going to handle this fetch because ${reason}`)
-  );
+  if (shouldHandleFetch(event, config)) {
+    onFetch(event, config);
+  }
 });
 ```
 
-The `shouldHandleFetch` function assesses a given request. It returns a Promise that either _resolves_—meaning yes, let's go ahead and do something specific for this fetch—or _rejects_—meaning no, I don't want to handle this specially, let the browser do its own thing. In `serviceWorker.js`:
+
+
+The `shouldHandleFetch` function assesses a given request to determine whether we should provide a response or let the browser assert its default handling.
+
+GOTCHA PROMISES
+
+My site-specific criteria are as follows:
+
+1. The requested URL's path should match a whitelist `Regular Expression` (`/^\/(20[0-9]{2}|about|blog|css|images|js)/`) of valid paths or be my landing page (`/`). `/about/me.html` would match, as would `/images/foo.gif`, but `/someRandomPath/thing.txt` would not.
+2. The request should use `HTTP GET`.
+3. The request should be for a resource from my origin (`lyza.com`).
+
+If any of the `criteria` tests evaluate to `false`, we should _not_ handle this request. In `serviceWorker.js`:
 
 ```
 function shouldHandleFetch (event, opts) {
   var request            = event.request;
   var url                = new URL(request.url);
-  var matchesPathPattern = opts.cachePathPattern.exec(url.pathname);
-  var matchesPreCache    = opts.staticCacheItems.filter(path =>
-      path === url.pathname
-    ).length;
+  var criteria           = {
+    matchesPathPattern: !!(opts.cachePathPattern.exec(url.pathname) ||
+                            url.pathname === '/'),
+    isGETRequest      : request.method === 'GET',
+    isFromMyOrigin    : url.origin === self.location.origin
+  };
 
-  return new Promise(function (resolve, reject) {
-    if (url.origin !== self.location.origin) {
-      // I only want to process fetches that are on my own site
-      reject(`${url} not from my origin (${self.location.origin})`);
-    }
-    if (request.method !== 'GET') {
-      // I don't want to mess with non-GET requests
-      reject(`request method is not 'GET' (${request.method})`);
-    }
-    if (!(matchesPathPattern || matchesPreCache)) {
-      // I am using a path whitelist so I don't cache weird things
-      // (e.g. browsersync injected stuff when developing locally)
-      reject(`path '${url.pathname}' does not match cache whitelist`);
-    }
-    resolve(event);
-  });
+  // Create a new array with just the keys from criteria that have
+  // failing (i.e. false) values
+  var failingCriteria    = Object.keys(criteria)
+    .filter(criteriaKey => !criteria[criteriaKey]);
+
+  // If that failing Array has any length, one or more tests failed
+  return !failingCriteria.length;
 }
 
 ```
 
+GOTCHA WHITELISTS
+
 Of course, the criteria here are my own and would vary from site to site. `event.request` is a [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) object that has all kinds of data you can look at to assess how you'd like your fetch handler to behave.
-
-<a href="logging-fetch-handling.png"><img src="logging-fetch-handling.png" alt="Logging Fetch Evaluation" /></a>
-
-_Figure: When I load a page under the control of the service worker, I can see shouldHandleFetch rejections logging to Chrome's console._
 
 *Trivial note:* If you noticed the incursion of `config`, passed as `opts` to handler functions, well-spotted. I factored out some reusable config-like values and created a `config` object in the top-level scope of the service worker:
 
 ```
 var config = {
   staticCacheItems: [
-    '/lyza.gif',
+    '/images/lyza.gif',
     '/css/styles.css',
-    '/site.js',
+    '/js/site.js',
     '/offline/',
     '/'
   ],
-  cachePathPattern: /^\/(20[0-9]{2}|about|blog|css)/
+  cachePathPattern: /^\/(20[0-9]{2}|about|blog|css|images|js)/
 };
 ```
 
@@ -328,7 +332,7 @@ function onFetch (event, opts) {
       fetch(request)
           .then(response => addToCache(cacheKey, request, response))
         .catch(() => fetchFromCache(event))
-        .catch(() => offlineResource(opts))
+        .catch(() => offlineResponse(opts))
     );
   } else {
     // Use a cache-first strategy
@@ -336,11 +340,13 @@ function onFetch (event, opts) {
       fetchFromCache(event)
         .catch(() => fetch(request))
           .then(response => addToCache(cacheKey, request, response))
-        .catch(() => offlineResource(resourceType, opts))
+        .catch(() => offlineResponse(resourceType, opts))
     );
   }
 }
 ```
+
+GOTCHA ASYNC/EVENT.WAITUNTIL
 
 ### HTML content: implementing a network-first strategy
 
@@ -353,7 +359,7 @@ if (resourceType === 'content') {
     fetch(request)
         .then(response => addToCache(cacheKey, request, response))
       .catch(() => fetchFromCache(event))
-      .catch(() => offlineResource(opts))
+      .catch(() => offlineResponse(opts))
   );
 }
 ```
@@ -373,7 +379,7 @@ If the network request is successful (the Promise resolves), go ahead and stash 
 
 ```
 function addToCache (cacheKey, request, response) {
-  if (response.ok) { // Don't cache bad responses, e.g. 404!
+  if (response.ok) {
     var copy = response.clone();
     caches.open(cacheKey).then( cache => {
       cache.put(request, copy);
@@ -383,7 +389,9 @@ function addToCache (cacheKey, request, response) {
 }
 ```
 
-*Note*: you need to clone `Response` objects before caching them.
+GOTCHA CLONING
+
+GOTCHA CACHING BAD REQUESTS
 
 #### 2. Try to retrieve from cache
 
@@ -399,19 +407,14 @@ Here is the `fetchFromCache` function:
 
 ```
 function fetchFromCache (event) {
-  return new Promise((resolve, reject) => {
-    caches.match(event.request).then((response) => {
-      if (response !== undefined) {
-        resolve(response);
-      } else {
-        reject(`${event.request.url} not found in cache`);
-      }
-    });
+  return caches.match(event.request).then(response => {
+    if (!response) throw Error(`${event.request.url} not found in cache`);
+    return response;
   });
 }
 ```
 
-*Note*: `caches.match` returns a `Promise` that resolves to `undefined` (instead of rejecting) if there is no match for the thing we're trying to find. I wrap this in another `Promise` so I can manually reject it if there is no match, allowing for logical chaining in the fetch handler.
+GOTCHA PROMISES/CACHES.MATCH RETURN
 
 *Another Note*: You don't indicate which cache you wish to check with `caches.match`; you check all of 'em at once.
 
@@ -423,13 +426,13 @@ If we've made it this far, but there's nothing in the cache we can respond with,
 fetch(request)
   .then(response => addToCache(cacheKey, request, response))
   .catch(() => fetchFromCache(event))
-    .catch(() => offlineResource(opts))
+    .catch(() => offlineResponse(opts))
 ```
 
-And here is the `offlineResource` function:
+And here is the `offlineResponse` function:
 
 ```
-function offlineResource (resourceType, opts) {
+function offlineResponse (resourceType, opts) {
   if (resourceType === 'image') {
     // ... return an offline image
   } else if (resourceType === 'content') {
@@ -452,7 +455,7 @@ event.respondWith(
   fetchFromCache(event)
     .catch(() => fetch(request))
       .then(response => addToCache(cacheKey, request, response))
-    .catch(() => offlineResource(resourceType, opts))
+    .catch(() => offlineResponse(resourceType, opts))
 );
 ```
 
@@ -468,7 +471,7 @@ The steps here are:
 We can return an SVG image with the text "Offline" as an offline fallback by completing the `offlineResource` function:
 
 ```
-function offlineResource (resourceType, opts) {
+function offlineResponse (resourceType, opts) {
   if (resourceType === 'image') {
     return new Response(opts.offlineImage,
       { headers: { 'Content-Type': 'image/svg+xml' } }
