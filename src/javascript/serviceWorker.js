@@ -10,7 +10,7 @@ var config = {
     '/offline/',
     '/'
   ],
-  cachePathPattern: /^\/(20[0-9]{2}|about|blog|css)/,
+  cachePathPattern: /^\/(20[0-9]{2}|about|blog|css|images|js)\//,
   offlineImage: '<svg role="img" aria-labelledby="offline-title"'
     + ' viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">'
     + '<title id="offline-title">Offline</title>'
