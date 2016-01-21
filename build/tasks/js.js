@@ -6,14 +6,13 @@ var gutil = require('gulp-util');
 var config = require('../config');
 
 var opts = {
-  staticSrc: [ config.dirs.js + '/serviceWorker.js',
-               config.dirs.js + '/serviceWorker.config.js'],
+  staticSrc: [ config.dirs.js + '/serviceWorker.js'],
   webpack: {
     entry: {
       site: config.dirs.js + '/site.js'
     },
     output: {
-      path    : config.dest,
+      path    : config.dest + '/js/',
       filename: '[name].js'
     },
     module: {

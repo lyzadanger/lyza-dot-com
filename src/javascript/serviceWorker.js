@@ -6,7 +6,7 @@ var config = {
   staticCacheItems: [
     '/images/lyza.gif',
     '/css/styles.css',
-    '/site.js',
+    '/js/site.js',
     '/offline/',
     '/'
   ],
