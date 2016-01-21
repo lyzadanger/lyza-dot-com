@@ -4,7 +4,7 @@
 var config = {
   version: 'achilles-123',
   staticCacheItems: [
-    '/lyza-2.gif',
+    '/lyza.gif',
     '/css/styles.css',
     '/site.js',
     '/offline/',

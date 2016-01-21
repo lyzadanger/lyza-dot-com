@@ -12,8 +12,6 @@ publish:
 
 ---
 
-# A Service Worker Case Study
-
 A service worker is a script that stands between your web site and the network, giving you, among other things, the ability to intercept network requests and respond to them in different ways.
 
 For your site or app to work, the browser fetches its assets—e.g. HTML pages, JavaScript, images, fonts. In the past, the management of this was chiefly the browser's prerogative. If the browser couldn't access the network, you would probably see its "Hey, you're offline" interface. There were techniques you could use to encourage the local caching of assets, but the browser often had the last say.
