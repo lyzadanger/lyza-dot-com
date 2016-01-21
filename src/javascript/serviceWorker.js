@@ -36,7 +36,9 @@ function addToCache (cacheKey, request, response) {
 
 function fetchFromCache (event) {
   return caches.match(event.request).then(response => {
-    if (!response) throw Error(`${event.request.url} not found in cache`);
+    if (!response) {
+      throw Error(`${event.request.url} not found in cache`);
+    }
     return response;
   });
 }

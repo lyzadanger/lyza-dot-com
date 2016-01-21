@@ -66,7 +66,7 @@ A service worker does the bulk of its work by **listening for relevant events an
 
 Once the service worker has been registered and downloaded, it gets _installed_ in the background. Your service worker can listen for the **install event** and perform tasks appropriate for this stage.
 
-In our case, we want to take advantage of the install state to pre-cache a bunch of assets we know we want available offline.
+In our case, we want to take advantage of the install state to pre-cache a bunch of assets we know we want available offline later.
 
 #### Activate
 
@@ -79,7 +79,9 @@ Once _installation_ and _activation_ are complete, they won't occur again until 
 
 #### Other events
 
-Beyond _install_ and _activate_, we'll be looking primarily at the _fetch_ event today to make our service worker useful. But there are several useful events beyond that: _sync_ events and _notification_ events, for example. You can [read more about the interfaces that service worker implements](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API#Interfaces). It's by implementing these interfaces that service worker gets the bulk of its events and much of its extended functionality.
+Beyond _install_ and _activate_, we'll be looking primarily at the _fetch_ event today to make our service worker useful. But there are several useful events beyond that: _sync_ events and _notification_ events, for example.
+
+For extra credit or leisure fun, you can [read more about the interfaces that service worker implements](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API#Interfaces). It's by implementing these interfaces that service worker gets the bulk of its events and much of its extended functionality.
 
 ### Service worker's Promise-based API
 
@@ -105,7 +107,9 @@ There's more to `Promises`, but I'll try to keep the examples here straightforwa
 
 It's also important to note that service workers **require HTTPS** to work. There is an important and useful exception to this rule: service workers work for `localhost` on insecure `http`, which is a relief because setting up local SSL can sometimes be a slog.
 
-**TODO** Browser compatibility
+Fun fact: this project forced me to do something I'd been putting off for a while—getting and configuring SSL for the `www` subdomain of my site. This is something I urge folks to consider doing because pretty much all of the fun new stuff hitting the browser in the future is going to require SSL to use it.
+
+@TODO Browser compatibility
 
 --------------
 
@@ -113,9 +117,9 @@ It's also important to note that service workers **require HTTPS** to work. Ther
 
 Now that we've taken care of some theory, we can start putting together our service worker.
 
-To install and activate our service worker, we want to listen for `install` and `activate` events and act on them. We can start with an empty file for our service worker and add a couple of `eventListeners`.
+To install and activate our service worker, we want to listen for `install` and `activate` events and act on them.
 
-In `serviceWorker.js`:
+We can start with an empty file for our service worker and add a couple of `eventListeners`. In `serviceWorker.js`:
 
 ```
 self.addEventListener('install', event => {
@@ -123,7 +127,7 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('activate', event => {
-  // Do activate stuff
+  // Do activate stuff: this will come later on
 });
 ```
 
@@ -131,7 +135,7 @@ self.addEventListener('activate', event => {
 
 Now we need to tell the pages on our site to _use_ the service worker.
 
-Remember, this registration happens from outside the service worker—in my case, from within a script (`site.js`) that is included on every page of my site.
+Remember, this registration happens from outside the service worker—in my case, from within a script (`/js/site.js`) that is included on every page of my site.
 
 In my `site.js`:
 
@@ -183,11 +187,39 @@ You can see `Promises` at work here: `caches.open` returns a `Promise` resolving
 
 I tell the `event` to wait until the `Promise` returned by my handler function is resolved successfully. Then we can be sure all of those pre-cache items get sorted before the _installation_ is complete.
 
-GOTCHA: STALE LOGGING
+#### console confusions
+
+##### Stale logging
+
+_Possibly_ not a bug, but certainly a confusion: if you `console.log` from service workers, Chrome will continue to re-display (not clear) those log message in subsequent page requests. This can make it _seem_ like events are firing too many times or code is executing over and over. [Chromium issue here](https://code.google.com/p/chromium/issues/detail?id=543104&q=service%20worker%20event&colspec=ID%20Pri%20M%20Stars%20ReleaseBlock%20Cr%20Status%20Owner%20Summary%20OS%20Modified#makechanges).
+
+For example, if we add a log statement to our install handler:
+
+```
+self.addEventListener('install', event => {
+  // ... as before
+  console.log('installing');
+});
+
+```
+
+<a href="stale-logging.png"><img src="stale-logging.png" alt="Stale Logs Freak Me Out" /></a>
+
+_Figure: As of Chrome 47, the 'installing' log message will continue to appear on subsequent page requests. Chrome isn't really firing the 'install' event on every page load. Instead, it's showing stale logs._
+
+##### An error when things are OK
+
+Another odd thing is that once a service worker is installed and activated, subsequent page loads for any page within its scope will always cause a single error in the console. I thought I was doing something wrong.
+
+<a href="console-error.png"><img src="console-error.png" alt="Omnimpresent Chrome Service Worker Error" /></a>
+
+_Figure: As of Chrome 47, accessing a page with an already-registered service worker will **always** cause this error in the console._
 
 ### What we've accomplished so far
 
 The service worker handles the `install` event and pre-caches some static assets. You can [see the contents of serviceWorker.js here](https://github.com/lyzadanger/serviceworker-example/blob/master/01-install-precache/serviceWorker.js).
+
+@TODO update that code, also make it log and show a graphic of that
 
 ------------------
 
@@ -230,16 +262,36 @@ self.addEventListener('fetch', event => {
 });
 ```
 
-
-
 The `shouldHandleFetch` function assesses a given request to determine whether we should provide a response or let the browser assert its default handling.
 
-GOTCHA PROMISES
+#### Why not use Promises?
+
+To keep with service worker's predilection for Promises, the first version of my `fetch` event handler looked like this:
+
+```
+self.addEventListener('fetch', event => {
+
+  function shouldHandleFetch (event, opts) { }
+  function onFetch (event, opts) { }
+
+  shouldHandleFetch(event, config)
+    .then(onFetch(event, config))
+    .catch(...);
+});
+```
+
+Seems logical, but I was making a couple of rookie mistakes with Promises. I swear I did sense a code smell even initially, but it was Jake who set me straight on the errors of my ways. (Lesson: as always, if code feels wrong, it probably is).
+
+Promise rejections should not be used to indicate "I got an answer I didn't like", instead, rejections should indicate "ah, crap, something went wrong and I couldn't get an answer at all." Plus, there's nothing asynchronous about what the `shouldHandleFetch` function is doing, so it's not an appropriate fit for Promises.
+
+The fact that I needed to handle a `catch` there should have been a red flag for me.
+
+#### Criteria for valid requests
 
 My site-specific criteria are as follows:
 
-1. The requested URL's path should match a whitelist `Regular Expression` (`/^\/(20[0-9]{2}|about|blog|css|images|js)/`) of valid paths or be my landing page (`/`). `/about/me.html` would match, as would `/images/foo.gif`, but `/someRandomPath/thing.txt` would not.
-2. The request should use `HTTP GET`.
+1. The requested URL should represent something I want to cache or respond to. Its path should match a `Regular Expression` of valid paths or be my landing page.
+2. The request's HTTP method should be `GET`.
 3. The request should be for a resource from my origin (`lyza.com`).
 
 If any of the `criteria` tests evaluate to `false`, we should _not_ handle this request. In `serviceWorker.js`:
@@ -266,8 +318,6 @@ function shouldHandleFetch (event, opts) {
 
 ```
 
-GOTCHA WHITELISTS
-
 Of course, the criteria here are my own and would vary from site to site. `event.request` is a [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) object that has all kinds of data you can look at to assess how you'd like your fetch handler to behave.
 
 *Trivial note:* If you noticed the incursion of `config`, passed as `opts` to handler functions, well-spotted. I factored out some reusable config-like values and created a `config` object in the top-level scope of the service worker:
@@ -284,6 +334,19 @@ var config = {
   cachePathPattern: /^\/(20[0-9]{2}|about|blog|css|images|js)/
 };
 ```
+
+##### Why whitelist?
+
+You may be wondering why I'm only caching things with paths that match this regular expression:
+
+`/^\/(20[0-9]{2}|about|blog|css|images|js)/`
+
+instead of caching anything coming from my own origin.
+
+A couple of reasons:
+
+* I don't want to cache the service worker itself;
+* When I'm developing my site locally, there are some requests generated for things I don't want to cache. For example, I use `browserSync` which kicks off a bunch of related requests in my development environment. I don't want to cache that stuff! It seemed messy and challenging to try to think of everything I _wouldn't_ want to cache (not to mention a little weird to have to spell it out in my service worker's configuration), so a whitelist approach seemed more natural.
 
 ### Writing the fetch handler
 
@@ -344,7 +407,9 @@ function onFetch (event, opts) {
 }
 ```
 
-GOTCHA ASYNC/EVENT.WAITUNTIL
+#### Careful with Async!
+
+In our case, `shouldHandleFetch` doesn't do anything async, and neither does `onFetch` up to the point of `event.respondWith`. If something async _had_ happened before that, we would be in trouble. `event.respondWith` must be called between the `fetch` event firing and control returning to the browser. Same thing goes for `event.waitUntil`. Basically, if you're handling an event, either do something immediately (synchronously) or tell the browser to hang on until your async stuff is done.
 
 ### HTML content: implementing a network-first strategy
 
@@ -387,9 +452,26 @@ function addToCache (cacheKey, request, response) {
 }
 ```
 
-GOTCHA CLONING
+##### Responses can only be used once
 
-GOTCHA CACHING BAD REQUESTS
+We need to do two things with the `response` we have:
+
+* cache it
+* respond to the event with it (i.e. return it)
+
+But `Response` objects can only be used once. By cloning it:
+
+`var copy = response.clone();`
+
+we get around this limitation.
+
+##### Don't cache bad responses
+
+Don't make the same mistake I did. The first version of my code didn't have this conditional:
+
+`if (response.ok)`
+
+Pretty awesome to end up with 404 or other bad responses in the cache! Only cache happy responses.
 
 #### 2. Try to retrieve from cache
 
@@ -406,15 +488,16 @@ Here is the `fetchFromCache` function:
 ```
 function fetchFromCache (event) {
   return caches.match(event.request).then(response => {
-    if (!response) throw Error(`${event.request.url} not found in cache`);
+    if (!response) {
+      // A synchronous error that will kick off the catch handler
+      throw Error(`${event.request.url} not found in cache`);
+    }
     return response;
   });
 }
 ```
 
-GOTCHA PROMISES/CACHES.MATCH RETURN
-
-*Another Note*: You don't indicate which cache you wish to check with `caches.match`; you check all of 'em at once.
+*Note*: You don't indicate which cache you wish to check with `caches.match`; you check all of 'em at once.
 
 #### 3. Provide an offline fallback
 
@@ -500,6 +583,10 @@ var config = {
 
 _Figure: An offline image. Credit for SVG source: Jeremy Keith_
 
+#### Watch out for CDNs
+
+Watch out for CDNs if you are restricting fetch handling to your origin. When constructing my first service worker, I forgot that my hosting provider sharded assets (images, scripts) out onto its CDN, so that they no were no longer served from my site's origin (lyza.com). Whoops. That didn't work. I ended up disabling the CDN for the affected assets (but optimizing those assets, of course!).
+
 ### Completing the first version
 
 The first version of our service worker is now done. We have an install handler, and a fleshed-out `fetch` handler that can respond to applicable fetches with optimized responses, as well as provide cached resources and an offline page when offline.
@@ -537,6 +624,16 @@ This should change any time I want to deploy an updated version of my service wo
 <a href="cache-contents.png"><img src="cache-contents.png" alt="Cache contents in Chrome Developer Tools" /></a>
 
 _Figure: In Chrome, you can see the contents of caches in the `Resources` tab. You can see how different versions of my service worker have different cache names (This is version `achilles`)._
+
+#### Don't rename your service worker
+
+At one point I was futzing around with naming conventions for the service worker's file name. Don't do this. The browser will register the new service worker but the old service worker will stay installed, too. This is a messy state of affairs. I'm sure there's a workaround, but I'd say: don't rename your service worker.
+
+#### Don't use importScripts for config
+
+I went down a path of putting my `config` object in an external file and using [`self.importScripts()`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/importScripts) in the service worker file to pull that script in. That _seemed_ like a reasonable way to manage my config external to the service worker, but there was a hitch.
+
+The browser byte-compares service worker files to determine if they has been updated—that's how it knows when to re-trigger a download-and-install cycle. Changes to the external config don't _cause_ any changes to the service worker itself, meaning that changes to the config weren't causing the service worker to update. Whoops.
 
 ### Adding an activate handler
 
@@ -608,53 +705,3 @@ _Figure: My site as it appears in Chrome's Device Mode, Offline Network Preset, 
 Now we have a version-managed service worker! You can see the updated [serviceWorker.js with version management](https://github.com/lyzadanger/serviceworker-example/blob/master/03-versioning/serviceWorker.js).
 
 ---------------
-
-## Things to keep in mind
-
-I ran into these the hard way so that maybe you won't have to!
-
-### CDNs
-
-Watch out for CDNs if you are restricting fetch handling to your origin. When constructing my first service worker, I forgot that my hosting provider sharded assets (images, scripts) out onto its CDN, so that they no were no longer served from my site's origin (lyza.com). Whoops. That didn't work. I ended up disabling the CDN for the affected assets (but optimizing those assets, of course!).
-
-### Console.log and console errors
-
-_Possibly_ not a bug, but certainly a confusion: if you `console.log` from service workers, Chrome will continue to re-display (not clear) those log message in subsequent page requests. This can make it _seem_ like events are firing too many times or code is executing over and over. [Chromium issue here](https://code.google.com/p/chromium/issues/detail?id=543104&q=service%20worker%20event&colspec=ID%20Pri%20M%20Stars%20ReleaseBlock%20Cr%20Status%20Owner%20Summary%20OS%20Modified#makechanges).
-
-For example, if we add a log statement to our install handler:
-
-```
-self.addEventListener('install', event => {
-  // ... as before
-  console.log('installing');
-});
-
-```
-
-<a href="stale-logging.png"><img src="stale-logging.png" alt="Stale Logs Freak Me Out" /></a>
-
-_Figure: As of Chrome 47, the 'installing' log message will continue to appear on subsequent page requests. Chrome isn't really firing the 'install' event on every page load. Instead, it's showing stale logs._
-
-Another odd thing is that once a service worker is installed and activated, subsequent page loads for any page within its scope will always cause a single error in the console. I thought I was doing something wrong.
-
-<a href="console-error.png"><img src="console-error.png" alt="Omnimpresent Chrome Service Worker Error" /></a>
-
-_Figure: As of Chrome 47, accessing a page with an already-registered service worker will **always** cause this error in the console._
-
-[Here's a Chromium issue thread about that](https://code.google.com/p/chromium/issues/detail?id=541797).
-
-### Don't rename your service worker
-
-At one point I was futzing around with naming conventions for the service worker's file name. Don't do this. The browser will register the new service worker but the old service worker will stay installed, too. This is a messy state of affairs. I'm sure there's a workaround, but I'd say: don't rename your service worker.
-
-### Don't use importScripts for config
-
-I went down a path of putting my `config` object in an external file and using [`self.importScripts()`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/importScripts) in the service worker file to pull that script in. That _seemed_ like a reasonable way to manage my config external to the service worker, but there was a hitch.
-
-The browser byte-compares service worker files to determine if they has been updated—that's how it knows when to re-trigger a download-and-install cycle. Changes to the external config don't _cause_ any changes to the service worker itself, meaning that changes to the config weren't causing the service worker to update. Whoops.
-
-### More tips
-
-The [Chromium Project's Service Worker Debugging page](https://www.chromium.org/blink/serviceworker/service-worker-faq) is super useful.
-
-**TODO**: Wrap, next steps (include cache-size management and messaging)
