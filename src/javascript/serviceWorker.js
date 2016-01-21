@@ -56,14 +56,11 @@ self.addEventListener('install', event => {
   function onInstall (event, opts) {
     var cacheKey = cacheName('static', opts);
     return caches.open(cacheKey)
-      .then(cache =>
-        cache.addAll(opts.staticCacheItems)
-      );
+      .then(cache => cache.addAll(opts.staticCacheItems));
   }
 
   event.waitUntil(
-    onInstall(event, config)
-      .then( () => self.skipWaiting() )
+    onInstall(event, config).then( () => self.skipWaiting() )
   );
 });
 
