@@ -217,9 +217,10 @@ _Figure: As of Chrome 47, accessing a page with an already-registered service wo
 
 ### What we've accomplished so far
 
-The service worker handles the `install` event and pre-caches some static assets. You can [see the contents of serviceWorker.js here](https://github.com/lyzadanger/serviceworker-example/blob/master/01-install-precache/serviceWorker.js).
+The service worker handles the `install` event and pre-caches some static assets. If you were to use this service worker and register it, it would indeed pre-cache the indicated assets, but wouldn't yet be able to take advantage of them offline.
 
-@TODO update that code, also make it log and show a graphic of that
+You can [see the contents of serviceWorker.js here](https://github.com/lyzadanger/serviceworker-example/blob/master/01-install-precache/serviceWorker.js).
+
 
 ------------------
 
@@ -290,7 +291,7 @@ The fact that I needed to handle a `catch` there should have been a red flag for
 
 My site-specific criteria are as follows:
 
-1. The requested URL should represent something I want to cache or respond to. Its path should match a `Regular Expression` of valid paths or be my landing page.
+1. The requested URL should represent something I want to cache or respond to. Its path should match a `Regular Expression` of valid paths.
 2. The request's HTTP method should be `GET`.
 3. The request should be for a resource from my origin (`lyza.com`).
 
@@ -301,8 +302,7 @@ function shouldHandleFetch (event, opts) {
   var request            = event.request;
   var url                = new URL(request.url);
   var criteria           = {
-    matchesPathPattern: !!(opts.cachePathPattern.exec(url.pathname) ||
-                            url.pathname === '/'),
+    matchesPathPattern: !!(opts.cachePathPattern.exec(url.pathname),
     isGETRequest      : request.method === 'GET',
     isFromMyOrigin    : url.origin === self.location.origin
   };
@@ -331,7 +331,7 @@ var config = {
     '/offline/',
     '/'
   ],
-  cachePathPattern: /^\/(20[0-9]{2}|about|blog|css|images|js)/
+  cachePathPattern: /^\/(?:(20[0-9]{2}|about|blog|css|images|js)\/(.+)?)?$/
 };
 ```
 
@@ -339,7 +339,7 @@ var config = {
 
 You may be wondering why I'm only caching things with paths that match this regular expression:
 
-`/^\/(20[0-9]{2}|about|blog|css|images|js)/`
+`/^\/(?:(20[0-9]{2}|about|blog|css|images|js)\/(.+)?)?$/`
 
 instead of caching anything coming from my own origin.
 
