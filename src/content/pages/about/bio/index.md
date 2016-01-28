@@ -10,8 +10,8 @@ isAboutPage: true
 ### Third-Person
 
 Lyza Danger Gardner is a developer and human, co-founder and CTO of Cloud Four.
-A 20-year veteran of the web, she is a generalist with an abiding commitment to making the web work everywhere. Lyza is a seasoned and spirited speaker, and is a writer for _A List Apart_, O'Reilly Publishing, _net Magazine_ and others.
+A 20-year veteran of the web, she is a generalist with an abiding commitment to making the web work everywhere. Lyza is a seasoned and spirited speaker, and is a writer for _A List Apart_, O'Reilly Publishing, _net Magazine_, _Smashing Magazine_ and others.
 
 ### First-Person
 
-I'm Lyza, a developer and human, co-founder and CTO of Cloud Four. I'm a generalist with an abiding commitment to making the web work everywhere. I'm a seasoned and spirited speaker, and I write for _A List Apart_, O'Reilly Publishing, _net Magazine_, among others.
+I'm Lyza, a developer and human, co-founder and CTO of Cloud Four. I'm a generalist with an abiding commitment to making the web work everywhere. I'm a seasoned and spirited speaker, and I write for _A List Apart_, O'Reilly Publishing, _net Magazine_ and _Smashing Magazine_ among others.
