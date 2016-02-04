@@ -1,3 +1,10 @@
+- url: https://www.smashingmagazine.com/2016/02/making-a-service-worker/
+  title: "Making a Service Worker: A Case Study"
+  date: "2016-02-01"
+  source: "Smashing Magazine"
+  sourceUrl: https://www.smashingmagazine.com/
+  blurb: >
+    In this [_Smashing Magazine_ article](https://www.smashingmagazine.com/2016/02/making-a-service-worker/), I attempt to boil down the details of the service worker API into an applied, practical example.
 - url: https://twitter.com/wonderwomentech/status/691761845271687169
   title: "Hooray! I'm included in this list of #womenintech"
   date: "2016-01-25"
