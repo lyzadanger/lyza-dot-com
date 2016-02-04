@@ -20,6 +20,7 @@
 body {
   max-width: 64em;
   margin: var(--space-md) auto;
+  background-color: white;
 }
 
 /**
