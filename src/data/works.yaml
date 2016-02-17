@@ -1,3 +1,10 @@
+- url: http://www.generateconf.com/san-francisco-2016/speakers/lyza-danger-gardner/
+  title: "Speaking at Generate San Francisco"
+  date: "2016-02-17"
+  source: "Generate San Francisco"
+  sourceUrl: http://www.generateconf.com/san-francisco-2016/
+  blurb: >
+    Generate San Francisco has been announced! I'm speaking there on July 15, 2016 about how _Everyone Else is So Clever_.
 - url: https://www.smashingmagazine.com/2016/02/making-a-service-worker/
   title: "Making a Service Worker: A Case Study"
   date: "2016-02-01"
