@@ -1,3 +1,24 @@
+- url: https://twitter.com/fromthefront/status/715853123441573888
+  title: "Announced at From the Front in Italy!"
+  source: "@fromthefront"
+  sourceUrl: https://twitter.com/fromthefront
+  date: "2016-04-01"
+  embed: >
+    <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">We&#39;re so proud of revealing our first speakers for 2016<br>give it up for <a href="https://twitter.com/danielmall">@danielmall</a> <a href="https://twitter.com/patrickhamann">@patrickhamann</a> and <a href="https://twitter.com/lyzadanger">@lyzadanger</a>!<br> <a href="https://t.co/RhMt67L9TZ">https://t.co/RhMt67L9TZ</a></p>&mdash; From The Front (@fromthefront) <a href="https://twitter.com/fromthefront/status/715853123441573888">April 1, 2016</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+- url: http://www.hanselminutes.com/521/march-is-for-makers-arduinos-javascript-and-johnny-five-with-lyza-danger-gardner
+  title: "The Hanselminutes Podcast"
+  blurb: >
+    Chatting with Scott Hanselman about Arduinos, JavaScript, Johnny-five and the host-client setup.
+  sourceUrl: http://www.hanselminutes.com
+  source: "Hanselminutes"
+  date: "2016-03-31"
+- url: https://twitter.com/shanselman/status/713186900652212225
+  title: "Fun with Johnny-five at the Portland JSOT Meetup"
+  source: "@shanselman"
+  sourceUrl: https://twitter.com/shanselman
+  date: "2016-03-25"
+  embed: >
+    <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Here at <a href="https://twitter.com/treehouse">@treehouse</a> learning about robots and JavaScript from <a href="https://twitter.com/lyzadanger">@lyzadanger</a>! <a href="https://t.co/OCwjPSZ5nt">https://t.co/OCwjPSZ5nt</a> <a href="https://t.co/LG2TKdopdq">pic.twitter.com/LG2TKdopdq</a></p>&mdash; Scott Hanselman (@shanselman) <a href="https://twitter.com/shanselman/status/713186900652212225">March 25, 2016</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 - url: http://www.generateconf.com/san-francisco-2016/speakers/lyza-danger-gardner/
   title: "Speaking at Generate San Francisco"
   date: "2016-02-17"

@@ -49,3 +49,7 @@ I found a hitherto-unfound-by-me [debug resource from Chromium](https://www.chro
 I stumbled onto a [`console.log` staleness bug](https://code.google.com/p/chromium/issues/detail?id=543104&q=service%20worker%20event&colspec=ID%20Pri%20M%20Stars%20ReleaseBlock%20Cr%20Status%20Owner%20Summary%20OS%20Modified#makechanges), or, if not bug, at least...confusion. I'm glad to find that it is probably this `console` issue, not how it was suggesting itself to me initially, which was a more severe problem with `addEventListener` behavior in service worker lifecycles.
 
 I realized one cannot rename the file that is an installed service worker on a given site, at least not without massive pain, because it doesn't uninstall.
+
+### Week of February 15
+
+Trying out generating `.eslintrc` using a Yeoman generator: `npm install -g generator-eslint` (assuming I have `yo` installed globally as well). Ended up having trouble installing...onward.
