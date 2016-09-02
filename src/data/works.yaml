@@ -1,3 +1,17 @@
+- url: http://www.futureisnext.com/
+  title: "What Comes Next is the Future"
+  source: "@futureisnext"
+  sourceUrl: http://www.futureisnext.com/
+  date: "2016-08-18"
+  blurb: >
+    Yay! <em>What Comes Next is the Future</em>, Matt Griffin's documentary about the history of the web, has been released. I'm lucky to have been part of the project!
+- url: http://www.creativebloq.com/web-design/lyza-gardner-keeping-pace-web-technologies-61620829
+  title: "Interview in Net Magazine"
+  source: "@netmag"
+  sourceUrl: http://www.creativebloq.com/
+  date: "2016-06-01"
+  blurb: >
+    Holy cow! I had the honor of being featured in June, 2016's edition of <em>Net Magazine</em>.
 - url: https://twitter.com/fromthefront/status/715853123441573888
   title: "Announced at From the Front in Italy!"
   source: "@fromthefront"

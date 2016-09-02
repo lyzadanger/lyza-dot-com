@@ -1,5 +1,14 @@
 - embed:
     type: video
+    url: https://www.youtube.com/embed/hWFrMMWzhvg
+    ratio: 16by9
+  url: https://www.youtube.com/watch?v=hWFrMMWzhvg
+  title: "Everyone Else is So Clever"
+  type: Presentation
+  blurb: >
+    "Everyone Else is So Clever", a presentation at [Generate San Francisco](http://www.generateconf.com/san-francisco-2016/), June, 2016.
+- embed:
+    type: video
     url: https://www.youtube.com/embed/zdPzu5XBypo?rel=0
     ratio: 16by9
   url: https://www.youtube.com/watch?v=zdPzu5XBypo

@@ -2,7 +2,7 @@
 'use strict';
 
 var config = {
-  version: 'aloadae', // twin giants who attempted to climb to Olympus by piling mountains on top of each other
+  version: 'stheno', // immortal gorgon, sister to Eurale
   staticCacheItems: [
     '/images/lyza.gif',
     '/css/styles.css',
