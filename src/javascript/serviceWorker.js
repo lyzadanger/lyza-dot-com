@@ -2,7 +2,7 @@
 'use strict';
 
 var config = {
-  version: 'stheno', // immortal gorgon, sister to Eurale
+  version: 'corus', // spirit of surfeit and disdain
   staticCacheItems: [
     '/images/lyza.gif',
     '/css/styles.css',
