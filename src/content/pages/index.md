@@ -3,5 +3,4 @@ title: Home
 template: index
 isHomePage: true
 ---
-
-Hey! How's it September already?! See you soon at [Smashing Freiburg](http://smashingconf.com/freiburg-2016/)? I'll be talking about Service Workers. Or maybe [From the Front](https://2016.fromthefront.it/) in Bologna, Italy, where I'm talking about not feeling so clever.
+The summer conference season has wound down and autumn beckons in the Vermont forest. I'll be with my Bocoup colleagues at [MakerFaire NYC](http://makerfaire.com/new-york/) on October 1-2. See you there?
