@@ -2,7 +2,7 @@
 'use strict';
 
 var config = {
-  version: 'corus', // spirit of surfeit and disdain
+  version: 'gorgon',
   staticCacheItems: [
     '/images/lyza.gif',
     '/css/styles.css',
