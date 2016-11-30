@@ -1,9 +1,14 @@
 .Pull--left {
-  float: left;
   margin-top: var(--space-xs);
   padding: 0 var(--space-sm) var(--space-xs) 0;
   border-right: var(--line-xs) solid var(--color-gray-mid);
   margin-right: var(--space-sm);
+}
+
+@media (--sm-viewport) {
+  .Pull--left {
+    float: left;
+  }
 }
 
 .Pull--up {
