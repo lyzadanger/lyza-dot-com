@@ -3,4 +3,4 @@ title: Home
 template: index
 isHomePage: true
 ---
-The summer conference season has wound down and autumn beckons in the Vermont forest. I'll be with my Bocoup colleagues at [MakerFaire NYC](http://makerfaire.com/new-york/) on October 1-2. See you there?
+Have you heard? I am working on a book, [_JavaScript on Things: Hardware for Web Developers_](https://www.manning.com/books/javascript-on-things). It's already in early release (MEAP) from Manning Publications, so you can start reading it today! [Read an excerpt from chapter 3 right now for free](/2016/11/30/voltage-current-resistancewith-gnomes/).
