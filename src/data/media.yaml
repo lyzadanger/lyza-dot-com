@@ -1,3 +1,16 @@
+- url: "https://bocoup.com/blog/moving-targets-a-case-study-on-testing-web-standards"
+  title: "Moving Targets: A Case Study on Testing Web Standards"
+  type: Blog
+  embed:
+    float: left
+    type: image
+    url: >
+      https://static2.bocoup.com/assets/2017/05/03135550/sketch-notes-1100x801.jpg
+    alt: "Visual Notes from the HTML Spec Section 7"
+    link: >
+      https://bocoup.com/blog/moving-targets-a-case-study-on-testing-web-standards
+  blurb: >
+    I wrote a case study about the roller-coaster adventures of testing the web as a platform and finding a decades-old browser bug in the process.
 - embed:
     type: video
     url: https://www.youtube.com/embed/hWFrMMWzhvg
