@@ -1,3 +1,16 @@
+- url: "https://github.com/lyzadanger/pragmatist-service-worker-2"
+  title: "Pragmatist's Guide to Service Workers: The Source Material"
+  type: Blog
+  embed:
+    float: left
+    type: image
+    url: >
+      https://c1.staticflickr.com/5/4205/35138063982_e895487ff0_b.jpg
+    alt: "Lyza Presents at Smashing Conf NYC 2017"
+    link: >
+      https://github.com/lyzadanger/pragmatist-service-worker-2
+  blurb: >
+    [Here's a repository](https://github.com/lyzadanger/pragmatist-service-worker-2) of all of the source material from my [_Pragmatist's Guide to Service Worker_](https://smashingconf.com/ny-2017/schedule/day:tuesday#lyza-danger-gardner) talk at [Smashing Conf NYC 2017](https://smashingconf.com/ny-2017/) as well as copious notes. (Photo credit: [Marc Thiele, Flickr](https://www.flickr.com/photos/marcthiele/35138063982/in/album-72157682102118593/))
 - url: "https://bocoup.com/blog/moving-targets-a-case-study-on-testing-web-standards"
   title: "Moving Targets: A Case Study on Testing Web Standards"
   type: Blog
