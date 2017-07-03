@@ -3,13 +3,19 @@ title: JavaScript Promises in 60 Seconds
 tags:
   - javascript
   - tech
-blurb: "A minute-long excerpt from a recent talk about Service Workers: a whirlwind
-  explanation of JS Promises."
-status: draft
+blurb: >-
+  A minute-long excerpt from a recent talk about Service Workers: a whirlwind
+  explanation of JS Promises.
+status: published
 thumbnail:
   type: video
   ratio: 16by9
   url: 'https://www.youtube.com/embed/e_-1aFNlb1s'
+publish:
+  slug: javascript-promises-in-60-seconds
+  date: '2017-07-03T14:56:51.527Z'
+  path: 2017/07/03/javascript-promises-in-60-seconds/index.md
+
 ---
 
 After I gave my talk, _[A Pragmatist's Guide to Service Workers](https://smashingconf.com/ny-2017/schedule/day:tuesday#lyza-danger-gardner)_ at [Smashing Conf NYC](https://smashingconf.com/ny-2017), several folks gave me feedback that they liked the metaphor that I used in a tangent about JavaScript Promises, which you need to understand to be able to understand the [Service Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API).
