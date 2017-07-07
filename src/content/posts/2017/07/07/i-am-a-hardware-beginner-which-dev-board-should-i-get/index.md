@@ -1,13 +1,18 @@
 ---
-title: 'I&#39;m a Hardware Beginner: Which Dev Board Should I Get?'
+title: 'I am a Hardware Beginner: Which Dev Board Should I Get?'
 tags:
   - javascript
   - JSoT
   - tech
 blurb: >-
-  You&#39;re thinking of starting out on a journey to learn about electronics
-  and IoT. Which development platform should you start with?
-status: draft
+  You're thinking of starting out on a journey to learn about electronics and
+  IoT. Which development platform should you start with?
+status: published
+publish:
+  slug: i-am-a-hardware-beginner-which-dev-board-should-i-get
+  date: '2017-07-07T14:06:10.001Z'
+  path: 2017/07/07/i-am-a-hardware-beginner-which-dev-board-should-i-get/index.md
+
 ---
 
 <a href="https://www.manning.com/books/javascript-on-things"><img src="js-on-things.png" alt="JavaScript on Things: Hardware for Web Developers by Lyza Danger Gardner" class="Pull--left" /></a>
@@ -38,7 +43,7 @@ Features that make a development board ideal for beginners include clarity, cons
 
 ### Clear, Intuitive Features
 
-A good beginner dev board should support a reasonable set of I/O features (note: this is usually dictated by what features the board’s microcontroller can support). Different _pins_ on the board support different features, which should include—at the least—digital I/O, analog input, PWM (pulse-width modulation), ADC (analog-to-digital conversion) and serial support (including I^2C and SPI). Don’t worry a tick if you haven’t heard of any or all of those things yet.
+A good beginner dev board should support a reasonable set of I/O features (note: this is usually dictated by what features the board’s microcontroller can support). Different _pins_ on the board support different features, which should include—at the least—digital I/O, analog input, PWM (pulse-width modulation), ADC (analog-to-digital conversion) and serial support (including I<sup>2</sup>C and SPI). Don’t worry a tick if you haven’t heard of any or all of those things yet.
 
 Pins should be sensibly laid out and named (or, often, numbered). Many boards have pin numbering and capability information helpfully _silkscreened_ onto the board itself. A board with missing key features, nonsensical pin layout or a confusing pinout diagram can make you wish you hadn’t bothered.
 
