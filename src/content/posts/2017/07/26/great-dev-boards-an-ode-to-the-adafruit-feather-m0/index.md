@@ -7,7 +7,12 @@ blurb: >-
   My introduction to Adafruit’s family of Feather boards wasn’t auspicious. In
   fact, it was a comedy of errors. So I was surprised to find an abiding respect
   for the Feather M0.
-status: draft
+status: published
+publish:
+  slug: great-dev-boards-an-ode-to-the-adafruit-feather-m0
+  date: '2017-07-26T17:43:12.462Z'
+  path: 2017/07/26/great-dev-boards-an-ode-to-the-adafruit-feather-m0/index.md
+
 ---
 
 <a href="https://www.manning.com/books/javascript-on-things"><img src="js-on-things.png" alt="JavaScript on Things: Hardware for Web Developers by Lyza Danger Gardner" class="Pull--left" /></a>
@@ -18,9 +23,7 @@ This post’s electronics experience rating: INTERMEDIATE-PLUS
 
 ----
 
-// TODO IMPORTANT link to previous post
-
-In a previous post, I identified two standout development boards for beginners. In this one, I highlight a couple of boards that have surprised me by becoming some of my very favorites.
+In a [previous post](/2017/07/07/i-am-a-hardware-beginner-which-dev-board-should-i-get/), I identified two standout development boards for beginners. In this one, I highlight a couple of boards that have surprised me by becoming some of my very favorites.
 
 My introduction to Adafruit’s family of Feather boards wasn’t auspicious: while trying to cobble together a little network of LoRA radios (maybe I’ll talk about this more in-depth sometime as a case-study of Never, Ever, Ever Give Up; maybe it’s just too embarrassing), I feverishly ordered several Feathers from Adafruit, amazed that you could buy a tidily-packaged board with microcontroller and LoRA module for ONLY TWENTY DOLLARS.
 
