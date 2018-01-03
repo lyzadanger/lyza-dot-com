@@ -23,7 +23,7 @@
           <h2 class="u-v-sm u-md-top-off">Photos</h2>
           <div class="Grid Grid--alignMiddle">
             {{#each data.bio.photos}}
-              <div class="Grid-cell u-md-size1of3 Tile-container">
+              <div class="Grid-cell u-md-size1of2 Tile-container">
                 <div class="Tile">
                   <div class="Tile-header">
                     <div class="Content-header">
@@ -33,7 +33,11 @@
                   <div class="Tile-body">
                     <figure class="Figure">
                       <img src="{{thumbnail}}" alt="{{{title}}}"></a>
-                      <figcaption class="u-text-xs"><a href="{{url}}">[Download Larger JPG]</a></figcaption>
+                      {{#if hires}}
+                        <figcaption class="u-text-xs"><a href="{{url}}">[Download Larger {{{format}}}]</a></figcaption>
+                      {{else}}
+                        <figcaption class="u-text-xs"><a href="{{url}}">[Low-Resolution {{{format}}}]</a></figcaption>
+                      {{/if}}
                     </figure>
                   </div>
                 </div>

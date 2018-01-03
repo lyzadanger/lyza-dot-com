@@ -8,6 +8,7 @@ isAboutPage: true
 ## Quick Stats
 
 * Name for Attributions: Lyza Danger Gardner
+* Title: Senior Developer, [hypothes.is](https://hypothes.is)
 * Location: Chester, VT (working remotely)
 * Twitter: [@lyzadanger](https://twitter.com/lyzadanger)
 * Website: [lyza.com](https://www.lyza.com)
@@ -15,6 +16,6 @@ isAboutPage: true
 
 ## Bio
 
-Lyza likes figuring out how to do things. In turn, she likes to teach others how to do new things, too. Writer for _O'Reilly_, _A List Apart_, _Smashing Magazine_, _NET Magazine_ and co-founder of Cloud Four, Lyza advocates for elegant standards, education and compassion in pursuit of the best possible future Web. Building on over 20 years of web experience, Lyza's current focuses include JavaScript-powered IoT, platform standards stewardship, Web APIs and progressive web applications.
+Lyza likes figuring out how to do things. In turn, she likes to teach others how to do new things, too. Writer for _O'Reilly_, _A List Apart_, _Smashing Magazine_, _NET Magazine_ and co-founder of Cloud Four, Lyza advocates for elegant standards, education and compassion in pursuit of the best possible future Web. Building on over 20 years of web experience, Lyza's current focuses include JavaScript-powered IoT, platform standards stewardship, Web APIs and progressive web applications. Her latest book is _JavaScript on Things: A Web Developer's Introduction to Electronics_ (Manning).
 
 As a counterpoint to this futuristic vantage, she lives in the forest in Vermont and enjoys anachronistic hobbies. She reads and reads and reads.

@@ -2,9 +2,20 @@ photos:
   - url: "/about/lyza-danger-gardner-dev.jpg"
     thumbnail: "/about/lyza-danger-gardner-dev-sm.jpg"
     title: "Lyza, Dev"
+    hires: true
+    format: "JPG"
   - url: "/about/lyza-danger-gardner-tech.jpg"
     thumbnail: "/about/lyza-danger-gardner-tech-sm.jpg"
     title: "Lyza, Technical"
+    hires: true
+    format: "JPG"
   - url: "/about/lyza-danger-gardner-human.jpg"
     thumbnail: "/about/lyza-danger-gardner-human-sm.jpg"
     title: "Lyza, Human"
+    hires: true
+    format: "JPG"
+  - url: "/about/lyza-danger-gardner-hi-there.png"
+    thumbnail: "/about/lyza-danger-gardner-hi-there-sm.png"
+    title: "Lyza, Alternate"
+    hires: false
+    format: "PNG"
