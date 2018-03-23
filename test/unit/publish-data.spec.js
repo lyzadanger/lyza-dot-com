@@ -28,7 +28,7 @@ describe('unit/publish-data', function () {
     });
 
     it('should establish correct defaults for front matter', function () {
-      expect(postData).to.be.an.object;
+      expect(postData).to.be.an('object');
       expect(postData.title).to.equal('Default Post');
       expect(postData.blurb).to.equal('Gimme a blurb');
       expect(postData.status).to.equal('draft');
@@ -56,7 +56,7 @@ describe('unit/publish-data', function () {
     });
 
     it('should generate publish attributes', function () {
-      expect(publishAttrs).to.be.an.object;
+      expect(publishAttrs).to.be.an('object');
       expect(publishAttrs.slug).to.equal('post-to-publish');
     });
 
@@ -81,7 +81,7 @@ describe('unit/publish-data', function () {
     });
 
     it('should retain publish attributes', function () {
-      expect(postData.publish).to.exist.and.to.be.an.object;
+      expect(postData.publish).to.exist.and.to.be.an('object');
     });
 
     it('should build a path with date parts', function () {
