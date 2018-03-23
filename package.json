@@ -21,9 +21,6 @@
     "type": "git",
     "url": "https://github.com/lyzadanger/lyza-dot-com.git"
   },
-  "engines": {
-    "node": ">=4.0.0"
-  },
   "devDependencies": {
     "babel-core": "^6.3.15",
     "babel-loader": "^6.2.0",
