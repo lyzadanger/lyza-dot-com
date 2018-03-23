@@ -31,7 +31,7 @@
     "cssnext": "^1.0.1",
     "del": "^3.0.0",
     "extfs": "0.0.7",
-    "front-matter": "^0.2.1",
+    "front-matter": "^2.3.0",
     "fs-extra": "^0.26.2",
     "gulp": "^3.8.11",
     "gulp-changed": "^1.2.1",
