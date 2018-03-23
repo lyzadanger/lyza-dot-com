@@ -66,7 +66,7 @@ var getPosts = function (options, allPosts) {
     posts = [];
   if (tag) {
     allPosts = _.filter(allPosts, function (post) {
-      return (_.contains(post.tags, tag) || tag === 'all');
+      return (_.includes(post.tags, tag) || tag === 'all');
     });
   }
   if (allPosts && allPosts.length) {

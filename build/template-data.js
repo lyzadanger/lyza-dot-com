@@ -35,11 +35,11 @@ var sortPosts = function(posts) {
   var dates = [],
     sorted = [];
 
-  dates = _.pluck(posts, 'datePublishedISO');
+  dates = _.map(posts, 'datePublishedISO');
   dates = dates.sort();
   dates = dates.reverse();
   dates.forEach(function(date) {
-    sorted.push(_.findWhere(posts, { datePublishedISO: date }));
+    sorted.push(_.find(posts, { datePublishedISO: date }));
   });
   return sorted;
 };
