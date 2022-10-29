@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../../../css/styles.css">
+  <link rel="alternate" type="application/rss+xml"
+    href="../../../../feeds/rss.rss" title="Lyza.com: All Posts">
+  <link rel="alternate" type="application/rss+xml"
+    href="../../../../feeds/tech.rss" title="Lyza.com: Work and Tech Posts">
+  <link rel="alternate" type="application/rss+xml"
+    href="../../../../feeds/life.rss" title="Lyza.com: Life and Off-topic Posts">
+  <title>My Personal Kryptonite: JavaScript Bundlers | Lyza.com</title>
+
+  <script>
+    WebFontConfig = {
+      google: {
+        families: ['Playfair Display:italic,900']
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js" async></script>
+  <script src="../../../../js/site.js" defer="defer"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-2791311-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+<body>
+
+  <header role="banner">
+
+    <hr class="Separator--small">
+
+    <nav role="navigation" class="Navigation u-size3of4 u-after1of4 u-top-off" aria-label="Primary Navigation">
+      <ul class="List--inline">
+        <li class="Navigation-item ">
+          <a href="http://www.lyza.com/" class="u-linkClean">Home</a>
+        </li>
+        <li class="Navigation-item ">
+          <a href="http://www.lyza.com/about" class="u-linkClean">About <span class="u-visually-hidden">Lyza</span></a>
+        </li>
+          <li class="Navigation-item Navigation-item--active"><a href="../../../../blog" class="u-linkClean">Blog</a></li>
+      </ul>
+    </nav>
+
+    <div class="Header Grid Header--small Grid--alignMiddle">
+
+      <div class="Grid-cell Header-title-container u-margins-off u-md-size5of12">
+        <img src="https://d33wubrfki0l68.cloudfront.net/672d9a0c22400b00b6c41dc2414d04beae1ab8ea/1f27f/images/lyza.gif" class="Header-photo" alt="Lyza Danger Gardner, human">
+        <h1 class="Header-title u-margins-off">
+          <span class="Header-Lyza Header-Lyza-lyza">Lyza</span>
+          <span class="Header-Lyza Header-Lyza-danger">Danger</span>
+          <span class="Header-Lyza Header-Lyza-gardner">Gardner</span>
+        </h1>
+      </div>
+
+      <div class="Grid-cell u-md-size3of12 u-lg-size4of12"></div>
+
+      <div class="Grid-cell u-md-size4of12 u-lg-size3of12">
+        <h2 class="Header-subheading">Developer <em class="Header-ampersand">&amp;</em> Person</h2>
+      </div>
+
+    </div>
+  </header>
+
+  <main role="main" class="u-top-tight u-md-top-default">
+      <article class="u-margins-off u-sm-top-xs u-md-top-default">
+        <div class="Grid">
+          <div class="Grid-cell u-md-size3of12 u-lg-size2of10">
+            <header>
+              <div class="Content-header">
+                <h2 class="Content-heading Content-title">My Personal Kryptonite: JavaScript Bundlers</h2>
+                <div class="Content-meta"><time datetime="2015-08-15T00:57:48.476Z">August 15, 2015</time></div>
+              </div>
+              <hr class="Separator--small Separator--light u-top-tight u-md-top-default">
+              <div class="Content-blurb Content-header"><p>I’ve been lamenting about JavaScript bundlers lately, calling this step of our process my “personal Kryptonite.” And yet maybe I’ve been misunderstanding why I’m<span class="widont">&nbsp;</span>frustrated.</p>
+</div>
+              <hr class="Separator--small Separator--light">
+              <ul class="List--inline is-indented--xxsm u-top-xs">
+                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
+                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>javascript</span></li>
+              </ul>
+            </header>
+          </div>
+          <section class="Grid-cell u-md-size9of12 u-lg-size6of10">
+            <div class="Content-content Content u-top-tight u-md-top-off">
+              <p>Months and seasons have technical themes, and one of mine right now is about JavaScript bundlers—that is, tools for packaging JavaScript for use in the client (you know: browser) and handling dependencies for us.</p>
+<p>I have had some slides in some recent talks that are especially popular, as I mentioned in my <a href="http://alistapart.com/column/the-tedium-of-managing-code">recent column on <em>A List Apart</em></a> about this subject. And when I say <em>popular</em>, I mean, they spurred a raucous round of groaning and cheering. I imagine this sound rush:</p>
+<audio src="http://responsiveconf.com.s3.amazonaws.com/2015/audio/14-lyza-gardner-responsiveconf2015.mp3#t=597" controls><a href="https://huffduffer.com/adactio/243779">Listen to Responsive Day Out 3: Lyza Gardner</a></audio>
+
+<p> marks that moment when a bunch of people in the audience realized: <em>Aha, it’s not just hard for <strong>me</strong>. This is a shared suck.</em></p>
+<p>A number of times recently, I have thought, OK, this is the time. I’m going to sit down and spend a while delving into the problem set of managing dependencies and packaging code and understand the not just the differences between module schemes—which in large part I do, on a syntactic, get-it-done level—but the differences in philosophies and how we got to where we are, and with luck, maybe understand why where we got is so tedious and challenging.</p>
+<h3 id="the-problem-is-i-don-t-find-it-interesting">The problem is: I don’t find it interesting</h3>
+<p>There are parts of this problem I find moderately <em>interesting</em>, but interesting in a momentary-eyebrow-raise way. Interesting in an academic sense. But the majority of it is, to me, boring. It’s hard to want to dig in and figure something out that bores the socks off of me. As I say in my slides, one of the greatest technical demotivators is when something is difficult and dull at the same time:</p>
+<p><img src="generalist-01.jpg" alt="Where Motivation Goes to Die"></p>
+<p>That intersection, for me, is where this stuff ends up:</p>
+<p><img src="generalist-02.jpg" alt="The intersection of Boring and Hard"></p>
+<h3 id="and-no-offense-to-the-tools">And no offense to the tools</h3>
+<p>I’m not bashing the tools that do this work: they’re essential and, often, sort of quietly amazing. But it just seems so <em>hard</em> sometimes (maybe I’m a whining, lazy developer?) and there are so many options out there, some of which are pieces of the same puzzle and some of which are mutually incompatible:</p>
+<p><img src="generalist-03.jpg" alt="Some of the tooling options"></p>
+<h3 id="i-just-feel-so-dumb">I just feel so dumb</h3>
+<p>When I embarked on creating these talks and the <em>ALA</em> column, I thought my frustration with using these tools lay in their complexity and the dryness of what they accomplish. Getting this stuff right <em>is</em> often complex, and I still feel like the task isn’t the most compelling, but I realized what actually <em>gets under my skin</em>.</p>
+<p>This stuff makes me feel stupid.</p>
+<p>When I spend a half an hour or more fighting a single transpiling error or a missing global, I start clenching and swearing. In my front-brain, I am angry for a weakness in a tool, a poorly-implemented wrapping node module, or the entire benighted ecosystem for its Byzantine smugness. That’s why I <em>think</em> I’m mad.</p>
+<p>But I now suspect I’m more angry because I feel like a fool. I want to get my head around this stuff, I want to subdue it, prevail. Even if it isn’t <em>interesting</em>, the fact that it plays me for the fool puts me on a rampage. What’s in my head is <em>Why the hell can’t I figure this out? What the hell is wrong with me. I’m in the wrong industry.</em> What comes out of my mouth is: “Goddamit <a href="http://browserify.org">browserify</a>, why do you suck so hard?” Which of course it does not.</p>
+<p><img src="generalist-04.jpg" alt="Really Boring Kryptonite"></p>
+<p>So, yeah, it’s boring. But that <em>Kryptonite</em> part is relevant. That’s what kills me.</p>
+<h3 id="how-about-something-constructive-">How about something constructive?</h3>
+<p>I’ve recognized my ire, so I hope that gives me a path to some sort of healing process. I can sip some herbal tea or something. But concretely, there are a few resources that popped up in the past week that are directly and objectively helpful.</p>
+<ul>
+<li><a href="http://cloudfour.com">Cloud Four</a> developer <a href="http://lsh.io">Leander Harding</a> wrote a <a href="http://blog.cloudfour.com/module_bunders_part_1/">devilishly clever post</a>—the first in a series—about what a <em>module</em> actually is in the purview of bundlers.</li>
+<li>I found <a href="http://reactkungfu.com/2015/07/the-hitchhikers-guide-to-modern-javascript-tooling/">this post about JavaScript tooling in general</a> on <a href="http://reactkungfu.com/">React Kung Fu</a> (it’s not specific to React) to be a breath of fresh air. I like the way it stands back and clearly defines terms we may be more at sea about than we realize.</li>
+</ul>
+
+              <hr class="Separator--small Separator--subtle">
+              <p class="u-text-xs u-muted"><em>You may have noticed I don&rsquo;t have any commenting enabled...yet. Hit me up <a href="https://twitter.com/lyzadanger" class="u-link-subtle">@lyzadanger</a> with thoughts; maybe I&rsquo;ll add commenting soon.</em></p>
+            </div>
+          </section>
+        </div>
+      </article>
+  </main>
+  <footer class="Footer u-align-center" role="contentinfo">
+    <hr class="Separator Separator--small Separator--light">
+    <nav role="navigation" class="Navigation Navigation--subtle">
+      <ul class="Navigation-list">
+        <li class="Navigation-item"><a href="mailto:lyza@lyza.com" class="Navigation-link u-linkClean">Contact</a></li>
+        <li class="Navigation-item"><a href="http://www.cloudfour.com" class="Navigation-link u-linkClean">Cloud Four</a></li>
+        <li class="Navigation-item"><a href="http://twitter.com/lyzadanger" class="Navigation-link u-linkClean">@lyzadanger</a></li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+</html>
