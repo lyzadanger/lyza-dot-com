@@ -1,143 +1,388 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-US" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../../../../css/styles.css">
-  <link rel="alternate" type="application/rss+xml"
-    href="../../../../feeds/rss.rss" title="Lyza.com: All Posts">
-  <link rel="alternate" type="application/rss+xml"
-    href="../../../../feeds/tech.rss" title="Lyza.com: Work and Tech Posts">
-  <link rel="alternate" type="application/rss+xml"
-    href="../../../../feeds/life.rss" title="Lyza.com: Life and Off-topic Posts">
-  <title>Great Dev Boards: An Ode to the Adafruit Feather M0 | Lyza.com</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../../css/styles.css" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="../../../../feeds/rss.rss"
+      title="Lyza.com: All Posts"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="../../../../feeds/tech.rss"
+      title="Lyza.com: Work and Tech Posts"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="../../../../feeds/life.rss"
+      title="Lyza.com: Life and Off-topic Posts"
+    />
+    <title>
+      Great Dev Boards: An Ode to the Adafruit Feather M0 | Lyza.com
+    </title>
 
-  <script>
-    WebFontConfig = {
-      google: {
-        families: ['Playfair Display:italic,900']
-      }
-    };
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js" async></script>
-  <script src="../../../../js/site.js" defer="defer"></script>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <script>
+      WebFontConfig = {
+        google: {
+          families: ['Playfair Display:italic,900'],
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"
+      async
+    ></script>
+    <script src="../../../../js/site.js" defer="defer"></script>
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        (i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        'script',
+        '//www.google-analytics.com/analytics.js',
+        'ga'
+      );
 
-    ga('create', 'UA-2791311-1', 'auto');
-    ga('send', 'pageview');
+      ga('create', 'UA-2791311-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <header role="banner">
+      <hr class="Separator--small" />
 
-  </script>
+      <nav
+        role="navigation"
+        class="Navigation u-size3of4 u-after1of4 u-top-off"
+        aria-label="Primary Navigation"
+      >
+        <ul class="List--inline">
+          <li class="Navigation-item">
+            <a href="http://www.lyza.com/" class="u-linkClean">Home</a>
+          </li>
+          <li class="Navigation-item">
+            <a href="http://www.lyza.com/about" class="u-linkClean"
+              >About <span class="u-visually-hidden">Lyza</span></a
+            >
+          </li>
+          <li class="Navigation-item Navigation-item--active">
+            <a href="../../../../blog" class="u-linkClean">Blog</a>
+          </li>
+        </ul>
+      </nav>
 
-</head>
-<body>
+      <div class="Header Grid Header--small Grid--alignMiddle">
+        <div
+          class="Grid-cell Header-title-container u-margins-off u-md-size5of12"
+        >
+          <img
+            src="/images/lyza.gif"
+            class="Header-photo"
+            alt="Lyza Danger Gardner, human"
+          />
+          <h1 class="Header-title u-margins-off">
+            <span class="Header-Lyza Header-Lyza-lyza">Lyza</span>
+            <span class="Header-Lyza Header-Lyza-danger">Danger</span>
+            <span class="Header-Lyza Header-Lyza-gardner">Gardner</span>
+          </h1>
+        </div>
 
-  <header role="banner">
+        <div class="Grid-cell u-md-size3of12 u-lg-size4of12"></div>
 
-    <hr class="Separator--small">
-
-    <nav role="navigation" class="Navigation u-size3of4 u-after1of4 u-top-off" aria-label="Primary Navigation">
-      <ul class="List--inline">
-        <li class="Navigation-item ">
-          <a href="http://www.lyza.com/" class="u-linkClean">Home</a>
-        </li>
-        <li class="Navigation-item ">
-          <a href="http://www.lyza.com/about" class="u-linkClean">About <span class="u-visually-hidden">Lyza</span></a>
-        </li>
-          <li class="Navigation-item Navigation-item--active"><a href="../../../../blog" class="u-linkClean">Blog</a></li>
-      </ul>
-    </nav>
-
-    <div class="Header Grid Header--small Grid--alignMiddle">
-
-      <div class="Grid-cell Header-title-container u-margins-off u-md-size5of12">
-        <img src="https://d33wubrfki0l68.cloudfront.net/672d9a0c22400b00b6c41dc2414d04beae1ab8ea/1f27f/images/lyza.gif" class="Header-photo" alt="Lyza Danger Gardner, human">
-        <h1 class="Header-title u-margins-off">
-          <span class="Header-Lyza Header-Lyza-lyza">Lyza</span>
-          <span class="Header-Lyza Header-Lyza-danger">Danger</span>
-          <span class="Header-Lyza Header-Lyza-gardner">Gardner</span>
-        </h1>
+        <div class="Grid-cell u-md-size4of12 u-lg-size3of12">
+          <h2 class="Header-subheading">
+            Developer <em class="Header-ampersand">&amp;</em> Person
+          </h2>
+        </div>
       </div>
+    </header>
 
-      <div class="Grid-cell u-md-size3of12 u-lg-size4of12"></div>
-
-      <div class="Grid-cell u-md-size4of12 u-lg-size3of12">
-        <h2 class="Header-subheading">Developer <em class="Header-ampersand">&amp;</em> Person</h2>
-      </div>
-
-    </div>
-  </header>
-
-  <main role="main" class="u-top-tight u-md-top-default">
+    <main role="main" class="u-top-tight u-md-top-default">
       <article class="u-margins-off u-sm-top-xs u-md-top-default">
         <div class="Grid">
           <div class="Grid-cell u-md-size3of12 u-lg-size2of10">
             <header>
               <div class="Content-header">
-                <h2 class="Content-heading Content-title">Great Dev Boards: An Ode to the Adafruit Feather M0</h2>
-                <div class="Content-meta"><time datetime="2017-07-26T17:43:12.462Z">July 26, 2017</time></div>
+                <h2 class="Content-heading Content-title">
+                  Great Dev Boards: An Ode to the Adafruit Feather M0
+                </h2>
+                <div class="Content-meta">
+                  <time datetime="2017-07-26T17:43:12.462Z">July 26, 2017</time>
+                </div>
               </div>
-              <hr class="Separator--small Separator--light u-top-tight u-md-top-default">
-              <div class="Content-blurb Content-header"><p>My introduction to Adafruit’s family of Feather boards wasn’t auspicious. In fact, it was a comedy of errors. So I was surprised to find an abiding respect for the Feather<span class="widont">&nbsp;</span>M0.</p>
-</div>
-              <hr class="Separator--small Separator--light">
+              <hr
+                class="Separator--small Separator--light u-top-tight u-md-top-default"
+              />
+              <div class="Content-blurb Content-header">
+                <p>
+                  My introduction to Adafruit’s family of Feather boards wasn’t
+                  auspicious. In fact, it was a comedy of errors. So I was
+                  surprised to find an abiding respect for the Feather<span
+                    class="widont"
+                    >&nbsp;</span
+                  >M0.
+                </p>
+              </div>
+              <hr class="Separator--small Separator--light" />
               <ul class="List--inline is-indented--xxsm u-top-xs">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>JSoT</span></li>
+                <li>
+                  <span class="u-muted u-smallcaps"
+                    ><span class="u-text-xs">#</span>tech</span
+                  >
+                </li>
+                <li>
+                  <span class="u-muted u-smallcaps"
+                    ><span class="u-text-xs">#</span>JSoT</span
+                  >
+                </li>
               </ul>
             </header>
           </div>
           <section class="Grid-cell u-md-size9of12 u-lg-size6of10">
             <div class="Content-content Content u-top-tight u-md-top-off">
-              <p><a href="https://www.manning.com/books/javascript-on-things"><img src="js-on-things.png" alt="JavaScript on Things: Hardware for Web Developers by Lyza Danger Gardner" class="Pull--left" /></a></p>
-<p><em>As part and parcel of writing my book</em> (<a href="https://www.manning.com/books/javascript-on-things">JavaScript on Things, Manning</a> ) <em>and scratching the curiosity-itches of my hardware-hacking hobbies, I’ve had my hands on scads of different hardware platforms and components over the past year and more. This series of articles contain a collection of opinions and recommendations based on my experiences as they relate to two focus areas: electronics for beginners and JavaScript-controlled hardware.</em></p>
-<p>This post’s electronics experience rating: INTERMEDIATE-PLUS</p>
-<hr>
-<p>In a <a href="../../07/i-am-a-hardware-beginner-which-dev-board-should-i-get/index.html">previous post</a>, I identified two standout development boards for beginners. In this one, I highlight a couple of boards that have surprised me by becoming some of my very favorites.</p>
-<p>My introduction to Adafruit’s family of Feather boards wasn’t auspicious: while trying to cobble together a little network of LoRA radios (maybe I’ll talk about this more in-depth sometime as a case-study of Never, Ever, Ever Give Up; maybe it’s just too embarrassing), I feverishly ordered several Feathers from Adafruit, amazed that you could buy a tidily-packaged board with microcontroller and LoRA module for ONLY TWENTY DOLLARS.</p>
-<p><img src="adafruit-feather-site.png" alt="Adafruit&#39;s Feather line of dev boards"></p>
-<p><em>Image: Adafruit Feather dev boards on their website.</em></p>
-<p>Actually, you can’t. Tripped up by similar product names, I ended up ordering <a href="https://www.adafruit.com/product/3231">these boards with only the radio module on them</a>, thinking they were <a href="https://www.adafruit.com/product/3178">these $35 boards that actually have a freaking MCU on them, which is highly useful if you actually want to use the radio somehow</a>.</p>
-<p>During a protracted evening unboxing it dawned on me that the newly-arrived boards looked rather…minimal. I traveled several miles of self-hate that evening. By this point, the $35 ones with the MCU were sold the hell out, so I scrambled to find another Feather model that I could use to control the first set (it’s Feathers all the way down, ol’ chap).</p>
-<p>This time: I ended up with some <a href="https://www.adafruit.com/product/2771">32u4 Basic Proto</a> boards that I wanted to stack with the brainless LoRA Feathers.</p>
-<p>Won over I was not. The (limited) <a href="https://learn.adafruit.com/assets/41528">pin layout</a> seemed a tad cruel. What’s worse, only four pins have interrupt support and those pins are also the only pins that support TX, RX, SDA and SCL, a rather project-ending bummer when you’re building something that involves serial logging of I^2C sensor readings. Also awesome when I’d already soldered fly wires on the radio-only modules in a 32u4-specific fashion. Three cheers for desoldering wick and chagrin.</p>
-<p>A few table-flips later I ultimately netted a small stack of the <a href="https://www.adafruit.com/product/2772">Feather M0 Proto</a> boards. Now a few hundred bucks down the Feather rabbit hole, I was steeled for rueful-ironic laughter. And, yet. What is this? These boards fundamentally <em>do not suck</em>. In fact, they’re pretty great!</p>
-<p><img src="adafruit-feather-m0.png" alt="Adafruit Feather M0 Basic Proto"></p>
-<p><em>Image: Adafruit Feather M0 Basic Proto. Source: Adafruit website.</em></p>
-<h2 id="feather-features-i-like">Feather Features I Like</h2>
-<p>There are some features common to many (if not all) Feathers that I didn’t get the joy of experiencing in my initial raging failfires but came to enjoy them once I had my M0s in hand.</p>
-<p>I like the boards’ power options. You can plug ‘em into USB power, natch, but you can also attach a LiPo battery to the already-attached-and-waiting-for-yah JST connector and it <em>just works</em>. It’ll charge when on USB power, automatically prefer USB power when plugged in, then automatically switch over to LiPo power when disconnected. This is all kinds of convenient and awesome.</p>
-<p>The consistency and commitment to the Feather form factor is handy if you want to stack or otherwise mix boards. There are a number of header arrangements you can choose between. I’d love to see a project that just keeps stacking Feathers on Feathers on Feathers…</p>
-<p>Also, minor detail but one close to my heart: the pinout diagrams for the Feathers are clear and well-designed. Just lovely.</p>
-<p><img src="m0_pinout.png" alt="Feather M0 pinout diagram"></p>
-<p><em>Image: The M0 pinout diagram is clear and easy to read.</em> <a href="https://cdn-learn.adafruit.com/assets/assets/000/030/920/original/2772_pinout_v1_0.pdf?1457305622">Go see it full size</a>. <em>Credit: Adafruit.</em></p>
-<h2 id="m0-features-i-like">M0 Features I Like</h2>
-<p>I’m going to keep calling the Feather’s MCU the M0, because its actual naming flourishes surpass racehorses/members of the Hapsburg royal dynasty (feast on it: “Atmel® | SMART SAM D ARM® Cortex®-M0+ based microcontroller (MCU) “).</p>
-<p>The M0 is a great little friend. Tons of pins, interrupts everywhere, PWM like it’s going out of style, and a not-too-hard-to-mess-with SERCOM for adding/munging serial interfaces (want all six serial modules to be SPI? You can probably do that). Quick compared to the ATmega32u4, with more Flash, more megahertzles, yet still low-power.</p>
-<p>Coupled with the little Feather form factor it makes a pleasing platform. Not bad to work with to do Arduino-compatible stuff, once the finicky little bits of IDE/board support are done.</p>
-<p>The only un-work-aroundable thing I ran into was a bug in the M0-specific Arduino Wire library (probably?) that made it <a href="https://forums.adafruit.com/viewtopic.php?f=24&amp;t=111541">impossible to use these boards as I^2C slaves</a> (as master, the more typical setup anyway, they’re fine). One day maybe I’ll go check on the status of that bug.</p>
-<p>Anyway, I like this board. Which is funny because I had to go through much pain to find it.</p>
+              <p>
+                <a href="https://www.manning.com/books/javascript-on-things"
+                  ><img
+                    src="js-on-things.png"
+                    alt="JavaScript on Things: Hardware for Web Developers by Lyza Danger Gardner"
+                    class="Pull--left"
+                /></a>
+              </p>
+              <p>
+                <em>As part and parcel of writing my book</em> (<a
+                  href="https://www.manning.com/books/javascript-on-things"
+                  >JavaScript on Things, Manning</a
+                >
+                )
+                <em
+                  >and scratching the curiosity-itches of my hardware-hacking
+                  hobbies, I’ve had my hands on scads of different hardware
+                  platforms and components over the past year and more. This
+                  series of articles contain a collection of opinions and
+                  recommendations based on my experiences as they relate to two
+                  focus areas: electronics for beginners and
+                  JavaScript-controlled hardware.</em
+                >
+              </p>
+              <p>
+                This post’s electronics experience rating: INTERMEDIATE-PLUS
+              </p>
+              <hr />
+              <p>
+                In a
+                <a
+                  href="../../07/i-am-a-hardware-beginner-which-dev-board-should-i-get/index.html"
+                  >previous post</a
+                >, I identified two standout development boards for beginners.
+                In this one, I highlight a couple of boards that have surprised
+                me by becoming some of my very favorites.
+              </p>
+              <p>
+                My introduction to Adafruit’s family of Feather boards wasn’t
+                auspicious: while trying to cobble together a little network of
+                LoRA radios (maybe I’ll talk about this more in-depth sometime
+                as a case-study of Never, Ever, Ever Give Up; maybe it’s just
+                too embarrassing), I feverishly ordered several Feathers from
+                Adafruit, amazed that you could buy a tidily-packaged board with
+                microcontroller and LoRA module for ONLY TWENTY DOLLARS.
+              </p>
+              <p>
+                <img
+                  src="adafruit-feather-site.png"
+                  alt="Adafruit&#39;s Feather line of dev boards"
+                />
+              </p>
+              <p>
+                <em>Image: Adafruit Feather dev boards on their website.</em>
+              </p>
+              <p>
+                Actually, you can’t. Tripped up by similar product names, I
+                ended up ordering
+                <a href="https://www.adafruit.com/product/3231"
+                  >these boards with only the radio module on them</a
+                >, thinking they were
+                <a href="https://www.adafruit.com/product/3178"
+                  >these $35 boards that actually have a freaking MCU on them,
+                  which is highly useful if you actually want to use the radio
+                  somehow</a
+                >.
+              </p>
+              <p>
+                During a protracted evening unboxing it dawned on me that the
+                newly-arrived boards looked rather…minimal. I traveled several
+                miles of self-hate that evening. By this point, the $35 ones
+                with the MCU were sold the hell out, so I scrambled to find
+                another Feather model that I could use to control the first set
+                (it’s Feathers all the way down, ol’ chap).
+              </p>
+              <p>
+                This time: I ended up with some
+                <a href="https://www.adafruit.com/product/2771"
+                  >32u4 Basic Proto</a
+                >
+                boards that I wanted to stack with the brainless LoRA Feathers.
+              </p>
+              <p>
+                Won over I was not. The (limited)
+                <a href="https://learn.adafruit.com/assets/41528">pin layout</a>
+                seemed a tad cruel. What’s worse, only four pins have interrupt
+                support and those pins are also the only pins that support TX,
+                RX, SDA and SCL, a rather project-ending bummer when you’re
+                building something that involves serial logging of I^2C sensor
+                readings. Also awesome when I’d already soldered fly wires on
+                the radio-only modules in a 32u4-specific fashion. Three cheers
+                for desoldering wick and chagrin.
+              </p>
+              <p>
+                A few table-flips later I ultimately netted a small stack of the
+                <a href="https://www.adafruit.com/product/2772"
+                  >Feather M0 Proto</a
+                >
+                boards. Now a few hundred bucks down the Feather rabbit hole, I
+                was steeled for rueful-ironic laughter. And, yet. What is this?
+                These boards fundamentally <em>do not suck</em>. In fact,
+                they’re pretty great!
+              </p>
+              <p>
+                <img
+                  src="adafruit-feather-m0.png"
+                  alt="Adafruit Feather M0 Basic Proto"
+                />
+              </p>
+              <p>
+                <em
+                  >Image: Adafruit Feather M0 Basic Proto. Source: Adafruit
+                  website.</em
+                >
+              </p>
+              <h2 id="feather-features-i-like">Feather Features I Like</h2>
+              <p>
+                There are some features common to many (if not all) Feathers
+                that I didn’t get the joy of experiencing in my initial raging
+                failfires but came to enjoy them once I had my M0s in hand.
+              </p>
+              <p>
+                I like the boards’ power options. You can plug ‘em into USB
+                power, natch, but you can also attach a LiPo battery to the
+                already-attached-and-waiting-for-yah JST connector and it
+                <em>just works</em>. It’ll charge when on USB power,
+                automatically prefer USB power when plugged in, then
+                automatically switch over to LiPo power when disconnected. This
+                is all kinds of convenient and awesome.
+              </p>
+              <p>
+                The consistency and commitment to the Feather form factor is
+                handy if you want to stack or otherwise mix boards. There are a
+                number of header arrangements you can choose between. I’d love
+                to see a project that just keeps stacking Feathers on Feathers
+                on Feathers…
+              </p>
+              <p>
+                Also, minor detail but one close to my heart: the pinout
+                diagrams for the Feathers are clear and well-designed. Just
+                lovely.
+              </p>
+              <p><img src="m0_pinout.png" alt="Feather M0 pinout diagram" /></p>
+              <p>
+                <em>Image: The M0 pinout diagram is clear and easy to read.</em>
+                <a
+                  href="https://cdn-learn.adafruit.com/assets/assets/000/030/920/original/2772_pinout_v1_0.pdf?1457305622"
+                  >Go see it full size</a
+                >. <em>Credit: Adafruit.</em>
+              </p>
+              <h2 id="m0-features-i-like">M0 Features I Like</h2>
+              <p>
+                I’m going to keep calling the Feather’s MCU the M0, because its
+                actual naming flourishes surpass racehorses/members of the
+                Hapsburg royal dynasty (feast on it: “Atmel® | SMART SAM D ARM®
+                Cortex®-M0+ based microcontroller (MCU) “).
+              </p>
+              <p>
+                The M0 is a great little friend. Tons of pins, interrupts
+                everywhere, PWM like it’s going out of style, and a
+                not-too-hard-to-mess-with SERCOM for adding/munging serial
+                interfaces (want all six serial modules to be SPI? You can
+                probably do that). Quick compared to the ATmega32u4, with more
+                Flash, more megahertzles, yet still low-power.
+              </p>
+              <p>
+                Coupled with the little Feather form factor it makes a pleasing
+                platform. Not bad to work with to do Arduino-compatible stuff,
+                once the finicky little bits of IDE/board support are done.
+              </p>
+              <p>
+                The only un-work-aroundable thing I ran into was a bug in the
+                M0-specific Arduino Wire library (probably?) that made it
+                <a
+                  href="https://forums.adafruit.com/viewtopic.php?f=24&amp;t=111541"
+                  >impossible to use these boards as I^2C slaves</a
+                >
+                (as master, the more typical setup anyway, they’re fine). One
+                day maybe I’ll go check on the status of that bug.
+              </p>
+              <p>
+                Anyway, I like this board. Which is funny because I had to go
+                through much pain to find it.
+              </p>
 
-              <hr class="Separator--small Separator--subtle">
-              <p class="u-text-xs u-muted"><em>You may have noticed I don&rsquo;t have any commenting enabled...yet. Hit me up <a href="https://twitter.com/lyzadanger" class="u-link-subtle">@lyzadanger</a> with thoughts; maybe I&rsquo;ll add commenting soon.</em></p>
+              <hr class="Separator--small Separator--subtle" />
+              <p class="u-text-xs u-muted">
+                <em
+                  >You may have noticed I don&rsquo;t have any commenting
+                  enabled...yet. Hit me up
+                  <a href="https://twitter.com/lyzadanger" class="u-link-subtle"
+                    >@lyzadanger</a
+                  >
+                  with thoughts; maybe I&rsquo;ll add commenting soon.</em
+                >
+              </p>
             </div>
           </section>
         </div>
       </article>
-  </main>
-  <footer class="Footer u-align-center" role="contentinfo">
-    <hr class="Separator Separator--small Separator--light">
-    <nav role="navigation" class="Navigation Navigation--subtle">
-      <ul class="Navigation-list">
-        <li class="Navigation-item"><a href="mailto:lyza@lyza.com" class="Navigation-link u-linkClean">Contact</a></li>
-        <li class="Navigation-item"><a href="http://www.cloudfour.com" class="Navigation-link u-linkClean">Cloud Four</a></li>
-        <li class="Navigation-item"><a href="http://twitter.com/lyzadanger" class="Navigation-link u-linkClean">@lyzadanger</a></li>
-      </ul>
-    </nav>
-  </footer>
-</body>
+    </main>
+    <footer class="Footer u-align-center" role="contentinfo">
+      <hr class="Separator Separator--small Separator--light" />
+      <nav role="navigation" class="Navigation Navigation--subtle">
+        <ul class="Navigation-list">
+          <li class="Navigation-item">
+            <a href="mailto:lyza@lyza.com" class="Navigation-link u-linkClean"
+              >Contact</a
+            >
+          </li>
+          <li class="Navigation-item">
+            <a
+              href="http://www.cloudfour.com"
+              class="Navigation-link u-linkClean"
+              >Cloud Four</a
+            >
+          </li>
+          <li class="Navigation-item">
+            <a
+              href="http://twitter.com/lyzadanger"
+              class="Navigation-link u-linkClean"
+              >@lyzadanger</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </footer>
+  </body>
 </html>

@@ -1,611 +1,1282 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-US" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="alternate" type="application/rss+xml"
-    href="feeds/rss.rss" title="Lyza.com: All Posts">
-  <link rel="alternate" type="application/rss+xml"
-    href="feeds/tech.rss" title="Lyza.com: Work and Tech Posts">
-  <link rel="alternate" type="application/rss+xml"
-    href="feeds/life.rss" title="Lyza.com: Life and Off-topic Posts">
-  <title>Stuff (Blog) | Lyza.com</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="../feeds/rss.rss"
+      title="Lyza.com: All Posts"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="../feeds/tech.rss"
+      title="Lyza.com: Work and Tech Posts"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="../feeds/life.rss"
+      title="Lyza.com: Life and Off-topic Posts"
+    />
+    <title>Stuff (Blog) | Lyza.com</title>
 
-  <script>
-    WebFontConfig = {
-      google: {
-        families: ['Playfair Display:italic,900']
-      }
-    };
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js" async></script>
-  <script src="js/site.js" defer="defer"></script>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <script>
+      WebFontConfig = {
+        google: {
+          families: ['Playfair Display:italic,900'],
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"
+      async
+    ></script>
+    <script src="../js/site.js" defer="defer"></script>
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        (i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        'script',
+        '//www.google-analytics.com/analytics.js',
+        'ga'
+      );
 
-    ga('create', 'UA-2791311-1', 'auto');
-    ga('send', 'pageview');
+      ga('create', 'UA-2791311-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <header role="banner">
+      <hr class="Separator--small" />
 
-  </script>
+      <nav
+        role="navigation"
+        class="Navigation u-size3of4 u-after1of4 u-top-off"
+        aria-label="Primary Navigation"
+      >
+        <ul class="List--inline">
+          <li class="Navigation-item">
+            <a href="http://www.lyza.com/" class="u-linkClean">Home</a>
+          </li>
+          <li class="Navigation-item">
+            <a href="http://www.lyza.com/about" class="u-linkClean"
+              >About <span class="u-visually-hidden">Lyza</span></a
+            >
+          </li>
+          <li class="Navigation-item Navigation-item--active">
+            <a href="blog" class="u-linkClean">Blog</a>
+          </li>
+        </ul>
+      </nav>
 
-</head>
-<body>
+      <div class="Header Grid Header--small Grid--alignMiddle">
+        <div
+          class="Grid-cell Header-title-container u-margins-off u-md-size5of12"
+        >
+          <img
+            src="../images/lyza.gif"
+            class="Header-photo"
+            alt="Lyza Danger Gardner, human"
+          />
+          <h1 class="Header-title u-margins-off">
+            <span class="Header-Lyza Header-Lyza-lyza">Lyza</span>
+            <span class="Header-Lyza Header-Lyza-danger">Danger</span>
+            <span class="Header-Lyza Header-Lyza-gardner">Gardner</span>
+          </h1>
+        </div>
 
-  <header role="banner">
+        <div class="Grid-cell u-md-size3of12 u-lg-size4of12"></div>
 
-    <hr class="Separator--small">
-
-    <nav role="navigation" class="Navigation u-size3of4 u-after1of4 u-top-off" aria-label="Primary Navigation">
-      <ul class="List--inline">
-        <li class="Navigation-item ">
-          <a href="http://www.lyza.com/" class="u-linkClean">Home</a>
-        </li>
-        <li class="Navigation-item ">
-          <a href="http://www.lyza.com/about" class="u-linkClean">About <span class="u-visually-hidden">Lyza</span></a>
-        </li>
-          <li class="Navigation-item Navigation-item--active"><a href="blog" class="u-linkClean">Blog</a></li>
-      </ul>
-    </nav>
-
-    <div class="Header Grid Header--small Grid--alignMiddle">
-
-      <div class="Grid-cell Header-title-container u-margins-off u-md-size5of12">
-        <img src="https://d33wubrfki0l68.cloudfront.net/672d9a0c22400b00b6c41dc2414d04beae1ab8ea/1f27f/images/lyza.gif" class="Header-photo" alt="Lyza Danger Gardner, human">
-        <h1 class="Header-title u-margins-off">
-          <span class="Header-Lyza Header-Lyza-lyza">Lyza</span>
-          <span class="Header-Lyza Header-Lyza-danger">Danger</span>
-          <span class="Header-Lyza Header-Lyza-gardner">Gardner</span>
-        </h1>
-      </div>
-
-      <div class="Grid-cell u-md-size3of12 u-lg-size4of12"></div>
-
-      <div class="Grid-cell u-md-size4of12 u-lg-size3of12">
-        <h2 class="Header-subheading">Developer <em class="Header-ampersand">&amp;</em> Person</h2>
-      </div>
-
-    </div>
-  </header>
-
-  <main role="main" class="u-top-tight u-md-top-default">
-<div class="Grid">
-  <div class="Grid-cell Post-header u-md-size3of12 u-lg-size2of10">
-    <header>
-      <div class="Content-header">
-        <h2 class="Content-heading Post-title">Stuff (Blog)</h2>
-      </div>
-      <hr class="Separator--small Separator--light u-top-tight u-md-top-default">
-      <div class="Post-blurb Content-header"><p>Here is all the stuff. Depending on what you’re after, you may wish to look at a subset of stuff. Maybe you are from the tech community and don’t want to read about Sea Canaries and what driving in Sweden is like. Or maybe you know me as a human and don’t care about JavaScript bundlers and Web APIs. In that case you can choose:</p>
-</div>
-      <hr class="Separator--small Separator--light">
-      <div class="Content u-align-center">
-
-        <a class="Button Button--primary Button-link--primary" href="http://www.lyza.com/blog/tech/">Tech Stuff Only</a>
-        <div class="u-align-center u-v-xs"><em>- or -</em></div>
-            <a class="Button Button--primary Button-link--primary" href="http://www.lyza.com/blog/life/">Life Stuff Only</a>
+        <div class="Grid-cell u-md-size4of12 u-lg-size3of12">
+          <h2 class="Header-subheading">
+            Developer <em class="Header-ampersand">&amp;</em> Person
+          </h2>
+        </div>
       </div>
     </header>
-  </div>
-  <div class="Grid-cell u-md-size9of12 u-lg-size8of10 u-top-default u-md-top-off">
-      <div>
-        <h2 class="Heading--full">July, 2017</h2>
-      </div>
-      <div class="Grid TileGrid">
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2017/07/26/great-dev-boards-an-ode-to-the-adafruit-feather-m0/index.html">Great Dev Boards: An Ode to the Adafruit Feather M0</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2017-07-26T17:43:12.462Z">July 26, 2017</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>JSoT</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>My introduction to Adafruit’s family of Feather boards wasn’t auspicious. In fact, it was a comedy of errors. So I was surprised to find an abiding respect for the Feather<span class="widont">&nbsp;</span>M0.</p>
-            
-              </div>
-          </div>
-        </div>
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2017/07/11/hat-tip-to-conference-video-art/index.html">Hat Tip to Conference Video Art</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2017-07-11T19:41:13.215Z">July 11, 2017</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>events</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>speaking</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>The interstitial and intro videos made for conferences don&#39;t get a lot of press, but the art production in some is superb. Here are two great<span class="widont">&nbsp;</span>examples.</p>
-            
-              </div>
-          </div>
-        </div>
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2017/07/07/i-am-a-hardware-beginner-which-dev-board-should-i-get/index.html">I am a Hardware Beginner: Which Dev Board Should I Get?</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2017-07-07T14:06:10.001Z">July 7, 2017</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>javascript</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>JSoT</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>You’re thinking of starting out on a journey to learn about electronics and IoT. Which development platform should you start<span class="widont">&nbsp;</span>with?</p>
-            
-              </div>
-          </div>
-        </div>
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2017/07/03/javascript-promises-in-60-seconds/index.html">JavaScript Promises in 60 Seconds</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2017-07-03T14:56:51.527Z">July 3, 2017</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>javascript</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>A minute-long excerpt from a recent talk about Service Workers: a whirlwind explanation of <span class="caps">JS</span><span class="widont">&nbsp;</span>Promises.</p>
-            
-              </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h2 class="Heading--full">November, 2016</h2>
-      </div>
-      <div class="Grid TileGrid">
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2016/11/30/voltage-current-resistancewith-gnomes/index.html">Voltage, Current, Resistance&#8230;with Gnomes</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2016-11-30T20:48:30.888Z">November 30, 2016</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>js</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>hardware</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>web</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>Understanding Ohm&#39;s Law thoroughly changed my whole reality—it&#39;s the key to infinite electronics hackery. But I couldn&#39;t just let the standard hydraulic-based (water) metaphors be my guide. I had to involve<span class="widont">&nbsp;</span>gnomes.</p>
-            
-              </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h2 class="Heading--full">September, 2016</h2>
-      </div>
-      <div class="Grid TileGrid">
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2016/09/20/and-now-for-something-completelydifferent/index.html">And now for something completely&#8230;different?</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2016-09-20T17:38:25.320Z">September 20, 2016</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>life</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>Four months ago, I upped stakes from my hometown and moved thousands of miles to the middle of the forest in Vermont. I took a break from the Web and changed jobs. Everything has changed…or has<span class="widont">&nbsp;</span>it?</p>
-            
-              </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h2 class="Heading--full">April, 2016</h2>
-      </div>
-      <div class="Grid TileGrid">
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2016/04/05/javascript-and-hardware-with-the-host-client-method/index.html">JavaScript and Hardware with the Host-Client Method</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2016-04-05T15:48:38.155Z">April 5, 2016</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>js</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>hardware</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>web</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>There are several ways to use JavaScript to control physical objects. Lately I&#39;ve been doing a lot using a host-client setup and the Johnny-five Node.js<span class="widont">&nbsp;</span>framework.</p>
-            
-              </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h2 class="Heading--full">January, 2016</h2>
-      </div>
-      <div class="Grid TileGrid">
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2016/01/21/am-i-good-enough-to-be-here/index.html">Am I Good Enough to be Here?</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2016-01-21T23:28:55.267Z">January 21, 2016</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>opinion</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>Navigating between merit and diverse inclusivity is profoundly hard. Sometimes I end up on the sad side of the<span class="widont">&nbsp;</span>fence.</p>
-            
-              </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h2 class="Heading--full">December, 2015</h2>
-      </div>
-      <div class="Grid TileGrid">
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2015/12/15/the-good-and-bad-of-2015-conferences/index.html">2015 Conference Trends: Hat-tips and a Few Grimaces</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2015-12-15T19:42:26.329Z">December 15, 2015</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>opinion</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>Opinionated review of the good, the bad and the delusional trends I saw in conferences over the past<span class="widont">&nbsp;</span>year.</p>
-            
-              </div>
-          </div>
-        </div>
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2015/12/08/scampering-after-nodejs-versions/index.html">Scampering after Node.js Versions</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2015-12-08T18:55:01.019Z">December 8, 2015</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>web</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>js</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>Everything about Node.js is exponential curves right now. While at Node Interactive here in Portland, my mind has started racing about understanding and managing Node.js<span class="widont">&nbsp;</span>versions.</p>
-            
-              </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h2 class="Heading--full">November, 2015</h2>
-      </div>
-      <div class="Grid TileGrid">
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2015/11/05/talking-to-myself-with-git/index.html">Talking to myself with git</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2015-11-05T23:15:34.273Z">November 5, 2015</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>web</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>Even when my projects involve a crowd with a size of one (me), I still use git workflow tactics. Is this good practice or an unnecessary<span class="widont">&nbsp;</span>monologue?</p>
-            
-              </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h2 class="Heading--full">October, 2015</h2>
-      </div>
-      <div class="Grid TileGrid">
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2015/10/16/lyzas-index-septemberoctober-rundown/index.html">Lyza&#8217;s Index: September/October Rundown</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2015-10-16T20:33:55.331Z">October 16, 2015</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>life</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>til</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>The month has blurred by; let me capture some things before they float out of my head<span class="widont">&nbsp;</span>again!</p>
-            
-              </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h2 class="Heading--full">September, 2015</h2>
-      </div>
-      <div class="Grid TileGrid">
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2015/09/17/the-proper-response-to-ios-safari-split-view-is-not-a-bunch-of-bean-counting-pixel-math/index.html">The Proper Response to iOS Safari Split View is Not a Bunch of Bean-Counting Pixel Math</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2015-09-17T17:21:11.918Z">September 17, 2015</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>web</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>rwd</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>Max Firtman’s <a href="http://www.mobilexweb.com/blog/ios9-safari-for-web-developers">post about iOS 9 Safari technical details</a> contains a lot of stuff to get amped about, but let’s not get so geeked over details that we inadvertently restart a web design arms<span class="widont">&nbsp;</span>race.</p>
-            
-              </div>
-          </div>
-        </div>
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2015/09/04/aria-landmark-roles-in-5-minutes/index.html">ARIA Landmark Roles in 5 Minutes</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2015-09-04T20:13:17.977Z">September 4, 2015</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>a11y</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>web</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>howto</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>There are lots of elements in play when trying to make web sites and apps accessible, but correct use of <span class="caps">ARIA</span> roles in <span class="caps">HTML</span> is straightforward and has big<span class="widont">&nbsp;</span>impact.</p>
-            
-              </div>
-          </div>
-        </div>
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2015/09/02/time-for-a-new-project/index.html">Time for a New Project</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2015-09-02T17:24:37.539Z">September 2, 2015</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>projects</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>life</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>I guess I shipped a few things at the end of the summer, but now it’s time to find the next biggish thing. Will I be able to emerge from the inspirational<span class="widont">&nbsp;</span>doldrums?</p>
-            
-              </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h2 class="Heading--full">August, 2015</h2>
-      </div>
-      <div class="Grid TileGrid">
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2015/08/30/lyzas-index-alaska-edition/index.html">Lyza&#8217;s Index: Alaska Edition</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2015-08-30T20:34:23.961Z">August 30, 2015</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>life</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>til</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>Sea canaries, sea otters, the aurora borealis, and the economical joys of a late-summer trip to a high<span class="widont">&nbsp;</span>latitude.</p>
-            
-              </div>
-          </div>
-        </div>
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2015/08/18/a-bad-question-to-ask-a-developer/index.html">A Bad Question to ask a Developer</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2015-08-19T06:05:06.839Z">August 19, 2015</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>teams</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>There is this question that I’d like to suggest is <em>never</em> useful to ask another developer. I find myself asking it when I talk to other developers, too—I’d like to<span class="widont">&nbsp;</span>stop.</p>
-            
-              </div>
-          </div>
-        </div>
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2015/08/14/my-personal-kryptonite-javascript-bundlers/index.html">My Personal Kryptonite: JavaScript Bundlers</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2015-08-15T00:57:48.476Z">August 15, 2015</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>javascript</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>I’ve been lamenting about JavaScript bundlers lately, calling this step of our process my “personal Kryptonite.” And yet maybe I’ve been misunderstanding why I’m<span class="widont">&nbsp;</span>frustrated.</p>
-            
-              </div>
-          </div>
-        </div>
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2015/08/11/writing-tomorrows-css-today/index.html">Writing Tomorrow&#8217;s CSS Today</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2015-08-11T17:22:29.218Z">August 11, 2015</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>standards</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>site</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>Did you know that, using <span class="caps">CSS</span> transpilers, you can use to-spec <span class="caps">CSS</span> of the future, today? Here are some of the magical things I’m using these<span class="widont">&nbsp;</span>days.</p>
-            
-              </div>
-          </div>
-        </div>
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2015/07/31/video-from-responsive-day-out-3/index.html">Video from Responsive Day Out 3</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2015-08-01T03:04:05.955Z">August 1, 2015</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>work</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>events</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>speaking</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>Jeremy Keith has released videos from the sessions at Responsive Day Out 3 in Brighton. Here is my<span class="widont">&nbsp;</span>session!</p>
-            
-              </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h2 class="Heading--full">July, 2015</h2>
-      </div>
-      <div class="Grid TileGrid">
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2015/07/30/lyzas-index-july-30/index.html">Lyza&#8217;s Index: July 30</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2015-07-30T23:12:59.176Z">July 30, 2015</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>life</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>til</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>In which I mention a few things I<span class="widont">&nbsp;</span>learned.</p>
-            
-              </div>
-          </div>
-        </div>
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2015/07/29/i-am-unafraid-of-times-new-roman/index.html">Unafraid of Times New Roman</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2015-07-29T21:52:27.815Z">July 29, 2015</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>site</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>In which I save myself from the fripperies of excessive<span class="widont">&nbsp;</span>fonts.</p>
-            
-              </div>
-          </div>
-        </div>
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2015/07/28/the-rajneeshees-another-sign-i-am-a-portland-native/index.html">The Rajneeshees: Another Sign I am a Portland Native</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2015-07-28T18:45:01.680Z">July 28, 2015</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>oregon</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>life</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>In which I am old, and from<span class="widont">&nbsp;</span>here.</p>
-            
-              </div>
-          </div>
-        </div>
-        <div class="Grid-cell u-md-size1of2 Tile-container">
-          <div class="Tile">
-              <div class="Tile-header">
-                <div class="Content-header">
-                  <h3 class="Tile-heading"><a class="u-link-colorless" href="2015/07/26/edge-conf-london-june-2015/index.html">Edge Conf London, June 2015</a></h3>
-                  <h4 class="Tile-heading"><time datetime="2015-07-27T01:05:34.321Z">July 27, 2015</time></h4>
-                </div>
-              </div>
-              <ul class="List--inline is-indented--xxsm u-top-off">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>standards</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>events</span></li>
-              </ul>
-              <div class="Tile-body">
-                <p>In which I sweat and moderate a panel, and it is<span class="widont">&nbsp;</span>good.</p>
-            
-              </div>
-          </div>
-        </div>
-      </div>
-  </div>
-</div>
 
-
-  </main>
-  <footer class="Footer u-align-center" role="contentinfo">
-    <hr class="Separator Separator--small Separator--light">
-    <nav role="navigation" class="Navigation Navigation--subtle">
-      <ul class="Navigation-list">
-        <li class="Navigation-item"><a href="mailto:lyza@lyza.com" class="Navigation-link u-linkClean">Contact</a></li>
-        <li class="Navigation-item"><a href="http://www.cloudfour.com" class="Navigation-link u-linkClean">Cloud Four</a></li>
-        <li class="Navigation-item"><a href="http://twitter.com/lyzadanger" class="Navigation-link u-linkClean">@lyzadanger</a></li>
-      </ul>
-    </nav>
-  </footer>
-</body>
+    <main role="main" class="u-top-tight u-md-top-default">
+      <div class="Grid">
+        <div class="Grid-cell Post-header u-md-size3of12 u-lg-size2of10">
+          <header>
+            <div class="Content-header">
+              <h2 class="Content-heading Post-title">Stuff (Blog)</h2>
+            </div>
+            <hr
+              class="Separator--small Separator--light u-top-tight u-md-top-default"
+            />
+            <div class="Post-blurb Content-header">
+              <p>
+                Here is all the stuff. Depending on what you’re after, you may
+                wish to look at a subset of stuff. Maybe you are from the tech
+                community and don’t want to read about Sea Canaries and what
+                driving in Sweden is like. Or maybe you know me as a human and
+                don’t care about JavaScript bundlers and Web APIs. In that case
+                you can choose:
+              </p>
+            </div>
+            <hr class="Separator--small Separator--light" />
+            <div class="Content u-align-center">
+              <a
+                class="Button Button--primary Button-link--primary"
+                href="http://www.lyza.com/blog/tech/"
+                >Tech Stuff Only</a
+              >
+              <div class="u-align-center u-v-xs"><em>- or -</em></div>
+              <a
+                class="Button Button--primary Button-link--primary"
+                href="http://www.lyza.com/blog/life/"
+                >Life Stuff Only</a
+              >
+            </div>
+          </header>
+        </div>
+        <div
+          class="Grid-cell u-md-size9of12 u-lg-size8of10 u-top-default u-md-top-off"
+        >
+          <div>
+            <h2 class="Heading--full">July, 2017</h2>
+          </div>
+          <div class="Grid TileGrid">
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2017/07/26/great-dev-boards-an-ode-to-the-adafruit-feather-m0/index.html"
+                        >Great Dev Boards: An Ode to the Adafruit Feather M0</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2017-07-26T17:43:12.462Z"
+                        >July 26, 2017</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>tech</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>JSoT</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    My introduction to Adafruit’s family of Feather boards
+                    wasn’t auspicious. In fact, it was a comedy of errors. So I
+                    was surprised to find an abiding respect for the
+                    Feather<span class="widont">&nbsp;</span>M0.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2017/07/11/hat-tip-to-conference-video-art/index.html"
+                        >Hat Tip to Conference Video Art</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2017-07-11T19:41:13.215Z"
+                        >July 11, 2017</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>tech</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>events</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>speaking</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    The interstitial and intro videos made for conferences
+                    don&#39;t get a lot of press, but the art production in some
+                    is superb. Here are two great<span class="widont"
+                      >&nbsp;</span
+                    >examples.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2017/07/07/i-am-a-hardware-beginner-which-dev-board-should-i-get/index.html"
+                        >I am a Hardware Beginner: Which Dev Board Should I
+                        Get?</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2017-07-07T14:06:10.001Z"
+                        >July 7, 2017</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>javascript</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>JSoT</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>tech</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    You’re thinking of starting out on a journey to learn about
+                    electronics and IoT. Which development platform should you
+                    start<span class="widont">&nbsp;</span>with?
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2017/07/03/javascript-promises-in-60-seconds/index.html"
+                        >JavaScript Promises in 60 Seconds</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2017-07-03T14:56:51.527Z"
+                        >July 3, 2017</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>javascript</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>tech</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    A minute-long excerpt from a recent talk about Service
+                    Workers: a whirlwind explanation of
+                    <span class="caps">JS</span
+                    ><span class="widont">&nbsp;</span>Promises.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 class="Heading--full">November, 2016</h2>
+          </div>
+          <div class="Grid TileGrid">
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2016/11/30/voltage-current-resistancewith-gnomes/index.html"
+                        >Voltage, Current, Resistance&#8230;with Gnomes</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2016-11-30T20:48:30.888Z"
+                        >November 30, 2016</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>tech</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>js</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>hardware</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>web</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    Understanding Ohm&#39;s Law thoroughly changed my whole
+                    reality—it&#39;s the key to infinite electronics hackery.
+                    But I couldn&#39;t just let the standard hydraulic-based
+                    (water) metaphors be my guide. I had to involve<span
+                      class="widont"
+                      >&nbsp;</span
+                    >gnomes.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 class="Heading--full">September, 2016</h2>
+          </div>
+          <div class="Grid TileGrid">
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2016/09/20/and-now-for-something-completelydifferent/index.html"
+                        >And now for something completely&#8230;different?</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2016-09-20T17:38:25.320Z"
+                        >September 20, 2016</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>life</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    Four months ago, I upped stakes from my hometown and moved
+                    thousands of miles to the middle of the forest in Vermont. I
+                    took a break from the Web and changed jobs. Everything has
+                    changed…or has<span class="widont">&nbsp;</span>it?
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 class="Heading--full">April, 2016</h2>
+          </div>
+          <div class="Grid TileGrid">
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2016/04/05/javascript-and-hardware-with-the-host-client-method/index.html"
+                        >JavaScript and Hardware with the Host-Client Method</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2016-04-05T15:48:38.155Z"
+                        >April 5, 2016</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>tech</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>js</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>hardware</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>web</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    There are several ways to use JavaScript to control physical
+                    objects. Lately I&#39;ve been doing a lot using a
+                    host-client setup and the Johnny-five Node.js<span
+                      class="widont"
+                      >&nbsp;</span
+                    >framework.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 class="Heading--full">January, 2016</h2>
+          </div>
+          <div class="Grid TileGrid">
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2016/01/21/am-i-good-enough-to-be-here/index.html"
+                        >Am I Good Enough to be Here?</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2016-01-21T23:28:55.267Z"
+                        >January 21, 2016</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>tech</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>opinion</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    Navigating between merit and diverse inclusivity is
+                    profoundly hard. Sometimes I end up on the sad side of
+                    the<span class="widont">&nbsp;</span>fence.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 class="Heading--full">December, 2015</h2>
+          </div>
+          <div class="Grid TileGrid">
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2015/12/15/the-good-and-bad-of-2015-conferences/index.html"
+                        >2015 Conference Trends: Hat-tips and a Few Grimaces</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2015-12-15T19:42:26.329Z"
+                        >December 15, 2015</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>tech</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>opinion</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    Opinionated review of the good, the bad and the delusional
+                    trends I saw in conferences over the past<span
+                      class="widont"
+                      >&nbsp;</span
+                    >year.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2015/12/08/scampering-after-nodejs-versions/index.html"
+                        >Scampering after Node.js Versions</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2015-12-08T18:55:01.019Z"
+                        >December 8, 2015</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>tech</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>web</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>js</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    Everything about Node.js is exponential curves right now.
+                    While at Node Interactive here in Portland, my mind has
+                    started racing about understanding and managing Node.js<span
+                      class="widont"
+                      >&nbsp;</span
+                    >versions.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 class="Heading--full">November, 2015</h2>
+          </div>
+          <div class="Grid TileGrid">
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2015/11/05/talking-to-myself-with-git/index.html"
+                        >Talking to myself with git</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2015-11-05T23:15:34.273Z"
+                        >November 5, 2015</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>web</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>tech</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    Even when my projects involve a crowd with a size of one
+                    (me), I still use git workflow tactics. Is this good
+                    practice or an unnecessary<span class="widont">&nbsp;</span
+                    >monologue?
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 class="Heading--full">October, 2015</h2>
+          </div>
+          <div class="Grid TileGrid">
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2015/10/16/lyzas-index-septemberoctober-rundown/index.html"
+                        >Lyza&#8217;s Index: September/October Rundown</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2015-10-16T20:33:55.331Z"
+                        >October 16, 2015</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>life</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>til</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    The month has blurred by; let me capture some things before
+                    they float out of my head<span class="widont">&nbsp;</span
+                    >again!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 class="Heading--full">September, 2015</h2>
+          </div>
+          <div class="Grid TileGrid">
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2015/09/17/the-proper-response-to-ios-safari-split-view-is-not-a-bunch-of-bean-counting-pixel-math/index.html"
+                        >The Proper Response to iOS Safari Split View is Not a
+                        Bunch of Bean-Counting Pixel Math</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2015-09-17T17:21:11.918Z"
+                        >September 17, 2015</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>tech</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>web</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>rwd</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    Max Firtman’s
+                    <a
+                      href="http://www.mobilexweb.com/blog/ios9-safari-for-web-developers"
+                      >post about iOS 9 Safari technical details</a
+                    >
+                    contains a lot of stuff to get amped about, but let’s not
+                    get so geeked over details that we inadvertently restart a
+                    web design arms<span class="widont">&nbsp;</span>race.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2015/09/04/aria-landmark-roles-in-5-minutes/index.html"
+                        >ARIA Landmark Roles in 5 Minutes</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2015-09-04T20:13:17.977Z"
+                        >September 4, 2015</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>tech</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>a11y</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>web</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>howto</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    There are lots of elements in play when trying to make web
+                    sites and apps accessible, but correct use of
+                    <span class="caps">ARIA</span> roles in
+                    <span class="caps">HTML</span> is straightforward and has
+                    big<span class="widont">&nbsp;</span>impact.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2015/09/02/time-for-a-new-project/index.html"
+                        >Time for a New Project</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2015-09-02T17:24:37.539Z"
+                        >September 2, 2015</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>projects</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>life</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    I guess I shipped a few things at the end of the summer, but
+                    now it’s time to find the next biggish thing. Will I be able
+                    to emerge from the inspirational<span class="widont"
+                      >&nbsp;</span
+                    >doldrums?
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 class="Heading--full">August, 2015</h2>
+          </div>
+          <div class="Grid TileGrid">
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2015/08/30/lyzas-index-alaska-edition/index.html"
+                        >Lyza&#8217;s Index: Alaska Edition</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2015-08-30T20:34:23.961Z"
+                        >August 30, 2015</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>life</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>til</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    Sea canaries, sea otters, the aurora borealis, and the
+                    economical joys of a late-summer trip to a high<span
+                      class="widont"
+                      >&nbsp;</span
+                    >latitude.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2015/08/18/a-bad-question-to-ask-a-developer/index.html"
+                        >A Bad Question to ask a Developer</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2015-08-19T06:05:06.839Z"
+                        >August 19, 2015</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>tech</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>teams</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    There is this question that I’d like to suggest is
+                    <em>never</em> useful to ask another developer. I find
+                    myself asking it when I talk to other developers, too—I’d
+                    like to<span class="widont">&nbsp;</span>stop.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2015/08/14/my-personal-kryptonite-javascript-bundlers/index.html"
+                        >My Personal Kryptonite: JavaScript Bundlers</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2015-08-15T00:57:48.476Z"
+                        >August 15, 2015</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>tech</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>javascript</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    I’ve been lamenting about JavaScript bundlers lately,
+                    calling this step of our process my “personal Kryptonite.”
+                    And yet maybe I’ve been misunderstanding why I’m<span
+                      class="widont"
+                      >&nbsp;</span
+                    >frustrated.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2015/08/11/writing-tomorrows-css-today/index.html"
+                        >Writing Tomorrow&#8217;s CSS Today</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2015-08-11T17:22:29.218Z"
+                        >August 11, 2015</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>tech</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>standards</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>site</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    Did you know that, using
+                    <span class="caps">CSS</span> transpilers, you can use
+                    to-spec <span class="caps">CSS</span> of the future, today?
+                    Here are some of the magical things I’m using these<span
+                      class="widont"
+                      >&nbsp;</span
+                    >days.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2015/07/31/video-from-responsive-day-out-3/index.html"
+                        >Video from Responsive Day Out 3</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2015-08-01T03:04:05.955Z"
+                        >August 1, 2015</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>work</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>tech</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>events</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>speaking</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    Jeremy Keith has released videos from the sessions at
+                    Responsive Day Out 3 in Brighton. Here is my<span
+                      class="widont"
+                      >&nbsp;</span
+                    >session!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 class="Heading--full">July, 2015</h2>
+          </div>
+          <div class="Grid TileGrid">
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2015/07/30/lyzas-index-july-30/index.html"
+                        >Lyza&#8217;s Index: July 30</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2015-07-30T23:12:59.176Z"
+                        >July 30, 2015</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>life</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>til</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    In which I mention a few things I<span class="widont"
+                      >&nbsp;</span
+                    >learned.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2015/07/29/i-am-unafraid-of-times-new-roman/index.html"
+                        >Unafraid of Times New Roman</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2015-07-29T21:52:27.815Z"
+                        >July 29, 2015</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>site</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>tech</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    In which I save myself from the fripperies of excessive<span
+                      class="widont"
+                      >&nbsp;</span
+                    >fonts.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2015/07/28/the-rajneeshees-another-sign-i-am-a-portland-native/index.html"
+                        >The Rajneeshees: Another Sign I am a Portland Native</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2015-07-28T18:45:01.680Z"
+                        >July 28, 2015</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>oregon</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>life</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    In which I am old, and from<span class="widont">&nbsp;</span
+                    >here.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="Grid-cell u-md-size1of2 Tile-container">
+              <div class="Tile">
+                <div class="Tile-header">
+                  <div class="Content-header">
+                    <h3 class="Tile-heading">
+                      <a
+                        class="u-link-colorless"
+                        href="2015/07/26/edge-conf-london-june-2015/index.html"
+                        >Edge Conf London, June 2015</a
+                      >
+                    </h3>
+                    <h4 class="Tile-heading">
+                      <time datetime="2015-07-27T01:05:34.321Z"
+                        >July 27, 2015</time
+                      >
+                    </h4>
+                  </div>
+                </div>
+                <ul class="List--inline is-indented--xxsm u-top-off">
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>tech</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>standards</span
+                    >
+                  </li>
+                  <li>
+                    <span class="u-muted u-smallcaps"
+                      ><span class="u-text-xs">#</span>events</span
+                    >
+                  </li>
+                </ul>
+                <div class="Tile-body">
+                  <p>
+                    In which I sweat and moderate a panel, and it is<span
+                      class="widont"
+                      >&nbsp;</span
+                    >good.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="Footer u-align-center" role="contentinfo">
+      <hr class="Separator Separator--small Separator--light" />
+      <nav role="navigation" class="Navigation Navigation--subtle">
+        <ul class="Navigation-list">
+          <li class="Navigation-item">
+            <a href="mailto:lyza@lyza.com" class="Navigation-link u-linkClean"
+              >Contact</a
+            >
+          </li>
+          <li class="Navigation-item">
+            <a
+              href="http://www.cloudfour.com"
+              class="Navigation-link u-linkClean"
+              >Cloud Four</a
+            >
+          </li>
+          <li class="Navigation-item">
+            <a
+              href="http://twitter.com/lyzadanger"
+              class="Navigation-link u-linkClean"
+              >@lyzadanger</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </footer>
+  </body>
 </html>

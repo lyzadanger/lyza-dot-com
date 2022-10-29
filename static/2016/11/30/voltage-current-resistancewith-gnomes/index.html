@@ -1,175 +1,466 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-US" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../../../../css/styles.css">
-  <link rel="alternate" type="application/rss+xml"
-    href="../../../../feeds/rss.rss" title="Lyza.com: All Posts">
-  <link rel="alternate" type="application/rss+xml"
-    href="../../../../feeds/tech.rss" title="Lyza.com: Work and Tech Posts">
-  <link rel="alternate" type="application/rss+xml"
-    href="../../../../feeds/life.rss" title="Lyza.com: Life and Off-topic Posts">
-  <title>Voltage, Current, Resistance&#8230;with Gnomes | Lyza.com</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../../css/styles.css" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="../../../../feeds/rss.rss"
+      title="Lyza.com: All Posts"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="../../../../feeds/tech.rss"
+      title="Lyza.com: Work and Tech Posts"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="../../../../feeds/life.rss"
+      title="Lyza.com: Life and Off-topic Posts"
+    />
+    <title>Voltage, Current, Resistance&#8230;with Gnomes | Lyza.com</title>
 
-  <script>
-    WebFontConfig = {
-      google: {
-        families: ['Playfair Display:italic,900']
-      }
-    };
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js" async></script>
-  <script src="../../../../js/site.js" defer="defer"></script>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <script>
+      WebFontConfig = {
+        google: {
+          families: ['Playfair Display:italic,900'],
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"
+      async
+    ></script>
+    <script src="../../../../js/site.js" defer="defer"></script>
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        (i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        'script',
+        '//www.google-analytics.com/analytics.js',
+        'ga'
+      );
 
-    ga('create', 'UA-2791311-1', 'auto');
-    ga('send', 'pageview');
+      ga('create', 'UA-2791311-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <header role="banner">
+      <hr class="Separator--small" />
 
-  </script>
+      <nav
+        role="navigation"
+        class="Navigation u-size3of4 u-after1of4 u-top-off"
+        aria-label="Primary Navigation"
+      >
+        <ul class="List--inline">
+          <li class="Navigation-item">
+            <a href="http://www.lyza.com/" class="u-linkClean">Home</a>
+          </li>
+          <li class="Navigation-item">
+            <a href="http://www.lyza.com/about" class="u-linkClean"
+              >About <span class="u-visually-hidden">Lyza</span></a
+            >
+          </li>
+          <li class="Navigation-item Navigation-item--active">
+            <a href="../../../../blog" class="u-linkClean">Blog</a>
+          </li>
+        </ul>
+      </nav>
 
-</head>
-<body>
+      <div class="Header Grid Header--small Grid--alignMiddle">
+        <div
+          class="Grid-cell Header-title-container u-margins-off u-md-size5of12"
+        >
+          <img
+            src="/images/lyza.gif"
+            class="Header-photo"
+            alt="Lyza Danger Gardner, human"
+          />
+          <h1 class="Header-title u-margins-off">
+            <span class="Header-Lyza Header-Lyza-lyza">Lyza</span>
+            <span class="Header-Lyza Header-Lyza-danger">Danger</span>
+            <span class="Header-Lyza Header-Lyza-gardner">Gardner</span>
+          </h1>
+        </div>
 
-  <header role="banner">
+        <div class="Grid-cell u-md-size3of12 u-lg-size4of12"></div>
 
-    <hr class="Separator--small">
-
-    <nav role="navigation" class="Navigation u-size3of4 u-after1of4 u-top-off" aria-label="Primary Navigation">
-      <ul class="List--inline">
-        <li class="Navigation-item ">
-          <a href="http://www.lyza.com/" class="u-linkClean">Home</a>
-        </li>
-        <li class="Navigation-item ">
-          <a href="http://www.lyza.com/about" class="u-linkClean">About <span class="u-visually-hidden">Lyza</span></a>
-        </li>
-          <li class="Navigation-item Navigation-item--active"><a href="../../../../blog" class="u-linkClean">Blog</a></li>
-      </ul>
-    </nav>
-
-    <div class="Header Grid Header--small Grid--alignMiddle">
-
-      <div class="Grid-cell Header-title-container u-margins-off u-md-size5of12">
-        <img src="https://d33wubrfki0l68.cloudfront.net/672d9a0c22400b00b6c41dc2414d04beae1ab8ea/1f27f/images/lyza.gif" class="Header-photo" alt="Lyza Danger Gardner, human">
-        <h1 class="Header-title u-margins-off">
-          <span class="Header-Lyza Header-Lyza-lyza">Lyza</span>
-          <span class="Header-Lyza Header-Lyza-danger">Danger</span>
-          <span class="Header-Lyza Header-Lyza-gardner">Gardner</span>
-        </h1>
+        <div class="Grid-cell u-md-size4of12 u-lg-size3of12">
+          <h2 class="Header-subheading">
+            Developer <em class="Header-ampersand">&amp;</em> Person
+          </h2>
+        </div>
       </div>
+    </header>
 
-      <div class="Grid-cell u-md-size3of12 u-lg-size4of12"></div>
-
-      <div class="Grid-cell u-md-size4of12 u-lg-size3of12">
-        <h2 class="Header-subheading">Developer <em class="Header-ampersand">&amp;</em> Person</h2>
-      </div>
-
-    </div>
-  </header>
-
-  <main role="main" class="u-top-tight u-md-top-default">
+    <main role="main" class="u-top-tight u-md-top-default">
       <article class="u-margins-off u-sm-top-xs u-md-top-default">
         <div class="Grid">
           <div class="Grid-cell u-md-size3of12 u-lg-size2of10">
             <header>
               <div class="Content-header">
-                <h2 class="Content-heading Content-title">Voltage, Current, Resistance&#8230;with Gnomes</h2>
-                <div class="Content-meta"><time datetime="2016-11-30T20:48:30.888Z">November 30, 2016</time></div>
+                <h2 class="Content-heading Content-title">
+                  Voltage, Current, Resistance&#8230;with Gnomes
+                </h2>
+                <div class="Content-meta">
+                  <time datetime="2016-11-30T20:48:30.888Z"
+                    >November 30, 2016</time
+                  >
+                </div>
               </div>
-              <hr class="Separator--small Separator--light u-top-tight u-md-top-default">
-              <div class="Content-blurb Content-header"><p>Understanding Ohm&#39;s Law thoroughly changed my whole reality—it&#39;s the key to infinite electronics hackery. But I couldn&#39;t just let the standard hydraulic-based (water) metaphors be my guide. I had to involve<span class="widont">&nbsp;</span>gnomes.</p>
-</div>
-              <hr class="Separator--small Separator--light">
+              <hr
+                class="Separator--small Separator--light u-top-tight u-md-top-default"
+              />
+              <div class="Content-blurb Content-header">
+                <p>
+                  Understanding Ohm&#39;s Law thoroughly changed my whole
+                  reality—it&#39;s the key to infinite electronics hackery. But
+                  I couldn&#39;t just let the standard hydraulic-based (water)
+                  metaphors be my guide. I had to involve<span class="widont"
+                    >&nbsp;</span
+                  >gnomes.
+                </p>
+              </div>
+              <hr class="Separator--small Separator--light" />
               <ul class="List--inline is-indented--xxsm u-top-xs">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>js</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>hardware</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>web</span></li>
+                <li>
+                  <span class="u-muted u-smallcaps"
+                    ><span class="u-text-xs">#</span>tech</span
+                  >
+                </li>
+                <li>
+                  <span class="u-muted u-smallcaps"
+                    ><span class="u-text-xs">#</span>js</span
+                  >
+                </li>
+                <li>
+                  <span class="u-muted u-smallcaps"
+                    ><span class="u-text-xs">#</span>hardware</span
+                  >
+                </li>
+                <li>
+                  <span class="u-muted u-smallcaps"
+                    ><span class="u-text-xs">#</span>web</span
+                  >
+                </li>
               </ul>
             </header>
           </div>
           <section class="Grid-cell u-md-size9of12 u-lg-size6of10">
             <div class="Content-content Content u-top-tight u-md-top-off">
-              <p><a href="https://www.manning.com/books/javascript-on-things"><img src="js-on-things.png" alt="JavaScript on Things: Hardware for Web Developers by Lyza Danger Gardner" class="Pull--left" /></a></p>
-<p><em>The following is an excerpt from chapter 3 of</em> <a href="https://www.manning.com/books/javascript-on-things">JavaScript on Things: Hardware for Web Developers</a> <em>by me, Lyza Danger Gardner (I also take the blame for the illustrations). I hope you enjoy it! The book is in early release (MEAP) from Manning Publications. It’s intended as a soup-to-nuts get-started guide to electronics hacking for JS-familiar web developers.</em></p>
-<hr>
-<p>Designing and building circuits may be completely new to you, and may seem intimidating. The good news is that there are just a handful of core concepts to wrap your head around. Once you understand the interplay of voltage, current and resistance—as formalized in Ohm’s Law—you’re well on your way to being able to understand basic circuits.</p>
-<p>There are a couple of metaphors traditionally used to illustrate voltage, current and resistance. The most common analogy is a hydraulic (water) system involving tanks and pipes. Effective, but not always memorable. Let’s try a different adventure.</p>
-<h2 id="voltage-current-and-resistance">Voltage, Current and Resistance</h2>
-<p>High in the mountains, deep in the forest of some place that does not exist, a tribe of gnomes found themselves inexplicably in possession of an infinite supply of jellyfish. And the gnomes being ornery and mischievous, they struck out to find a humorous use for the otherwise-inert creatures. They found great fun in dropping jellyfish over cliffs, watching them splash into the lake below or bounce off the roofs of local villages.</p>
-<p>The nearby townspeople were initially inconvenienced but soon recognized that the plummeting invertebrates carried energy and could be a free source of power for their cookie factories—but only if the onslaught could be harnessed safely. So they observed, and, over time, came to understand and manipulate the core factors of electrical circuits: voltage, current and resistance.</p>
-<p>Townspeople noticed quickly, for example, that the higher and steeper the cliff, the more energy tossed jellyfish have when they reach the lake on the valley floor. Lesser drop-offs don’t provide as much potential energy for hijinks when the jellyfish splash down.</p>
-<p>Higher cliffs provide more “voltage”, that is, electrical potential. <em>Voltage</em> is like electrical “pressure”, pushing the charges (jellyfish) from high potential energy toward a location of lower potential.</p>
-<p><img src="03-voltage.png" alt="Higher cliffs provide more &quot;voltage&quot;, that is, electrical potential. *Voltage* is like electrical &quot;pressure&quot;, pushing the charges—jellyfish—from high potential energy toward a location of lower potential."></p>
-<p><em>Voltage</em> is a measurement of the difference of potential energy between two points. It’s something like pressure or tension or gravitational force, as electricity is always itching to move from higher voltage to lower voltage. Voltage, measured in volts, is <em>potential</em> energy, however—voltage alone without moving charged electrons (jellyfish) can’t wreak any havoc.</p>
-<p><img src="03-potential-energy.png" alt="Voltage is _potential_ energy."></p>
-<p>For something interesting to happen, jellyfish need to get actively chucked over the edge of the cliff, a task which the gnomes are more than happy to perform.</p>
-<p>The townspeople learned to measure jellyfish current by staking out a spot on the cliff and precisely counting the number of jellyfish that passed by over a precise period of time. <em>Current</em>, the flow of electric charge, is measured in <em>Amperes</em>, often abbreviated as <em>Amps</em>.</p>
-<p><img src="03-current.png" alt="Current is a flow of charge."></p>
-<p><em>Current</em>, the flow of electricity, can be measured by counting how many charges (jellyfish) pass a specific spot on a cliff during a defined period of time.</p>
-<p>The townspeople needed to find a way to manage the current of jellyfish so that it wouldn’t overwhelm the delicate cookie presses and ovens. This is the lynchpin of jellyfish circuit control: <em>resistance</em>. Resistance is how much a material is able to resist electrical flow. It is measured in <em>Ohms</em>.</p>
-<p>They engineered jellyfish-channeling systems into the cliff faces, restricting their flow to a more reasonable level. For circuits near the higher cliffs (more voltage), these systems had to be more robust because of the immense jellyfish-falling pressure from above.</p>
-<p>Townspeople add <em>resistance</em> to the circuit by channeling falling jellyfish through a series of tubes. Increasing resistance lowers the current.</p>
-<p><img src="03-resistance.png" alt="Increasing resistance lowers current"></p>
-<p>A summary of the townspeople’s discoveries is shown here:</p>
-<p><strong>Voltage</strong></p>
-<ul>
-<li>What it means: The difference of electrical potential between two points. Akin to electrical “pressure”. It’s what pushes electrical charges through a circuit.</li>
-<li>Abbreviated as: V (occasionally E)</li>
-<li>Measured in units of: Volts</li>
-</ul>
-<p><strong>Current</strong></p>
-<ul>
-<li>What it means: how many electrical charges are passing a single point during a defined period of time.</li>
-<li>Abbreviated as: I</li>
-<li>Measured in units of: Amperes (Amps)</li>
-</ul>
-<p><strong>Resistance</strong></p>
-<ul>
-<li>What it means: A measurement of a material’s ability to resist electrical flow.</li>
-<li>Abbreviated as: R</li>
-<li>Measured in units of: Ohms (denoted by the Ω symbol)</li>
-</ul>
-<p>In the end, the townspeople perfected the circuit and the jellyfish helped to make some of the best cookies around.</p>
-<p>There is a power source—troops of gnomes—tossing jellyfish over a cliff. The higher the cliff, the more <em>voltage</em> (potential energy) is supplied to the circuit. The <em>current</em> (flow) of jellyfish heads toward the factory machinery.</p>
-<p>To reduce the jellyfish current to manageable levels, channeling systems and pipes add <em>resistance</em>.</p>
-<p>Once the jellyfish have given power to the cookie-making machinery and reached the floor of the factory, they reach the point of lowest potential in the circuit. Jet-pack-wearing gnomes act like a pump of sorts, hoisting the weary jellyfish back up the cliff where they can be thrown over again. And again and again…</p>
-<p><img src="03-gnome-circuit.png" alt="A complete gnome-and-jellyfish &quot;circuit&quot;"></p>
-<p>Voltage, current and resistance are vital concepts of basic circuitry. The next step is to understand how these factors relate to each other, and how they apply to real-world circuits.</p>
-<h3 id="ohm-s-law">Ohm’s Law</h3>
-<p>Voltage, current and resistance are related to each other in consistent ways. Each of the three factors is like a lever: tweak one and you will affect the others. These interplays became so central to the town’s populace that the factories started producing cookies that illustrated the relationships.</p>
-<p>The townspeople’s new signature cookie showed the relationship between voltage (V), current (I) and resistance (R).</p>
-<p><img src="03-cookie.png" alt="The townspeople&#39;s new signature cookie showed the relationship between voltage (V), current (I) and resistance (R)"></p>
-<p>The bearer of the cookie can bite off the factor she wishes to determine—then see how it can be derived from the other two factors. For example, if she wanted to determine resistance (R), she could bite that off and see that R = voltage (V) divided by current (I).</p>
-<p><img src="03-cookie-equations.png" alt="For example, if she wanted to determine resistance (R), she could bite that off and see that R = voltage (V) divided by current (I)"></p>
-<p>Georg Ohm figured out these key relationships between voltage, resistance and current back in the 1820s, well before the clever cookie-townspeople, which is why <em>Ohm’s Law</em> bears his name. If you prefer your math in non-cookie form, the relevant equations are:</p>
-<pre><code>V = I x R (Voltage <span class="hljs-keyword">equals</span> current <span class="hljs-keyword">times</span> resistance)
+              <p>
+                <a href="https://www.manning.com/books/javascript-on-things"
+                  ><img
+                    src="js-on-things.png"
+                    alt="JavaScript on Things: Hardware for Web Developers by Lyza Danger Gardner"
+                    class="Pull--left"
+                /></a>
+              </p>
+              <p>
+                <em>The following is an excerpt from chapter 3 of</em>
+                <a href="https://www.manning.com/books/javascript-on-things"
+                  >JavaScript on Things: Hardware for Web Developers</a
+                >
+                <em
+                  >by me, Lyza Danger Gardner (I also take the blame for the
+                  illustrations). I hope you enjoy it! The book is in early
+                  release (MEAP) from Manning Publications. It’s intended as a
+                  soup-to-nuts get-started guide to electronics hacking for
+                  JS-familiar web developers.</em
+                >
+              </p>
+              <hr />
+              <p>
+                Designing and building circuits may be completely new to you,
+                and may seem intimidating. The good news is that there are just
+                a handful of core concepts to wrap your head around. Once you
+                understand the interplay of voltage, current and resistance—as
+                formalized in Ohm’s Law—you’re well on your way to being able to
+                understand basic circuits.
+              </p>
+              <p>
+                There are a couple of metaphors traditionally used to illustrate
+                voltage, current and resistance. The most common analogy is a
+                hydraulic (water) system involving tanks and pipes. Effective,
+                but not always memorable. Let’s try a different adventure.
+              </p>
+              <h2 id="voltage-current-and-resistance">
+                Voltage, Current and Resistance
+              </h2>
+              <p>
+                High in the mountains, deep in the forest of some place that
+                does not exist, a tribe of gnomes found themselves inexplicably
+                in possession of an infinite supply of jellyfish. And the gnomes
+                being ornery and mischievous, they struck out to find a humorous
+                use for the otherwise-inert creatures. They found great fun in
+                dropping jellyfish over cliffs, watching them splash into the
+                lake below or bounce off the roofs of local villages.
+              </p>
+              <p>
+                The nearby townspeople were initially inconvenienced but soon
+                recognized that the plummeting invertebrates carried energy and
+                could be a free source of power for their cookie factories—but
+                only if the onslaught could be harnessed safely. So they
+                observed, and, over time, came to understand and manipulate the
+                core factors of electrical circuits: voltage, current and
+                resistance.
+              </p>
+              <p>
+                Townspeople noticed quickly, for example, that the higher and
+                steeper the cliff, the more energy tossed jellyfish have when
+                they reach the lake on the valley floor. Lesser drop-offs don’t
+                provide as much potential energy for hijinks when the jellyfish
+                splash down.
+              </p>
+              <p>
+                Higher cliffs provide more “voltage”, that is, electrical
+                potential. <em>Voltage</em> is like electrical “pressure”,
+                pushing the charges (jellyfish) from high potential energy
+                toward a location of lower potential.
+              </p>
+              <p>
+                <img
+                  src="03-voltage.png"
+                  alt='Higher cliffs provide more "voltage", that is, electrical potential. *Voltage* is like electrical "pressure", pushing the charges—jellyfish—from high potential energy toward a location of lower potential.'
+                />
+              </p>
+              <p>
+                <em>Voltage</em> is a measurement of the difference of potential
+                energy between two points. It’s something like pressure or
+                tension or gravitational force, as electricity is always itching
+                to move from higher voltage to lower voltage. Voltage, measured
+                in volts, is <em>potential</em> energy, however—voltage alone
+                without moving charged electrons (jellyfish) can’t wreak any
+                havoc.
+              </p>
+              <p>
+                <img
+                  src="03-potential-energy.png"
+                  alt="Voltage is _potential_ energy."
+                />
+              </p>
+              <p>
+                For something interesting to happen, jellyfish need to get
+                actively chucked over the edge of the cliff, a task which the
+                gnomes are more than happy to perform.
+              </p>
+              <p>
+                The townspeople learned to measure jellyfish current by staking
+                out a spot on the cliff and precisely counting the number of
+                jellyfish that passed by over a precise period of time.
+                <em>Current</em>, the flow of electric charge, is measured in
+                <em>Amperes</em>, often abbreviated as <em>Amps</em>.
+              </p>
+              <p>
+                <img src="03-current.png" alt="Current is a flow of charge." />
+              </p>
+              <p>
+                <em>Current</em>, the flow of electricity, can be measured by
+                counting how many charges (jellyfish) pass a specific spot on a
+                cliff during a defined period of time.
+              </p>
+              <p>
+                The townspeople needed to find a way to manage the current of
+                jellyfish so that it wouldn’t overwhelm the delicate cookie
+                presses and ovens. This is the lynchpin of jellyfish circuit
+                control: <em>resistance</em>. Resistance is how much a material
+                is able to resist electrical flow. It is measured in
+                <em>Ohms</em>.
+              </p>
+              <p>
+                They engineered jellyfish-channeling systems into the cliff
+                faces, restricting their flow to a more reasonable level. For
+                circuits near the higher cliffs (more voltage), these systems
+                had to be more robust because of the immense jellyfish-falling
+                pressure from above.
+              </p>
+              <p>
+                Townspeople add <em>resistance</em> to the circuit by channeling
+                falling jellyfish through a series of tubes. Increasing
+                resistance lowers the current.
+              </p>
+              <p>
+                <img
+                  src="03-resistance.png"
+                  alt="Increasing resistance lowers current"
+                />
+              </p>
+              <p>A summary of the townspeople’s discoveries is shown here:</p>
+              <p><strong>Voltage</strong></p>
+              <ul>
+                <li>
+                  What it means: The difference of electrical potential between
+                  two points. Akin to electrical “pressure”. It’s what pushes
+                  electrical charges through a circuit.
+                </li>
+                <li>Abbreviated as: V (occasionally E)</li>
+                <li>Measured in units of: Volts</li>
+              </ul>
+              <p><strong>Current</strong></p>
+              <ul>
+                <li>
+                  What it means: how many electrical charges are passing a
+                  single point during a defined period of time.
+                </li>
+                <li>Abbreviated as: I</li>
+                <li>Measured in units of: Amperes (Amps)</li>
+              </ul>
+              <p><strong>Resistance</strong></p>
+              <ul>
+                <li>
+                  What it means: A measurement of a material’s ability to resist
+                  electrical flow.
+                </li>
+                <li>Abbreviated as: R</li>
+                <li>Measured in units of: Ohms (denoted by the Ω symbol)</li>
+              </ul>
+              <p>
+                In the end, the townspeople perfected the circuit and the
+                jellyfish helped to make some of the best cookies around.
+              </p>
+              <p>
+                There is a power source—troops of gnomes—tossing jellyfish over
+                a cliff. The higher the cliff, the more
+                <em>voltage</em> (potential energy) is supplied to the circuit.
+                The <em>current</em> (flow) of jellyfish heads toward the
+                factory machinery.
+              </p>
+              <p>
+                To reduce the jellyfish current to manageable levels, channeling
+                systems and pipes add <em>resistance</em>.
+              </p>
+              <p>
+                Once the jellyfish have given power to the cookie-making
+                machinery and reached the floor of the factory, they reach the
+                point of lowest potential in the circuit. Jet-pack-wearing
+                gnomes act like a pump of sorts, hoisting the weary jellyfish
+                back up the cliff where they can be thrown over again. And again
+                and again…
+              </p>
+              <p>
+                <img
+                  src="03-gnome-circuit.png"
+                  alt='A complete gnome-and-jellyfish "circuit"'
+                />
+              </p>
+              <p>
+                Voltage, current and resistance are vital concepts of basic
+                circuitry. The next step is to understand how these factors
+                relate to each other, and how they apply to real-world circuits.
+              </p>
+              <h3 id="ohm-s-law">Ohm’s Law</h3>
+              <p>
+                Voltage, current and resistance are related to each other in
+                consistent ways. Each of the three factors is like a lever:
+                tweak one and you will affect the others. These interplays
+                became so central to the town’s populace that the factories
+                started producing cookies that illustrated the relationships.
+              </p>
+              <p>
+                The townspeople’s new signature cookie showed the relationship
+                between voltage (V), current (I) and resistance (R).
+              </p>
+              <p>
+                <img
+                  src="03-cookie.png"
+                  alt="The townspeople&#39;s new signature cookie showed the relationship between voltage (V), current (I) and resistance (R)"
+                />
+              </p>
+              <p>
+                The bearer of the cookie can bite off the factor she wishes to
+                determine—then see how it can be derived from the other two
+                factors. For example, if she wanted to determine resistance (R),
+                she could bite that off and see that R = voltage (V) divided by
+                current (I).
+              </p>
+              <p>
+                <img
+                  src="03-cookie-equations.png"
+                  alt="For example, if she wanted to determine resistance (R), she could bite that off and see that R = voltage (V) divided by current (I)"
+                />
+              </p>
+              <p>
+                Georg Ohm figured out these key relationships between voltage,
+                resistance and current back in the 1820s, well before the clever
+                cookie-townspeople, which is why <em>Ohm’s Law</em> bears his
+                name. If you prefer your math in non-cookie form, the relevant
+                equations are:
+              </p>
+              <pre><code>V = I x R (Voltage <span class="hljs-keyword">equals</span> current <span class="hljs-keyword">times</span> resistance)
 I = V / R (Current <span class="hljs-keyword">equals</span> voltage divided <span class="hljs-keyword">by</span> resistance)
 R = V / I (Resistance <span class="hljs-keyword">equals</span> voltage divided <span class="hljs-keyword">by</span> current)
-</code></pre><hr>
-<p>_OK_, you might be thinking, <em>but how do I apply this in the real world?</em> … Well, I hope you might give <a href="https://www.manning.com/books/javascript-on-things"><em>JavaScript on Things: Hardware for Web Developers</em></a> a read and find out!</p>
+</code></pre>
+              <hr />
+              <p>
+                _OK_, you might be thinking,
+                <em>but how do I apply this in the real world?</em> … Well, I
+                hope you might give
+                <a href="https://www.manning.com/books/javascript-on-things"
+                  ><em>JavaScript on Things: Hardware for Web Developers</em></a
+                >
+                a read and find out!
+              </p>
 
-              <hr class="Separator--small Separator--subtle">
-              <p class="u-text-xs u-muted"><em>You may have noticed I don&rsquo;t have any commenting enabled...yet. Hit me up <a href="https://twitter.com/lyzadanger" class="u-link-subtle">@lyzadanger</a> with thoughts; maybe I&rsquo;ll add commenting soon.</em></p>
+              <hr class="Separator--small Separator--subtle" />
+              <p class="u-text-xs u-muted">
+                <em
+                  >You may have noticed I don&rsquo;t have any commenting
+                  enabled...yet. Hit me up
+                  <a href="https://twitter.com/lyzadanger" class="u-link-subtle"
+                    >@lyzadanger</a
+                  >
+                  with thoughts; maybe I&rsquo;ll add commenting soon.</em
+                >
+              </p>
             </div>
           </section>
         </div>
       </article>
-  </main>
-  <footer class="Footer u-align-center" role="contentinfo">
-    <hr class="Separator Separator--small Separator--light">
-    <nav role="navigation" class="Navigation Navigation--subtle">
-      <ul class="Navigation-list">
-        <li class="Navigation-item"><a href="mailto:lyza@lyza.com" class="Navigation-link u-linkClean">Contact</a></li>
-        <li class="Navigation-item"><a href="http://www.cloudfour.com" class="Navigation-link u-linkClean">Cloud Four</a></li>
-        <li class="Navigation-item"><a href="http://twitter.com/lyzadanger" class="Navigation-link u-linkClean">@lyzadanger</a></li>
-      </ul>
-    </nav>
-  </footer>
-</body>
+    </main>
+    <footer class="Footer u-align-center" role="contentinfo">
+      <hr class="Separator Separator--small Separator--light" />
+      <nav role="navigation" class="Navigation Navigation--subtle">
+        <ul class="Navigation-list">
+          <li class="Navigation-item">
+            <a href="mailto:lyza@lyza.com" class="Navigation-link u-linkClean"
+              >Contact</a
+            >
+          </li>
+          <li class="Navigation-item">
+            <a
+              href="http://www.cloudfour.com"
+              class="Navigation-link u-linkClean"
+              >Cloud Four</a
+            >
+          </li>
+          <li class="Navigation-item">
+            <a
+              href="http://twitter.com/lyzadanger"
+              class="Navigation-link u-linkClean"
+              >@lyzadanger</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </footer>
+  </body>
 </html>

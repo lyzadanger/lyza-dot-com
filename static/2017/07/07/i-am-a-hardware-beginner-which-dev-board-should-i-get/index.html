@@ -1,186 +1,624 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-US" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../../../../css/styles.css">
-  <link rel="alternate" type="application/rss+xml"
-    href="../../../../feeds/rss.rss" title="Lyza.com: All Posts">
-  <link rel="alternate" type="application/rss+xml"
-    href="../../../../feeds/tech.rss" title="Lyza.com: Work and Tech Posts">
-  <link rel="alternate" type="application/rss+xml"
-    href="../../../../feeds/life.rss" title="Lyza.com: Life and Off-topic Posts">
-  <title>I am a Hardware Beginner: Which Dev Board Should I Get? | Lyza.com</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../../css/styles.css" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="../../../../feeds/rss.rss"
+      title="Lyza.com: All Posts"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="../../../../feeds/tech.rss"
+      title="Lyza.com: Work and Tech Posts"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="../../../../feeds/life.rss"
+      title="Lyza.com: Life and Off-topic Posts"
+    />
+    <title>
+      I am a Hardware Beginner: Which Dev Board Should I Get? | Lyza.com
+    </title>
 
-  <script>
-    WebFontConfig = {
-      google: {
-        families: ['Playfair Display:italic,900']
-      }
-    };
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js" async></script>
-  <script src="../../../../js/site.js" defer="defer"></script>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <script>
+      WebFontConfig = {
+        google: {
+          families: ['Playfair Display:italic,900'],
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"
+      async
+    ></script>
+    <script src="../../../../js/site.js" defer="defer"></script>
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        (i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        'script',
+        '//www.google-analytics.com/analytics.js',
+        'ga'
+      );
 
-    ga('create', 'UA-2791311-1', 'auto');
-    ga('send', 'pageview');
+      ga('create', 'UA-2791311-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <header role="banner">
+      <hr class="Separator--small" />
 
-  </script>
+      <nav
+        role="navigation"
+        class="Navigation u-size3of4 u-after1of4 u-top-off"
+        aria-label="Primary Navigation"
+      >
+        <ul class="List--inline">
+          <li class="Navigation-item">
+            <a href="http://www.lyza.com/" class="u-linkClean">Home</a>
+          </li>
+          <li class="Navigation-item">
+            <a href="http://www.lyza.com/about" class="u-linkClean"
+              >About <span class="u-visually-hidden">Lyza</span></a
+            >
+          </li>
+          <li class="Navigation-item Navigation-item--active">
+            <a href="../../../../blog" class="u-linkClean">Blog</a>
+          </li>
+        </ul>
+      </nav>
 
-</head>
-<body>
+      <div class="Header Grid Header--small Grid--alignMiddle">
+        <div
+          class="Grid-cell Header-title-container u-margins-off u-md-size5of12"
+        >
+          <img
+            src="/images/lyza.gif"
+            class="Header-photo"
+            alt="Lyza Danger Gardner, human"
+          />
+          <h1 class="Header-title u-margins-off">
+            <span class="Header-Lyza Header-Lyza-lyza">Lyza</span>
+            <span class="Header-Lyza Header-Lyza-danger">Danger</span>
+            <span class="Header-Lyza Header-Lyza-gardner">Gardner</span>
+          </h1>
+        </div>
 
-  <header role="banner">
+        <div class="Grid-cell u-md-size3of12 u-lg-size4of12"></div>
 
-    <hr class="Separator--small">
-
-    <nav role="navigation" class="Navigation u-size3of4 u-after1of4 u-top-off" aria-label="Primary Navigation">
-      <ul class="List--inline">
-        <li class="Navigation-item ">
-          <a href="http://www.lyza.com/" class="u-linkClean">Home</a>
-        </li>
-        <li class="Navigation-item ">
-          <a href="http://www.lyza.com/about" class="u-linkClean">About <span class="u-visually-hidden">Lyza</span></a>
-        </li>
-          <li class="Navigation-item Navigation-item--active"><a href="../../../../blog" class="u-linkClean">Blog</a></li>
-      </ul>
-    </nav>
-
-    <div class="Header Grid Header--small Grid--alignMiddle">
-
-      <div class="Grid-cell Header-title-container u-margins-off u-md-size5of12">
-        <img src="https://d33wubrfki0l68.cloudfront.net/672d9a0c22400b00b6c41dc2414d04beae1ab8ea/1f27f/images/lyza.gif" class="Header-photo" alt="Lyza Danger Gardner, human">
-        <h1 class="Header-title u-margins-off">
-          <span class="Header-Lyza Header-Lyza-lyza">Lyza</span>
-          <span class="Header-Lyza Header-Lyza-danger">Danger</span>
-          <span class="Header-Lyza Header-Lyza-gardner">Gardner</span>
-        </h1>
+        <div class="Grid-cell u-md-size4of12 u-lg-size3of12">
+          <h2 class="Header-subheading">
+            Developer <em class="Header-ampersand">&amp;</em> Person
+          </h2>
+        </div>
       </div>
+    </header>
 
-      <div class="Grid-cell u-md-size3of12 u-lg-size4of12"></div>
-
-      <div class="Grid-cell u-md-size4of12 u-lg-size3of12">
-        <h2 class="Header-subheading">Developer <em class="Header-ampersand">&amp;</em> Person</h2>
-      </div>
-
-    </div>
-  </header>
-
-  <main role="main" class="u-top-tight u-md-top-default">
+    <main role="main" class="u-top-tight u-md-top-default">
       <article class="u-margins-off u-sm-top-xs u-md-top-default">
         <div class="Grid">
           <div class="Grid-cell u-md-size3of12 u-lg-size2of10">
             <header>
               <div class="Content-header">
-                <h2 class="Content-heading Content-title">I am a Hardware Beginner: Which Dev Board Should I Get?</h2>
-                <div class="Content-meta"><time datetime="2017-07-07T14:06:10.001Z">July 7, 2017</time></div>
+                <h2 class="Content-heading Content-title">
+                  I am a Hardware Beginner: Which Dev Board Should I Get?
+                </h2>
+                <div class="Content-meta">
+                  <time datetime="2017-07-07T14:06:10.001Z">July 7, 2017</time>
+                </div>
               </div>
-              <hr class="Separator--small Separator--light u-top-tight u-md-top-default">
-              <div class="Content-blurb Content-header"><p>You’re thinking of starting out on a journey to learn about electronics and IoT. Which development platform should you start<span class="widont">&nbsp;</span>with?</p>
-</div>
-              <hr class="Separator--small Separator--light">
+              <hr
+                class="Separator--small Separator--light u-top-tight u-md-top-default"
+              />
+              <div class="Content-blurb Content-header">
+                <p>
+                  You’re thinking of starting out on a journey to learn about
+                  electronics and IoT. Which development platform should you
+                  start<span class="widont">&nbsp;</span>with?
+                </p>
+              </div>
+              <hr class="Separator--small Separator--light" />
               <ul class="List--inline is-indented--xxsm u-top-xs">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>javascript</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>JSoT</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
+                <li>
+                  <span class="u-muted u-smallcaps"
+                    ><span class="u-text-xs">#</span>javascript</span
+                  >
+                </li>
+                <li>
+                  <span class="u-muted u-smallcaps"
+                    ><span class="u-text-xs">#</span>JSoT</span
+                  >
+                </li>
+                <li>
+                  <span class="u-muted u-smallcaps"
+                    ><span class="u-text-xs">#</span>tech</span
+                  >
+                </li>
               </ul>
             </header>
           </div>
           <section class="Grid-cell u-md-size9of12 u-lg-size6of10">
             <div class="Content-content Content u-top-tight u-md-top-off">
-              <p><a href="https://www.manning.com/books/javascript-on-things"><img src="js-on-things.png" alt="JavaScript on Things: Hardware for Web Developers by Lyza Danger Gardner" class="Pull--left" /></a></p>
-<p><em>As part and parcel of writing my book</em> (<a href="https://www.manning.com/books/javascript-on-things">JavaScript on Things, Manning</a> ) <em>and scratching the curiosity-itches of my hardware-hacking hobbies, I’ve had my hands on scads of different hardware platforms and components over the past year and more. This series of articles contain a collection of opinions and recommendations based on my experiences as they relate to two focus areas: electronics for beginners and JavaScript-controlled hardware.</em></p>
-<p>This post’s electronics experience rating: ABSOLUTE BEGINNER</p>
-<hr>
-<p>A question I field often is: “What kind of board should I buy to learn how to do this stuff? Where do I start, hardware-wise?” And there are two boards I tend to recommend, in the end—which is why they figure so prominently in <a href="https://www.manning.com/books/javascript-on-things">my book</a> (Don’t worry, I’ve provided some other educational links for each in case my shameless plug is…shameless).</p>
-<h2 id="what-s-a-development-board-">What’s a Development Board?</h2>
-<p>Let’s not go off half-cocked with a major undefined or vague term. What’s a development board, anyway? In my book I use the following definition:</p>
-<blockquote>
-<p><em>Development boards</em>, also called <em>prototyping boards</em> or just <em>boards</em>, are physical development platforms that combine a microcontroller or other processing component with useful supporting features. They are the bread and butter of the hardware-hacking lifestyle. Boards range in cost from just a few bucks to over $100 for high-end [Single-Board Computers, a.k.a.] SBCs.</p>
-<p>Boards are centered around their brain, a combination of processor, memory and I/O. 8- or 16-bit microcontrollers are at the center of  straightforward, entry-level prototyping boards like (most) Arduinos. Boards with more sophisticated, 32-bit microcontrollers may be able to run embedded JavaScript.</p>
-</blockquote>
-<p>When setting off on a learn-electronics journey, choosing a board is a solid first step. It’ll determine the trajectory of your explorations.</p>
-<p><img src="dev-boards.jpg" alt="A selection of development boards. Clockwise from top left: Texas Instruments Launch Pad, Arduino Uno R3, Adafruit Trinket 5V, Particle Photon"></p>
-<p><em>Photo: A selection of development boards. Clockwise from top left: Texas Instruments Launch Pad, Arduino Uno R3, Adafruit Trinket 5V, Particle Photon</em></p>
-<h2 id="ideal-things-for-a-beginner">Ideal Things for a Beginner</h2>
-<p>Features that make a development board ideal for beginners include clarity, constraints and ubiquity. Put another way, good dev boards for n00bs have simple, obvious features and are used by a whole crapload of folks.</p>
-<h3 id="clear-intuitive-features">Clear, Intuitive Features</h3>
-<p>A good beginner dev board should support a reasonable set of I/O features (note: this is usually dictated by what features the board’s microcontroller can support). Different <em>pins</em> on the board support different features, which should include—at the least—digital I/O, analog input, PWM (pulse-width modulation), ADC (analog-to-digital conversion) and serial support (including I<sup>2</sup>C and SPI). Don’t worry a tick if you haven’t heard of any or all of those things yet.</p>
-<p>Pins should be sensibly laid out and named (or, often, numbered). Many boards have pin numbering and capability information helpfully <em>silkscreened</em> onto the board itself. A board with missing key features, nonsensical pin layout or a confusing pinout diagram can make you wish you hadn’t bothered.</p>
-<p><img src="uno-silkscreen.jpg" alt="Detail of Arduino Uno R3 showing silkscreened pin information"></p>
-<p><em>Photo: Detail of the Arduino Uno (R3) board showing silkscreened pin numbers.</em></p>
-<h3 id="constraints">Constraints</h3>
-<p>The more things you can do with a dev board, the more distracted you can get. While a juiced-up microcontroller, or more flash memory for your programs, or additional peripherals and goodies sound tempting, they’re also potentially pits to wallow in and get overwhelmed.</p>
-<p>Limits to the oomph of your first dev board can paradoxically be freeing, allowing you to zero in on the fundamentals of electronics hackery without suffering from the angst of overchoice.</p>
-<p>For example, despite their popularity, I’d recommend against the Raspberry Pi family for introductory electronics explorations.  <em>So much</em> is possible with the Pi platform that it can be distracting and overwhelming if you want to focus on electronics fundamentals for a bit.</p>
-<p>Also, Pis fall short in feature complement: while they certainly have some on-board I/O capabilities, their convoluted pin numbering, limited PWM (pulse-width modulation) support and complete lack of ADC (analog-to-digital conversion) makes introductory I/O hackery potentially confusing and frustrating.</p>
-<p>An aside, though: If you want to tinker around with projects that make use of the Pi’s general-computing powers—for example, cobbling together a tablet-like PC for your kitchen—by all means, do! They are fantastic tiny computers, just not the most ideal beginner electronics platforms.The newer <a href="https://www.raspberrypi.org/products/raspberry-pi-3-model-b/">Pi 3</a> is especially fantastic, by the way.</p>
-<h3 id="ubiquity">Ubiquity</h3>
-<p>When you’re choosing your first dev board, you’re focused on learning how to do things with electronics. Getting sidetracked by a platform’s idiosyncrasies (or, even, bugs) is not only annoying, it can be derailing. At this point in your journey, it shouldn’t be your job to figure out whether a component or project is misbehaving because of some arcane wonkiness in the hardware (or supporting firmware) itself. Working on a well-tested platform is helpful here: when an LED fails to blink, it’s more than likely pilot error; you can factor out most (but never all, truth be told) random flakiness when trying to figure out what’s up.</p>
-<p>And when you do get stuck or confused, it’s awfully nice to have a big corpus of support to turn to.</p>
-<p>For both of these—stability and support—an underlying core factor is the platform’s popularity, its relative ubiquity. For beginners, choosing a platform that is widely used and has been around for a while can be a sanity-saving tactic.</p>
-<h2 id="two-different-approaches">Two Different Approaches</h2>
-<p>At the end of the day, there are certain dev boards that tick most of the boxes time and time again, for each of two approaches (and you choose your own adventure here!):</p>
-<ul>
-<li><em>Learning key electronic fundamentals</em>: In this path, you’re really focused on understanding electronic principles on a fundamental level. This is for you if you’re innately curious about the interactions of current, resistance and voltage (howdy, Ohm’s Law!) and, really, how things <em>work</em> physically. This path is lower-level but leads to a wide competence in low-voltage DC circuitry (believe me, this really does come in handy in life!).</li>
-<li><em>Building web-connected devices</em>: This is for you if you have at least a passing interest in the electronics themselves (if you don’t, this post really isn’t for you, anyway), but also have some (software) development background (read: JavaScript). This approach gets you to fully-flung embedded systems faster, in some cases making the vast <code>npm</code> ecosystem of Node.js available to you. This will require a more sophisticated microcontroller/processor than those needed for the first path.</li>
-</ul>
-<h2 id="first-choice-for-learning-electronics-fundamentals-arduino-uno-r3">First Choice for Learning Electronics Fundamentals: Arduino Uno R3</h2>
-<p>Ohmigod, how <em>boring</em>! you might be lamenting. I’ve just held up the non-cutting-edgiest, pedestrian, and basically <em>first</em> open-source board as a shining example of newbie awesome.</p>
-<p><img src="uno.png" alt="A bad artist&#39;s impression of the Arduino Uno (R3) board"></p>
-<p><em>Illustration: A bad artist’s impression of the Arduino Uno (R3) board</em>.</p>
-<p>Yes, it’s true, the Uno has been around since a long time, and, also true, is seriously <em>not flashy</em>, but it really is a platform of the people. Its relative stodginess is a blessing when compared to the immaturity and fragility of many boards. Sure, working with one won’t give you the smug <em>frisson</em> of novelty, but it will, in most cases, <em>actually work</em>. The Uno does what it says it does. If it didn’t, there are a lot of people who’d be irked.</p>
-<p>Statistics are spotty at best, but even back in 2013, 700,000 <em>official</em> Arduino boards had been “registered”, with an estimated 700,000 additional “derivative or clone board[s]”, that is, about a one-to-one ratio (<a href="http://medea.mah.se/2013/04/arduino-faq/">source</a>).</p>
-<p>Let’s talk about a couple of things here. First: Arduino is a <em>family</em> of boards, and the 700k number references Arduino boards of all stripes, not specifically the Uno (though the Uno is the most popular, and, no, I don’t have a good source for that but it <em>certainly seems to be the damned case</em>). At the same time, it’s been several years so surely there are many more. All right, that’s out of the way.</p>
-<p>The “derivative or clone board” notion arises because while Arduino is open-source, “official” ones carry the Arduino logo and can only be made by certain blessed manufacturers. Non-official ones are fine, too, but there is a bit of a thing with knock-offs that have the logo but shouldn’t, so-called <a href="https://www.arduino.cc/en/Products/Counterfeit">“counterfeit” Arduinos</a>, which are cheaper to buy but potentially shoddy.</p>
-<p>Here’s how the Arduino Uno R3 stacks up:</p>
-<ul>
-<li><em>Clear, Intuitive Features</em>: Unos have clearly-marked I/O pins, laid out sensibly. An added bonus: pins that support PWM are marked with a tilde (~) and, once again, don’t worry if you don’t know what that is, yet. While Unos certainly aren’t the most svelte form factor, their roominess gives you plenty of space to maneuver. Unos, or, more accurately, their ATmega328P microcontrollers, support all the requisite basic features just fine.</li>
-<li><em>Constraints</em>: That selfsame ATmega328P microcontroller is 8-bit, running at something like 20MHz, and it only has 32kB of Flash memory (space for your programs). That’s <em>really</em> constrained. You’re not going to run any kind of (recognizable, let’s not get clever here) OS on that, that’s for sure. But it totally fits the bill for doing all the classic things you do when learning embedded electronics.</li>
-<li><em>Ubiquity</em>: It doesn’t get more ubiquitous. Also, the ATmega328P is a battle-tested microcontroller; it’s reliable and sensible.</li>
-</ul>
-<p>Expect to pay about US$25 for a certified Arduino Uno R3, considerably cheaper if you’re willing to take a risk on reliability, which, at this stage in the game, I wouldn’t?</p>
-<p>The Uno: unglamorous, reliable, and the <em>sui generis</em> for educational hardware hacking. There is really no substitute.</p>
-<h3 id="learning-electronics-with-the-arduino-uno">Learning Electronics with the Arduino Uno</h3>
-<p>OK, so there is this fantastic book—brilliant visual design, clear instructions, just in all ways excellent. It’s called <em>Arduino Projects Book</em>. But there’s a pretty major downside: you can <em>only</em> get it if you purchase the (official) <a href="https://store.arduino.cc/usa/arduino-starter-kit">Arduino Starter Kit</a>. That’s a bit of a bummer, but I will say: that starter kit rocks. It’s worth getting if you can spare the extra funds (they’re currently retailing at $85). Of course, there are tons of other getting-started books on the market if you Google around a bit.</p>
-<p><a href="http://www.ladyada.net/learn/arduino/">LadyAda’s tutorials</a> are a free resource, and there are a <a href="https://store.arduino.cc/usa/books-manuals">handful of books for beginners</a> called out on the Arduino website.</p>
-<h2 id="first-choice-for-web-connected-devices-tessel-2">First Choice for Web-Connected Devices: Tessel 2</h2>
-<p>And now for something completely different, and lightly violating what I said about constraints and ubiquity: the <a href="https://tessel.io/">Tessel 2</a> board. The Tessel runs an optimized-for-embedded Linux distribution, OpenWRT, and has enough oomph to run Node.js on-board. So, if you’ve selected the “Web-Connected Devices” adventure, you can <code>npm</code> to your heart’s content and do some pretty complex, nifty software things in short order.</p>
-<p><img src="tessel.png" alt="The Tessel 2 board"></p>
-<p>Like the Arduino, Tessel is an open-source platform. Also like the Arduino Uno, the Tessel’s pins are sanely organized and labeled and the board supports all the major features you’d expect. It’s a more sophisticated device than the Uno, with a separate co-processor for handling I/O. There are some frills. You’ll likely put the on-board WiFi to use straightaway. There are two USB peripheral ports, which are fun to play with but I’d recommend keeping it simple to start and ignoring those initially.</p>
-<p>For controlling the Tessel 2, I recommend Johnny-Five, an open-source, widely used, cross-platform-compatible JavaScript framework.</p>
-<p>Here’s how the Tessel 2 Stacks Up:</p>
-<ul>
-<li><em>Clear, Intuitive Features</em>: Tessel 2’s pins are organized into two “ports” of 10 pins each (two power pins and 8 I/O). They’re straightforward to figure out. The workflow will feel familiar to web and Node.js developers. The on-board WiFi is a real boon for building web-connected things.</li>
-<li><em>Constraints</em>: The Tessel can do more stuff than the Uno and that’s potentially overwhelming, but if you resist the temptation to futz around with interesting features of its OpenWRT OS and the USB peripherals right away, it can provide a focused learning platform, especially paired with Johnny-Five.</li>
-<li><em>Ubiquity</em>: Straight up, the Tessel 2 doesn’t have a massive user base. But it’s growing into itself and maturing. Johnny-Five recently had its fifth birthday, and has a wide community of contributors and supporters.</li>
-</ul>
-<p>A lot of bells and whistles don’t necessarily make this a complicated platform. The workflow is smooth and feels natural for Node.js/JavaScript programmers. Johnny-Five has intuitive, built-in support for tons of components.</p>
-<h3 id="learning-electronics-with-the-tessel-2">Learning Electronics with the Tessel 2</h3>
-<p>SparkFun sells a complete <a href="https://www.sparkfun.com/products/13847">Johnny-Five Inventor’s Kit</a>, which includes a Tessel and a bunch of components (disclaimer: I was involved in writing the <a href="https://learn.sparkfun.com/tutorials/experiment-guide-for-the-johnny-five-inventors-kit">experiment guide</a>. Even if you don’t buy the kit, that guide is pretty exhaustive (tons of great effort from several committed people!).</p>
+              <p>
+                <a href="https://www.manning.com/books/javascript-on-things"
+                  ><img
+                    src="js-on-things.png"
+                    alt="JavaScript on Things: Hardware for Web Developers by Lyza Danger Gardner"
+                    class="Pull--left"
+                /></a>
+              </p>
+              <p>
+                <em>As part and parcel of writing my book</em> (<a
+                  href="https://www.manning.com/books/javascript-on-things"
+                  >JavaScript on Things, Manning</a
+                >
+                )
+                <em
+                  >and scratching the curiosity-itches of my hardware-hacking
+                  hobbies, I’ve had my hands on scads of different hardware
+                  platforms and components over the past year and more. This
+                  series of articles contain a collection of opinions and
+                  recommendations based on my experiences as they relate to two
+                  focus areas: electronics for beginners and
+                  JavaScript-controlled hardware.</em
+                >
+              </p>
+              <p>
+                This post’s electronics experience rating: ABSOLUTE BEGINNER
+              </p>
+              <hr />
+              <p>
+                A question I field often is: “What kind of board should I buy to
+                learn how to do this stuff? Where do I start, hardware-wise?”
+                And there are two boards I tend to recommend, in the end—which
+                is why they figure so prominently in
+                <a href="https://www.manning.com/books/javascript-on-things"
+                  >my book</a
+                >
+                (Don’t worry, I’ve provided some other educational links for
+                each in case my shameless plug is…shameless).
+              </p>
+              <h2 id="what-s-a-development-board-">
+                What’s a Development Board?
+              </h2>
+              <p>
+                Let’s not go off half-cocked with a major undefined or vague
+                term. What’s a development board, anyway? In my book I use the
+                following definition:
+              </p>
+              <blockquote>
+                <p>
+                  <em>Development boards</em>, also called
+                  <em>prototyping boards</em> or just <em>boards</em>, are
+                  physical development platforms that combine a microcontroller
+                  or other processing component with useful supporting features.
+                  They are the bread and butter of the hardware-hacking
+                  lifestyle. Boards range in cost from just a few bucks to over
+                  $100 for high-end [Single-Board Computers, a.k.a.] SBCs.
+                </p>
+                <p>
+                  Boards are centered around their brain, a combination of
+                  processor, memory and I/O. 8- or 16-bit microcontrollers are
+                  at the center of straightforward, entry-level prototyping
+                  boards like (most) Arduinos. Boards with more sophisticated,
+                  32-bit microcontrollers may be able to run embedded
+                  JavaScript.
+                </p>
+              </blockquote>
+              <p>
+                When setting off on a learn-electronics journey, choosing a
+                board is a solid first step. It’ll determine the trajectory of
+                your explorations.
+              </p>
+              <p>
+                <img
+                  src="dev-boards.jpg"
+                  alt="A selection of development boards. Clockwise from top left: Texas Instruments Launch Pad, Arduino Uno R3, Adafruit Trinket 5V, Particle Photon"
+                />
+              </p>
+              <p>
+                <em
+                  >Photo: A selection of development boards. Clockwise from top
+                  left: Texas Instruments Launch Pad, Arduino Uno R3, Adafruit
+                  Trinket 5V, Particle Photon</em
+                >
+              </p>
+              <h2 id="ideal-things-for-a-beginner">
+                Ideal Things for a Beginner
+              </h2>
+              <p>
+                Features that make a development board ideal for beginners
+                include clarity, constraints and ubiquity. Put another way, good
+                dev boards for n00bs have simple, obvious features and are used
+                by a whole crapload of folks.
+              </p>
+              <h3 id="clear-intuitive-features">Clear, Intuitive Features</h3>
+              <p>
+                A good beginner dev board should support a reasonable set of I/O
+                features (note: this is usually dictated by what features the
+                board’s microcontroller can support). Different <em>pins</em> on
+                the board support different features, which should include—at
+                the least—digital I/O, analog input, PWM (pulse-width
+                modulation), ADC (analog-to-digital conversion) and serial
+                support (including I<sup>2</sup>C and SPI). Don’t worry a tick
+                if you haven’t heard of any or all of those things yet.
+              </p>
+              <p>
+                Pins should be sensibly laid out and named (or, often,
+                numbered). Many boards have pin numbering and capability
+                information helpfully <em>silkscreened</em> onto the board
+                itself. A board with missing key features, nonsensical pin
+                layout or a confusing pinout diagram can make you wish you
+                hadn’t bothered.
+              </p>
+              <p>
+                <img
+                  src="uno-silkscreen.jpg"
+                  alt="Detail of Arduino Uno R3 showing silkscreened pin information"
+                />
+              </p>
+              <p>
+                <em
+                  >Photo: Detail of the Arduino Uno (R3) board showing
+                  silkscreened pin numbers.</em
+                >
+              </p>
+              <h3 id="constraints">Constraints</h3>
+              <p>
+                The more things you can do with a dev board, the more distracted
+                you can get. While a juiced-up microcontroller, or more flash
+                memory for your programs, or additional peripherals and goodies
+                sound tempting, they’re also potentially pits to wallow in and
+                get overwhelmed.
+              </p>
+              <p>
+                Limits to the oomph of your first dev board can paradoxically be
+                freeing, allowing you to zero in on the fundamentals of
+                electronics hackery without suffering from the angst of
+                overchoice.
+              </p>
+              <p>
+                For example, despite their popularity, I’d recommend against the
+                Raspberry Pi family for introductory electronics explorations.
+                <em>So much</em> is possible with the Pi platform that it can be
+                distracting and overwhelming if you want to focus on electronics
+                fundamentals for a bit.
+              </p>
+              <p>
+                Also, Pis fall short in feature complement: while they certainly
+                have some on-board I/O capabilities, their convoluted pin
+                numbering, limited PWM (pulse-width modulation) support and
+                complete lack of ADC (analog-to-digital conversion) makes
+                introductory I/O hackery potentially confusing and frustrating.
+              </p>
+              <p>
+                An aside, though: If you want to tinker around with projects
+                that make use of the Pi’s general-computing powers—for example,
+                cobbling together a tablet-like PC for your kitchen—by all
+                means, do! They are fantastic tiny computers, just not the most
+                ideal beginner electronics platforms.The newer
+                <a
+                  href="https://www.raspberrypi.org/products/raspberry-pi-3-model-b/"
+                  >Pi 3</a
+                >
+                is especially fantastic, by the way.
+              </p>
+              <h3 id="ubiquity">Ubiquity</h3>
+              <p>
+                When you’re choosing your first dev board, you’re focused on
+                learning how to do things with electronics. Getting sidetracked
+                by a platform’s idiosyncrasies (or, even, bugs) is not only
+                annoying, it can be derailing. At this point in your journey, it
+                shouldn’t be your job to figure out whether a component or
+                project is misbehaving because of some arcane wonkiness in the
+                hardware (or supporting firmware) itself. Working on a
+                well-tested platform is helpful here: when an LED fails to
+                blink, it’s more than likely pilot error; you can factor out
+                most (but never all, truth be told) random flakiness when trying
+                to figure out what’s up.
+              </p>
+              <p>
+                And when you do get stuck or confused, it’s awfully nice to have
+                a big corpus of support to turn to.
+              </p>
+              <p>
+                For both of these—stability and support—an underlying core
+                factor is the platform’s popularity, its relative ubiquity. For
+                beginners, choosing a platform that is widely used and has been
+                around for a while can be a sanity-saving tactic.
+              </p>
+              <h2 id="two-different-approaches">Two Different Approaches</h2>
+              <p>
+                At the end of the day, there are certain dev boards that tick
+                most of the boxes time and time again, for each of two
+                approaches (and you choose your own adventure here!):
+              </p>
+              <ul>
+                <li>
+                  <em>Learning key electronic fundamentals</em>: In this path,
+                  you’re really focused on understanding electronic principles
+                  on a fundamental level. This is for you if you’re innately
+                  curious about the interactions of current, resistance and
+                  voltage (howdy, Ohm’s Law!) and, really, how things
+                  <em>work</em> physically. This path is lower-level but leads
+                  to a wide competence in low-voltage DC circuitry (believe me,
+                  this really does come in handy in life!).
+                </li>
+                <li>
+                  <em>Building web-connected devices</em>: This is for you if
+                  you have at least a passing interest in the electronics
+                  themselves (if you don’t, this post really isn’t for you,
+                  anyway), but also have some (software) development background
+                  (read: JavaScript). This approach gets you to fully-flung
+                  embedded systems faster, in some cases making the vast
+                  <code>npm</code> ecosystem of Node.js available to you. This
+                  will require a more sophisticated microcontroller/processor
+                  than those needed for the first path.
+                </li>
+              </ul>
+              <h2
+                id="first-choice-for-learning-electronics-fundamentals-arduino-uno-r3"
+              >
+                First Choice for Learning Electronics Fundamentals: Arduino Uno
+                R3
+              </h2>
+              <p>
+                Ohmigod, how <em>boring</em>! you might be lamenting. I’ve just
+                held up the non-cutting-edgiest, pedestrian, and basically
+                <em>first</em> open-source board as a shining example of newbie
+                awesome.
+              </p>
+              <p>
+                <img
+                  src="uno.png"
+                  alt="A bad artist&#39;s impression of the Arduino Uno (R3) board"
+                />
+              </p>
+              <p>
+                <em
+                  >Illustration: A bad artist’s impression of the Arduino Uno
+                  (R3) board</em
+                >.
+              </p>
+              <p>
+                Yes, it’s true, the Uno has been around since a long time, and,
+                also true, is seriously <em>not flashy</em>, but it really is a
+                platform of the people. Its relative stodginess is a blessing
+                when compared to the immaturity and fragility of many boards.
+                Sure, working with one won’t give you the smug
+                <em>frisson</em> of novelty, but it will, in most cases,
+                <em>actually work</em>. The Uno does what it says it does. If it
+                didn’t, there are a lot of people who’d be irked.
+              </p>
+              <p>
+                Statistics are spotty at best, but even back in 2013, 700,000
+                <em>official</em> Arduino boards had been “registered”, with an
+                estimated 700,000 additional “derivative or clone board[s]”,
+                that is, about a one-to-one ratio (<a
+                  href="http://medea.mah.se/2013/04/arduino-faq/"
+                  >source</a
+                >).
+              </p>
+              <p>
+                Let’s talk about a couple of things here. First: Arduino is a
+                <em>family</em> of boards, and the 700k number references
+                Arduino boards of all stripes, not specifically the Uno (though
+                the Uno is the most popular, and, no, I don’t have a good source
+                for that but it <em>certainly seems to be the damned case</em>).
+                At the same time, it’s been several years so surely there are
+                many more. All right, that’s out of the way.
+              </p>
+              <p>
+                The “derivative or clone board” notion arises because while
+                Arduino is open-source, “official” ones carry the Arduino logo
+                and can only be made by certain blessed manufacturers.
+                Non-official ones are fine, too, but there is a bit of a thing
+                with knock-offs that have the logo but shouldn’t, so-called
+                <a href="https://www.arduino.cc/en/Products/Counterfeit"
+                  >“counterfeit” Arduinos</a
+                >, which are cheaper to buy but potentially shoddy.
+              </p>
+              <p>Here’s how the Arduino Uno R3 stacks up:</p>
+              <ul>
+                <li>
+                  <em>Clear, Intuitive Features</em>: Unos have clearly-marked
+                  I/O pins, laid out sensibly. An added bonus: pins that support
+                  PWM are marked with a tilde (~) and, once again, don’t worry
+                  if you don’t know what that is, yet. While Unos certainly
+                  aren’t the most svelte form factor, their roominess gives you
+                  plenty of space to maneuver. Unos, or, more accurately, their
+                  ATmega328P microcontrollers, support all the requisite basic
+                  features just fine.
+                </li>
+                <li>
+                  <em>Constraints</em>: That selfsame ATmega328P microcontroller
+                  is 8-bit, running at something like 20MHz, and it only has
+                  32kB of Flash memory (space for your programs). That’s
+                  <em>really</em> constrained. You’re not going to run any kind
+                  of (recognizable, let’s not get clever here) OS on that,
+                  that’s for sure. But it totally fits the bill for doing all
+                  the classic things you do when learning embedded electronics.
+                </li>
+                <li>
+                  <em>Ubiquity</em>: It doesn’t get more ubiquitous. Also, the
+                  ATmega328P is a battle-tested microcontroller; it’s reliable
+                  and sensible.
+                </li>
+              </ul>
+              <p>
+                Expect to pay about US$25 for a certified Arduino Uno R3,
+                considerably cheaper if you’re willing to take a risk on
+                reliability, which, at this stage in the game, I wouldn’t?
+              </p>
+              <p>
+                The Uno: unglamorous, reliable, and the <em>sui generis</em> for
+                educational hardware hacking. There is really no substitute.
+              </p>
+              <h3 id="learning-electronics-with-the-arduino-uno">
+                Learning Electronics with the Arduino Uno
+              </h3>
+              <p>
+                OK, so there is this fantastic book—brilliant visual design,
+                clear instructions, just in all ways excellent. It’s called
+                <em>Arduino Projects Book</em>. But there’s a pretty major
+                downside: you can <em>only</em> get it if you purchase the
+                (official)
+                <a href="https://store.arduino.cc/usa/arduino-starter-kit"
+                  >Arduino Starter Kit</a
+                >. That’s a bit of a bummer, but I will say: that starter kit
+                rocks. It’s worth getting if you can spare the extra funds
+                (they’re currently retailing at $85). Of course, there are tons
+                of other getting-started books on the market if you Google
+                around a bit.
+              </p>
+              <p>
+                <a href="http://www.ladyada.net/learn/arduino/"
+                  >LadyAda’s tutorials</a
+                >
+                are a free resource, and there are a
+                <a href="https://store.arduino.cc/usa/books-manuals"
+                  >handful of books for beginners</a
+                >
+                called out on the Arduino website.
+              </p>
+              <h2 id="first-choice-for-web-connected-devices-tessel-2">
+                First Choice for Web-Connected Devices: Tessel 2
+              </h2>
+              <p>
+                And now for something completely different, and lightly
+                violating what I said about constraints and ubiquity: the
+                <a href="https://tessel.io/">Tessel 2</a> board. The Tessel runs
+                an optimized-for-embedded Linux distribution, OpenWRT, and has
+                enough oomph to run Node.js on-board. So, if you’ve selected the
+                “Web-Connected Devices” adventure, you can <code>npm</code> to
+                your heart’s content and do some pretty complex, nifty software
+                things in short order.
+              </p>
+              <p><img src="tessel.png" alt="The Tessel 2 board" /></p>
+              <p>
+                Like the Arduino, Tessel is an open-source platform. Also like
+                the Arduino Uno, the Tessel’s pins are sanely organized and
+                labeled and the board supports all the major features you’d
+                expect. It’s a more sophisticated device than the Uno, with a
+                separate co-processor for handling I/O. There are some frills.
+                You’ll likely put the on-board WiFi to use straightaway. There
+                are two USB peripheral ports, which are fun to play with but I’d
+                recommend keeping it simple to start and ignoring those
+                initially.
+              </p>
+              <p>
+                For controlling the Tessel 2, I recommend Johnny-Five, an
+                open-source, widely used, cross-platform-compatible JavaScript
+                framework.
+              </p>
+              <p>Here’s how the Tessel 2 Stacks Up:</p>
+              <ul>
+                <li>
+                  <em>Clear, Intuitive Features</em>: Tessel 2’s pins are
+                  organized into two “ports” of 10 pins each (two power pins and
+                  8 I/O). They’re straightforward to figure out. The workflow
+                  will feel familiar to web and Node.js developers. The on-board
+                  WiFi is a real boon for building web-connected things.
+                </li>
+                <li>
+                  <em>Constraints</em>: The Tessel can do more stuff than the
+                  Uno and that’s potentially overwhelming, but if you resist the
+                  temptation to futz around with interesting features of its
+                  OpenWRT OS and the USB peripherals right away, it can provide
+                  a focused learning platform, especially paired with
+                  Johnny-Five.
+                </li>
+                <li>
+                  <em>Ubiquity</em>: Straight up, the Tessel 2 doesn’t have a
+                  massive user base. But it’s growing into itself and maturing.
+                  Johnny-Five recently had its fifth birthday, and has a wide
+                  community of contributors and supporters.
+                </li>
+              </ul>
+              <p>
+                A lot of bells and whistles don’t necessarily make this a
+                complicated platform. The workflow is smooth and feels natural
+                for Node.js/JavaScript programmers. Johnny-Five has intuitive,
+                built-in support for tons of components.
+              </p>
+              <h3 id="learning-electronics-with-the-tessel-2">
+                Learning Electronics with the Tessel 2
+              </h3>
+              <p>
+                SparkFun sells a complete
+                <a href="https://www.sparkfun.com/products/13847"
+                  >Johnny-Five Inventor’s Kit</a
+                >, which includes a Tessel and a bunch of components
+                (disclaimer: I was involved in writing the
+                <a
+                  href="https://learn.sparkfun.com/tutorials/experiment-guide-for-the-johnny-five-inventors-kit"
+                  >experiment guide</a
+                >. Even if you don’t buy the kit, that guide is pretty
+                exhaustive (tons of great effort from several committed
+                people!).
+              </p>
 
-              <hr class="Separator--small Separator--subtle">
-              <p class="u-text-xs u-muted"><em>You may have noticed I don&rsquo;t have any commenting enabled...yet. Hit me up <a href="https://twitter.com/lyzadanger" class="u-link-subtle">@lyzadanger</a> with thoughts; maybe I&rsquo;ll add commenting soon.</em></p>
+              <hr class="Separator--small Separator--subtle" />
+              <p class="u-text-xs u-muted">
+                <em
+                  >You may have noticed I don&rsquo;t have any commenting
+                  enabled...yet. Hit me up
+                  <a href="https://twitter.com/lyzadanger" class="u-link-subtle"
+                    >@lyzadanger</a
+                  >
+                  with thoughts; maybe I&rsquo;ll add commenting soon.</em
+                >
+              </p>
             </div>
           </section>
         </div>
       </article>
-  </main>
-  <footer class="Footer u-align-center" role="contentinfo">
-    <hr class="Separator Separator--small Separator--light">
-    <nav role="navigation" class="Navigation Navigation--subtle">
-      <ul class="Navigation-list">
-        <li class="Navigation-item"><a href="mailto:lyza@lyza.com" class="Navigation-link u-linkClean">Contact</a></li>
-        <li class="Navigation-item"><a href="http://www.cloudfour.com" class="Navigation-link u-linkClean">Cloud Four</a></li>
-        <li class="Navigation-item"><a href="http://twitter.com/lyzadanger" class="Navigation-link u-linkClean">@lyzadanger</a></li>
-      </ul>
-    </nav>
-  </footer>
-</body>
+    </main>
+    <footer class="Footer u-align-center" role="contentinfo">
+      <hr class="Separator Separator--small Separator--light" />
+      <nav role="navigation" class="Navigation Navigation--subtle">
+        <ul class="Navigation-list">
+          <li class="Navigation-item">
+            <a href="mailto:lyza@lyza.com" class="Navigation-link u-linkClean"
+              >Contact</a
+            >
+          </li>
+          <li class="Navigation-item">
+            <a
+              href="http://www.cloudfour.com"
+              class="Navigation-link u-linkClean"
+              >Cloud Four</a
+            >
+          </li>
+          <li class="Navigation-item">
+            <a
+              href="http://twitter.com/lyzadanger"
+              class="Navigation-link u-linkClean"
+              >@lyzadanger</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </footer>
+  </body>
 </html>
