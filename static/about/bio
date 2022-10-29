@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="alternate" type="application/rss+xml"
+    href="../feeds/rss.rss" title="Lyza.com: All Posts">
+  <link rel="alternate" type="application/rss+xml"
+    href="../feeds/tech.rss" title="Lyza.com: Work and Tech Posts">
+  <link rel="alternate" type="application/rss+xml"
+    href="../feeds/life.rss" title="Lyza.com: Life and Off-topic Posts">
+  <title>Info about Lyza Danger Gardner | Lyza.com</title>
+
+  <script>
+    WebFontConfig = {
+      google: {
+        families: ['Playfair Display:italic,900']
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js" async></script>
+  <script src="../js/site.js" defer="defer"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-2791311-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+<body>
+
+  <header role="banner">
+
+    <hr class="Separator--small">
+
+    <nav role="navigation" class="Navigation u-size3of4 u-after1of4 u-top-off" aria-label="Primary Navigation">
+      <ul class="List--inline">
+        <li class="Navigation-item ">
+          <a href="http://www.lyza.com/" class="u-linkClean">Home</a>
+        </li>
+        <li class="Navigation-item Navigation-item--active">
+          <a href="http://www.lyza.com/about" class="u-linkClean">About <span class="u-visually-hidden">Lyza</span></a>
+        </li>
+          <li class="Navigation-item "><a href="../blog" class="u-linkClean">Blog</a></li>
+      </ul>
+    </nav>
+
+    <div class="Header Grid Header--small Grid--alignMiddle">
+
+      <div class="Grid-cell Header-title-container u-margins-off u-md-size5of12">
+        <img src="https://d33wubrfki0l68.cloudfront.net/672d9a0c22400b00b6c41dc2414d04beae1ab8ea/1f27f/images/lyza.gif" class="Header-photo" alt="Lyza Danger Gardner, human">
+        <h1 class="Header-title u-margins-off">
+          <span class="Header-Lyza Header-Lyza-lyza">Lyza</span>
+          <span class="Header-Lyza Header-Lyza-danger">Danger</span>
+          <span class="Header-Lyza Header-Lyza-gardner">Gardner</span>
+        </h1>
+      </div>
+
+      <div class="Grid-cell u-md-size3of12 u-lg-size4of12"></div>
+
+      <div class="Grid-cell u-md-size4of12 u-lg-size3of12">
+        <h2 class="Header-subheading">Developer <em class="Header-ampersand">&amp;</em> Person</h2>
+      </div>
+
+    </div>
+  </header>
+
+  <main role="main" class="u-top-tight u-md-top-default">
+
+  <section>
+    <div class="Grid">
+      <div class="Grid-cell u-md-size3of12">
+        <header>
+          <div class="Content-header">
+            <h2 class="Content-heading Content-title">Info about Lyza Danger Gardner</h2>
+          </div>
+          <hr class="Separator--small Separator--light u-top-tight u-md-top-default">
+          <div class="Content-blurb Content-header">If you're a conference organizer looking for bios and headshots, you're in the right place!</div>
+          <hr class="Separator--small Separator--light">
+        </header>
+      </div>
+      <div class="Grid-cell u-md-size8of12 u-md-after1of12">
+        <div class="Content u-top-sm u-md-top-off">
+          <h2 id="quick-stats">Quick Stats</h2>
+<ul>
+<li>Name for Attributions: Lyza Danger Gardner</li>
+<li>Title: Senior Developer, <a href="https://hypothes.is">hypothes.is</a></li>
+<li>Location: Chester, VT (working remotely)</li>
+<li>Twitter: <a href="https://twitter.com/lyzadanger">@lyzadanger</a></li>
+<li>Website: <a href="../index.html">lyza.com</a></li>
+<li>Github: <a href="https://github.com/lyzadanger">lyzadanger</a></li>
+</ul>
+<h2 id="bio">Bio</h2>
+<p>Lyza likes figuring out how to do things. In turn, she likes to teach others how to do new things, too. Writer for <em>O’Reilly</em>, <em>A List Apart</em>, <em>Smashing Magazine</em>, <em>NET Magazine</em> and co-founder of Cloud Four, Lyza advocates for elegant standards, education and compassion in pursuit of the best possible future Web. Building on over 20 years of web experience, Lyza’s current focuses include JavaScript-powered IoT, platform standards stewardship, Web APIs and progressive web applications. Her latest book is <em>JavaScript on Things: A Web Developer’s Introduction to Electronics</em> (Manning).</p>
+<p>As a counterpoint to this futuristic vantage, she lives in the forest in Vermont and enjoys anachronistic hobbies. She reads and reads and reads.</p>
+
+        </div>
+        <hr class="Separator Separator--small">
+
+
+        <section class="Content">
+          <h2 class="u-v-sm u-md-top-off">Photos</h2>
+          <div class="Grid Grid--alignMiddle">
+              <div class="Grid-cell u-md-size1of2 Tile-container">
+                <div class="Tile">
+                  <div class="Tile-header">
+                    <div class="Content-header">
+                      <h3 class="Tile-heading"><a class="u-link-colorless" href="lyza-danger-gardner-dev.jpg">Lyza, Dev</a></h3>
+                    </div>
+                  </div>
+                  <div class="Tile-body">
+                    <figure class="Figure">
+                      <img src="https://d33wubrfki0l68.cloudfront.net/dcc9ef9a082d45a06e9de8c74cc6b0ef967c760c/f0ffa/about/lyza-danger-gardner-dev-sm.jpg" alt="Lyza, Dev"></a>
+                        <figcaption class="u-text-xs"><a href="lyza-danger-gardner-dev.jpg">[Download Larger JPG]</a></figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+              <div class="Grid-cell u-md-size1of2 Tile-container">
+                <div class="Tile">
+                  <div class="Tile-header">
+                    <div class="Content-header">
+                      <h3 class="Tile-heading"><a class="u-link-colorless" href="lyza-danger-gardner-tech.jpg">Lyza, Technical</a></h3>
+                    </div>
+                  </div>
+                  <div class="Tile-body">
+                    <figure class="Figure">
+                      <img src="https://d33wubrfki0l68.cloudfront.net/783c58998914cc8321d3c990ccdd3f2428b036eb/6b880/about/lyza-danger-gardner-tech-sm.jpg" alt="Lyza, Technical"></a>
+                        <figcaption class="u-text-xs"><a href="lyza-danger-gardner-tech.jpg">[Download Larger JPG]</a></figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+              <div class="Grid-cell u-md-size1of2 Tile-container">
+                <div class="Tile">
+                  <div class="Tile-header">
+                    <div class="Content-header">
+                      <h3 class="Tile-heading"><a class="u-link-colorless" href="lyza-danger-gardner-human.jpg">Lyza, Human</a></h3>
+                    </div>
+                  </div>
+                  <div class="Tile-body">
+                    <figure class="Figure">
+                      <img src="https://d33wubrfki0l68.cloudfront.net/e60bd186551577fac073d348d18f3c04c83e6d56/e1eb1/about/lyza-danger-gardner-human-sm.jpg" alt="Lyza, Human"></a>
+                        <figcaption class="u-text-xs"><a href="lyza-danger-gardner-human.jpg">[Download Larger JPG]</a></figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+              <div class="Grid-cell u-md-size1of2 Tile-container">
+                <div class="Tile">
+                  <div class="Tile-header">
+                    <div class="Content-header">
+                      <h3 class="Tile-heading"><a class="u-link-colorless" href="lyza-danger-gardner-hi-there.png">Lyza, Alternate</a></h3>
+                    </div>
+                  </div>
+                  <div class="Tile-body">
+                    <figure class="Figure">
+                      <img src="https://d33wubrfki0l68.cloudfront.net/13c22e87bc28aa629894f790e136e8eea3b30cd9/e79ab/about/lyza-danger-gardner-hi-there-sm.png" alt="Lyza, Alternate"></a>
+                        <figcaption class="u-text-xs"><a href="lyza-danger-gardner-hi-there.png">[Low-Resolution PNG]</a></figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+
+  </main>
+  <footer class="Footer u-align-center" role="contentinfo">
+    <hr class="Separator Separator--small Separator--light">
+    <nav role="navigation" class="Navigation Navigation--subtle">
+      <ul class="Navigation-list">
+        <li class="Navigation-item"><a href="mailto:lyza@lyza.com" class="Navigation-link u-linkClean">Contact</a></li>
+        <li class="Navigation-item"><a href="http://www.cloudfour.com" class="Navigation-link u-linkClean">Cloud Four</a></li>
+        <li class="Navigation-item"><a href="http://twitter.com/lyzadanger" class="Navigation-link u-linkClean">@lyzadanger</a></li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../../../css/styles.css">
+  <link rel="alternate" type="application/rss+xml"
+    href="../../../../feeds/rss.rss" title="Lyza.com: All Posts">
+  <link rel="alternate" type="application/rss+xml"
+    href="../../../../feeds/tech.rss" title="Lyza.com: Work and Tech Posts">
+  <link rel="alternate" type="application/rss+xml"
+    href="../../../../feeds/life.rss" title="Lyza.com: Life and Off-topic Posts">
+  <title>Scampering after Node.js Versions | Lyza.com</title>
+
+  <script>
+    WebFontConfig = {
+      google: {
+        families: ['Playfair Display:italic,900']
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js" async></script>
+  <script src="../../../../js/site.js" defer="defer"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-2791311-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+<body>
+
+  <header role="banner">
+
+    <hr class="Separator--small">
+
+    <nav role="navigation" class="Navigation u-size3of4 u-after1of4 u-top-off" aria-label="Primary Navigation">
+      <ul class="List--inline">
+        <li class="Navigation-item ">
+          <a href="http://www.lyza.com/" class="u-linkClean">Home</a>
+        </li>
+        <li class="Navigation-item ">
+          <a href="http://www.lyza.com/about" class="u-linkClean">About <span class="u-visually-hidden">Lyza</span></a>
+        </li>
+          <li class="Navigation-item Navigation-item--active"><a href="../../../../blog" class="u-linkClean">Blog</a></li>
+      </ul>
+    </nav>
+
+    <div class="Header Grid Header--small Grid--alignMiddle">
+
+      <div class="Grid-cell Header-title-container u-margins-off u-md-size5of12">
+        <img src="https://d33wubrfki0l68.cloudfront.net/672d9a0c22400b00b6c41dc2414d04beae1ab8ea/1f27f/images/lyza.gif" class="Header-photo" alt="Lyza Danger Gardner, human">
+        <h1 class="Header-title u-margins-off">
+          <span class="Header-Lyza Header-Lyza-lyza">Lyza</span>
+          <span class="Header-Lyza Header-Lyza-danger">Danger</span>
+          <span class="Header-Lyza Header-Lyza-gardner">Gardner</span>
+        </h1>
+      </div>
+
+      <div class="Grid-cell u-md-size3of12 u-lg-size4of12"></div>
+
+      <div class="Grid-cell u-md-size4of12 u-lg-size3of12">
+        <h2 class="Header-subheading">Developer <em class="Header-ampersand">&amp;</em> Person</h2>
+      </div>
+
+    </div>
+  </header>
+
+  <main role="main" class="u-top-tight u-md-top-default">
+      <article class="u-margins-off u-sm-top-xs u-md-top-default">
+        <div class="Grid">
+          <div class="Grid-cell u-md-size3of12 u-lg-size2of10">
+            <header>
+              <div class="Content-header">
+                <h2 class="Content-heading Content-title">Scampering after Node.js Versions</h2>
+                <div class="Content-meta"><time datetime="2015-12-08T18:55:01.019Z">December 8, 2015</time></div>
+              </div>
+              <hr class="Separator--small Separator--light u-top-tight u-md-top-default">
+              <div class="Content-blurb Content-header"><p>Everything about Node.js is exponential curves right now. While at Node Interactive here in Portland, my mind has started racing about understanding and managing Node.js<span class="widont">&nbsp;</span>versions.</p>
+</div>
+              <hr class="Separator--small Separator--light">
+              <ul class="List--inline is-indented--xxsm u-top-xs">
+                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
+                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>web</span></li>
+                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>js</span></li>
+              </ul>
+            </header>
+          </div>
+          <section class="Grid-cell u-md-size9of12 u-lg-size6of10">
+            <div class="Content-content Content u-top-tight u-md-top-off">
+              <p>The morning keynotes at <a href="http://events.linuxfoundation.org/events/node-interactive">Node Interactive</a> just happened and I’m reeling a bit and talking to interesting people but wanted to write something down before I forget.</p>
+<p>Node.js versions are <em>cray-zee</em> for me right now.</p>
+<p>For some reason, it was calming when <a href="https://twitter.com/jasnell">James Snell</a> mentioned that the late-2014 Node.js/io split freaked <em>everyone</em> out and my desire to stick my fingers in my ears and pretend it didn’t happen echoed how most of the community felt, too. And so we are all glad to see the convergence, and now the best of both communities combined:</p>
+<ul>
+<li>The open governance model and velocity from io.js</li>
+<li>The stability focus from Node.js</li>
+</ul>
+<p>And a whole lot less weird tension about the Node.js vs. io.js fiasco.</p>
+<h3 id="straight-to-5-0-x-">Straight to 5.0.x?</h3>
+<p>Cool. By now, most of us in the node community have seen the <a href="https://nodesource.com/blog/essential-steps-long-term-support-for-nodejs">release schedule for Node.js</a>. The launch into that was fast and heavy: <code>4.0.0</code> in September, <code>5.0.0</code> in October (at time of writing we’re at <code>5.1.1</code> for stable). This had led to a sense of rushing to be writing new code on the latest, but hang on.</p>
+<p><code>4.x</code> and <code>5.x</code> are both stable, but they’re not the same: <code>4.x</code> will go into active LTS (long-term support) in six months, and will stay in LTS for 18 months after that. <code>5.x</code> is stable, but will never got into LTS. That is, stable-with-LTS releases are yearly—and the releases you should lean toward for long-term, production work.</p>
+<h3 id="who-uses-what-now-">Who Uses What, Now?</h3>
+<p>Yes, we are moving quickly as a community. Also in Snell’s keynote was the statistic: about 38% of folks are at <code>4.0.0</code> or better. That’s fast.</p>
+<p>At the same time, there is a lot of legacy code out there. <a href="https://twitter.com/sh1mmer">Tom Croucher</a>, in his keynote on Node.js at Uber, mentioned a currently-open issue in Uber’s codebase to upgrade something that is still on <code>0.8</code>. If most of your stuff is on <code>0.10</code> or <code>0.12</code>, you are not alone. Just note: active maintenance for <code>0.12</code> ends about a year from now; <code>0.10</code> earlier (Octoberish). You have some time but not forever.</p>
+<h3 id="so-how-do-we-manage-this-">So How Do We Manage This?</h3>
+<p>There are an assortment of ways for managing node versions from within a project, but a universal pattern hasn’t quite coalesced.</p>
+<p>Dropping a <code>.node-version</code> in a project root is a tactic I’ve seen on occasion, but its inclusion in version-controlled code can be bothersome and it’s not a pattern I see terribly often. Other flavors of this dotfile-controlled versioning can be seen in <code>.nvmrc</code> or <code>.npmrc</code> form.</p>
+<p>The definition of an <code>engines</code> property in <code>package.json</code> is ubiquitous, but it’s only advisory in current <code>npm</code> versions—you’ll get a <code>WARN</code>, but a package made for <code>4.0</code>+ will happily install on your local version of <code>0.12</code> (and then break when you try to use it later).</p>
+<p>I’m sure I missed things, but, again, this seems scattershot to me at the moment.</p>
+<h3 id="maybe-the-answer-is-obvious">Maybe the Answer is Obvious</h3>
+<p>Maybe version management has already been roundly sorted and I’m an ignoramus for not being on top of it. But it’s harshing me this week. Although I haven’t blogged in a month, a hell of a lot has been going on with my site under the covers. More on that later, maybe, but.</p>
+<p>Yesterday I tried to deploy a bunch of site infrastructure updates to lyza.com’s new host, <a href="http://netlify.com">netlify</a>. Call me boneheaded for not thinking more carefully about dropping in ES6 enhancements supported by <code>&gt;=4.0.0</code> but it wasn’t until after I’d deployed and the build failed—netlify won’t deploy broken builds, fortunately; yay for that—that I realized I didn’t even know what version netlify was using to build my site. Turns out <code>0.12.2</code> (I’ll gloss over it, but figuring <em>that</em> out was not as straightforward as you might imagine). Cue a few <a href="https://github.com/lyzadanger/lyza-dot-com/commit/7cc8bc19d8d81777b78f7f40508f43bb9b828682">furious</a> patch <a href="https://github.com/lyzadanger/lyza-dot-com/commit/fc3e504d147281073ccf009cf31fdcb33a15e79b">commits</a> to back out of my ES6 syntax and the builds succeeded again.</p>
+<p>Netlify support via gitter was quick and responsive, and they explained I could use an <code>.nvmrc</code> keyed to any of the available versions in their <a href="https://github.com/netlify/build-image/blob/master/Dockerfile#L99">open-source Docker build image</a>, but—and I think this is a common theme—it’s not documented anywhere and it took a bit of breaking to figure it out.</p>
+<p>I think the next few months are going to involve a bit of scrambling as the community works through some of this stuff. Now to go re-apply that ES6 stuff and get my site up to <code>4.0</code>+. See yah!</p>
+
+              <hr class="Separator--small Separator--subtle">
+              <p class="u-text-xs u-muted"><em>You may have noticed I don&rsquo;t have any commenting enabled...yet. Hit me up <a href="https://twitter.com/lyzadanger" class="u-link-subtle">@lyzadanger</a> with thoughts; maybe I&rsquo;ll add commenting soon.</em></p>
+            </div>
+          </section>
+        </div>
+      </article>
+  </main>
+  <footer class="Footer u-align-center" role="contentinfo">
+    <hr class="Separator Separator--small Separator--light">
+    <nav role="navigation" class="Navigation Navigation--subtle">
+      <ul class="Navigation-list">
+        <li class="Navigation-item"><a href="mailto:lyza@lyza.com" class="Navigation-link u-linkClean">Contact</a></li>
+        <li class="Navigation-item"><a href="http://www.cloudfour.com" class="Navigation-link u-linkClean">Cloud Four</a></li>
+        <li class="Navigation-item"><a href="http://twitter.com/lyzadanger" class="Navigation-link u-linkClean">@lyzadanger</a></li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+</html>
