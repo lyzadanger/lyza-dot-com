@@ -1,162 +1,388 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-US" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../../../../css/styles.css">
-  <link rel="alternate" type="application/rss+xml"
-    href="../../../../feeds/rss.rss" title="Lyza.com: All Posts">
-  <link rel="alternate" type="application/rss+xml"
-    href="../../../../feeds/tech.rss" title="Lyza.com: Work and Tech Posts">
-  <link rel="alternate" type="application/rss+xml"
-    href="../../../../feeds/life.rss" title="Lyza.com: Life and Off-topic Posts">
-  <title>ARIA Landmark Roles in 5 Minutes | Lyza.com</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../../css/styles.css" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="../../../../feeds/rss.rss"
+      title="Lyza.com: All Posts"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="../../../../feeds/tech.rss"
+      title="Lyza.com: Work and Tech Posts"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="../../../../feeds/life.rss"
+      title="Lyza.com: Life and Off-topic Posts"
+    />
+    <title>ARIA Landmark Roles in 5 Minutes | Lyza.com</title>
 
-  <script>
-    WebFontConfig = {
-      google: {
-        families: ['Playfair Display:italic,900']
-      }
-    };
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js" async></script>
-  <script src="../../../../js/site.js" defer="defer"></script>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <script>
+      WebFontConfig = {
+        google: {
+          families: ['Playfair Display:italic,900'],
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"
+      async
+    ></script>
+    <script src="../../../../js/site.js" defer="defer"></script>
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        (i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        'script',
+        '//www.google-analytics.com/analytics.js',
+        'ga'
+      );
 
-    ga('create', 'UA-2791311-1', 'auto');
-    ga('send', 'pageview');
+      ga('create', 'UA-2791311-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <header role="banner">
+      <hr class="Separator--small" />
 
-  </script>
+      <nav
+        role="navigation"
+        class="Navigation u-size3of4 u-after1of4 u-top-off"
+        aria-label="Primary Navigation"
+      >
+        <ul class="List--inline">
+          <li class="Navigation-item">
+            <a href="http://www.lyza.com/" class="u-linkClean">Home</a>
+          </li>
+          <li class="Navigation-item">
+            <a href="http://www.lyza.com/about" class="u-linkClean"
+              >About <span class="u-visually-hidden">Lyza</span></a
+            >
+          </li>
+          <li class="Navigation-item Navigation-item--active">
+            <a href="../../../../blog" class="u-linkClean">Blog</a>
+          </li>
+        </ul>
+      </nav>
 
-</head>
-<body>
+      <div class="Header Grid Header--small Grid--alignMiddle">
+        <div
+          class="Grid-cell Header-title-container u-margins-off u-md-size5of12"
+        >
+          <img
+            src="/images/lyza.gif"
+            class="Header-photo"
+            alt="Lyza Danger Gardner, human"
+          />
+          <h1 class="Header-title u-margins-off">
+            <span class="Header-Lyza Header-Lyza-lyza">Lyza</span>
+            <span class="Header-Lyza Header-Lyza-danger">Danger</span>
+            <span class="Header-Lyza Header-Lyza-gardner">Gardner</span>
+          </h1>
+        </div>
 
-  <header role="banner">
+        <div class="Grid-cell u-md-size3of12 u-lg-size4of12"></div>
 
-    <hr class="Separator--small">
-
-    <nav role="navigation" class="Navigation u-size3of4 u-after1of4 u-top-off" aria-label="Primary Navigation">
-      <ul class="List--inline">
-        <li class="Navigation-item ">
-          <a href="http://www.lyza.com/" class="u-linkClean">Home</a>
-        </li>
-        <li class="Navigation-item ">
-          <a href="http://www.lyza.com/about" class="u-linkClean">About <span class="u-visually-hidden">Lyza</span></a>
-        </li>
-          <li class="Navigation-item Navigation-item--active"><a href="../../../../blog" class="u-linkClean">Blog</a></li>
-      </ul>
-    </nav>
-
-    <div class="Header Grid Header--small Grid--alignMiddle">
-
-      <div class="Grid-cell Header-title-container u-margins-off u-md-size5of12">
-        <img src="https://d33wubrfki0l68.cloudfront.net/672d9a0c22400b00b6c41dc2414d04beae1ab8ea/1f27f/images/lyza.gif" class="Header-photo" alt="Lyza Danger Gardner, human">
-        <h1 class="Header-title u-margins-off">
-          <span class="Header-Lyza Header-Lyza-lyza">Lyza</span>
-          <span class="Header-Lyza Header-Lyza-danger">Danger</span>
-          <span class="Header-Lyza Header-Lyza-gardner">Gardner</span>
-        </h1>
+        <div class="Grid-cell u-md-size4of12 u-lg-size3of12">
+          <h2 class="Header-subheading">
+            Developer <em class="Header-ampersand">&amp;</em> Person
+          </h2>
+        </div>
       </div>
+    </header>
 
-      <div class="Grid-cell u-md-size3of12 u-lg-size4of12"></div>
-
-      <div class="Grid-cell u-md-size4of12 u-lg-size3of12">
-        <h2 class="Header-subheading">Developer <em class="Header-ampersand">&amp;</em> Person</h2>
-      </div>
-
-    </div>
-  </header>
-
-  <main role="main" class="u-top-tight u-md-top-default">
+    <main role="main" class="u-top-tight u-md-top-default">
       <article class="u-margins-off u-sm-top-xs u-md-top-default">
         <div class="Grid">
           <div class="Grid-cell u-md-size3of12 u-lg-size2of10">
             <header>
               <div class="Content-header">
-                <h2 class="Content-heading Content-title">ARIA Landmark Roles in 5 Minutes</h2>
-                <div class="Content-meta"><time datetime="2015-09-04T20:13:17.977Z">September 4, 2015</time></div>
+                <h2 class="Content-heading Content-title">
+                  ARIA Landmark Roles in 5 Minutes
+                </h2>
+                <div class="Content-meta">
+                  <time datetime="2015-09-04T20:13:17.977Z"
+                    >September 4, 2015</time
+                  >
+                </div>
               </div>
-              <hr class="Separator--small Separator--light u-top-tight u-md-top-default">
-              <div class="Content-blurb Content-header"><p>There are lots of elements in play when trying to make web sites and apps accessible, but correct use of <span class="caps">ARIA</span> roles in <span class="caps">HTML</span> is straightforward and has big<span class="widont">&nbsp;</span>impact.</p>
-</div>
-              <hr class="Separator--small Separator--light">
+              <hr
+                class="Separator--small Separator--light u-top-tight u-md-top-default"
+              />
+              <div class="Content-blurb Content-header">
+                <p>
+                  There are lots of elements in play when trying to make web
+                  sites and apps accessible, but correct use of
+                  <span class="caps">ARIA</span> roles in
+                  <span class="caps">HTML</span> is straightforward and has
+                  big<span class="widont">&nbsp;</span>impact.
+                </p>
+              </div>
+              <hr class="Separator--small Separator--light" />
               <ul class="List--inline is-indented--xxsm u-top-xs">
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>tech</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>a11y</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>web</span></li>
-                  <li><span class="u-muted  u-smallcaps"><span class="u-text-xs">#</span>howto</span></li>
+                <li>
+                  <span class="u-muted u-smallcaps"
+                    ><span class="u-text-xs">#</span>tech</span
+                  >
+                </li>
+                <li>
+                  <span class="u-muted u-smallcaps"
+                    ><span class="u-text-xs">#</span>a11y</span
+                  >
+                </li>
+                <li>
+                  <span class="u-muted u-smallcaps"
+                    ><span class="u-text-xs">#</span>web</span
+                  >
+                </li>
+                <li>
+                  <span class="u-muted u-smallcaps"
+                    ><span class="u-text-xs">#</span>howto</span
+                  >
+                </li>
               </ul>
             </header>
           </div>
           <section class="Grid-cell u-md-size9of12 u-lg-size6of10">
             <div class="Content-content Content u-top-tight u-md-top-off">
-              <p>The recent results for <a href="http://webaim.org/projects/screenreadersurvey6/">WebAIM’s survey study</a> of screen reader users reminded me of two things:</p>
-<ul>
-<li>Much of what stands between us and an accessible Web boils down to <a href="http://webaim.org/projects/screenreadersurvey6/#reasons">our own awareness and knowledge</a> as web implementors</li>
-<li>A majority of screen reader users <a href="http://webaim.org/projects/screenreadersurvey6/#landmarks">rely on ARIA landmark roles</a> for basic navigation and wayfinding in web documents</li>
-</ul>
-<p>Paraphrased: <em>Web accessibility is a complex subject, but using ARIA landmark roles alone can give us a good start</em>.</p>
-<h2 id="aria-s-roles-model">ARIA’s Roles Model</h2>
-<p><a href="http://www.w3.org/WAI/intro/aria.php">WAI-ARIA</a> (Web Accessibility Initiative’s Accessible Rich Internet Applications Suite, whew) “provides a framework for adding attributes to identify features for user interaction, how they relate to each other, and their current state.” I’m not going to delve into all of what it encompasses because that is a lot.</p>
-<p>Let’s just talk about roles for now. Using the <code>role</code> attribute in an HTML element is a way of explicitly declaring what it does in the HTML document. What its purpose is. What it <em>means</em> in this great universe of web stuff. Like this:</p>
-<pre><code class="lang-html">&lt;main <span class="hljs-attribute">role</span>=<span class="hljs-string">"main"</span>&gt;
+              <p>
+                The recent results for
+                <a href="http://webaim.org/projects/screenreadersurvey6/"
+                  >WebAIM’s survey study</a
+                >
+                of screen reader users reminded me of two things:
+              </p>
+              <ul>
+                <li>
+                  Much of what stands between us and an accessible Web boils
+                  down to
+                  <a
+                    href="http://webaim.org/projects/screenreadersurvey6/#reasons"
+                    >our own awareness and knowledge</a
+                  >
+                  as web implementors
+                </li>
+                <li>
+                  A majority of screen reader users
+                  <a
+                    href="http://webaim.org/projects/screenreadersurvey6/#landmarks"
+                    >rely on ARIA landmark roles</a
+                  >
+                  for basic navigation and wayfinding in web documents
+                </li>
+              </ul>
+              <p>
+                Paraphrased:
+                <em
+                  >Web accessibility is a complex subject, but using ARIA
+                  landmark roles alone can give us a good start</em
+                >.
+              </p>
+              <h2 id="aria-s-roles-model">ARIA’s Roles Model</h2>
+              <p>
+                <a href="http://www.w3.org/WAI/intro/aria.php">WAI-ARIA</a> (Web
+                Accessibility Initiative’s Accessible Rich Internet Applications
+                Suite, whew) “provides a framework for adding attributes to
+                identify features for user interaction, how they relate to each
+                other, and their current state.” I’m not going to delve into all
+                of what it encompasses because that is a lot.
+              </p>
+              <p>
+                Let’s just talk about roles for now. Using the
+                <code>role</code> attribute in an HTML element is a way of
+                explicitly declaring what it does in the HTML document. What its
+                purpose is. What it <em>means</em> in this great universe of web
+                stuff. Like this:
+              </p>
+              <pre><code class="lang-html">&lt;main <span class="hljs-attribute">role</span>=<span class="hljs-string">"main"</span>&gt;
 &lt;nav <span class="hljs-attribute">role</span>=<span class="hljs-string">"navigation"</span>&gt;
 </code></pre>
-<h2 id="four-categories-of-role">Four Categories of Role</h2>
-<p>There are a <a href="http://www.w3.org/TR/wai-aria/roles">lot of defined roles in ARIA</a>, meant for accomplishing different things. Let’s focus in further.</p>
-<p>There are four categories of role:</p>
-<ol>
-<li><strong>abstract</strong>: which you can’t use directly anyway, so let’s plug our ears and move on</li>
-<li><strong>widget</strong>: which you use if you’re building ARIA-enhanced “widgets”, we’re not today, so onward!</li>
-<li><strong>document structure</strong>: “structures that organize content in a page”: useful, but, still, let us onward…</li>
-<li><strong>landmark</strong>: “regions of the page intended as navigational landmarks”, ding ding ding! These are signposts we can easily add to each and every HTML document we make.</li>
-</ol>
-<h3 id="there-are-eight-landmark-roles">There are Eight Landmark Roles</h3>
-<p>There are only eight (8) landmark roles to master. Fewer, really, because not all are applicable to all things:</p>
-<ul>
-<li><strong>application</strong>: Defines a “region declared as a web application” (versus a content-y web document). Puts certain screen readers in a particular application mode. Don’t use it unless you know what you’re doing.</li>
-<li><strong>banner</strong>: A site-level region, typically including logo, headings.</li>
-<li><strong>complementary</strong>: An area of content within a page that is <em>related</em> to the main content, but would stand alone separate from it.</li>
-<li><strong>contentinfo</strong>: Typically contains metadata about the main document, with copyright info, utility links, etc. Typically assigned to a <code>footer</code> element in applied usage.</li>
-<li><strong>form</strong>: What it sounds like. Opinions differ, but I consider <code>&lt;form role=&quot;form&quot;&gt;</code> to be redundant.</li>
-<li><strong>main</strong>: The main content of the document.</li>
-<li><strong>navigation</strong>: An element containing navigation, like you’d expect.</li>
-<li><strong>search</strong>: An element containing search functionality.</li>
-</ul>
-<h3 id="four-essential-landmark-roles">Four Essential Landmark Roles</h3>
-<p>I am of the opinion that you can get excellent bang for the accessibility-improvement buck by simply using the following four ARIA landmark roles in every HTML document you produce:</p>
-<ul>
-<li><strong>banner</strong>: Stick this role on the <code>&lt;header&gt;</code> or other element that wraps the masthead or main banner of the page. Done.</li>
-<li><strong>main</strong>: Put this role on the element containing the main, <em>unique</em> content of the page. That might be an article or blog post, for example. In writing this post I realized that my <code>main</code> role was poorly assigned on my site’s templates. It’ll be fixed by the time you see this.</li>
-<li><strong>contentinfo</strong>: Stick it on your main site footer.</li>
-<li><strong>navigation</strong>: Stick it on your navigation elements.</li>
-</ul>
-<p>With the exception of <code>navigation</code>, each of these roles should appear <em>only once per document</em>.</p>
-<h3 id="am-i-doing-it-right-">Am I doing it right?</h3>
-<p>Go grab the <a href="http://khan.github.io/tota11y/">tota11y</a> toolkit and quickly check any page. It has a section for <code>Landmarks</code>. Easy peasy!</p>
-<p>p.s.: This isn’t the <a href="http://alistapart.com/column/wai-finding-with-aria-landmark-roles">first I’ve spoken of this</a>.</p>
+              <h2 id="four-categories-of-role">Four Categories of Role</h2>
+              <p>
+                There are a
+                <a href="http://www.w3.org/TR/wai-aria/roles"
+                  >lot of defined roles in ARIA</a
+                >, meant for accomplishing different things. Let’s focus in
+                further.
+              </p>
+              <p>There are four categories of role:</p>
+              <ol>
+                <li>
+                  <strong>abstract</strong>: which you can’t use directly
+                  anyway, so let’s plug our ears and move on
+                </li>
+                <li>
+                  <strong>widget</strong>: which you use if you’re building
+                  ARIA-enhanced “widgets”, we’re not today, so onward!
+                </li>
+                <li>
+                  <strong>document structure</strong>: “structures that organize
+                  content in a page”: useful, but, still, let us onward…
+                </li>
+                <li>
+                  <strong>landmark</strong>: “regions of the page intended as
+                  navigational landmarks”, ding ding ding! These are signposts
+                  we can easily add to each and every HTML document we make.
+                </li>
+              </ol>
+              <h3 id="there-are-eight-landmark-roles">
+                There are Eight Landmark Roles
+              </h3>
+              <p>
+                There are only eight (8) landmark roles to master. Fewer,
+                really, because not all are applicable to all things:
+              </p>
+              <ul>
+                <li>
+                  <strong>application</strong>: Defines a “region declared as a
+                  web application” (versus a content-y web document). Puts
+                  certain screen readers in a particular application mode. Don’t
+                  use it unless you know what you’re doing.
+                </li>
+                <li>
+                  <strong>banner</strong>: A site-level region, typically
+                  including logo, headings.
+                </li>
+                <li>
+                  <strong>complementary</strong>: An area of content within a
+                  page that is <em>related</em> to the main content, but would
+                  stand alone separate from it.
+                </li>
+                <li>
+                  <strong>contentinfo</strong>: Typically contains metadata
+                  about the main document, with copyright info, utility links,
+                  etc. Typically assigned to a <code>footer</code> element in
+                  applied usage.
+                </li>
+                <li>
+                  <strong>form</strong>: What it sounds like. Opinions differ,
+                  but I consider
+                  <code>&lt;form role=&quot;form&quot;&gt;</code> to be
+                  redundant.
+                </li>
+                <li>
+                  <strong>main</strong>: The main content of the document.
+                </li>
+                <li>
+                  <strong>navigation</strong>: An element containing navigation,
+                  like you’d expect.
+                </li>
+                <li>
+                  <strong>search</strong>: An element containing search
+                  functionality.
+                </li>
+              </ul>
+              <h3 id="four-essential-landmark-roles">
+                Four Essential Landmark Roles
+              </h3>
+              <p>
+                I am of the opinion that you can get excellent bang for the
+                accessibility-improvement buck by simply using the following
+                four ARIA landmark roles in every HTML document you produce:
+              </p>
+              <ul>
+                <li>
+                  <strong>banner</strong>: Stick this role on the
+                  <code>&lt;header&gt;</code> or other element that wraps the
+                  masthead or main banner of the page. Done.
+                </li>
+                <li>
+                  <strong>main</strong>: Put this role on the element containing
+                  the main, <em>unique</em> content of the page. That might be
+                  an article or blog post, for example. In writing this post I
+                  realized that my <code>main</code> role was poorly assigned on
+                  my site’s templates. It’ll be fixed by the time you see this.
+                </li>
+                <li>
+                  <strong>contentinfo</strong>: Stick it on your main site
+                  footer.
+                </li>
+                <li>
+                  <strong>navigation</strong>: Stick it on your navigation
+                  elements.
+                </li>
+              </ul>
+              <p>
+                With the exception of <code>navigation</code>, each of these
+                roles should appear <em>only once per document</em>.
+              </p>
+              <h3 id="am-i-doing-it-right-">Am I doing it right?</h3>
+              <p>
+                Go grab the
+                <a href="http://khan.github.io/tota11y/">tota11y</a> toolkit and
+                quickly check any page. It has a section for
+                <code>Landmarks</code>. Easy peasy!
+              </p>
+              <p>
+                p.s.: This isn’t the
+                <a
+                  href="http://alistapart.com/column/wai-finding-with-aria-landmark-roles"
+                  >first I’ve spoken of this</a
+                >.
+              </p>
 
-              <hr class="Separator--small Separator--subtle">
-              <p class="u-text-xs u-muted"><em>You may have noticed I don&rsquo;t have any commenting enabled...yet. Hit me up <a href="https://twitter.com/lyzadanger" class="u-link-subtle">@lyzadanger</a> with thoughts; maybe I&rsquo;ll add commenting soon.</em></p>
+              <hr class="Separator--small Separator--subtle" />
+              <p class="u-text-xs u-muted">
+                <em
+                  >You may have noticed I don&rsquo;t have any commenting
+                  enabled...yet. Hit me up
+                  <a href="https://twitter.com/lyzadanger" class="u-link-subtle"
+                    >@lyzadanger</a
+                  >
+                  with thoughts; maybe I&rsquo;ll add commenting soon.</em
+                >
+              </p>
             </div>
           </section>
         </div>
       </article>
-  </main>
-  <footer class="Footer u-align-center" role="contentinfo">
-    <hr class="Separator Separator--small Separator--light">
-    <nav role="navigation" class="Navigation Navigation--subtle">
-      <ul class="Navigation-list">
-        <li class="Navigation-item"><a href="mailto:lyza@lyza.com" class="Navigation-link u-linkClean">Contact</a></li>
-        <li class="Navigation-item"><a href="http://www.cloudfour.com" class="Navigation-link u-linkClean">Cloud Four</a></li>
-        <li class="Navigation-item"><a href="http://twitter.com/lyzadanger" class="Navigation-link u-linkClean">@lyzadanger</a></li>
-      </ul>
-    </nav>
-  </footer>
-</body>
+    </main>
+    <footer class="Footer u-align-center" role="contentinfo">
+      <hr class="Separator Separator--small Separator--light" />
+      <nav role="navigation" class="Navigation Navigation--subtle">
+        <ul class="Navigation-list">
+          <li class="Navigation-item">
+            <a href="mailto:lyza@lyza.com" class="Navigation-link u-linkClean"
+              >Contact</a
+            >
+          </li>
+          <li class="Navigation-item">
+            <a
+              href="http://www.cloudfour.com"
+              class="Navigation-link u-linkClean"
+              >Cloud Four</a
+            >
+          </li>
+          <li class="Navigation-item">
+            <a
+              href="http://twitter.com/lyzadanger"
+              class="Navigation-link u-linkClean"
+              >@lyzadanger</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </footer>
+  </body>
 </html>
